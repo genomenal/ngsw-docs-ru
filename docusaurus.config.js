@@ -6,7 +6,7 @@ module.exports = {
     title: 'Genomenal',
     tagline: 'Dinosaurs are cool',
     url: 'https://genomenal.ru',
-    baseUrl: '/',
+    baseUrl: '/ngsw-docs-ru/',
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
     favicon: 'img/favicon.ico',

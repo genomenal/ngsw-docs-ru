@@ -10,7 +10,7 @@ module.exports = {
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
     favicon: 'img/favicon.ico',
-    organizationName: 'RoadRoller', // Usually your GitHub org/user name.
+    organizationName: 'genomenal', // Usually your GitHub org/user name.
     projectName: 'ngsw-docs-ru', // Usually your repo name.
     themeConfig: {
         navbar: {

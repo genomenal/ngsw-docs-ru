@@ -30,6 +30,11 @@ module.exports = {
             theme: lightCodeTheme,
             darkTheme: darkCodeTheme,
         },
+        algolia: {
+            apiKey: 'fd0be1a4b0953b8d432a3361f8bb1b67',
+            indexName: 'ngsw-ru',
+            appId: '7Q65UNCM90',
+        },
     },
     presets: [
         [

@@ -29,19 +29,19 @@ import TabItem from '@theme/TabItem';
     {label: 'базы NCBI SRA', value: 'sra'},
   ]}>
   <TabItem value="pc">Для загрузки перетащите файлы или папку, содержащую файлы, в окно или нажмите на него, чтобы открыть диспетчер файлов<br />
-  	<img src={'/img/version_1.02/upl_pc.png'}/>
+  	<img src={'../../img/version_1.02/upl_pc.png'}/>
   </TabItem>
   <TabItem value="ftp">
   Для загрузки вставьте ссылку на файл на сервере в окно<br />
-  	<img src={'/img/version_1.02/upl_sra.png'}/><br />
+  	<img src={'../../img/version_1.02/upl_sra.png'}/><br />
   и нажмите на активированную кнопку<br />
-  	<img src={'/img/version_1.02/upl_active.png'}/>
+  	<img src={'../../img/version_1.02/upl_active.png'}/>
   </TabItem>
   <TabItem value="sra">Для загрузки вставьте идентификатор образца формата SRRXXXXX из базы в
   окно<br />
-  	<img src={'/img/version_1.02/upl_sra.png'}/><br />
+  	<img src={'../../img/version_1.02/upl_sra.png'}/><br />
   и нажмите на активированную кнопку<br />
-  	<img src={'/img/version_1.02/upl_active.png'}/><br />
+  	<img src={'../../img/version_1.02/upl_active.png'}/><br />
   </TabItem>
 </Tabs>
 

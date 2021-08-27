@@ -18,6 +18,8 @@ module.exports = {
             logo: {
                 alt: 'Genomenal Logo',
                 src: 'img/app-logo.svg',
+                srcDark: 'img/app-logo-white.svg',
+                href: 'https://genomenal.ru',
             },
             items: [],
         },

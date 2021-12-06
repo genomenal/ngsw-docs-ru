@@ -1,0 +1,60 @@
+---
+sidebar_position: 3
+sidebar_label: Загрузка образцов для нового пациента
+---
+
+# Загрузка образцов для нового пациента
+
+import StartUpload from '/docs/imported_components/_add_patient.mdx';
+
+<StartUpload />
+
+Выберите нужную настройку анализа (как описано [здесь](/uploading-samples/normal-sample/germline_preset)).
+
+<p align="center">
+<img src={require('/img/rus/3a-patient-page.png').default} width="700"/>
+</p>
+
+import SeveralSamples from '/docs/imported_components/_upload_several_samples.mdx';
+
+<SeveralSamples sample_type="одного" />
+
+![Загрузка файлов в формате FASTQ](/img/upload_germline.png)
+
+import UploadFiles from '/docs/imported_components/_upload_files_from_different_sources.mdx';
+
+<UploadFiles />
+
+#### Распознавание парных файлов
+
+import RecognizePair from '/docs/imported_components/_recognize_pair.mdx';
+
+<RecognizePair />
+
+### Заполнение карточки пациента
+
+import FillCard from '/docs/imported_components/_fill_out_patient_card.mdx';
+
+<FillCard />
+
+<p align="center">
+<img src={require('/img/rus/7-upload-samples.png').default} width="700"/>
+</p>
+
+Добавить детали Вы сможете позже на персональной странице этого пациента.
+
+### Тип секвенирования
+
+import SequencingType from '/docs/imported_components/_seq_type.mdx';
+
+<SequencingType />
+
+### Запуск анализа
+
+Нажмите "**Анализировать образцы**", чтобы начать анализ образцов.
+
+![Запуск](/img/version_1.02/germline_start.png) 
+
+import DangerUploading from '/docs/imported_components/_danger_while_uploading.mdx';
+
+<DangerUploading />

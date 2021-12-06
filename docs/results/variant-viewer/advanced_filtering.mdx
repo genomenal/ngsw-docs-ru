@@ -1,0 +1,224 @@
+---
+sidebar_position: 4
+sidebar_label: Расширенный поиск вариантов
+---
+
+# Расширенный поиск вариантов
+
+Нажмите на кнопку “**Расширенный поиск**” сверху таблицы:
+
+<p align="center">
+<img src={require('/img/vv/advanced_filteing_btn.png').default} width="1200"/>
+</p>
+
+Вы увидите мастер запросов:
+
+<p align="center">
+<img src={require('/img/vv/query_wizard.png').default} width="700"/>
+</p>
+
+:::info
+Если Вы находитесь на странице [Variant Viewer с соматическими мутациями](/results/variant-viewer/variant-viewer),
+фильтр по соматическим мутациям ("Origin является Somatic") будет выбран по умолчанию:
+<p align="center">
+<img src={require('/img/vv/somatic_origin.png').default} width="550"/>
+</p>
+:::
+
+### Добавление условия
+
+Чтобы добавить новое условие, нажмите на выделенное окно:
+
+<p align="center">
+<img src={require('/img/vv/add_new_condition.png').default} width="500"/>
+</p>
+
+Вы увидите список колонок аннотации, по которым можно фильтровать варианты:
+
+<p align="center">
+<img src={require('/img/vv/fields.png').default} height="250"/>
+</p>
+
+Выберите одну колонку. Для примера выберем колонку "Gene". Далее нажмите на среднее окно:
+
+<p align="center">
+<img src={require('/img/vv/operator_window.png').default} width="500"/>
+</p>
+
+и выберите оператор:
+
+<p align="center">
+<img src={require('/img/vv/operators.png').default} height="250"/>
+</p>
+
+Затем нажмите на крайнее окно:
+
+<p align="center">
+<img src={require('/img/vv/option_window.png').default} width="500"/>
+</p>
+
+и выберите значение колонки фильтрации, которому должны соответствовать искомые Вами варианты (в примере - названия генов, в которых располагаются варианты):
+
+<p align="center">
+<img src={require('/img/vv/options_gene.png').default} height="250"/>
+</p>
+
+В данном случае Вы можете выбрать сразу несколько значений, последовательно нажав на строку каждого. Тогда выбранные значения будут отмечены галочками:
+
+<p align="center">
+<img src={require('/img/vv/selected_options.png').default} width="200"/>
+</p>
+
+Если Вы хотите ***добавить ещё одно условие*** к запросу,
+нажмите на любое место на странице мастера запросов (вне области заполнения значения) и
+создайте новое условие, как описано [здесь](/results/variant-viewer/advanced_filtering#добавление-следующего-условия).
+
+Колонки фильтрации отличаются по своей механике.
+Так, помимо описанного выше примера мультивыбора опций, в случаях с ***колонками с числовым
+значением*** нужно ввести конкретное число в выделенное поле
+(на примере колонки Start - стартовой позиции варианта):
+
+<p align="center">
+<img src={require('/img/vv/numerical_value_input.png').default} width="500"/>
+</p>
+
+Кроме того, для колонок ***HPO Phenotype*** и ***Gene panel*** можно выбрать только одно значение:
+
+<p align="center">
+<img src={require('/img/vv/hpo_options.png').default} width="550"/>
+</p>
+
+### Редактирование условия
+
+В уже составленном условии можно поменять ***оператор*** и/или ***значение***. Для этого нужно нажать на соответствующее поле:
+
+<p align="center">
+<img src={require('/img/vv/edit_condition.png').default} width="300"/>
+</p>
+
+и выбрать другую опцию:
+
+<p align="center">
+<img src={require('/img/vv/change_operator.png').default} width="450"/>
+</p>
+
+### Выключение условия
+
+Выключение условия полезно, если Вы не хотите потерять составленное условие, но в данный момент Вам не нужна фильтрация по нему.
+
+import DeleteOrTurnOff from '/docs/imported_components/_turn_off_or_delete_cond.mdx';
+
+<DeleteOrTurnOff action="выключить" button="кнопку выключения" />
+
+<p align="center">
+<img src={require('/img/vv/turn_off_condition.png').default} width="700"/>
+</p>
+
+### Удаление условия
+
+<DeleteOrTurnOff action="удалить" button="крестик" />
+
+<p align="center">
+<img src={require('/img/vv/delete_condition.png').default} width="700"/>
+</p>
+
+:::tip
+Ещё не заполненное условие тоже можно удалить:
+
+<p align="center">
+<img src={require('/img/vv/delete_new_condition.png').default} width="600"/>
+</p>
+:::
+
+### Добавление следующего условия
+
+1. Если варианты, которые Вы хотите найти, должны подходить ***сразу под оба условия***:
+уже созданное и новое, то нажмите на "**И**":
+
+<p align="center">
+<img src={require('/img/vv/and_cond.png').default} width="500"/>
+</p>
+
+import NewCond from '/docs/imported_components/_add_new_cond.mdx';
+
+<NewCond />
+
+<p align="center">
+<img src={require('/img/vv/and_cond_field.png').default} width="500"/>
+</p>
+
+2. Если варианты, которые Вы хотите найти, должны подходить ***хотя бы под одно из условий*** (уже созданное или новое), то наведите курсор на строку уже созданного условия и нажмите на "**ИЛИ**":
+
+<p align="center">
+<img src={require('/img/vv/or_cond.png').default} width="500"/>
+</p>
+
+<NewCond />
+
+<p align="center">
+<img src={require('/img/vv/or_cond_field.png').default} width="500"/>
+</p>
+
+### Применение запроса
+
+После того, как Вы заполнили все условия к искомым вариантам, нажмите "**Применить**".
+Мастер запросов закроется и запрос применится к вариантам.
+
+Сверху таблицы можно увидеть, какой запрос применен. В примере по запросу “Origin является Somatic" был найден 1 вариант:
+
+<p align="center">
+<img src={require('/img/vv/filtered_var.png').default} width="1100"/>
+</p>
+
+Условие можно ***выключить***, нажав на кнопку выключения:
+
+<p align="center">
+<img src={require('/img/vv/turn_off_cond_on_vv.png').default} width="250"/>
+</p>
+
+или ***удалить***, нажав на крестик:
+
+<p align="center">
+<img src={require('/img/vv/delete_cond_on_vv.png').default} width="250"/>
+</p>
+
+Для ***удаления всех условий*** из запроса нажмите на кнопку очистки всех фильтров:
+
+<p align="center">
+<img src={require('/img/vv/clear_all_filters.png').default} width="250"/>
+</p>
+
+Чтобы ***изменить или сохранить запрос*** или ***создать новый***, нажмите на "**Расширенный поиск**".
+Чтобы вернуться к ***основному режиму*** Variant Viewer, нажмите на "**Базовый поиск**".
+
+### Сохранение запроса
+
+Если Вы хотите переиспользовать созданный запрос в дальнейшем, сохраните его. Для этого нажмите на “**Сохранить в библиотеку**”:
+
+<p align="center">
+<img src={require('/img/vv/save_to_library.png').default} width="700"/>
+</p>
+
+Введите имя запроса:
+
+<p align="center">
+<img src={require('/img/vv/query_name.png').default} width="500"/>
+</p>
+
+и нажмите "**Сохранить**".
+
+Запрос появится в списке **Сохраненные запросы**. Для применения сохраненного запроса найдите его в списке и нажмите на строку:
+
+<p align="center">
+<img src={require('/img/vv/select_saved_query.png').default} width="200"/>
+</p>
+
+и нажмите "**Применить**".
+
+Кроме того, сохраненный запрос появится в [режиме Базового поиска](/results/variant-viewer/basic_filtering).
+
+Если Вы хотите ***удалить*** сохраненный запрос, нажмите на строку запроса, а затем на корзину:
+
+<p align="center">
+<img src={require('/img/vv/delete_saved_query.png').default} width="200"/>
+</p>

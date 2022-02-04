@@ -17,15 +17,20 @@ import PatientInfo from '/docs/imported_components/_patient_def.mdx';
 
 <PatientInfo />
 
-Нажмите на “**Добавить пациента**”, чтобы создать карточку пациента.
+Нажмите на <img src={require('/img/rus/add_patient_btn.png').default} width="150"/>, чтобы создать карточку пациента.
 
 import PatientPage from '/docs/imported_components/_patient_page.mdx';
 
 <PatientPage />
 
+<p align="center">
+<img src={require('/img/rus/3a-patient-page.png').default} width="800"/>
+</p>
+
 ### 2. Загрузите образцы
 
-Выберите образец или образцы для анализа. В простейшем случае, образец - это секвенирование парных прочтений в формате FASTQ.
+Выберите образец или образцы для анализа.
+В простейшем случае, образец - это секвенирование парных прочтений в формате FASTQ.
 
 import UploadFiles from '/docs/imported_components/_upload_files_from_different_sources.mdx';
 
@@ -41,7 +46,7 @@ import FillCard from '/docs/imported_components/_fill_out_patient_card.mdx';
 
 ### 3. Запустите анализ
 
-Нажмите на “**Анализировать образцы**”, чтобы запустить анализ образцов.
+Нажмите на <img src={require('/img/rus/start_analysis_btn.png').default} width="200"/>, чтобы запустить анализ образцов.
 
 import DangerUploading from '/docs/imported_components/_danger_while_uploading.mdx';
 
@@ -73,6 +78,8 @@ import SampleCNVReport from '/docs/imported_components/_sample_cnv_report.mdx';
 
 Отчет можно экспортировать в PDF.
 
-Кроме того, Вы можете посмотреть результаты анализа для всех образцов пациента. То, как это сделать, описано [здесь](/results/cnv-report/patient-cnv-report).
+Кроме того, Вы можете посмотреть результаты анализа для всех образцов пациента. То, как это сделать,
+описано [здесь](/results/cnv-report/patient-cnv-report).
 
-Дополнительно, [здесь](/sample-examples/normal-no-cnvs) Вы можете найти примеры результатов пренатального генетического тестирования образцов с различным качеством данных.
+Дополнительно, [здесь](/sample-examples/normal-no-cnvs) Вы можете найти примеры результатов пренатального
+генетического тестирования образцов с различным качеством данных.

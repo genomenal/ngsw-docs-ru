@@ -1,15 +1,28 @@
 ---
-sidebar_position: 2
+sidebar_position: 5
 sidebar_label: Выравнивания
 ---
 
 # Выравнивания
 
-В этом разделе можно скачать файл выравнивания в формате BAM ![BAM file](/img/rus/30-bam_file.png) , 
-индексный файл для выравнивания в формате BAI ![BAI file](/img/rus/31-bai-file.png) (требуется для некоторых инструментов), 
-а также открыть модуль визуализации прочтений на геноме во встроенном IGV ![IGV](/img/rus/27_igv.png) .
+Секция "Выравнивания" содержит прочтения образца, картированные на референсный геном. Впоследствии в ходе анализа
+именно эти прочтения используются для выявления вариаций.
 
-**Визуализация в IGV: cнижение копийности участка на примере делеции**
+<p align="center">
+<img src={require('/img/results/alignments.png').default} width="800"/>
+</p>
+
+Результаты выравнивания прочтений образца представлены в следующем виде:
+
+1. Файл c выравниваниями в формате **BAM (Binary Alignment Map)** можно скачать,
+нажав на <img src={require('/img/rus/30-bam_file.png').default} width="45"/>.
+2. **Индексный файл для выравнивания в формате BAI** можно скачать, нажав
+на <img src={require('/img/rus/31-bai-file.png').default} width="45"/>. Файл требуется для некоторых инструментов.
+3. **[Integrative Genomics Viewer (IGV)](https://software.broadinstitute.org/software/igv/)** - встроенный модуль 
+визуализации прочтений на геноме. Чтобы открыть модуль, нажмите 
+на <img src={require('/img/results/igv_btn.png').default} width="45"/>.
+
+***Визуализация в IGV: cнижение копийности участка на примере делеции:***
 
 <p align="center">
 <img src={require('/img/rus/32-igv-deletion.jpg').default} width="800"/>

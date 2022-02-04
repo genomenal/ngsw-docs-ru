@@ -1,0 +1,93 @@
+---
+sidebar_position: 3
+sidebar_label: Быстрый старт для анализа опухолей
+---
+
+# Быстрый старт для анализа опухолей
+
+Если Вы хотите провести анализ образцов опухолевой ткани с помощью Genomenal, то этот раздел для Вас.
+
+### 1. Создайте пациента
+
+import Login from '/docs/imported_components/_login.mdx';
+
+<Login />
+
+import PatientInfo from '/docs/imported_components/_patient_def.mdx';
+
+<PatientInfo />
+
+Нажмите на <img src={require('/img/rus/add_patient_btn.png').default} width="150"/>, чтобы создать карточку пациента.
+
+import PatientPage from '/docs/imported_components/_patient_page.mdx';
+
+<PatientPage />
+
+<p align="center">
+<img src={require('/img/rus/patient_page_somatic.png').default} width="900"/>
+</p>
+
+### 2. Настройте параметры анализа
+
+Для поиска соматических и наследственных мутаций в опухоли лучше всего подходит настройка анализа
+"Somatic and germline variant analysis":
+
+<p align="center">
+<img src={require('/img/version_1.02/TN_preset.png').default} width="900"/>
+</p>
+
+### 2. Загрузите образцы
+
+Выберите образец или образцы опухолевой ткани для анализа.
+В простейшем случае, образец - это секвенирование парных прочтений в формате FASTQ.
+
+:::danger ВНИМАНИЕ!
+Если у Вас есть контрольный образец здоровой ткани этого же пациента, то гораздо более надежным является анализ
+с использованием контроля.
+:::
+
+Загрузите образец (или образцы) опухолевой ткани в окно “ОПУХОЛЕВАЯ ТКАНЬ” и, если есть, образец здоровой ткани в
+окно “СООТВЕТСТВУЮЩАЯ НЕОПУХОЛЕВАЯ ТКАНЬ”:
+
+![Загрузка файлов в формате FASTQ](/img/version_1.02/TN_upl.png)
+
+import UploadFiles from '/docs/imported_components/_upload_files_from_different_sources.mdx';
+
+<UploadFiles />
+
+import FillCard from '/docs/imported_components/_fill_out_patient_card.mdx';
+
+<FillCard />
+
+<p align="center">
+<img src={require('/img/rus/fill_patient_card_somatic.png').default} width="900"/>
+</p>
+
+### 3. Запустите анализ
+
+Нажмите на <img src={require('/img/rus/start_analysis_btn.png').default} width="200"/>, чтобы запустить анализ образцов.
+
+import DangerUploading from '/docs/imported_components/_danger_while_uploading.mdx';
+
+<DangerUploading />
+
+Вы можете определить, что анализ образца завершен, когда все статусы стадий окрашены зеленым или оранжевым:
+
+<p align="center">
+<img src={require('/img/rus/7a-stage-statuses.png').default} width="150"/>
+</p>
+
+## 4. Результаты анализа
+
+Когда анализ завершен, вы можете посмотреть результаты. Откройте страницу образца опухоли, нажав на строку образца:
+
+<p align="center">
+<img src={require('/img/rus/tumor_sample_row.png').default} width="900"/>
+</p>
+
+Вы увидите главную страницу образца, на которой расположены основные результаты анализа и переходы
+на другие страницы с дополнительными данными:
+
+<p align="center">
+<img src={require('/img/rus/tumor_main_page.png').default} width="900"/>
+</p>

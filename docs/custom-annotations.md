@@ -16,7 +16,8 @@ sidebar_label: Пользовательские аннотации
 <img src={require('/img/custom-annot/main_page.png').default} width="950"/>
 </p>
 
-Вы можете задать имя и ввести описание загружаемой аннотации, нажав на "**-**" (по умолчанию именем аннотации станет название файла):
+Вы можете задать имя и ввести описание загружаемой аннотации, нажав на "**-**" (по умолчанию именем аннотации 
+станет название файла):
 
 <p align="center">
 <img src={require('/img/custom-annot/name.png').default} height="170"/>
@@ -107,11 +108,13 @@ sidebar_label: Пользовательские аннотации
 <img src={require('/img/custom-annot/delete_column.png').default} width="330"/>
 </p>
 
-Можно добавить несколько колонок аннотации. Для добавления ещё одной колонки снова нажмите на <img src={require('/img/custom-annot/add_new_column.png').default} width="250"/>.
+Можно добавить несколько колонок аннотации. Для добавления ещё одной колонки снова нажмите 
+на <img src={require('/img/custom-annot/add_new_column.png').default} width="250"/>.
 
 ### Запуск процесса обработки
 
-Чтобы процесс обработки аннотации начался, нажмите на <img src={require('/img/custom-annot/start.png').default} width="200"/>.
+Чтобы процесс обработки аннотации начался, нажмите 
+на <img src={require('/img/custom-annot/start.png').default} width="200"/>.
 
 :::info
 Если вы пропустили один из обязательных шагов создания аннотации 
@@ -150,9 +153,11 @@ sidebar_label: Пользовательские аннотации
 В такой ситуации скорректируйте один из шагов подготовки аннотации (выберите верную сборку референса,
 укажите правильный тип колонки аннотации) или выберите другой файл аннотации.
 
-Чтобы вернуться к списку всех пользовательских аннотаций, нажмите на <img src={require('/img/custom-annot/back_btn.png').default} width="230"/>.
+Чтобы вернуться к списку всех пользовательских аннотаций, нажмите 
+на <img src={require('/img/custom-annot/back_btn.png').default} width="230"/>.
 
-Значения колонок, выбранных для аннотации вариантов, будут находиться [на странице Variant Viewer](/results/variant-viewer/snv_details_panel#custom-annotation-sources) и 
+Значения колонок, выбранных для аннотации вариантов, будут 
+находиться [на странице Variant Viewer](/results/main/snvs_indels/snv_details_panel#custom-annotation-sources) и 
 в файле с вариантами, который можно скачать с главной страницы образца.
 
 ### Редактирование пользовательской аннотации

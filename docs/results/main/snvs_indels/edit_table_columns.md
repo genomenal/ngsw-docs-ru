@@ -8,7 +8,7 @@ sidebar_label: Выбор колонок
 Вы можете добавить дополнительные или убрать ненужные колонки, а также поменять порядок колонок в таблице Variant Viewer.
 В этом разделе описано, как это сделать.
 О том, какой набор колонок таблица имеет по умолчанию, можно почитать 
-[здесь](/results/variant-viewer/variant-viewer#основная-страница).
+[здесь](/results/main/snvs_indels/variant-viewer#основная-страница).
 
 ### Выбор колонок
 
@@ -28,7 +28,7 @@ sidebar_label: Выбор колонок
 
 Для того чтобы найти нужную колонку, начните вводить её название в окно поиска или 
 разверните соответствующую группу колонок, нажав на стрелочку (группы соответствуют 
-[вкладкам на панели детальной информации](/results/variant-viewer/snv_details_panel#вкладки-панели-детальной-информации)):
+[вкладкам на панели детальной информации](/results/main/snvs_indels/snv_details_panel#вкладки-панели-детальной-информации)):
 
 <p align="center">
 <img src={require('/img/vv/Find_column.png').default} height="400"/>
@@ -43,7 +43,7 @@ sidebar_label: Выбор колонок
 
 Чтобы ***добавить колонку***, отметьте её галочкой. Обратите внимание, что при добавлении новая колонка встает в конец 
 списка колонок. Если Вы хотите изменить её расположение в таблице, воспользуйтесь 
-[соответствующим разделом](/results/variant-viewer/edit_table_columns#изменение-порядка-колонок).
+[соответствующим разделом](/results/main/snvs_indels/edit_table_columns#изменение-порядка-колонок).
 
 <p align="center">
 <img src={require('/img/vv/chosen_column.png').default} width="700"/>
@@ -68,9 +68,9 @@ sidebar_label: Выбор колонок
 <img src={require('/img/vv/change_order.png').default} width="400"/>
 </p>
 
-и измените её расположение с помощью стрелок. Если Вы хотите поставить колонку ближе к началу, нажмите на 
-<img src={require('/img/vv/up.png').default} width="40"/>, а если ближе к концу, то на 
-<img src={require('/img/vv/down.png').default} width="40"/>.
+и измените её расположение с помощью стрелок. Если Вы хотите поставить колонку ближе к началу, 
+нажмите на <img src={require('/img/vv/up.png').default} width="40"/>, а если ближе к концу, 
+то на <img src={require('/img/vv/down.png').default} width="40"/>.
 
 ### Применение
 
@@ -78,6 +78,6 @@ sidebar_label: Выбор колонок
 
 ### Возврат к дефолтным колонкам
 
-Чтобы вернуться к набору и порядку колонок по умолчанию, нажмите 
-на <img src={require('/img/vv/default_btn.png').default} width="150"/>, а затем на 
-<img src={require('/img/vv/apply.png').default} width="150"/>.
+Чтобы вернуться к набору и порядку колонок по умолчанию, 
+нажмите на <img src={require('/img/vv/default_btn.png').default} width="150"/>, а 
+затем на <img src={require('/img/vv/apply.png').default} width="150"/>.

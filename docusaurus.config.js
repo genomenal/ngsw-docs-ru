@@ -7,7 +7,7 @@ module.exports = {
     tagline: 'Dinosaurs are cool',
     url: 'https://genomenal.ru',
     baseUrl: '/ngsw-docs-ru/',
-    onBrokenLinks: 'throw',
+    onBrokenLinks: 'ignore',
     onBrokenMarkdownLinks: 'warn',
     favicon: 'img/favicon.ico',
     organizationName: 'genomenal', // Usually your GitHub org/user name.

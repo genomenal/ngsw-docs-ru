@@ -4,7 +4,7 @@
   <ShortName>Genomenal</ShortName>
   <Description>Search Genomenal</Description>
   <InputEncoding>UTF-8</InputEncoding>
-  <Image width="16" height="16" type="image/x-icon">https://genomenal.ru/ngsw-docs-ru/img/favicon.ico</Image>
+  <Image width="16" height="16" type="image/x-icon">https://genomenal.ru/ngsw-docs-ru/img/favicon.png</Image>
   <Url type="text/html" method="get" template="https://genomenal.ru/ngsw-docs-ru/search?q={searchTerms}"/>
   <Url type="application/opensearchdescription+xml" rel="self" template="https://genomenal.ru/ngsw-docs-ru/opensearch.xml" />
   <moz:SearchForm>https://genomenal.ru/ngsw-docs-ru/</moz:SearchForm>

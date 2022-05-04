@@ -1,6 +1,6 @@
 ---
 sidebar_position: 6
-sidebar_label: Выбор колонок
+sidebar_label: Выбор колонок таблицы
 ---
 
 # Выбор колонок таблицы

@@ -3,7 +3,7 @@ sidebar_position: 1
 sidebar_label: SNV/Indels
 ---
 
-# Соматические и герминальные SNV/Indels
+# SNV/Indels
 
 Секции "***Соматические SNV/Indels***" и "***Герминальные SNV/Indels***" содержат результаты выявления, соответственно, 
 соматических и герминальных однонуклеотидных вариантов (single-nucleotide variants; SNVs) и коротких 

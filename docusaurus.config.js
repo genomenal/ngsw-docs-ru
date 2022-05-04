@@ -9,7 +9,7 @@ module.exports = {
     baseUrl: '/ngsw-docs-ru/',
     onBrokenLinks: 'ignore',
     onBrokenMarkdownLinks: 'warn',
-    favicon: 'img/favicon.ico',
+    favicon: 'img/favicon.png',
     organizationName: 'genomenal', // Usually your GitHub org/user name.
     projectName: 'ngsw-docs-ru', // Usually your repo name.
     themeConfig: {

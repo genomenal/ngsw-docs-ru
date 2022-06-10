@@ -16,8 +16,10 @@ sidebar_label: Выравнивания
 
 1. Файл c выравниваниями в формате **BAM (Binary Alignment Map)** можно скачать,
 нажав на <img src={require('/img/rus/30-bam_file.png').default} width="45"/>.
+
 2. **Индексный файл для выравнивания в формате BAI** можно скачать, нажав
 на <img src={require('/img/rus/31-bai-file.png').default} width="45"/>. Файл требуется для некоторых инструментов.
+
 3. **[Integrative Genomics Viewer (IGV)](https://software.broadinstitute.org/software/igv/)** - встроенный модуль 
 визуализации прочтений на геноме. Чтобы открыть модуль, нажмите 
 на <img src={require('/img/results/igv_btn.png').default} width="45"/>.

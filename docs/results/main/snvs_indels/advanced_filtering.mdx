@@ -5,13 +5,9 @@ sidebar_label: Расширенный поиск вариантов
 
 # Расширенный поиск вариантов
 
-Нажмите на кнопку “**Расширенный поиск**” сверху таблицы:
-
-<p align="center">
-<img src={require('/img/vv/advanced_filteing_btn.png').default} width="1200"/>
-</p>
-
-Вы увидите мастер запросов:
+Чтобы попасть в режим расширенного поиска вариантов, нажмите
+на кнопку <img src={require('/img/vv/advanced_filteing_btn.png').default} width="120"/> сверху таблицы.
+Вы увидите мастер создания запросов:
 
 <p align="center">
 <img src={require('/img/vv/query_wizard.png').default} width="700"/>
@@ -25,179 +21,888 @@ sidebar_label: Расширенный поиск вариантов
 </p>
 :::
 
-### Добавление условия
+## Добавление первого условия фильтрации
 
 Чтобы добавить новое условие, нажмите на выделенное окно:
 
 <p align="center">
-<img src={require('/img/vv/add_new_condition.png').default} width="500"/>
+<img src={require('/img/vv/add_new_condition.png').default} width="600"/>
 </p>
 
-Вы увидите список колонок аннотации, по которым можно фильтровать варианты:
+Вы увидите список **колонок аннотации**, доступных для фильтрации вариантов:
 
 <p align="center">
 <img src={require('/img/vv/fields.png').default} height="250"/>
 </p>
 
-Выберите одну колонку. Для примера выберем колонку "Gene". Далее нажмите на среднее окно:
+Техника добавления условия фильтрации различается в зависимости от **типа фильтра**:
+
+### 1. Фильтры с мультиселектом
+
+- Возможность выбора сразу нескольких значений колонки.
+- Техника добавления условия фильтрации:
+
+1. Выберите ***колонку фильтрации*** из списка всех колонок;
+2. Выберите ***оператор фильтрации***:
+    * "является";
+    * "не является";
+    * "не пусто" - у искомых вариантов в аннотации выбранная колонка имеет не пустое значение (опции нет
+    для колонок "Chromosome" и "Origin");
+    * "пусто" - у искомых вариантов в аннотации выбранная колонка имеет пустое значение (опции нет для
+    колонок "Chromosome" и "Origin").
 
 <p align="center">
-<img src={require('/img/vv/operator_window.png').default} width="500"/>
+<img src={require('/img/vv/operators.png').default} width="650"/>
 </p>
 
-и выберите оператор:
+3. Если были выбраны операторы "является" или "не является", выберите необходимые ***значения колонки фильтрации***,
+нажав на строки значений:
 
 <p align="center">
-<img src={require('/img/vv/operators.png').default} height="250"/>
+<img src={require('/img/vv/multiselect_options.png').default} width="650"/>
 </p>
 
-Затем нажмите на крайнее окно:
+4. Чтобы закончить добавление условия, кликните вне области заполнения значения.
+
+- Колонки:
+
+i. **Gene** (колонка "Локус", базовый фильтр "Ген") - фильтрация по транскрипту гена (приведен в скобках).
+
+ii. **Impact** ("Значение эффекта") - фильтрация по предсказанному воздействию варианта на белок:
+High, Moderate, Low, Modifier. Значения колонки описаны
+[здесь](/results/main/snvs_indels/variant-viewer#значения-эффектов-варианта-в-аннотации).
+
+iii. **Genome position** - фильтрация по позиции варианта в геноме: Exonic (в экзоне),
+Intronic (в интроне), Intergenic (в межгенной области).
+
+iv. **Consequence** (колонка "Эффект варианта", базовый фильтр "Эффект") - фильтрация по эффекту варианта на гены.
+Значения колонки описаны [здесь](/results/main/snvs_indels/variant-viewer#эффекты-варианта-в-аннотации).
+
+v. **Pathogenicity** (колонка/базовый фильтр "Патогенность") - фильтрация по патогенности варианта,
+определенной пользователем самостоятельно или по критериям ACMG:
+* Pathogenic - Патогенный;
+* Likely pathogenic - Вероятно патогенный;
+* Uncertain significance conflict - Противоречивые интерпретации патогенности;
+* Uncertain significance - Неопределенная значимость;
+* Likely benign - Вероятно доброкачественный;
+* Benign - Доброкачественный;
+* Undefined - Нет интерпретации.
+
+vi. **Chromosome** ("Позиция") - фильтрация по хромосоме, в которой расположен вариант: chr1-chr22, chrX,
+chrY, chrM, хромосомы вида chrN\_random (контиги, расположенные в хромосоме N, которые невозможно с уверенностью
+разместить на этой хромосоме, или последовательности альтернативных гаплотипов), хромосомы вида chrUn_
+(контиги, которые нельзя с уверенностью разместить на конкретной хромосоме), chrEBV.
+
+vii. **Origin** (колонка/базовый фильтр "Тип мутации") - фильтрация по типу мутации: Somatic (соматическая),
+Germline (герминальная).
+
+viii. **Caller Filters** (колонка "Фильтры детекции", базовый фильтр "Фильтры") - фильтрация по фильтрам
+вариантов GATK.
+
+<details>
+<summary>Нажмите, чтобы посмотреть определения фильтров детекции</summary>
+<table>
+  <tr>
+   <td>Значение фильтра детекции</td>
+   <td>Тип мутации</td>
+   <td>Инструмент GATK</td>
+   <td>Описание фильтра</td>
+  </tr>
+  <tr>
+   <td>PASS</td>
+   <td>Любая</td>
+   <td></td>
+   <td>Сайт содержит минимум один аллель, который удовлетворяет всем фильтрам</td>
+  </tr>
+  <tr>
+   <td>Not available</td>
+   <td>Любая</td>
+   <td></td>
+   <td>Значение колонки неизвестно (точка в VCF-файле)</td>
+  </tr>
+  <tr>
+   <td>clustered_events</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Кластерные события, наблюдаемые в опухоли, - соматические мутации, которые совместно встречаются в
+   одном и том же интервале сборки</td>
+  </tr>
+  <tr>
+  <td>germline</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Доказательства указывают на то, что этот сайт является герминальным, а не соматическим</td>
+  </tr>
+  <tr>
+  <td>LowQual</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Низкое качество</td>
+  </tr>
+  <tr>
+  <td>alignment</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Фильтр артефактов выравнивания</td>
+  </tr>
+  <tr>
+  <td>panel_of_normals</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Сайт находится в "черном списке" нормальной панели (PON). Как выбрать панель,
+   описано <a href="/settings/settings/variant_discovery_settings#выбор-нормальной-панели">здесь</a>.</td>
+  </tr>
+  <tr>
+  <td>slippage</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Фильтр ошибок проскальзывания полимеразы в ходе ДНК-репликации (предсказывается по количеству и длине
+   коротких тандемных повторов (STR))</td>
+  </tr>
+  <tr>
+  <td>weak_evidence</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Мутация не соответствует порогу вероятности</td>
+  </tr>
+  <tr>
+  <td>multiallelic</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Мутация располагается в мультиаллельном сайте: слишком много альтернативных аллелей удовлетворяют
+   LOD score (вероятный признак артефакта)</td>
+  </tr>
+  <tr>
+  <td>strand_bias</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Фильтр смещения цепей - смещения последовательности, при котором предпочтение отдается одной цепи ДНК
+   перед другой, что может привести к неправильной оценке количества доказательств, наблюдаемых для одного
+   аллеля по сравнению с другим (артефакт секвенирования)</td>
+  </tr>
+  <tr>
+  <td>duplicate</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Доказательства наличия альтернативного аллеля чрезмерно представлены очевидными дубликатами</td>
+  </tr>
+  <tr>
+  <td>normal_artifact</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Нормальный артефакт: вариант, наблюдаемый в опухоли, также присутствует как артефакт в контрольном образце</td>
+  </tr>
+  <tr>
+  <td>base_qual</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Среднее качество оснований прочтений, поддерживающих альтернативный аллель</td>
+  </tr>
+  <tr>
+  <td>map_qual</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Среднее качество картирования прочтений, поддерживающих альтернативный аллель</td>
+  </tr>
+  <tr>
+  <td>fragment</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Разница медианных длин фрагментов прочтений, поддерживающих альтернативный и референсный аллели</td>
+  </tr>
+  <tr>
+  <td>position</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Медианное расстояние альтернативных мутаций от конца прочтения</td>
+  </tr>
+  <tr>
+  <td>contamination</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Фильтр контаминации данных секвенирования</td>
+  </tr>
+  <tr>
+  <td>orientation</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Фильтр смещения ориентации - смещения, возникающего из-за химического изменения нуклеотида во время
+    подготовки библиотеки, которое приводит к неправильному спариванию основанию (G с A, T c C и т.д.)
+    (артефакт секвенирования)</td>
+  </tr>
+  <tr>
+  <td>haplotype</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Вариант расположен рядом с отфильтрованным вариантом того же гаплотипа</td>
+  </tr>
+  <tr>
+  <td>strict_strand</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Доказательства наличия альтернативного аллеля не представлены в обоих направлениях прочтения</td>
+  </tr>
+  <tr>
+  <td>n_ratio</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Отношение количества неизвестных нуклеотидов N к количеству альтернативных аллелей
+    превышает установленный порог</td>
+  </tr>
+  <tr>
+  <td>numt_chimera</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Вариант, расположенный в ядерной копии гена мтДНК (NuMT), со слишком большим количеством прочтений,
+    поддерживающих альтернативный аллель, происходящих из аутосомы</td>
+  </tr>
+  <tr>
+  <td>low_allele_frac</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Доля аллеля ниже установленного порога</td>
+  </tr>
+  <tr>
+  <td>numt_novel</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Глубина альтернативного аллеля ниже ожидаемого покрытия ядерной копии гена мтДНК (NuMT) в аутосоме</td>
+  </tr>
+  <tr>
+  <td>possible_numt</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Глубина аллеля ниже ожидаемого покрытия ядерной копии гена мтДНК (NuMT) в аутосоме</td>
+  </tr>
+  <tr>
+  <td>mt_many_low_hets</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Фильтр сайтов с низкой гетероплазмией</td>
+  </tr>
+  <tr>
+  <td>FAIL</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Ошибка сайта, если все аллели не проходят по разным причинам</td>
+  </tr>
+  <tr>
+  <td>SITE</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Ошибка сайта</td>
+  </tr>
+  <tr>
+  <td>QD</td>
+  <td>Герминальная</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360037592191-QualByDepth">QualByDepth</a></td>
+   <td>Достоверность варианта (значение из поля QUAL), нормализованная по нефильтрованнной глубине аллеля (AD) варианта
+   в выборке вариантов с генотипом, отличным от hom-ref (homozygous/reference; генотип, при котором оба аллеля
+   являются референсными)</td>
+  </tr>
+  <tr>
+  <td>QUAL</td>
+  <td>Герминальная</td>
+   <td></td>
+   <td>Качество варианта - вероятность существования (по шкале Phred) варианта в этом сайте с учетом данных
+   секвенирования</td>
+  </tr>
+  <tr>
+  <td>SOR</td>
+  <td>Герминальная</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036361772-StrandOddsRatio">StrandOddsRatio</a></td>
+   <td>Смещение цепей, оцененное с помощью симметричного теста отношения шансов. Смещение цепей - это тип
+   смещения последовательности, при котором предпочтение отдается одной цепи ДНК перед другой, что может привести
+   к неправильной оценке количества доказательств, наблюдаемых для одного аллеля по сравнению с другим.
+   StrandOddsRatio оценивает наличие смещения между прямыми и обратными цепями для референсного или альтернативного
+   аллеля (аллелей).</td>
+  </tr>
+  <tr>
+  <td>FS</td>
+  <td>Герминальная</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360037592371-FisherStrand">FisherStrand</a></td>
+   <td>Вероятность смещения цепей на сайте, оцененная с помощью точного критерия Фишера. Смещение цепей - это тип
+   смещения последовательности, при котором предпочтение отдается одной цепи ДНК перед другой, что может привести
+   к неправильной оценке количества доказательств, наблюдаемых для одного аллеля по сравнению с другим.
+   FisherStrand определяет, существует ли смещение цепи между прямой и обратной цепями для референсного или
+   альтернативного аллеля (то есть встречается ли альтернативный аллель чаще или реже на прямой или обратной цепи,
+   чем референсный аллель). FisherStrand хуже учитывает большие объемы данных
+   в ситуациях с высоким покрытием по сравнению с StrandOddsRatio. Кроме того, FisherStrand имеет тенденцию
+   "штрафовать" варианты, которые встречаются на концах экзонов. Варианты на концах экзонов, как правило,
+   покрываются прочтениями только в одном направлении цепи, и FisherStrand дает таким вариантам плохую оценку, тогда
+   как StrandOddsRatio учитывает соотношение прочтений, охватывающих оба аллеля.</td>
+  </tr>
+  <tr>
+  <td>MQ</td>
+  <td>Герминальная</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360037591751-RMSMappingQuality">RMMSMapping- Quality</a></td>
+   <td>Среднеквадратичное значение качества сопоставления прочтений по всем образцам.
+   Представляет собой оценку общего качества картирования прочтений, покрывающих сайт варианта, усредненную по всем
+   образцам в когорте, т.е. квадратный корень среднего квадрата качества картирования сайта варианта. Таким образом,
+   оценка учитывает стандартное отклонение качества картирования.</td>
+  </tr>
+  <tr>
+  <td>MQ_RANK_SUM</td>
+  <td>Герминальная</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360045799632-MappingQualityRankSumTest">MappingQuality- RankSumTest</a></td>
+   <td>Тест суммы рангов для сопоставления качества картирования прочтения REF и качества картирования прочтения ALT.
+   MQRankSum на уровне варианта сравнивает качество картирования прочтений, поддерживающих референсный аллель, с
+   прочтениями, поддерживающими альтернативный аллель. Обнаружение любой статистически значимой разницы в качестве
+   предполагает, что процесс секвенирования и/или картирования мог быть искажен артефактом.</td>
+  </tr>
+  <tr>
+  <td>READ_POS_RANK_SUM</td>
+   <td>Герминальная</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360042914711-ReadPosRankSumTest">ReadPosRank- SumTest</a></td>
+   <td>Тест суммы рангов для относительных позиций аллелей REF и ALT в прочтениях.
+   ReadPosRankSum на уровне варианта проверяет, различаются ли положения референсного и альтернативного
+   аллеля в прочтениях, которые поддерживают вариант.
+   Нахождение аллеля только вблизи концов прочтений указывает на ошибку, потому что именно там
+   секвенаторы склонны делать больше всего ошибок. Обнаружение статистически значимой разницы в относительном
+   положении в любом случае указывает на то, что процесс секвенирования мог быть искажен артефактом.</td>
+  </tr>
+  <tr>
+  <td>CNN_2D</td>
+   <td>Герминальная</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360037226672-CNNScoreVariants">CNNScoreVariants</a></td>
+   <td>Фильтрация на основе оценок предварительно обученной сверточной нейронной сети (convolutional neural
+   network; CNN) 2D</td>
+  </tr>
+  <tr>
+  <td>OTHER</td>
+   <td>Любая</td>
+   <td></td>
+   <td>Значение колонки не распознано</td>
+  </tr>
+</table>
+</details>
+
+ix. **ClinVar: Clinical significance** (колонка/базовый фильтр "ClinVar") - фильтрация по клинической значимости
+фенотипа (определение значений можно посмотреть
+[тут](https://preview.ncbi.nlm.nih.gov/clinvar/docs/clinsig/#clinsig_scv)).
+
+x. **ClinVar: Allele origin** - фильтрация по происхождению аллеля варианта:
+* Unknown - варианты неизвестного происхождения;
+* Germline - варианты герминального происхождения;
+* Somatic - варианты соматического происхождения;
+* Inherited - варианты, которые наследуются;
+* Paternal - варианты, унаследованные от отца;
+* Maternal - варианты, унаследованные от матери;
+* De novo варианты - варианты, возникшие *de novo*;
+* Biparental - варианты, унаследованные от обоих родителей;
+* Tested inconclusive - варианты, для которых нет результатов проверки происхождения;
+* Other - варианты с другим типом происхождения.
+
+xi. **Conservation: [консервативный скор] confidence value** - фильтрация по значению достоверности различных
+консервативных скоров (Integrated, GM12878, H1-hESC, HUVEC): Highly significant; Significant; Informative; Other.
+
+xii. **Protein function effect: [алгоритм предсказания] prediction** -
+фильтрация по результатам предсказания эффекта аминокислотной замены на функцию белка, полученным с помощью
+различных алгоритмов и программ ([Polyphen](http://genetics.bwh.harvard.edu/pph/pph_help.html),
+[SIFT4G](https://sift.bii.a-star.edu.sg/sift4g/), LRT, [FAtHMM](http://fathmm.biocompute.org.uk/),
+[Provean](http://provean.jcvi.org/index.php), [Meta SVM](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5270233/),
+Meta LR, [M-CAP](http://bejerano.stanford.edu/mcap/),
+[Primate AI](https://illumina.github.io/NirvanaDocumentation/3.14/data-sources/primate-ai/),
+[FAtHMM-MK](http://fathmm.biocompute.org.uk/), [FAtHMM-XF](http://fathmm.biocompute.org.uk/)).
+
+xiii. **Other: APPRIS annotation** - фильтрация по изоформам сплайсинга человека
+(аннотация базы данных [APPRIS](http://appris.bioinfo.cnio.es)): Principal 1-5; Alternative 1-2.
+
+### 2. Фильтры с выбором одного значения
+
+- Возможность выбора только одного значения фильтра.
+- Техника добавления условия фильтрации:
+
+1. Выберите ***фильтр*** из списка всех фильтров. Для фильтров этого типа автоматически выбран оператор фильтрации
+"является";
+2. Выберите необходимое ***значение фильтра***, нажав на строку значения:
 
 <p align="center">
-<img src={require('/img/vv/option_window.png').default} width="500"/>
+<img src={require('/img/vv/one_option.png').default} width="700"/>
 </p>
 
-и выберите значение колонки фильтрации, которому должны соответствовать искомые вами варианты (в примере - названия
-генов, в которых располагаются варианты):
+- Фильтры:
+    1. **Gene panel** (базовый фильтр "Панель генов") - фильтрация по панели генов. Свою панель генов можно
+    добавить на странице "Панели генов", о чем подробно написано в [соответствующем разделе](/settings/gene_panels).
+    Кроме того, можно импортировать панели из библиотеки самых распространенных клинических панелей - такая
+    опция доступна в фильтре "Панель генов" в режиме [базового поиска](/results/main/snvs_indels/basic_filtering).
+    Если у вас нет добавленных генных панелей, список значений фильтра будет пустым.
+    2. **Onco Relevance** (колонка "Онкозначимость") - фильтрация по значимости варианта для какого-либо
+    онкологического заболевания: Relevant, Irrelevant.
+
+### 3. Фильтры с вводом идентификатора
+
+- Возможность ввода нужного значения колонки.
+- Техника добавления условия фильтрации:
+
+1. Выберите ***колонку фильтрации*** из списка всех колонок;
+2. Выберите ***оператор фильтрации***:
+    * "является";
+    * "не является";
+    * "не пусто" - у искомых вариантов в аннотации выбранная колонка имеет не пустое значение;
+    * "пусто" - у искомых вариантов в аннотации выбранная колонка имеет пустое значение.
 
 <p align="center">
-<img src={require('/img/vv/options_gene.png').default} height="250"/>
+<img src={require('/img/vv/operator_id.png').default} width="650"/>
 </p>
 
-В данном случае вы можете выбрать сразу несколько значений, последовательно нажав на строку каждого. Тогда выбранные
-значения будут отмечены галочками:
+3. Если были выбраны операторы "является" или "не является", нажмите на окно ввода ("-") и введите нужное
+***значение колонки фильтрации***:
 
 <p align="center">
-<img src={require('/img/vv/selected_options.png').default} width="200"/>
+<img src={require('/img/vv/rsid.png').default} width="650"/>
 </p>
 
-Если вы хотите ***добавить ещё одно условие*** к запросу,
-нажмите на любое место на странице мастера запросов (вне области заполнения значения) и
-создайте новое условие, как описано [здесь](/results/main/snvs_indels/advanced_filtering#добавление-следующего-условия).
+4. Чтобы закончить добавление условия, нажмите клавишу ввода или кликните вне области заполнения значения.
 
-Колонки фильтрации отличаются по своей механике.
-Так, помимо описанного выше примера мультивыбора опций, в случаях с ***колонками с числовым
-значением*** нужно ввести конкретное число в выделенное поле
-(на примере колонки Start - стартовой позиции варианта):
+- Колонки:
+    1. **rsId** ("Внешние ссылки") - фильтрация по идентификатору варианта из базы
+    [dbSNP](https://www.ncbi.nlm.nih.gov/snp/). В качестве значения можно использовать как полный идентификатор
+    (rs\*\*\*\*\*\), так и цифры идентификтора отдельно (\*\*\*\*\*\).
+    2. **ClinVar ID** ("Внешние ссылки") - фильтрация по идентификатору варианта (Variation ID) из базы
+    [ClinVar](https://www.ncbi.nlm.nih.gov/clinvar/).
+    3. **GnomAD ID** - фильтрация по идентификатору варианта из базы [gnomAD](https://gnomad.broadinstitute.org/).
+    Идентичен идентификатору из базы [dbSNP](https://www.ncbi.nlm.nih.gov/snp/).
+    В качестве значения можно использовать либо полный идентификатор из dbSNP
+    (rs\*\*\*\*\*\), либо цифры идентификтора отдельно (\*\*\*\*\*\).
+    4. **ClinVar: Allele ID** - фильтрация по идентификатору [ClinVar](https://www.ncbi.nlm.nih.gov/clinvar/) для
+    аллельной замены.
+    5. **ClinVar: Variant Haplotype ID** - фильтрация по идентификатору варианта, являющегося частью
+    гаплотипа, (Variation ID) по данным базы [ClinVar](https://www.ncbi.nlm.nih.gov/clinvar/).
+
+### 4. Фильтры с вводом числового значения
+
+- Возможность ввода нужного значения фильтра.
+- Техника добавления условия фильтрации:
+
+1. Выберите ***колонку фильтрации*** из списка всех колонок;
+2. Выберите ***оператор фильтрации***:
+    * ">";
+    * "<";
+    * "≥";
+    * "≤";
+    * "=";
+    * "≠";
+    * "не пусто" - у искомых вариантов в аннотации выбранная колонка имеет не пустое значение
+    (опции нет для колонок "Start" и "End");
+    * "пусто" - у искомых вариантов в аннотации выбранная колонка имеет пустое значение
+    (опции нет для колонок "Start" и "End").
 
 <p align="center">
-<img src={require('/img/vv/numerical_value_input.png').default} width="500"/>
+<img src={require('/img/vv/exon_operators.png').default} width="650"/>
 </p>
 
-Кроме того, для колонок ***HPO Phenotype*** и ***Gene panel*** можно выбрать только одно значение:
+3. Если в качестве оператора фильтрации был выбран математический оператор, нажмите на окно ввода ("-")
+и введите нужное ***значение колонки фильтрации***:
 
 <p align="center">
-<img src={require('/img/vv/hpo_options.png').default} width="550"/>
+<img src={require('/img/vv/exon_value.png').default} width="650"/>
 </p>
 
-### Редактирование условия
+4. Чтобы закончить добавление условия, нажмите клавишу ввода или кликните вне области заполнения значения.
+
+- Колонки:
+    1. **Start** (колонка "Позиция") - фильтрация по начальной позиции варианта на хромосоме (натуральное число).
+    2. **End** - фильтрация по конечной позиции варианта на хромосоме (натуральное число).
+    3. **Exon** ("Экзон") - фильтрация по номеру экзона в транскрипте, который вариант затронул (натуральное число).
+    4. **GnomAD: Allele frequency** ("gnomAD AF") - фильтрация по суммарной частоте аллеля в базе
+    [gnomAD](https://gnomad.broadinstitute.org/) (положительное рациональное число).
+    5. **GnomAD: XY samples AF** - фильтрация по частоте аллеля в подпопуляции XY в базе
+    [gnomAD](https://gnomad.broadinstitute.org/) (положительное рациональное число).
+    6. **GnomAD: XX samples AF** - фильтрация по частоте аллеля в подпопуляции XX в базе
+    [gnomAD](https://gnomad.broadinstitute.org/) (положительное рациональное число).
+    7. **GnomAD: Number of Homozygotes** - фильтрация по количеству гомозигот в базе
+    [gnomAD](https://gnomad.broadinstitute.org/) (натуральное число).
+    8. **GnomAD: [популяция] AF / XY/XX samples AF / Number of Homozygotes** - фильтрация по суммарной
+    частоте аллеля (AF), частотам в подпопуляциях XX, XY или количеству гомозигот в различных популяциях (Ashkenazi
+    Jewish, Amish, African and African American, Finnish, South Asian, Latino, Non-Finnish european, East Asian, Middle
+    Eastern, Other) в базе [gnomAD](https://gnomad.broadinstitute.org/) (положительное рациональное число).
+    9. **Conservation: [программа предсказания] rankscore / score / neutral value** -
+    фильтрация по консервативным скорам, полученным c помощью предсказания различными программами
+    ([FitCons](http://compgen.cshl.edu/fitCons/),
+    [GERP++](http://mendel.stanford.edu/sidowlab/downloads/gerp/index.html),
+    [PhyloP](https://ccg.epfl.ch/mga/hg19/phylop/phylop.html),
+    [PhastCons](http://compgen.cshl.edu/phast/phastCons-HOWTO.html),
+    [SiPhy](http://portals.broadinstitute.org/genome_bio/siphy/documentation.html), BStatistic)
+    (положительное рациональное число).
+    10. **Conservation: [ pA / pG / pC / pT ]** - фильтрация по стационарному распределению аллелей A, G, C или T
+    в сайте, оцененному с помощью алгоритма
+    [SiPhy](http://portals.broadinstitute.org/genome_bio/siphy/documentation.html) (положительное рациональное число).
+    11. **ExAC: Allele frequency** - фильтрация по суммарной частоте аллеля в базе
+    [ExAC](http://exac.broadinstitute.org/) (положительное рациональное число).
+    12. **ExAC: Allele count** - фильтрация по количеству альтернативного аллеля
+    в базе [ExAC](http://exac.broadinstitute.org/) (натуральное число).
+    13. **ExAC: Adjusted AF** - фильтрация по частоте аллеля в популяции с качеством генотипа ≥20 и
+    глубиной ≥10 в базе [ExAC](http://exac.broadinstitute.org/) (положительное рациональное число).
+    14. **ExAC: Adjusted allele count** - фильтрация по количеству альтернативного аллеля в популяции с качеством
+    генотипа ≥20 и глубиной ≥10 в базе [ExAC](http://exac.broadinstitute.org/) (натуральное число).
+    15. **ExAC: [популяция] AF / allele count** - фильтрация по суммарной частоте аллеля (AF) или
+    количеству альтернативного аллеля в различных популяциях (African & African American, American, East Asian,
+    Finnish, Non-Finnish European, South Asian) в базе [ExAC](http://exac.broadinstitute.org/) (положительное
+    рациональное число).
+    16. **ExAC: [когорта] AF / Allele count / adjusted AF / adjusted allele count** - фильтрация по
+    суммарной частоте аллеля (AF), количеству альтернативного аллеля или частоте аллеля или количеству альтернативного
+    аллеля в популяции с качеством генотипа ≥20 и глубиной ≥10 в различных когортах (Non-TCGA, Non-Psych) в базе
+    [ExAC](http://exac.broadinstitute.org/) (положительное рациональное число для AF и натуральное число для allele
+    count).
+    17. **ExAC: \[когорта] \[популяция] AF / allele count** - фильтрация по суммарной частоте аллеля
+    (AF) или количеству альтернативного аллеля в различных популяциях (African & African American, American, East Asian,
+    Finnish, Non-Finnish European, South Asian) в различных когортах (Non-TCGA, Non-Psych) в базе
+    [ExAC](http://exac.broadinstitute.org/) (положительное рациональное число для AF и натуральное число для allele
+    count).
+    18. **Protein function effect: [алгоритм предсказания] rankscore / score / omega / p-value** - фильтрация по скорам
+    предсказания эффекта аминокислотной замены на функцию белка, полученным с помощью различных алгоритмов и программ
+    ([SIFT](https://sift.bii.a-star.edu.sg/), [Polyphen](http://genetics.bwh.harvard.edu/pph/pph_help.html),
+    [SIFT4G](https://sift.bii.a-star.edu.sg/sift4g/), LRT, MutationAssessor,
+    [FAtHMM](http://fathmm.biocompute.org.uk/), [Provean](http://provean.jcvi.org/index.php),
+    [Meta SVM](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5270233/), Meta LR,
+    [M-CAP](http://bejerano.stanford.edu/mcap/), [MutPred](http://mutpred.mutdb.org/), MVP, MPC,
+    [Primate AI](https://illumina.github.io/NirvanaDocumentation/3.14/data-sources/primate-ai/), DEOGEN2, DANN,
+    [FAtHMM-MKL](http://fathmm.biocompute.org.uk/), [FAtHMM-XF](http://fathmm.biocompute.org.uk/), Eigen)
+    (положительное рациональное число).
+    19. **Other frequencies: 1000G Allele frequency** - фильтрация по суммарной частоте аллеля
+    из [проекта 1000 Genomes](https://www.internationalgenome.org/) (положительное рациональное число).
+    20. **Other frequencies: 1000G [популяция] AF / allele count** - фильтрация по суммарной частоте аллеля или
+    количеству альтернативного аллеля в различных популяциях (East Asian, European, African, American, South Asian,
+    African American, European American) из [проекта 1000 Genomes](https://www.internationalgenome.org/)
+    (положительное рациональное число для AF и натуральное число для allele count).
+    21. **Other frequencies: UK10K allele frequency** - фильтрация по суммарной частоте аллеля в комбинированных
+    генотипах в когорте UK10K из [проекта UK10K](https://www.uk10k.org/) (положительное рациональное число).
+    22. **Other frequencies: UK10K allele count** - фильтрация по количеству альтернативного аллеля в комбинированных
+    генотипах в когорте UK10K из [проекта UK10K](https://www.uk10k.org/) (натуральное число).
+    23. **Other frequencies: UK10K [когорта] AF / allele count** - фильтрация по суммарной частоте аллеля или
+    количеству альтернативного аллеля в комбинированных генотипах в различных когортах (TwinsUK, ALSPAC) из
+    [проекта UK10K](https://www.uk10k.org/) (положительное рациональное число для AF и натуральное число для
+    allele count).
+    24. **Other: Coding sequence position** - фильтрация по позиции в кодирующей области (натуральное число).
+    25. **Other: Protein position** - фильтрация по позиции в белке (натуральное число).
+    26. **Other: Amino acid position** - фильтрация по позиции в аминокислоте (натуральное число).
+
+### 5. Фильтры с вводом любого значения
+
+- Возможность ввода нужного значения фильтра.
+- Техника добавления условия фильтрации:
+
+1. Выберите ***колонку фильтрации*** из списка всех колонок;
+2. Выберите ***оператор фильтрации***:
+    * "начинается с" (опции нет для колонки "HGVSc");
+    * "содержит";
+    * "не содержит" (опции нет для колонки "HGVSc");
+    * "не пусто" (опции нет для колонки "Reference allele");
+    * "пусто" (опции нет для колонки "Reference allele").
+
+<p align="center">
+<img src={require('/img/vv/hgvsp_operator.png').default} width="650"/>
+</p>
+
+3. Если были выбраны операторы "начинается с", "содержит" или "не содержит", нажмите на окно ввода ("-") и
+введите нужное ***значение колонки фильтрации***:
+
+<p align="center">
+<img src={require('/img/vv/hgvsp_value.png').default} width="650"/>
+</p>
+
+4. Чтобы закончить добавление условия, нажмите клавишу ввода или кликните вне области заполнения значения.
+
+- Колонки:
+    1. **Reference allele** (колонка "Замена") - фильтрация по референсному аллелю варианта.
+    2. **Alternative allele** (колонка "Замена") - фильтрация по альтернативному аллелю варианта.
+    3. **HGVSc** - фильтрация по нуклеотидной замене в [номенклатуре HGVS](https://varnomen.hgvs.org/)
+    (геномная позиция замещенного нуклеотида + референсный нуклеотид > альтернативный аллель).
+    Начинается с префикса “c.” (coding; для замены в кодирующей последовательности) или “n.” (non-coding; для замены
+    в некодирующей последовательности).
+    4. **HGVSp (short)** (колонка "HGVSp") - фильтрация по аминокислотной замене в
+    [номенклатуре HGVS](https://varnomen.hgvs.org/) с однобуквенными обозначениями аминокислот (префикс “p.”
+    (protein) + референсная аминокислота + позиция аминокислоты в белке + новая аминокислота, получившаяся в
+    результате замены). Пример: p.P72R.
+    5. **HGVSp (long)** (колонка "HGVSp") - фильтрация по аминокислотной замене в
+    [номенклатуре HGVS](https://varnomen.hgvs.org/) с трехбуквенными обозначениями аминокислот. Записывается с
+    учетом транскрипта: идентификатор транскрипта из Ensembl + префикс “p.” (protein) + референсная аминокислота +
+    позиция аминокислоты в белке + новая аминокислота, получившаяся в результате замены. Пример:
+    ENSP00000269305.4:p.Pro72Arg.
+    6. **Common: RefSeq Transcript** - фильтрация по идентификатору транскрипта из базы
+    [RefSeq](https://www.ncbi.nlm.nih.gov/nuccore/) (NM_\*\*\*\*\*\.\*\).
+    7. **GnomAD: Coverage** - фильтрация по средней глубине покрытия по основаниям
+    в базе [gnomAD](https://gnomad.broadinstitute.org/): &lt;10, 10-100, ⩾100.
+    8. **ClinVar: Phenotypes** - фильтрация по фенотипической значимости варианта по данным базы
+    [ClinVar](https://www.ncbi.nlm.nih.gov/clinvar/).
+    9. **ClinVar: Phenotypes cross references** - фильтрация по ссылкам на фенотип
+    в различных базах данных ([Orphanet](https://www.orpha.net/consor/cgi-bin/index.php),
+    [MedGen](https://www.ncbi.nlm.nih.gov/medgen/), [MONDO](https://monarchinitiative.org/),
+    [OMIM](https://www.omim.org/) и др.)
+    10. **ClinVar: Haplotype phenotypes** - фильтрация по фенотипической значимости варианта, являющегося частью
+    гаплотипа, по данным базы [ClinVar](https://www.ncbi.nlm.nih.gov/clinvar/).
+    11. **ClinVar: Haplotype phenotypes cross references** - фильтрация по ссылкам на фенотип варианта, являющегося
+    частью гаплотипа, в различных базах данных ([Orphanet](https://www.orpha.net/consor/cgi-bin/index.php),
+    [MedGen](https://www.ncbi.nlm.nih.gov/medgen/), [MONDO](https://monarchinitiative.org/),
+    [OMIM](https://www.omim.org/) и др.)
+    12. **ClinVar: Review status** - фильтрация по суммарной оценке источника данных, в котором заявлена клиническая
+    значимость фенотипа, для варианта. Возможные варианты значений и их определения можно посмотреть
+    [тут](https://preview.ncbi.nlm.nih.gov/clinvar/docs/variation_report/#review_status).
+    13. **ClinVar: Cross references** - фильтрация по ссылкам на вариант в различных базах данных
+    ([ClinGen](https://reg.clinicalgenome.org/redmine/projects/registry/genboree_registry/landing),
+    [UniProtKB](https://www.uniprot.org/uniprotkb/), [OMIM](https://www.omim.org/),
+    [GTR](https://www.ncbi.nlm.nih.gov/gtr/) и др.)
+    14. **Conservation: Ancestral allele** - фильтрация по предковому аллелю, предсказанному
+    [EPO](https://www.ensembl.org/info/genome/compara/epo_anchors_info.html).
+    15. **Conservation: Altai Neanderthal** - фильтрация по генотипу Altai Neanderthal.
+    16. **Conservation: Denisova** - фильтрация по генотипу Denisova.
+    17. **Conservation: Vindija Neanderthal** - фильтрация по генотипу Vindija Neanderthal.
+    18. **Protein function effect (additional): Transcript ID** - фильтрация по идентификатору транскрипта из базы
+    [UniProtKB](https://www.ncbi.nlm.nih.gov/nuccore/) (P\*\*\*\*\*\), для которого было сделано предсказание
+    эффекта аминокислотной замены на функцию белка с помощью [MutPred](http://mutpred.mutdb.org/).
+    19. **Protein function effect (additional): Amino acid change** - фильтрация по аминокислотной замене, предсказание
+    об эффекте которой на функцию белка было сделано с помощью [MutPred](http://mutpred.mutdb.org/). Пример: G35r.
+    20. **Protein function effect (additional): Top 5 features** - фильтрация по основным пяти эффектам замены на
+    функцию белка, предсказанных с помощью [MutPred](http://mutpred.mutdb.org/).
+    21. **Other: Amino acids** - фильтрация по референсной аминокислоте.
+    22. **Other: Codons** - фильтрация по нуклеотидной замене, записанной в виде трёх кодонов. Пример: GAA/GAG.
+    23. **Other: GTEx v7 Gene** - фильтрация по гену из [GTEx](https://www.gtexportal.org/).
+    24. **Other: GTEx v7 Tissue** - фильтрация по ткани из [GTEx](https://www.gtexportal.org/).
+    25. **Other: Geuvadis EQTL target gene** - фильтрация по гену из анализа eQTL данных
+    [GEUVADIS](http://www.geuvadis.org/).
+
+### 6. Фильтр по HPO
+
+- Фильтрация по термину из онтологии фенотипов человека <a href="https://hpo.jax.org/app/">Human Phenotype Ontology</a>.
+- Техника добавления условия фильтрации:
+
+1. Выберите фильтр "**HPO Phenotype**" из списка всех фильтров. Для фильтра автоматически выбран оператор
+фильтрации "является";
+3. Нажмите на строку значения фильтра:
+
+<p align="center">
+<img src={require('/img/vv/hpo_advanced.png').default} width="280"/>
+</p>
+
+Откроется форма поиска термина:
+
+<p align="center">
+<img src={require('/img/vv/hpo_search.png').default} width="800"/>
+</p>
+
+В выпадающем списке представлены основные группы терминов.
+Вы можете отфильтровать варианты как по целой группе, так и по конкретному термину.
+Термин можно найти в списке терминов группы либо через поиск по названию или идентификатору
+из [HPO](https://hpo.jax.org/app/). Например, при поиске термина “glioma” находится несколько терминов:
+
+<p align="center">
+<img src={require('/img/vv/glioma_search.png').default} width="800"/>
+</p>
+
+Выбрав один из них (например, "Glioma"), вы окажетесь на странице этого термина:
+
+<p align="center">
+<img src={require('/img/vv/glioma_page.png').default} width="800"/>
+</p>
+
+Справа дано определение термина и комментарий. В середине представлена иерархия термина:
+термины, находящиеся выше выбранного термина Glioma, - это его предковые термины
+(то есть термины групп, включающих термин Glioma), а термины ниже Glioma - его дочерние термины.
+Справа представлены гены, связанные с данным термином (в данном случае было найдено 45 генов).
+Чтобы отфильтровать варианты по этим генам,
+нажмите <img src={require('/img/gene_panels/ok_btn.png').default} width="130"/>.
+
+### 7. Фильтры по данным образца
+
+- Работают, только если есть данные об образце секвенирования.
+- Техника добавления условия фильтрации (для всех фильтров категории, за исключением
+"[Per-sample data: Genotype](/results/main/snvs_indels/advanced_filtering#8-фильтр-по-генотипу)"):
+
+1. Выберите ***фильтр*** из списка всех фильтров;
+2. Выберите ***функцию фильтра***:
+    * "Max" - максимальное значение;
+    * "Min" - минимальное значение;
+    * "Avg" - среднее значение;
+    * "Sum" - суммарное значение.
+
+<p align="center">
+<img src={require('/img/vv/function.png').default} width="650"/>
+</p>
+
+3. Выберите оператор фильтрации:
+    * ">";
+    * "<";
+    * "≥";
+    * "≤";
+    * "=";
+    * "≠";
+    * "не пусто" - у искомых вариантов в аннотации выбранная колонка имеет не пустое значение;
+    * "пусто" - у искомых вариантов в аннотации выбранная колонка имеет пустое значение.
+
+<p align="center">
+<img src={require('/img/vv/sample_data_operator.png').default} width="650"/>
+</p>
+
+4. Если в качестве оператора фильтрации был выбран математический оператор, нажмите на окно ввода:
+
+<p align="center">
+<img src={require('/img/vv/sample_data_value.png').default} width="200"/>
+</p>
+
+5. Введите ***пороговое значения фильтра*** (натуральное число для фильтров по глубине, реф и альт и положительное
+рациональное число для AF);
+6. Чтобы закончить добавление условия, нажмите клавишу ввода или кликните вне области заполнения значения.
+
+- Фильтры:
+    1. "**Per-sample data: Read depth**" (колонка "Глубина (Альт/Реф)") - фильтрация по глубине секвенирования -
+    общему количеству прочтений последовательности, перекрывающих позицию варианта, для этого образца.
+    2. "**Per-sample data: Ref count**" (Реф) - фильтрация по количеству раз, когда в последовательности
+    считывался референсный нуклеотид для данного образца.
+    3. "**Per-sample data: Alt count**" (Альт) - фильтрация по количеству раз, когда в последовательности
+    считывался альтернативный нуклеотид для данного образца.
+    4. "**Per-sample data: AF**" - фильтрация по частоте альтернативного аллеля для данного образца.
+
+### 8. Фильтр по генотипу
+
+- Фильтрация по генотипу - значениям референсного и альтернативного аллелей для образца.
+- Работает, только если есть данные об образце секвенирования.
+- При фильтрации данные о фазировании генотипа не учитываются.
+- Техника добавления условия фильтрации:
+
+1. Выберите фильтр "**Per-sample data: Genotype**" (колонка "GT") из списка всех фильтров;
+2. Выберите ***образец для фильтрации***:
+    * "Некоторый" - любой образец имеет искомый генотип;
+    * "Каждый" - каждый образец имеет искомый генотип;
+    * Название образца.
+
+<p align="center">
+<img src={require('/img/vv/gt_samples.png').default} width="650"/>
+</p>
+
+3. Выберите ***оператор фильтрации***:
+
+<p align="center">
+<img src={require('/img/vv/gt_opertators.png').default} width="650"/>
+</p>
+
+4. Выберите необходимое ***значение фильтра***, нажав на строку значения:
+    * "REF" - сайт содержит только референсные аллели (например, `0/0`, `0|0`, `0/0/0`);
+    * "ALT" - сайт содержит хотя бы один альтернативный аллель (например, `1/1`, `1|1`, `0/1`, `1/0`,
+    `0|1`, `1|0`, `1/.`, `1|.`, `./1`, `.|1`, `1`, `0/0/1`, `0/2`, `1/2`);
+    * "HOM" - гомозиготный сайт, который содержит либо референсные, либо альтернативные аллели (например,
+    `1|1`, `1/1`, `1/1/1`, `0/0`, `0|0`);
+    * "HET" - гетерозиготный сайт, который содержит минимум два разных аллеля (например, `0/1`, `1/0`, `0|1`,
+    `1|0`, `2/0`, `0/1/2`);
+    * "HOM_ALT" - гомозиготный сайт, который содержит только альтернативные аллели (например, `1/1`, `1|1|1`);
+    * "MIS" - нет информации о сайте (например, `./.`).
+
+### 9. Фильтры по колонкам пользовательских аннотаций
+
+- Возможность ввода нужного значения фильтра.
+- Есть, только если была добавлена хотя бы одна пользовательская аннотация. Как добавить аннотацию, описано
+[здесь](/settings/custom-annotations).
+- Техника добавления условия фильтрации:
+
+1. Выберите колонку фильтрации вида "**Custom annotation sources: [название пользовательской аннотации]: [колонка]**"
+из списка всех колонок;
+2. Выберите ***оператор фильтрации***:
+
+<p align="center">
+<img src={require('/img/vv/custom_filter.png').default} width="650"/>
+</p>
+
+3. Если были выбраны операторы "начинается с", "содержит" или "не содержит", нажмите на окно ввода ("-") и
+введите нужное ***значение колонки фильтрации***.
+
+4. Чтобы закончить добавление условия, нажмите клавишу ввода или кликните вне области заполнения значения.
+
+## Редактирование условия
 
 В уже составленном условии можно поменять ***оператор*** и/или ***значение***. Для этого нужно нажать на
 соответствующее поле:
 
 <p align="center">
-<img src={require('/img/vv/edit_condition.png').default} width="300"/>
+<img src={require('/img/vv/edit_condition.png').default} width="700"/>
 </p>
 
 и выбрать другую опцию:
 
 <p align="center">
-<img src={require('/img/vv/change_operator.png').default} width="450"/>
+<img src={require('/img/vv/change_operator.png').default} width="700"/>
 </p>
 
-### Выключение условия
+## Выключение условия
 
-Выключение условия полезно, если вы не хотите потерять составленное условие, но в данный момент вам не
-нужна фильтрация по нему.
-
-import DeleteOrTurnOff from '/docs/imported_components/_turn_off_or_delete_cond.mdx';
-
-<DeleteOrTurnOff action="выключить" button="кнопку выключения" />
+Эта опция полезна, если вы не хотите потерять составленное условие, но в данный момент вам не
+нужна фильтрация по нему. Чтобы выключить условие, наведите на него курсор и
+нажмите на <img src={require('/img/vv/turn_off_btn.png').default} width="25"/>:
 
 <p align="center">
 <img src={require('/img/vv/turn_off_condition.png').default} width="700"/>
 </p>
 
-### Удаление условия
+## Удаление условия
 
-<DeleteOrTurnOff action="удалить" button="крестик" />
+Чтобы удалить условие, наведите на него курсор и
+нажмите на <img src={require('/img/vv/delete_condition.png').default} width="25"/>:
 
 <p align="center">
-<img src={require('/img/vv/delete_condition.png').default} width="700"/>
+<img src={require('/img/vv/turn_off_condition.png').default} width="700"/>
 </p>
 
 :::tip Совет
-Ещё не заполненное условие тоже можно удалить:
+Ещё не заполненное условие тоже можно удалить (если это не самое первое условие в мастере запросов):
 
 <p align="center">
 <img src={require('/img/vv/delete_new_condition.png').default} width="600"/>
 </p>
 :::
 
-### Добавление следующего условия
+## Добавление следующего условия фильтрации
 
-1. Если варианты, которые вы хотите найти, должны подходить ***сразу под оба условия***:
-уже созданное и новое, то нажмите на "**И**":
+Если вы хотите добавить ещё одно условие к запросу, сначала решите, хотите ли вы, чтобы искомый вариант строго
+***подходил под оба условия*** (уже добавленное и новое) или же вариант может ***подходить под одно из условий***:
 
-<p align="center">
-<img src={require('/img/vv/and_cond.png').default} width="500"/>
-</p>
+### Искомый вариант подходит под оба условия
 
-import NewCond from '/docs/imported_components/_add_new_cond.mdx';
-
-<NewCond />
-
-<p align="center">
-<img src={require('/img/vv/and_cond_field.png').default} width="500"/>
-</p>
-
-2. Если варианты, которые вы хотите найти, должны подходить ***хотя бы под одно из условий*** (уже созданное или новое),
-то наведите курсор на строку уже созданного условия и нажмите на "**ИЛИ**":
+1. После создания первого условия нажмите на <img src={require('/img/vv/and_btn.png').default} width="120"/>.
+2. Заполните условие, как описано в
+[соответствующем разделе](/results/main/snvs_indels/advanced_filtering#добавление-первого-условия-фильтрации).
+Чтобы начать, нажмите на выделенное окно:
 
 <p align="center">
-<img src={require('/img/vv/or_cond.png').default} width="500"/>
+<img src={require('/img/vv/and_cond_field.png').default} width="700"/>
 </p>
 
-<NewCond />
+### Искомый вариант подходит под одно из условий
+
+1. После создания первого условия наведите курсор на него и нажмите на
+появившуюся кнопку <img src={require('/img/vv/or_btn.png').default} width="80"/>.
+2. Заполните условие, как описано в
+[соответствующем разделе](/results/main/snvs_indels/advanced_filtering#добавление-первого-условия-фильтрации).
+Чтобы начать, нажмите на выделенное окно:
 
 <p align="center">
-<img src={require('/img/vv/or_cond_field.png').default} width="500"/>
+<img src={require('/img/vv/or_cond_field.png').default} width="700"/>
 </p>
 
-### Применение запроса
+## Применение запроса
 
-После того, как вы заполнили все условия к искомым вариантам, нажмите "**Применить**".
-Мастер запросов закроется и запрос применится к вариантам.
-
-Сверху таблицы можно увидеть, какой запрос применен. В примере по запросу “Origin является Somatic" был найден 1
-вариант:
+После того, как вы заполнили все условия к искомым вариантам,
+нажмите на <img src={require('/img/vv/apply.png').default} width="150"/>.
+Мастер запросов закроется и запрос будет применен к вариантам. Сверху таблицы можно увидеть, какой запрос применен:
 
 <p align="center">
 <img src={require('/img/vv/filtered_var.png').default} width="1100"/>
 </p>
 
-Условие можно ***выключить***, нажав на кнопку выключения:
+Условие можно ***выключить***, нажав на <img src={require('/img/vv/turn_off_created.png').default} width="20"/>,
+или <i><b>удалить</b></i>, нажав на <img src={require('/img/vv/turn_off_cond_on_vv.png').default} width="20"/>:
 
 <p align="center">
-<img src={require('/img/vv/turn_off_cond_on_vv.png').default} width="250"/>
+<img src={require('/img/vv/condition.png').default} width="250"/>
 </p>
 
-или ***удалить***, нажав на крестик:
+Для ***удаления всех условий*** из запроса
+нажмите на <img src={require('/img/vv/clear_all_filters_btn.png').default} width="45"/>:
 
-<p align="center">
-<img src={require('/img/vv/delete_cond_on_vv.png').default} width="250"/>
-</p>
+Чтобы ***изменить или сохранить запрос*** или ***создать новый***,
+нажмите на <img src={require('/img/vv/query_builder_btn.png').default} width="120"/>.
+Чтобы вернуться к <i><b>основному режиму</b></i> Variant Viewer,
+нажмите на <img src={require('/img/vv/basic_filtering_btn.png').default} width="120"/>.
 
-Для ***удаления всех условий*** из запроса нажмите на кнопку очистки всех фильтров:
-
-<p align="center">
-<img src={require('/img/vv/clear_all_filters.png').default} width="250"/>
-</p>
-
-Чтобы ***изменить или сохранить запрос*** или ***создать новый***, нажмите на "**Конструктор запросов**".
-Чтобы вернуться к ***основному режиму*** Variant Viewer, нажмите на "**Базовый поиск**".
-
-### Сохранение запроса
+## Сохранение запроса
 
 Если вы хотите переиспользовать созданный запрос в дальнейшем, сохраните его. Для этого нажмите на “**Сохранить в
 библиотеку**”:

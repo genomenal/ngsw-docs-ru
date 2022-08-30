@@ -1,7 +1,7 @@
 {
   "index_name": "ngsw-ru",
   "start_urls": [
-    "https://roadroller.github.io/ngsw-docs-ru"
+    "https://genomenal.github.io/ngsw-docs-ru"
   ],
   "selectors": {
     "lvl0": {

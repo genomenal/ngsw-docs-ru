@@ -33,9 +33,9 @@ module.exports = {
             darkTheme: darkCodeTheme,
         },
         algolia: {
-            apiKey: 'fd0be1a4b0953b8d432a3361f8bb1b67',
+            apiKey: 'dbf798e1335cbc57fae603c4eb582fe4',
             indexName: 'ngsw-ru',
-            appId: '7Q65UNCM90',
+            appId: 'DZAOFCP7KJ',
         },
     },
     presets: [

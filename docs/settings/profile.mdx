@@ -1,0 +1,520 @@
+---
+sidebar_position: 6
+sidebar_label: Настройки пользователя
+---
+
+# Настройки пользователя
+
+На странице "Настройки пользователя" находятся ваши персональные настройки:
+настройки аккаунта (email, логин, пароль), настройки панели навигации Программы,
+страницы пациента и Variant Viewer.
+
+Чтобы открыть страницу "Настройки пользователя", наведите курсор мыши на ваш логин внизу боковой
+панели навигации и нажмите на появивишиеся
+три точки <img src={require('/img/rus/profile_options.png').default} height="20"/>. В открывшемся
+меню выберите "**Профиль**":
+
+<p align="center">
+<img src={require('/img/rus/profile.png').default} width="200"/>
+</p>
+
+Вы увидите страницу с настройками:
+
+<p align="center">
+<img src={require('/img/rus/profile_page.png').default} width="900"/>
+</p>
+
+## Настройки аккаунта
+
+### Адрес электронной почты
+
+Здесь вы можете посмотреть, какой email вы использовали при регистрации в Системе.
+Для того чтобы его поменять, нажмите на <img src={require('/img/rus/change_mail.png').default} width="140"/>,
+а затем в открывшемся окне введите новый адрес почты и ваш действующий пароль аккаунта для подтверждения
+действия:
+
+<p align="center">
+<img src={require('/img/rus/change_email.png').default} width="450"/>
+</p>
+
+После заполнения формы нажмите на <img src={require('/img/rus/change_email_btn.png').default} width="170"/>.
+Теперь проверьте ящик той почты, которую вы указали как новую, и подтвердите смену адреса в письме.
+
+### Логин
+
+Здесь вы можете посмотреть, какой логин вы использовали при регистрации в Системе.
+Для того чтобы его поменять, нажмите на <img src={require('/img/rus/change_login.png').default} width="140"/>,
+а затем в открывшемся окне введите новый логин и ваш действующий пароль аккаунта для подтверждения
+действия:
+
+<p align="center">
+<img src={require('/img/rus/change_login_window.png').default} width="450"/>
+</p>
+
+После заполнения формы нажмите на <img src={require('/img/rus/change_login_btn.png').default} width="170"/>.
+Логин успешно изменен!
+
+### Пароль
+
+Чтобы поменять пароль для входа в Систему,
+нажмите на <img src={require('/img/rus/change_password.png').default} width="140"/>,
+а затем в открывшемся окне введите ваш действующий пароль аккаунта для подтверждения
+действия и два раза - новый пароль:
+
+<p align="center">
+<img src={require('/img/rus/change_password_window.png').default} width="450"/>
+</p>
+
+После заполнения формы нажмите на <img src={require('/img/rus/change_password_btn.png').default} width="170"/>.
+Пароль успешно изменен!
+
+### Язык Программы
+
+Здесь вы можете выбрать удобный для вас язык Программы. Для этого нажмите на поле выбора языка и
+выберите нужный язык в выпавшем списке:
+
+<p align="center">
+<img src={require('/img/rus/language.png').default} width="250"/>
+</p>
+
+## Панель навигации
+
+В разделе отображено то, какие блоки страниц показаны на боковой панели навигации в Программе (по умолчанию
+выбраны все):
+
+<p align="center">
+<img src={require('/img/rus/navigation_panel.png').default} width="600"/>
+</p>
+
+Чтобы убрать ненужный блок из панели, снимите с него галочку.
+
+:::info Внимание!
+Можно убрать хоть все блоки страниц, но хотя бы один из блоков "Пациенты" или "Запуски" должен остаться:
+
+<p align="center">
+<img src={require('/img/rus/only_patients.png').default} width="600"/>
+</p>
+
+:::
+
+## Страница пациента
+
+На [странице пациента](/add_patient#страница-пациента) может быть две
+вкладки - ["Главное"](/add_patient#страница-пациента)
+и ["Отчет по CNV"](/results/cnv-report/patient-cnv-report), если "Отчет по CNV" был построен (см. условия в
+[соответствующем разделе](/results/cnv-report/cnv-report#условия-построения-отчёта-по-cnv)):
+
+<p align="center">
+<img src={require('/img/rus/patient_page_with_samples.png').default} width="900"/>
+</p>
+
+В данном разделе можно настроить, на какую вкладку вы будете попадать, когда открываете страницу
+пациента:
+- на вкладку "Главное", на которой находятся информация о пациенте и наборы загруженных образцов (по умолчанию);
+- на вкладку "Отчет по CNV" с отчётом по результатам анализа числа копий хромосом в образцах пациента.
+
+<p align="center">
+<img src={require('/img/rus/patient_page.png').default} width="400"/>
+</p>
+
+:::info Внимание!
+Если "Отчет по CNV" для пациента не был построен совсем или ещё строится, то даже если вы здесь выбрали
+приоритетной вкладку "Отчет по CNV", открываться будет вкладка "Главное".
+:::
+
+## Variant Viewer
+
+Variant Viewer - это встроенный модуль для просмотра и анализа вариантов. Подробно описан
+в [соответствующем разделе](/results/main/snvs_indels/variant-viewer).
+
+### Режим поиска
+
+В Variant Viewer есть два режима поиска вариантов: [базовый поиск](/results/main/snvs_indels/basic_filtering)
+с основными параметрами фильтрации и [расширенный поиск](/results/main/snvs_indels/advanced_filtering), в
+котором есть больше параметров фильтрации и можно составлять сложные запросы с несколькими условиями
+фильтрации.
+
+В данном разделе можно настроить, в какой режим поиска вы будете попадать, когда впервые открываете страницу
+Variant Viewer образца (по умолчанию открывается базовый поиск):
+
+<p align="center">
+<img src={require('/img/rus/search.png').default} width="250"/>
+</p>
+
+### Основные параметры фильтрации в режиме базового поиска
+
+Параметры фильтрации, выбранные по умолчанию,
+описаны [здесь](/results/main/snvs_indels/basic_filtering#основные-параметры-фильтрации):
+
+<p align="center">
+<img src={require('/img/vv/basic_filtering.png').default} width="900"/>
+</p>
+
+Выбор параметров можно поменять (убрать или добавить новые):
+
+<p align="center">
+<img src={require('/img/rus/filters.png').default} width="400"/>
+</p>
+
+Доступные параметры фильтрации:
+- **Образцы** - фильтр вариантов по образцам из запуска, в которых эти варианты были выявлены.
+Отображается только в [Variant Viewer запуска](/runs#variant-viewer-запуска).
+Добавлен [по умолчанию](/runs#2-базовый-параметр-фильтрации-образцы).
+- **Статус интерпретации образца** - фильтр вариантов
+по [статусу интерпретации образцов](/runs#3-интерпретация-образца) запуска,
+в которых они были выявлены, (завершена или не завершена).
+Отображается только в [Variant Viewer запуска](/runs#4-базовый-параметр-фильтрации-статус-образца).
+- **Тип мутации** - фильтр вариантов по типу: Somatic (соматические) или Germline (герминальные).
+Добавлен [по умолчанию](/results/main/snvs_indels/basic_filtering#основные-параметры-фильтрации).
+Не отображается в базовом режиме поиска в
+[Variant Viewer с герминальными мутациями](/results/main/snvs_indels/variant-viewer)
+и в [Variant Viewer группового анализа](/group_analysis#variant-viewer-группового-анализа).
+- **Панель генов** - фильтр вариантов по [панели генов](/settings/gene_panels).
+Добавлен [по умолчанию](/results/main/snvs_indels/basic_filtering#основные-параметры-фильтрации).
+- **Ген** - фильтр вариантов по транскриптам генов, в которых они расположены.
+Добавлен [по умолчанию](/results/main/snvs_indels/basic_filtering#основные-параметры-фильтрации).
+- **Human Phenotype Ontology** (HPO) - фильтр вариантов по ассоциации с термином из онтологии фенотипов
+человека <a href="https://hpo.jax.org/app/">HPO</a>.
+Добавлен [по умолчанию](/results/main/snvs_indels/basic_filtering#основные-параметры-фильтрации).
+- **Патогенность** - фильтр вариантов по [патогенности](/results/main/snvs_indels/pathogenicity),
+определенной [пользователем самостоятельно](/results/main/snvs_indels/pathogenicity#самостоятельное-определение-патогенности),
+[по критериям ACMG](/results/main/snvs_indels/pathogenicity#определение-патогенности-на-вкладке-acmg-классификация)
+или [по базе патогенности](/results/main/snvs_indels/pathogenicity#определение-патогенности-варианта-по-базе-патогенности):
+* Pathogenic - Патогенный;
+* Likely pathogenic - Вероятно патогенный;
+* Uncertain significance conflict - Противоречивые интерпретации патогенности;
+* Uncertain significance - Неопределенная значимость;
+* Likely benign - Вероятно доброкачественный;
+* Benign - Доброкачественный;
+* Undefined - Нет интерпретации.
+- **ClinVar** - фильтр вариантов по клинической значимости фенотипа по данным
+базы [ClinVar](https://www.ncbi.nlm.nih.gov/clinvar/) (определение значений можно
+посмотреть [тут](https://www.ncbi.nlm.nih.gov/clinvar/docs/clinsig/#clinsig_options_scv)).
+- **Эффект варианта** - фильтр вариантов по эффектам на гены.
+Значения описаны [здесь](/results/main/snvs_indels/variant-viewer#эффекты-варианта-в-аннотации).
+- **Фильтры детекции** - фильтрация по фильтрам вариантов GATK.
+
+<details>
+<summary>Нажмите, чтобы посмотреть определения фильтров детекции</summary>
+<table>
+  <tr>
+   <td>Значение фильтра детекции</td>
+   <td>Тип мутации</td>
+   <td>Инструмент GATK</td>
+   <td>Описание фильтра</td>
+  </tr>
+  <tr>
+   <td>PASS</td>
+   <td>Любая</td>
+   <td></td>
+   <td>Сайт содержит минимум один аллель, который удовлетворяет всем фильтрам</td>
+  </tr>
+  <tr>
+   <td>Not available</td>
+   <td>Любая</td>
+   <td></td>
+   <td>Значение колонки неизвестно (точка в VCF-файле)</td>
+  </tr>
+  <tr>
+   <td>clustered_events</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Кластерные события, наблюдаемые в опухоли, - соматические мутации, которые совместно встречаются в
+   одном и том же интервале сборки</td>
+  </tr>
+  <tr>
+  <td>germline</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Доказательства указывают на то, что этот сайт является герминальным, а не соматическим</td>
+  </tr>
+  <tr>
+  <td>LowQual</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Низкое качество</td>
+  </tr>
+  <tr>
+  <td>alignment</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Фильтр артефактов выравнивания</td>
+  </tr>
+  <tr>
+  <td>panel_of_normals</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Сайт находится в "черном списке" нормальной панели (PON). Как выбрать панель,
+   описано <a href="/settings/settings/variant_discovery_settings#выбор-нормальной-панели">здесь</a>.</td>
+  </tr>
+  <tr>
+  <td>slippage</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Фильтр ошибок проскальзывания полимеразы в ходе ДНК-репликации (предсказывается по количеству и длине
+   коротких тандемных повторов (STR))</td>
+  </tr>
+  <tr>
+  <td>weak_evidence</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Мутация не соответствует порогу вероятности</td>
+  </tr>
+  <tr>
+  <td>multiallelic</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Мутация располагается в мультиаллельном сайте: слишком много альтернативных аллелей удовлетворяют
+   LOD score (вероятный признак артефакта)</td>
+  </tr>
+  <tr>
+  <td>strand_bias</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Фильтр смещения цепей - смещения последовательности, при котором предпочтение отдается одной цепи ДНК
+   перед другой, что может привести к неправильной оценке количества доказательств, наблюдаемых для одного
+   аллеля по сравнению с другим (артефакт секвенирования)</td>
+  </tr>
+  <tr>
+  <td>duplicate</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Доказательства наличия альтернативного аллеля чрезмерно представлены очевидными дубликатами</td>
+  </tr>
+  <tr>
+  <td>normal_artifact</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Нормальный артефакт: вариант, наблюдаемый в опухоли, также присутствует как артефакт в контрольном образце</td>
+  </tr>
+  <tr>
+  <td>base_qual</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Среднее качество оснований прочтений, поддерживающих альтернативный аллель</td>
+  </tr>
+  <tr>
+  <td>map_qual</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Среднее качество картирования прочтений, поддерживающих альтернативный аллель</td>
+  </tr>
+  <tr>
+  <td>fragment</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Разница медианных длин фрагментов прочтений, поддерживающих альтернативный и референсный аллели</td>
+  </tr>
+  <tr>
+  <td>position</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Медианное расстояние альтернативных мутаций от конца прочтения</td>
+  </tr>
+  <tr>
+  <td>contamination</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Фильтр контаминации данных секвенирования</td>
+  </tr>
+  <tr>
+  <td>orientation</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Фильтр смещения ориентации - смещения, возникающего из-за химического изменения нуклеотида во время
+    подготовки библиотеки, которое приводит к неправильному спариванию основанию (G с A, T c C и т.д.)
+    (артефакт секвенирования)</td>
+  </tr>
+  <tr>
+  <td>haplotype</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Вариант расположен рядом с отфильтрованным вариантом того же гаплотипа</td>
+  </tr>
+  <tr>
+  <td>strict_strand</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Доказательства наличия альтернативного аллеля не представлены в обоих направлениях прочтения</td>
+  </tr>
+  <tr>
+  <td>n_ratio</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Отношение количества неизвестных нуклеотидов N к количеству альтернативных аллелей
+    превышает установленный порог</td>
+  </tr>
+  <tr>
+  <td>numt_chimera</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Вариант, расположенный в ядерной копии гена мтДНК (NuMT), со слишком большим количеством прочтений,
+    поддерживающих альтернативный аллель, происходящих из аутосомы</td>
+  </tr>
+  <tr>
+  <td>low_allele_frac</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Доля аллеля ниже установленного порога</td>
+  </tr>
+  <tr>
+  <td>numt_novel</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Глубина альтернативного аллеля ниже ожидаемого покрытия ядерной копии гена мтДНК (NuMT) в аутосоме</td>
+  </tr>
+  <tr>
+  <td>possible_numt</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Глубина аллеля ниже ожидаемого покрытия ядерной копии гена мтДНК (NuMT) в аутосоме</td>
+  </tr>
+  <tr>
+  <td>mt_many_low_hets</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Фильтр сайтов с низкой гетероплазмией</td>
+  </tr>
+  <tr>
+  <td>FAIL</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Ошибка сайта, если все аллели не проходят по разным причинам</td>
+  </tr>
+  <tr>
+  <td>SITE</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Ошибка сайта</td>
+  </tr>
+  <tr>
+  <td>QD</td>
+  <td>Герминальная</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360037592191-QualByDepth">QualByDepth</a></td>
+   <td>Достоверность варианта (значение из поля QUAL), нормализованная по нефильтрованнной глубине аллеля (AD) варианта
+   в выборке вариантов с генотипом, отличным от hom-ref (homozygous/reference; генотип, при котором оба аллеля
+   являются референсными)</td>
+  </tr>
+  <tr>
+  <td>QUAL</td>
+  <td>Герминальная</td>
+   <td></td>
+   <td>Качество варианта - вероятность существования (по шкале Phred) варианта в этом сайте с учетом данных
+   секвенирования</td>
+  </tr>
+  <tr>
+  <td>SOR</td>
+  <td>Герминальная</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036361772-StrandOddsRatio">StrandOddsRatio</a></td>
+   <td>Смещение цепей, оцененное с помощью симметричного теста отношения шансов. Смещение цепей - это тип
+   смещения последовательности, при котором предпочтение отдается одной цепи ДНК перед другой, что может привести
+   к неправильной оценке количества доказательств, наблюдаемых для одного аллеля по сравнению с другим.
+   StrandOddsRatio оценивает наличие смещения между прямыми и обратными цепями для референсного или альтернативного
+   аллеля (аллелей).</td>
+  </tr>
+  <tr>
+  <td>FS</td>
+  <td>Герминальная</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360037592371-FisherStrand">FisherStrand</a></td>
+   <td>Вероятность смещения цепей на сайте, оцененная с помощью точного критерия Фишера. Смещение цепей - это тип
+   смещения последовательности, при котором предпочтение отдается одной цепи ДНК перед другой, что может привести
+   к неправильной оценке количества доказательств, наблюдаемых для одного аллеля по сравнению с другим.
+   FisherStrand определяет, существует ли смещение цепи между прямой и обратной цепями для референсного или
+   альтернативного аллеля (то есть встречается ли альтернативный аллель чаще или реже на прямой или обратной цепи,
+   чем референсный аллель). FisherStrand хуже учитывает большие объемы данных
+   в ситуациях с высоким покрытием по сравнению с StrandOddsRatio. Кроме того, FisherStrand имеет тенденцию
+   "штрафовать" варианты, которые встречаются на концах экзонов. Варианты на концах экзонов, как правило,
+   покрываются прочтениями только в одном направлении цепи, и FisherStrand дает таким вариантам плохую оценку, тогда
+   как StrandOddsRatio учитывает соотношение прочтений, охватывающих оба аллеля.</td>
+  </tr>
+  <tr>
+  <td>MQ</td>
+  <td>Герминальная</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360037591751-RMSMappingQuality">RMMSMapping- Quality</a></td>
+   <td>Среднеквадратичное значение качества сопоставления прочтений по всем образцам.
+   Представляет собой оценку общего качества картирования прочтений, покрывающих сайт варианта, усредненную по всем
+   образцам в когорте, т.е. квадратный корень среднего квадрата качества картирования сайта варианта. Таким образом,
+   оценка учитывает стандартное отклонение качества картирования.</td>
+  </tr>
+  <tr>
+  <td>MQ_RANK_SUM</td>
+  <td>Герминальная</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360045799632-MappingQualityRankSumTest">MappingQuality- RankSumTest</a></td>
+   <td>Тест суммы рангов для сопоставления качества картирования прочтения REF и качества картирования прочтения ALT.
+   MQRankSum на уровне варианта сравнивает качество картирования прочтений, поддерживающих референсный аллель, с
+   прочтениями, поддерживающими альтернативный аллель. Обнаружение любой статистически значимой разницы в качестве
+   предполагает, что процесс секвенирования и/или картирования мог быть искажен артефактом.</td>
+  </tr>
+  <tr>
+  <td>READ_POS_RANK_SUM</td>
+   <td>Герминальная</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360042914711-ReadPosRankSumTest">ReadPosRank- SumTest</a></td>
+   <td>Тест суммы рангов для относительных позиций аллелей REF и ALT в прочтениях.
+   ReadPosRankSum на уровне варианта проверяет, различаются ли положения референсного и альтернативного
+   аллеля в прочтениях, которые поддерживают вариант.
+   Нахождение аллеля только вблизи концов прочтений указывает на ошибку, потому что именно там
+   секвенаторы склонны делать больше всего ошибок. Обнаружение статистически значимой разницы в относительном
+   положении в любом случае указывает на то, что процесс секвенирования мог быть искажен артефактом.</td>
+  </tr>
+  <tr>
+  <td>CNN_2D</td>
+   <td>Герминальная</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360037226672-CNNScoreVariants">CNNScoreVariants</a></td>
+   <td>Фильтрация на основе оценок предварительно обученной сверточной нейронной сети (convolutional neural
+   network; CNN) 2D</td>
+  </tr>
+  <tr>
+  <td>OTHER</td>
+   <td>Любая</td>
+   <td></td>
+   <td>Значение колонки не распознано</td>
+  </tr>
+</table>
+</details>
+
+- **Миниимальный уровень глубины** - шкала фильтрации вариантов по минимальному уровеню глубины
+секвенирования. Добавлена [по умолчанию](/results/main/snvs_indels/basic_filtering#основные-параметры-фильтрации).
+
+<p align="center">
+<img src={require('/img/vv/seq_depth.png').default} width="350"/>
+</p>
+
+- **Трио GT** - фильтр вариантов по наследованию: *De novo* варианты,
+Новые гомозиготы (гомозиготы по локусам у пробанда, которые гетерозиготны у родителей) или
+Наследованные от одного родителя. Добавлен по умолчанию, доступен только
+в [семейном групповом анализе](/group_analysis#variant-viewer-группового-анализа) в
+случае Трио (Пробанд, Отец и Мать).
+
+### Условия расширенного поиска
+
+В [режиме расширенного поиска](/results/main/snvs_indels/advanced_filtering) сверху таблицы
+Variant Viewer отображаются условия запроса к искомым вариантам. Когда условий в запросе очень много,
+их удобно [свернуть](/results/main/snvs_indels/advanced_filtering#применение-запроса), чтобы
+они не занимали много места на странице.
+
+В данном разделе можно настроить, будут ли условия запроса в развёрнутом (по умолчанию)
+или свёрнутом состоянии сразу после применения запроса фильтрации:
+
+<p align="center">
+<img src={require('/img/rus/query_conditions.png').default} width="250"/>
+</p>
+
+### Нижняя панель с деталями выбранного варианта
+
+[Панель детальной информации о варианте](/results/main/snvs_indels/snv_details_panel) содержит
+основную информацию о выбранном варианте.
+По умолчанию она находится в развёрнутом состоянии внизу таблицы Variant Viewer.
+Если вы не пользуетесь панелью на постоянной основе,
+то её можно скрыть из Variant Viewer, выбрав опцию "Свернуть":
+
+<p align="center">
+<img src={require('/img/rus/hidden_panel.png').default} width="350"/>
+</p>
+
+## Возвращение к настройкам по умолчанию
+
+Если вы внесли изменения в настройки выбора языка, панели навигации, страницы пациента или
+Variant Viewer, вы можете вернуться к настройкам по умолчанию,
+нажав на кнопку <img src={require('/img/rus/default.png').default} width="150"/>.
+Обратите внимание, что действие приведет к сбросу сразу всех изменений, которые вы совершили
+на странице (кроме изменений email, логина и пароля).

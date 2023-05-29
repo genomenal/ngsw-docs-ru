@@ -7,7 +7,7 @@ sidebar_label: Быстрый старт для анализа опухолей
 
 Если вы хотите провести анализ образцов опухолевой ткани с помощью Genomenal, то этот раздел для вас.
 
-### 1. Создайте пациента
+### 1. Создайте пациента {#create-patient}
 
 import Login from '/docs/imported_components/_login.mdx';
 
@@ -28,16 +28,16 @@ import PatientPage from '/docs/imported_components/_patient_page.mdx';
 <img src={require('/img/rus/patient_page_somatic.png').default} width="900"/>
 </p>
 
-### 2. Настройте параметры анализа
+### 2. Настройте параметры анализа {#customize-settings}
 
 Для поиска соматических и наследственных мутаций в опухоли лучше всего подходит настройка анализа
-**[Somatic and germline variant analysis](/settings/settings/main_presets#1-somatic-and-germline-variant-analysis)**:
+**[Somatic and germline variant analysis](/settings/settings/main-presets#somаtic-and-germline-variant-analysis)**:
 
 <p align="center">
 <img src={require('/img/version_1.02/TN_preset.png').default} width="900"/>
 </p>
 
-### 3. Загрузите образцы
+### 3. Загрузите образцы {#upload-samples}
 
 Выберите образец или образцы опухолевой ткани для анализа.
 В простейшем случае, образец - это результат секвенирования парных прочтений в формате FASTQ.
@@ -64,7 +64,7 @@ import FillCard from '/docs/imported_components/_fill_out_patient_card.mdx';
 <img src={require('/img/rus/fill_patient_card_somatic.png').default} width="900"/>
 </p>
 
-### 4. Запустите анализ
+### 4. Запустите анализ {#start-analysis}
 
 Нажмите на <img src={require('/img/rus/start_analysis_btn.png').default} width="200"/>, чтобы запустить анализ образцов.
 
@@ -78,7 +78,7 @@ import DangerUploading from '/docs/imported_components/_danger_while_uploading.m
 <img src={require('/img/rus/7a-stage-statuses.png').default} width="150"/>
 </p>
 
-## 5. Результаты анализа
+## 5. Результаты анализа {#analysis-results}
 
 Когда анализ завершен, вы можете посмотреть результаты. Откройте страницу образца опухоли, нажав на строку образца:
 

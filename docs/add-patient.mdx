@@ -16,7 +16,7 @@ import PatientPage from '/docs/imported_components/_patient_page.mdx';
 
 <PatientPage />
 
-## Страница пациента
+## Страница пациента {#patient-page}
 
 Страница пациента без добавленных образцов выглядит так:
 
@@ -40,19 +40,19 @@ import PatientPage from '/docs/imported_components/_patient_page.mdx';
 
 На странице может быть либо две вкладки - "Главное" и ["Отчет по CNV"](/results/cnv-report/patient-cnv-report),
 если "Отчет по CNV" был построен (см. условия в
-[соответствующем разделе](/results/cnv-report/cnv-report#условия-построения-отчёта-по-cnv)), либо на странице
+[соответствующем разделе](/results/cnv-report/cnv-report#cnv-report-conditions)), либо на странице
 нет вкладок, если "Отчет по CNV" не был построен.
 
 :::info На заметку
-На [странице "Настройки пользователя"](/settings/profile#страница-пациента)
+На [странице "Настройки пользователя"](/settings/profile#patient-page)
 можно отрегулировать, на какую вкладку вы будете попадать, когда открываете страницу
 пациента: "Главное" или "Отчет по CNV".
 :::
 
-На странице пациента можно выделить две основные сущности: [Набор образцов](/add_patient#1-набор-образцов)
-и [Образец](/add_patient#2-образец).
+На странице пациента можно выделить две основные сущности: [Набор образцов](/add-patient#sample-set)
+и [Образец](/add-patient#sample).
 
-### 1. Набор образцов
+### 1. Набор образцов {#sample-set}
 
 Набор образцов состоит из одного или нескольких образцов одного и того же пациента.
 Наборы образцов выделяются голубой линией с датой и временем добавления набора.
@@ -62,7 +62,7 @@ import PatientPage from '/docs/imported_components/_patient_page.mdx';
 <img src={require('/img/rus/sample_set.png').default} width="900"/>
 </p>
 
-#### Редактирование набора образцов
+#### Редактирование набора образцов {#edit-sample-set}
 
 Чтобы отредактировать набор образцов,
 нажмите на <img src={require('/img/report_templates/edit.png').default} width="25"/> - вам откроется окно
@@ -73,7 +73,7 @@ import PatientPage from '/docs/imported_components/_patient_page.mdx';
 </p>
 
 Вид окна будет зависеть от режима анализа (Analysis
-mode), который [был выбран](/settings/settings/settings#1-общие-настройки-анализа) при создании набора образцов
+mode), который [был выбран](/settings/settings/settings#general-analysis-settings) при создании набора образцов
 (если был выбран режим "Somatic and germline variant analysis", то окно добавления опухолевых образцов будет
 доступно, а если "Germline variant analysis", то нет).
 
@@ -101,7 +101,7 @@ mode), который [был выбран](/settings/settings/settings#1-общ
 все внесенные изменений, нажмите на <img src={require('/img/report_templates/cancel.png').default} width="150"/>.
 При изменении состава набора образцов анализ набора будет перезапущен с необходимых стадий.
 
-#### Удаление набора образцов
+#### Удаление набора образцов {#delete-sample-set}
 
 Чтобы удалить набор образцов,
 нажмите на <img src={require('/img/report_templates/delete.png').default} width="25"/> - вам откроется окно
@@ -119,7 +119,7 @@ mode), который [был выбран](/settings/settings/settings#1-общ
 и уже затем нажмите <img src={require('/img/rus/delete_green_btn.png').default} width="135"/>.
 Для отмены удаления набора нажмите <img src={require('/img/report_templates/cancel.png').default} width="150"/>.
 
-### 2. Образец
+### 2. Образец {#sample}
 
 Отдельный образец из набора образцов. Кликнув на строку образца, можно
 открыть [его страницу](/results/results):
@@ -139,7 +139,7 @@ mode), который [был выбран](/settings/settings/settings#1-общ
 3. **Выводы интерпретации образца** - информация о количестве обнаруженных в образце и добавленных в отчёт вариантов
 определенного класса патогенности (патогенных, вероятно патогенных, неопределенной значимости, доброкачественных,
 вероятно доброкачественных). Отображается, только
-если [интерпретация образца была завершена](/results/main/snvs_indels/snv_detaile_page#интерпретация-образца-завершение-и-возобновление).
+если [интерпретация образца была завершена](/results/main/snvs-indels/snv-details-page#sample-interpretation).
 Если интерпретация была не завершена, но варианты с определенным классом патогенности были добавлены в отчёт,
 вывод интерпретации будет "Интерпретация не завершена". Если интерпретация образца была завершена,
 но никакие варианты с определенным классом патогенности не были добавлены в отчёт, то вывод интерпретации
@@ -165,7 +165,7 @@ mode), который [был выбран](/settings/settings/settings#1-общ
 - Плитки прогресса анализа образца в формате VSF, TXT
 или TSV: <img src={require('/img/rus/vcf_analysis.png').default} width="50"/>
 
-### Информация о пациенте
+### Информация о пациенте {#patient-info}
 
 <p align="center">
 <img src={require('/img/rus/patient_info.png').default} width="900"/>

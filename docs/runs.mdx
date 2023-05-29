@@ -6,8 +6,8 @@ sidebar_label: Запуски
 # Запуски
 
 Раздел "Запуски" дает возможность загрузить несколько образцов без определения для каждого образца пациента,
-к которому он относится. Ещё одним отличием Запуска от [Пациента](/add_patient#страница-пациента)
-является построение общего [Variant Viewer](/runs#variant-viewer-запуска), который содержит варианты,
+к которому он относится. Ещё одним отличием Запуска от [Пациента](/add-patient#patient-page)
+является построение общего [Variant Viewer](/runs#run-variant-viewer), который содержит варианты,
 обнаруженные во всех образцах Запуска.
 
 Чтобы открыть страницу с запусками, перейдите на страницу "**Запуски**" из одноименного блока страниц
@@ -17,7 +17,7 @@ sidebar_label: Запуски
 <img src={require('/img/runs/run_page.png').default} width="900"/>
 </p>
 
-### Создание запуска
+### Создание запуска {#add-run}
 
 Для перехода к форме создания запуска нажмите на <img src={require('/img/runs/add_run.png').default} width="150"/>.
 В появившемся окне введите название запуска:
@@ -48,22 +48,22 @@ import NormalTissueInfo from '/docs/imported_components/_normal_tissue_info.mdx'
 <img src={require('/img/runs/new_run_page.png').default} width="900"/>
 </p>
 
-### Настройки анализа
+### Настройки анализа {#workflow-settings}
 
 Выберите нужную [настройку анализа](/settings/settings/settings) образцов.
 Обратите внимание, что настройка анализа будет применена ко всем образцам запуска и должна соответствовать
 выбранному типу образцов запуска (TUMOR или NORMAL).
-Например, настройку [Germline variant analysis](/settings/settings/main_presets#2-germline-variant-analysis) нельзя
+Например, настройку [Germline variant analysis](/settings/settings/main-presets#germline-variant-analysis) нельзя
 использовать, если был выбран тип образцов "TUMOR", поскольку она подходит только для анализа образцов неопухолевой
 ткани.
 
-### Тип секвенирования
+### Тип секвенирования {#sequencing-type}
 
 import SequencingType from '/docs/imported_components/_seq_type.mdx';
 
 <SequencingType set="запуска" />
 
-### Загрузка образцов
+### Загрузка образцов {#upload-samples}
 
 Загрузите выбранные образцы одним из предложенных ниже способов. Количество образцов в запуске не ограничено.
 
@@ -71,13 +71,13 @@ import UploadFiles from '/docs/imported_components/_upload_files_from_different_
 
 <UploadFiles />
 
-#### Распознавание парных файлов
+#### Распознавание парных файлов {#recognize-pair}
 
 import RecognizePair from '/docs/imported_components/_recognize_pair.mdx';
 
 <RecognizePair />
 
-#### Смена типа образца
+#### Смена типа образца {#change-sample-type}
 
 Тип каждого образца указан справа от карточки образца и соответствует типу, который был указан при создании
 запуска. Выбранный тип выделен синей рамкой.
@@ -89,12 +89,12 @@ import RecognizePair from '/docs/imported_components/_recognize_pair.mdx';
 
 Тип любого образца можно будет поменять и после старта анализа.
 
-### Запуск анализа
+### Запуск анализа {#submit}
 
 После добавления всех образцов нажмите <img src={require('/img/runs/analyze_samples_btn.png').default} width="200"/>,
 чтобы начать анализ образцов запуска.
 
-### Страница запуска
+### Страница запуска {#run-page}
 
 Сразу после старта анализа вы попадете на страницу запуска:
 
@@ -109,7 +109,7 @@ import RecognizePair from '/docs/imported_components/_recognize_pair.mdx';
 <img src={require('/img/rus/sample_of_run.png').default} width="900"/>
 </p>
 
-### Образец запуска
+### Образец запуска {#run-sample}
 
 В строке образца запуска содержится следующая информация:
 1. **Имя образца** - названия файлов образца с расширением. Файл опухолевого образца
@@ -138,14 +138,14 @@ import RecognizePair from '/docs/imported_components/_recognize_pair.mdx';
 - Плитки прогресса анализа образца в формате VSF, TXT
 или TSV: <img src={require('/img/rus/vcf_analysis.png').default} width="50"/>
 4. **Интерпретация** - информация о количестве обнаруженных в образце
-и [добавленных в отчёт](/results/main/snvs_indels/variant-viewer#включение-вариантов-в-отчёт) вариантов
-определенного класса [патогенности](/results/main/snvs_indels/pathogenicity)
+и [добавленных в отчёт](/results/main/snvs-indels/variant-viewer#include-to-report) вариантов
+определенного класса [патогенности](/results/main/snvs-indels/pathogenicity)
 (патогенных: <img src={require('/img/results/pathogenic.png').default} width="48"/>,
 вероятно патогенных: <img src={require('/img/results/likely_pathogenic.png').default} width="48"/>,
 неопределенной значимости: <img src={require('/img/results/uncertain.png').default} width="48"/>,
 доброкачественных: <img src={require('/img/results/benign.png').default} width="48"/>,
 вероятно доброкачественных: <img src={require('/img/results/likely_benign.png').default} width="48"/>).
-Отображается, только если [интерпретация образца была завершена](/runs#3-интерпретация-образца).
+Отображается, только если [интерпретация образца была завершена](/runs#sample-interpretation).
 Если интерпретация была не завершена, но варианты с определенным классом патогенности были добавлены в отчёт,
 вывод интерпретации будет "Интерпретация не завершена". Если интерпретация образца была завершена,
 но никакие варианты с определенным классом патогенности не были добавлены в отчёт, то вывод интерпретации
@@ -180,18 +180,18 @@ import RecognizePair from '/docs/imported_components/_recognize_pair.mdx';
 При этом страница образца одна и та же - независимо от того, зашли вы на неё со страницы Запуска или со страницы
 Пациента. Любые изменения, включая удаление образца, отобразятся на обеих страницах.
 
-#### Результаты анализа образца
+#### Результаты анализа образца {#sample-analysis-results}
 
 Результаты для каждого отдельного образца запуска находятся на странице образца. Страница образца запуска не отличается
 от страницы образца пациента. Описание результатов можно посмотреть [здесь](/results/results).
 
-#### Изменение хода анализа образца
+#### Изменение хода анализа образца {#tweak-sample-workflow}
 
 Можно менять настройки анализа ([вкладка "Параметры" образца](/results/parameters)) и
-[перезапускать процессинг](/results/main/main#3-процесс-анализа) образцов. В данном случае изменения в
+[перезапускать процессинг](/results/main/main#workflow) образцов. В данном случае изменения в
 настройках влияют на ход анализа только конкретного образца, для которого они вносятся.
 
-#### Удаление образца
+#### Удаление образца {#delete-sample}
 
 Для удаления образца наведите курсор мыши на его строку и
 нажмите на появившуюся корзину <img src={require('/img/rus/delete_btn.png').default} width="20"/> - вам
@@ -209,12 +209,12 @@ import RecognizePair from '/docs/imported_components/_recognize_pair.mdx';
 и уже затем нажмите <img src={require('/img/rus/delete_green_btn.png').default} width="135"/>.
 Для отмены удаления образца нажмите <img src={require('/img/report_templates/cancel.png').default} width="150"/>.
 
-### Variant Viewer запуска
+### Variant Viewer запуска {#run-variant-viewer}
 
 Variant Viewer запуска - это встроенный модуль для просмотра и анализа вариантов, выявленных во всех образцах
 запуска, для которых проводилась и успешно завершилась стадия аннотации герминальных или соматических SNVs/Indels.
 Variant Viewer запуска мало чем отличается от Variant Viewer образца, подробное описание которого можно
-найти [здесь](/results/main/snvs_indels/variant-viewer).
+найти [здесь](/results/main/snvs-indels/variant-viewer).
 Variant Viewer запуска и образцов запуска связаны между собой: если вы закрепите или проинтерпретируете вариант или
 определите его патогенность и т.п. в Variant Viewer образца запуска, результат тут же появится в Variant
 Viewer запуска, и наоборот.
@@ -223,7 +223,7 @@ Viewer запуска, и наоборот.
 
 **Особенности Variant Viewer запуска (в отличие от Variant Viewer образца):**
 
-#### 1. Колонка "Образец"
+#### 1. Колонка "Образец" {#sample-column}
 
 В Variant Viewer запуска есть дополнительная колонка "**Образец**", которая содержит название образца запуска,
 в котором был найден вариант. По значениям колонки можно отсортировать таблицу по возрастанию или убыванию
@@ -240,11 +240,11 @@ Viewer запуска, и наоборот.
 всегда будут отличаться по значению колонки "Образец".
 :::
 
-#### 2. Базовый параметр фильтрации "Образцы"
+#### 2. Базовый параметр фильтрации "Образцы" {#samples-filter}
 
 Для фильтрации по значениям колонки "Образец" в Variant Viewer запуска есть
 базовый параметр фильтрации "**Образцы**"
-(доступен [по умолчанию](/settings/profile#основные-параметры-фильтрации-в-режиме-базового-поиска)).
+(доступен [по умолчанию](/settings/profile#basic-mode-filters)).
 Для того чтобы отфильтровать варианты по образцам запуска, в которых они были выявлены, нажмите
 на окно фильтрации <img src={require('/img/runs/sample_filtering.png').default} width="150"/> и
 в появившемся списке отметьте галочками нужные
@@ -267,7 +267,7 @@ Viewer запуска, и наоборот.
 
 :::info На заметку
 Базовый параметр фильтрации "Образцы" доступен в Variant Viewer и после перехода
-в [режим расширенного поиска вариантов](/results/main/snvs_indels/advanced_filtering):
+в [режим расширенного поиска вариантов](/results/main/snvs-indels/advanced-filtering):
 
 <p align="center">
 <img src={require('/img/runs/in_advanced_search.png').default} width="900"/>
@@ -275,11 +275,11 @@ Viewer запуска, и наоборот.
 
 :::
 
-#### 3. Интерпретация образца
+#### 3. Интерпретация образца {#sample-interpretation}
 
 В Variant Viewer запуска есть дополнительный способ завершения и возобновления
 интерпретации образца запуска помимо способа,
-описанного [здесь](/results/main/snvs_indels/snv_detaile_page#интерпретация-образца-завершение-и-возобновление)
+описанного [здесь](/results/main/snvs-indels/snv-details-page#sample-interpretation)
 (со страницы детальной информации о варианте образца).
 Чтобы ***завершить интерпретацию образца запуска***, нажмите на название этого образца и выберите соответствующую
 опцию:
@@ -289,8 +289,8 @@ Viewer запуска, и наоборот.
 </p>
 
 В появившемся окне будет приведено количество
-обнаруженных в образце и [добавленных в отчёт](/results/main/snvs_indels/variant-viewer#включение-вариантов-в-отчёт) вариантов
-определенного класса [патогенности](/results/main/snvs_indels/pathogenicity)
+обнаруженных в образце и [добавленных в отчёт](/results/main/snvs-indels/variant-viewer#include-to-report) вариантов
+определенного класса [патогенности](/results/main/snvs-indels/pathogenicity)
 (патогенных: <img src={require('/img/results/pathogenic.png').default} width="48"/>,
 вероятно патогенных: <img src={require('/img/results/likely_pathogenic.png').default} width="48"/>,
 неопределенной значимости: <img src={require('/img/results/uncertain.png').default} width="48"/>,
@@ -323,12 +323,12 @@ Viewer запуска, и наоборот.
 <img src={require('/img/runs/restore_interpretation.png').default} width="300"/>
 </p>
 
-#### 4. Базовый параметр фильтрации "Статус образца"
+#### 4. Базовый параметр фильтрации "Статус образца" {#sample-interpretation-status-filter}
 
 Для фильтрации по статусу интерпретации образцов (завершена или не завершена) в Variant Viewer
 запуска есть базовый параметр фильтрации "**Статус образца**". Параметр
 не доступен по умолчанию; его можно добавить
-на [странице "Настройки пользователя"](/settings/profile#основные-параметры-фильтрации-в-режиме-базового-поиска)
+на [странице "Настройки пользователя"](/settings/profile#basic-mode-filters)
 (параметр "Статус интерпретации образца").
 Для того чтобы отфильтровать варианты по статусу интерпретации образцов запуска, в которых они были выявлены,
 нажмите на окно фильтрации <img src={require('/img/runs/sample_status.png').default} width="150"/> и
@@ -342,11 +342,11 @@ Viewer запуска, и наоборот.
 затем на <img src={require('/img/vv/clear_option.png').default} width="100"/>.
 
 Фильтровать по статусу интерпретации образца можно и
-в [режиме расширенного поиска вариантов](/results/main/snvs_indels/advanced_filtering),
-воспользовавшись [фильтром "Sample Status"](/results/main/snvs_indels/advanced_filtering#2-фильтры-с-выбором-одного-значения).
+в [режиме расширенного поиска вариантов](/results/main/snvs-indels/advanced-filtering),
+воспользовавшись [фильтром "Sample Status"](/results/main/snvs-indels/advanced-filtering#single-value-filters).
 Для этого дополнительный фильтр "Статус образца" добавлять в настройках необязательно.
 
-### Архивация, восстановление и удаление данных запуска
+### Архивация, восстановление и удаление данных запуска {#delete-run}
 
 Для ***архивации*** данных запуска наведите курсор на строку запуска на странице "Запуски" и
 нажмите на появившийся активный элемент <img src={require('/img/rus/delete_btn.png').default} width="18"/>.

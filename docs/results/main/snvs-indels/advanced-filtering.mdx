@@ -118,16 +118,16 @@ viii. **Caller Filters** (колонка "Фильтры детекции", ба
    <td>Описание фильтра</td>
   </tr>
   <tr>
-   <td>PASS</td>
-   <td>Любая</td>
-   <td></td>
-   <td>Сайт содержит минимум один аллель, который удовлетворяет всем фильтрам</td>
+  <td>alignment</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Фильтр артефактов выравнивания</td>
   </tr>
   <tr>
-   <td>Not available</td>
-   <td>Любая</td>
-   <td></td>
-   <td>Значение колонки неизвестно (точка в VCF-файле)</td>
+  <td>base_qual</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Среднее качество оснований прочтений, поддерживающих альтернативный аллель</td>
   </tr>
   <tr>
    <td>clustered_events</td>
@@ -137,93 +137,11 @@ viii. **Caller Filters** (колонка "Фильтры детекции", ба
    одном и том же интервале сборки</td>
   </tr>
   <tr>
-  <td>germline</td>
-   <td>Соматическая</td>
-   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
-   <td>Доказательства указывают на то, что этот сайт является герминальным, а не соматическим</td>
-  </tr>
-  <tr>
-  <td>LowQual</td>
-   <td>Соматическая</td>
-   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
-   <td>Низкое качество</td>
-  </tr>
-  <tr>
-  <td>alignment</td>
-   <td>Соматическая</td>
-   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
-   <td>Фильтр артефактов выравнивания</td>
-  </tr>
-  <tr>
-  <td>panel_of_normals</td>
-   <td>Соматическая</td>
-   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
-   <td>Сайт находится в "черном списке" нормальной панели (PON). Как выбрать панель,
-   описано <a href="/settings/settings/variant-discovery-settings#panel-of-normal">здесь</a>.</td>
-  </tr>
-  <tr>
-  <td>slippage</td>
-   <td>Соматическая</td>
-   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
-   <td>Фильтр ошибок проскальзывания полимеразы в ходе ДНК-репликации (предсказывается по количеству и длине
-   коротких тандемных повторов (STR))</td>
-  </tr>
-  <tr>
-  <td>weak_evidence</td>
-   <td>Соматическая</td>
-   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
-   <td>Мутация не соответствует порогу вероятности</td>
-  </tr>
-  <tr>
-  <td>multiallelic</td>
-   <td>Соматическая</td>
-   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
-   <td>Мутация располагается в мультиаллельном сайте: слишком много альтернативных аллелей удовлетворяют
-   LOD score (вероятный признак артефакта)</td>
-  </tr>
-  <tr>
-  <td>strand_bias</td>
-   <td>Соматическая</td>
-   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
-   <td>Фильтр смещения цепей - смещения последовательности, при котором предпочтение отдается одной цепи ДНК
-   перед другой, что может привести к неправильной оценке количества доказательств, наблюдаемых для одного
-   аллеля по сравнению с другим (артефакт секвенирования)</td>
-  </tr>
-  <tr>
-  <td>duplicate</td>
-   <td>Соматическая</td>
-   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
-   <td>Доказательства наличия альтернативного аллеля чрезмерно представлены очевидными дубликатами</td>
-  </tr>
-  <tr>
-  <td>normal_artifact</td>
-   <td>Соматическая</td>
-   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
-   <td>Нормальный артефакт: вариант, наблюдаемый в опухоли, также присутствует как артефакт в контрольном образце</td>
-  </tr>
-  <tr>
-  <td>base_qual</td>
-   <td>Соматическая</td>
-   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
-   <td>Среднее качество оснований прочтений, поддерживающих альтернативный аллель</td>
-  </tr>
-  <tr>
-  <td>map_qual</td>
-   <td>Соматическая</td>
-   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
-   <td>Среднее качество картирования прочтений, поддерживающих альтернативный аллель</td>
-  </tr>
-  <tr>
-  <td>fragment</td>
-   <td>Соматическая</td>
-   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
-   <td>Разница медианных длин фрагментов прочтений, поддерживающих альтернативный и референсный аллели</td>
-  </tr>
-  <tr>
-  <td>position</td>
-   <td>Соматическая</td>
-   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
-   <td>Медианное расстояние альтернативных мутаций от конца прочтения</td>
+  <td>CNN_2D</td>
+   <td>Герминальная</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360037226672-CNNScoreVariants">CNNScoreVariants</a></td>
+   <td>Фильтрация на основе оценок предварительно обученной сверточной нейронной сети (convolutional neural
+   network; CNN) 2D</td>
   </tr>
   <tr>
   <td>contamination</td>
@@ -232,62 +150,10 @@ viii. **Caller Filters** (колонка "Фильтры детекции", ба
    <td>Фильтр контаминации данных секвенирования</td>
   </tr>
   <tr>
-  <td>orientation</td>
+  <td>duplicate</td>
    <td>Соматическая</td>
    <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
-   <td>Фильтр смещения ориентации - смещения, возникающего из-за химического изменения нуклеотида во время
-    подготовки библиотеки, которое приводит к неправильному спариванию основанию (G с A, T c C и т.д.)
-    (артефакт секвенирования)</td>
-  </tr>
-  <tr>
-  <td>haplotype</td>
-   <td>Соматическая</td>
-   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
-   <td>Вариант расположен рядом с отфильтрованным вариантом того же гаплотипа</td>
-  </tr>
-  <tr>
-  <td>strict_strand</td>
-   <td>Соматическая</td>
-   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
-   <td>Доказательства наличия альтернативного аллеля не представлены в обоих направлениях прочтения</td>
-  </tr>
-  <tr>
-  <td>n_ratio</td>
-   <td>Соматическая</td>
-   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
-   <td>Отношение количества неизвестных нуклеотидов N к количеству альтернативных аллелей
-    превышает установленный порог</td>
-  </tr>
-  <tr>
-  <td>numt_chimera</td>
-   <td>Соматическая</td>
-   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
-   <td>Вариант, расположенный в ядерной копии гена мтДНК (NuMT), со слишком большим количеством прочтений,
-    поддерживающих альтернативный аллель, происходящих из аутосомы</td>
-  </tr>
-  <tr>
-  <td>low_allele_frac</td>
-   <td>Соматическая</td>
-   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
-   <td>Доля аллеля ниже установленного порога</td>
-  </tr>
-  <tr>
-  <td>numt_novel</td>
-   <td>Соматическая</td>
-   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
-   <td>Глубина альтернативного аллеля ниже ожидаемого покрытия ядерной копии гена мтДНК (NuMT) в аутосоме</td>
-  </tr>
-  <tr>
-  <td>possible_numt</td>
-   <td>Соматическая</td>
-   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
-   <td>Глубина аллеля ниже ожидаемого покрытия ядерной копии гена мтДНК (NuMT) в аутосоме</td>
-  </tr>
-  <tr>
-  <td>mt_many_low_hets</td>
-   <td>Соматическая</td>
-   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
-   <td>Фильтр сайтов с низкой гетероплазмией</td>
+   <td>Доказательства наличия альтернативного аллеля чрезмерно представлены очевидными дубликатами</td>
   </tr>
   <tr>
   <td>FAIL</td>
@@ -296,35 +162,10 @@ viii. **Caller Filters** (колонка "Фильтры детекции", ба
    <td>Ошибка сайта, если все аллели не проходят по разным причинам</td>
   </tr>
   <tr>
-  <td>SITE</td>
+  <td>fragment</td>
    <td>Соматическая</td>
    <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
-   <td>Ошибка сайта</td>
-  </tr>
-  <tr>
-  <td>QD</td>
-  <td>Герминальная</td>
-   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360037592191-QualByDepth">QualByDepth</a></td>
-   <td>Достоверность варианта (значение из поля QUAL), нормализованная по нефильтрованнной глубине аллеля (AD) варианта
-   в выборке вариантов с генотипом, отличным от hom-ref (homozygous/reference; генотип, при котором оба аллеля
-   являются референсными)</td>
-  </tr>
-  <tr>
-  <td>QUAL</td>
-  <td>Герминальная</td>
-   <td></td>
-   <td>Качество варианта - вероятность существования (по шкале Phred) варианта в этом сайте с учетом данных
-   секвенирования</td>
-  </tr>
-  <tr>
-  <td>SOR</td>
-  <td>Герминальная</td>
-   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036361772-StrandOddsRatio">StrandOddsRatio</a></td>
-   <td>Смещение цепей, оцененное с помощью симметричного теста отношения шансов. Смещение цепей - это тип
-   смещения последовательности, при котором предпочтение отдается одной цепи ДНК перед другой, что может привести
-   к неправильной оценке количества доказательств, наблюдаемых для одного аллеля по сравнению с другим.
-   StrandOddsRatio оценивает наличие смещения между прямыми и обратными цепями для референсного или альтернативного
-   аллеля (аллелей).</td>
+   <td>Разница медианных длин фрагментов прочтений, поддерживающих альтернативный и референсный аллели</td>
   </tr>
   <tr>
   <td>FS</td>
@@ -340,6 +181,36 @@ viii. **Caller Filters** (колонка "Фильтры детекции", ба
    "штрафовать" варианты, которые встречаются на концах экзонов. Варианты на концах экзонов, как правило,
    покрываются прочтениями только в одном направлении цепи, и FisherStrand дает таким вариантам плохую оценку, тогда
    как StrandOddsRatio учитывает соотношение прочтений, охватывающих оба аллеля.</td>
+  </tr>
+  <tr>
+  <td>germline</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Доказательства указывают на то, что этот сайт является герминальным, а не соматическим</td>
+  </tr>
+  <tr>
+  <td>haplotype</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Вариант расположен рядом с отфильтрованным вариантом того же гаплотипа</td>
+  </tr>
+  <tr>
+  <td>low_allele_frac</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Доля аллеля ниже установленного порога</td>
+  </tr>
+  <tr>
+  <td>LowQual</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Низкое качество</td>
+  </tr>
+  <tr>
+  <td>map_qual</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Среднее качество картирования прочтений, поддерживающих альтернативный аллель</td>
   </tr>
   <tr>
   <td>MQ</td>
@@ -360,6 +231,105 @@ viii. **Caller Filters** (колонка "Фильтры детекции", ба
    предполагает, что процесс секвенирования и/или картирования мог быть искажен артефактом.</td>
   </tr>
   <tr>
+  <td>mt_many_low_hets</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Фильтр сайтов с низкой гетероплазмией</td>
+  </tr>
+  <tr>
+  <td>multiallelic</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Мутация располагается в мультиаллельном сайте: слишком много альтернативных аллелей удовлетворяют
+   LOD score (вероятный признак артефакта)</td>
+  </tr>
+  <tr>
+  <td>n_ratio</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Отношение количества неизвестных нуклеотидов N к количеству альтернативных аллелей
+    превышает установленный порог</td>
+  </tr>
+  <tr>
+  <td>normal_artifact</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Нормальный артефакт: вариант, наблюдаемый в опухоли, также присутствует как артефакт в контрольном образце</td>
+  </tr>
+  <tr>
+   <td>Not available</td>
+   <td>Любая</td>
+   <td></td>
+   <td>Значение колонки неизвестно (точка в VCF-файле)</td>
+  </tr>
+  <tr>
+  <td>numt_chimera</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Вариант, расположенный в ядерной копии гена мтДНК (NuMT), со слишком большим количеством прочтений,
+    поддерживающих альтернативный аллель, происходящих из аутосомы</td>
+  </tr>
+  <tr>
+  <td>numt_novel</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Глубина альтернативного аллеля ниже ожидаемого покрытия ядерной копии гена мтДНК (NuMT) в аутосоме</td>
+  </tr>
+  <tr>
+  <td>orientation</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Фильтр смещения ориентации - смещения, возникающего из-за химического изменения нуклеотида во время
+    подготовки библиотеки, которое приводит к неправильному спариванию основанию (G с A, T c C и т.д.)
+    (артефакт секвенирования)</td>
+  </tr>
+  <tr>
+  <td>OTHER</td>
+   <td>Любая</td>
+   <td></td>
+   <td>Значение колонки не распознано</td>
+  </tr>
+  <tr>
+  <td>panel_of_normals</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Сайт находится в "черном списке" нормальной панели (PON). Как выбрать панель,
+   описано <a href="/settings/settings/variant-discovery-settings#panel-of-normal">здесь</a>.</td>
+  </tr>
+  <tr>
+   <td>PASS</td>
+   <td>Любая</td>
+   <td></td>
+   <td>Сайт содержит минимум один аллель, который удовлетворяет всем фильтрам</td>
+  </tr>
+  <tr>
+  <td>position</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Медианное расстояние альтернативных мутаций от конца прочтения</td>
+  </tr>
+  <tr>
+  <td>possible_numt</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Глубина аллеля ниже ожидаемого покрытия ядерной копии гена мтДНК (NuMT) в аутосоме</td>
+  </tr>
+  <tr>
+  <td>QD</td>
+  <td>Герминальная</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360037592191-QualByDepth">QualByDepth</a></td>
+   <td>Достоверность варианта (значение из поля QUAL), нормализованная по нефильтрованнной глубине аллеля (AD) варианта
+   в выборке вариантов с генотипом, отличным от hom-ref (homozygous/reference; генотип, при котором оба аллеля
+   являются референсными)</td>
+  </tr>
+  <tr>
+  <td>QUAL</td>
+  <td>Герминальная</td>
+   <td></td>
+   <td>Качество варианта - вероятность существования (по шкале Phred) варианта в этом сайте с учетом данных
+   секвенирования</td>
+  </tr>
+  <tr>
   <td>READ_POS_RANK_SUM</td>
    <td>Герминальная</td>
    <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360042914711-ReadPosRankSumTest">ReadPosRank- SumTest</a></td>
@@ -371,17 +341,47 @@ viii. **Caller Filters** (колонка "Фильтры детекции", ба
    положении в любом случае указывает на то, что процесс секвенирования мог быть искажен артефактом.</td>
   </tr>
   <tr>
-  <td>CNN_2D</td>
-   <td>Герминальная</td>
-   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360037226672-CNNScoreVariants">CNNScoreVariants</a></td>
-   <td>Фильтрация на основе оценок предварительно обученной сверточной нейронной сети (convolutional neural
-   network; CNN) 2D</td>
+  <td>SITE</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Ошибка сайта</td>
   </tr>
   <tr>
-  <td>OTHER</td>
-   <td>Любая</td>
-   <td></td>
-   <td>Значение колонки не распознано</td>
+  <td>slippage</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Фильтр ошибок проскальзывания полимеразы в ходе ДНК-репликации (предсказывается по количеству и длине
+   коротких тандемных повторов (STR))</td>
+  </tr>
+  <tr>
+  <td>SOR</td>
+  <td>Герминальная</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036361772-StrandOddsRatio">StrandOddsRatio</a></td>
+   <td>Смещение цепей, оцененное с помощью симметричного теста отношения шансов. Смещение цепей - это тип
+   смещения последовательности, при котором предпочтение отдается одной цепи ДНК перед другой, что может привести
+   к неправильной оценке количества доказательств, наблюдаемых для одного аллеля по сравнению с другим.
+   StrandOddsRatio оценивает наличие смещения между прямыми и обратными цепями для референсного или альтернативного
+   аллеля (аллелей).</td>
+  </tr>
+  <tr>
+  <td>strand_bias</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Фильтр смещения цепей - смещения последовательности, при котором предпочтение отдается одной цепи ДНК
+   перед другой, что может привести к неправильной оценке количества доказательств, наблюдаемых для одного
+   аллеля по сравнению с другим (артефакт секвенирования)</td>
+  </tr>
+  <tr>
+  <td>strict_strand</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Доказательства наличия альтернативного аллеля не представлены в обоих направлениях прочтения</td>
+  </tr>
+  <tr>
+  <td>weak_evidence</td>
+   <td>Соматическая</td>
+   <td><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036453092-FilterMutectCalls">FilterMutectCalls</a></td>
+   <td>Мутация не соответствует порогу вероятности</td>
   </tr>
 </table>
 </details>
@@ -402,17 +402,19 @@ x. **ClinVar: Allele origin** - фильтрация по происхожден
 * Tested inconclusive - варианты, для которых нет результатов проверки происхождения;
 * Other - варианты с другим типом происхождения.
 
-xi. **Conservation: [консервативный скор] confidence value** - фильтрация по значению достоверности различных
-консервативных скоров (Integrated, GM12878, H1-hESC, HUVEC): Highly significant; Significant; Informative; Other.
+xi. **Conservation: [ОК] confidence value** - фильтрация по значению достоверности различных
+оценок консервативности: Highly significant; Significant; Informative; Other,
+где **[ОК]** - оценка консервативности: Integrated, GM12878, H1-hESC, HUVEC.
 
-xii. **Protein function effect: [алгоритм предсказания] prediction** -
-фильтрация по результатам предсказания эффекта аминокислотной замены на функцию белка, полученным с помощью
-различных алгоритмов и программ ([Polyphen](http://genetics.bwh.harvard.edu/pph/pph_help.html),
+xii. **Protein function effect: [АП] prediction** - фильтрация по результатам предсказания
+эффекта аминокислотной замены на функцию белка, полученным с помощью
+различных алгоритмов и программ, где **[АП]** - алгоритм
+предсказания: [PolyPhen](http://genetics.bwh.harvard.edu/pph2/),
 [SIFT4G](https://sift.bii.a-star.edu.sg/sift4g/), LRT, [FAtHMM](http://fathmm.biocompute.org.uk/),
 [Provean](http://provean.jcvi.org/index.php), [Meta SVM](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5270233/),
 Meta LR, [M-CAP](http://bejerano.stanford.edu/mcap/),
 [Primate AI](https://illumina.github.io/NirvanaDocumentation/3.14/data-sources/primate-ai/),
-[FAtHMM-MK](http://fathmm.biocompute.org.uk/), [FAtHMM-XF](http://fathmm.biocompute.org.uk/)).
+[FAtHMM-MK](http://fathmm.biocompute.org.uk/), [FAtHMM-XF](http://fathmm.biocompute.org.uk/).
 
 xiii. **Other: APPRIS annotation** - фильтрация по изоформам сплайсинга человека
 (аннотация базы данных [APPRIS](http://appris.bioinfo.cnio.es)): Principal 1-5; Alternative 1-2.
@@ -527,71 +529,100 @@ xiv. **Trio GT (Genotype)** - фильтрация по наследованию
     [gnomAD](https://gnomad.broadinstitute.org/) (положительное рациональное число).
     7. **GnomAD: Number of Homozygotes** - фильтрация по количеству гомозигот в базе
     [gnomAD](https://gnomad.broadinstitute.org/) (натуральное число).
-    8. **GnomAD: [популяция] AF / XY/XX samples AF / Number of Homozygotes** - фильтрация по суммарной
-    частоте аллеля (AF), частотам в подпопуляциях XX, XY или количеству гомозигот в различных популяциях (Ashkenazi
-    Jewish, Amish, African and African American, Finnish, South Asian, Latino, Non-Finnish european, East Asian, Middle
-    Eastern, Other) в базе [gnomAD](https://gnomad.broadinstitute.org/) (положительное рациональное число).
-    9. **Conservation: [программа предсказания] rankscore / score / neutral value** -
-    фильтрация по консервативным скорам, полученным с помощью предсказания различными программами
-    ([FitCons](http://compgen.cshl.edu/fitCons/),
+    8. **GnomAD: [П] AF** - фильтрация по суммарной частоте аллеля (AF) в различных популяциях в
+    базе [gnomAD](https://gnomad.broadinstitute.org/) (положительное рациональное число),
+    где **[П]** - популяция: Ashkenazi Jewish, Amish, African and African American, Finnish, South Asian, Latino,
+    Non-Finnish european, East Asian, Middle Eastern, Other.
+    9. **GnomAD: [П] XY/XX samples AF** - фильтрация по частотам в подпопуляциях XY или XX в различных популяциях в
+    базе [gnomAD](https://gnomad.broadinstitute.org/) (положительное рациональное число),
+    где **[П]** - популяция: Ashkenazi Jewish, Amish, African and African American, Finnish, South Asian, Latino,
+    Non-Finnish european, East Asian, Middle Eastern, Other.
+    10. **GnomAD: [П] Number of Homozygotes** - фильтрация по количеству гомозигот в различных популяциях в
+    базе [gnomAD](https://gnomad.broadinstitute.org/) (положительное рациональное число),
+    где **[П]** - популяция: Ashkenazi Jewish, Amish, African and African American, Finnish, South Asian, Latino,
+    Non-Finnish european, East Asian, Middle Eastern, Other.
+    11. **Conservation: \[ПП] \[ОК]** -
+    фильтрация по оценкам консервативности, полученным с помощью предсказания различными программами
+    (положительное рациональное число),
+    где **[ПП]** - программа предсказания: [FitCons](http://compgen.cshl.edu/fitCons/),
     [GERP++](http://mendel.stanford.edu/sidowlab/downloads/gerp/index.html),
     [PhyloP](https://ccg.epfl.ch/mga/hg19/phylop/phylop.html),
     [PhastCons](http://compgen.cshl.edu/phast/phastCons-HOWTO.html),
-    [SiPhy](http://portals.broadinstitute.org/genome_bio/siphy/documentation.html), BStatistic)
-    (положительное рациональное число).
-    10. **Conservation: [ pA / pG / pC / pT ]** - фильтрация по стационарному распределению аллелей A, G, C или T
-    в сайте, оцененному с помощью алгоритма
-    [SiPhy](http://portals.broadinstitute.org/genome_bio/siphy/documentation.html) (положительное рациональное число).
-    11. **ExAC: Allele frequency** - фильтрация по суммарной частоте аллеля в базе
+    [SiPhy](http://portals.broadinstitute.org/genome_bio/siphy/documentation.html), BStatistic,
+    и **[ОК]** - оценка консервативности: rankscore, score, neutral value.
+    12. **Conservation: [РА]** - фильтрация по стационарному распределению аллелей в сайте,
+    оцененному с помощью алгоритма
+    [SiPhy](http://portals.broadinstitute.org/genome_bio/siphy/documentation.html) (положительное рациональное число),
+    где **[РА]** - распределение аллейлей A, G, C или T: pA, pG, pC, pT.
+    13. **ExAC: Allele frequency** - фильтрация по суммарной частоте аллеля в базе
     [ExAC](http://exac.broadinstitute.org/) (положительное рациональное число).
-    12. **ExAC: Allele count** - фильтрация по количеству альтернативного аллеля
+    14. **ExAC: Allele count** - фильтрация по количеству альтернативного аллеля
     в базе [ExAC](http://exac.broadinstitute.org/) (натуральное число).
-    13. **ExAC: Adjusted AF** - фильтрация по частоте аллеля в популяции с качеством генотипа ≥20 и
+    15. **ExAC: Adjusted AF** - фильтрация по частоте аллеля в популяции с качеством генотипа ≥20 и
     глубиной ≥10 в базе [ExAC](http://exac.broadinstitute.org/) (положительное рациональное число).
-    14. **ExAC: Adjusted allele count** - фильтрация по количеству альтернативного аллеля в популяции с качеством
+    16. **ExAC: Adjusted allele count** - фильтрация по количеству альтернативного аллеля в популяции с качеством
     генотипа ≥20 и глубиной ≥10 в базе [ExAC](http://exac.broadinstitute.org/) (натуральное число).
-    15. **ExAC: [популяция] AF / allele count** - фильтрация по суммарной частоте аллеля (AF) или
-    количеству альтернативного аллеля в различных популяциях (African & African American, American, East Asian,
-    Finnish, Non-Finnish European, South Asian) в базе [ExAC](http://exac.broadinstitute.org/) (положительное
-    рациональное число).
-    16. **ExAC: [когорта] AF / Allele count / adjusted AF / adjusted allele count** - фильтрация по
-    суммарной частоте аллеля (AF), количеству альтернативного аллеля или частоте аллеля или количеству альтернативного
-    аллеля в популяции с качеством генотипа ≥20 и глубиной ≥10 в различных когортах (Non-TCGA, Non-Psych) в базе
-    [ExAC](http://exac.broadinstitute.org/) (положительное рациональное число для AF и натуральное число для allele
-    count).
-    17. **ExAC: \[когорта] \[популяция] AF / allele count** - фильтрация по суммарной частоте аллеля
-    (AF) или количеству альтернативного аллеля в различных популяциях (African & African American, American, East Asian,
-    Finnish, Non-Finnish European, South Asian) в различных когортах (Non-TCGA, Non-Psych) в базе
-    [ExAC](http://exac.broadinstitute.org/) (положительное рациональное число для AF и натуральное число для allele
-    count).
-    18. **Protein function effect: [алгоритм предсказания] rankscore / score / omega / p-value** - фильтрация по скорам
+    17. **ExAC: [П] AF** - фильтрация по суммарной частоте аллеля (AF)
+    в различных популяциях в базе [ExAC](http://exac.broadinstitute.org/)
+    (положительное рациональное число), где **[П]** - популяция: African & African American, American, East Asian,
+    Finnish, Non-Finnish European, South Asian.
+    18. **ExAC: [П] allele count** - фильтрация по количеству альтернативного аллеля в различных популяциях
+    в базе [ExAC](http://exac.broadinstitute.org/) (положительное рациональное число),
+    где **[П]** - популяция: African & African American, American, East Asian,
+    Finnish, Non-Finnish European, South Asian.
+    19. **ExAC: [К] AF** - фильтрация по суммарной частоте аллеля (AF) в различных когортах
+    в базе [ExAC](http://exac.broadinstitute.org/) (положительное рациональное число),
+    где **[К]** - когорта: Non-TCGA, Non-Psych.
+    20. **ExAC: [К] Allele count** - фильтрация по количеству альтернативного аллеля в различных когортах
+    в базе [ExAC](http://exac.broadinstitute.org/) (натуральное число), где **[К]** - когорта: Non-TCGA, Non-Psych.
+    21. **ExAC: [К] adjusted AF** - фильтрация по частоте аллеля (AF) в популяции с качеством генотипа ≥20 и
+    глубиной ≥10 в различных когортах в базе [ExAC](http://exac.broadinstitute.org/) (положительное рациональное
+    число), где **[К]** - когорта: Non-TCGA, Non-Psych.
+    22. **ExAC: [К] adjusted allele count** - фильтрация по количеству альтернативного аллеля в популяции с
+    качеством генотипа ≥20 и глубиной ≥10в различных когортах
+    в базе [ExAC](http://exac.broadinstitute.org/) (натуральное число), где **[К]** - когорта: Non-TCGA, Non-Psych.
+    23. **ExAC: \[К] \[П] AF** - фильтрация по суммарной частоте аллеля (AF) в различных популяциях в
+    различных когортах в базе [ExAC](http://exac.broadinstitute.org/) (положительное рациональное число),
+    где **[К]** - когорта: Non-TCGA, Non-Psych, и **[П]** - популяция: African & African American, American,
+    East Asian, Finnish, Non-Finnish European, South Asian.
+    24. **ExAC: \[К] \[П] allele count** - фильтрация по количеству альтернативного аллеля в различных популяциях в
+    различных когортах в базе [ExAC](http://exac.broadinstitute.org/) (натуральное число),
+    где **[К]** - когорта: Non-TCGA, Non-Psych, и **[П]** - популяция: African & African American, American,
+    East Asian, Finnish, Non-Finnish European, South Asian.
+    25. **Protein function effect: \[АП] \[ОП]** - фильтрация по оценкам
     предсказания эффекта аминокислотной замены на функцию белка, полученным с помощью различных алгоритмов и программ
-    ([SIFT](https://sift.bii.a-star.edu.sg/), [Polyphen](http://genetics.bwh.harvard.edu/pph/pph_help.html),
+    (положительное рациональное число),
+    где **[АП]** - алгоритм предсказания: [SIFT](https://sift.bii.a-star.edu.sg/),
+    [PolyPhen](http://genetics.bwh.harvard.edu/pph2/),
     [SIFT4G](https://sift.bii.a-star.edu.sg/sift4g/), LRT, MutationAssessor,
     [FAtHMM](http://fathmm.biocompute.org.uk/), [Provean](http://provean.jcvi.org/index.php),
     [Meta SVM](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5270233/), Meta LR,
     [M-CAP](http://bejerano.stanford.edu/mcap/), [MutPred](http://mutpred.mutdb.org/), MVP, MPC,
     [Primate AI](https://illumina.github.io/NirvanaDocumentation/3.14/data-sources/primate-ai/), DEOGEN2,
     [DANN](https://cbcl.ics.uci.edu/public_data/DANN/),
-    [FAtHMM-MKL](http://fathmm.biocompute.org.uk/), [FAtHMM-XF](http://fathmm.biocompute.org.uk/), Eigen)
-    (положительное рациональное число).
-    19. **Other frequencies: 1000G Allele frequency** - фильтрация по суммарной частоте аллеля
+    [FAtHMM-MKL](http://fathmm.biocompute.org.uk/), [FAtHMM-XF](http://fathmm.biocompute.org.uk/), Eigen,
+    и **[ОП]** - оценка предсказания: rankscore / score / omega / p-value.
+    26. **Other frequencies: 1000G Allele frequency** - фильтрация по суммарной частоте аллеля
     из [проекта 1000 Genomes](https://www.internationalgenome.org/) (положительное рациональное число).
-    20. **Other frequencies: 1000G [популяция] AF / allele count** - фильтрация по суммарной частоте аллеля или
-    количеству альтернативного аллеля в различных популяциях (East Asian, European, African, American, South Asian,
-    African American, European American) из [проекта 1000 Genomes](https://www.internationalgenome.org/)
-    (положительное рациональное число для AF и натуральное число для allele count).
-    21. **Other frequencies: UK10K allele frequency** - фильтрация по суммарной частоте аллеля в комбинированных
+    27. **Other frequencies: 1000G [П] AF** - фильтрация по суммарной частоте аллеля (AF) в различных популяциях
+    из [проекта 1000 Genomes](https://www.internationalgenome.org/) (положительное рациональное число), где
+    **[П]** - популяция: East Asian, European, African, American, South Asian, African American, European American.
+    28. **Other frequencies: 1000G [П] allele count** - фильтрация по количеству альтернативного аллеля в различных
+    популяциях из [проекта 1000 Genomes](https://www.internationalgenome.org/) (натуральное число), где
+    **[П]** - популяция: East Asian, European, African, American, South Asian, African American, European American.
+    29. **Other frequencies: UK10K allele frequency** - фильтрация по суммарной частоте аллеля в комбинированных
     генотипах в когорте UK10K из [проекта UK10K](https://www.uk10k.org/) (положительное рациональное число).
-    22. **Other frequencies: UK10K allele count** - фильтрация по количеству альтернативного аллеля в комбинированных
+    30. **Other frequencies: UK10K allele count** - фильтрация по количеству альтернативного аллеля в комбинированных
     генотипах в когорте UK10K из [проекта UK10K](https://www.uk10k.org/) (натуральное число).
-    23. **Other frequencies: UK10K [когорта] AF / allele count** - фильтрация по суммарной частоте аллеля или
-    количеству альтернативного аллеля в комбинированных генотипах в различных когортах (TwinsUK, ALSPAC) из
-    [проекта UK10K](https://www.uk10k.org/) (положительное рациональное число для AF и натуральное число для
-    allele count).
-    24. **Other: Coding sequence position** - фильтрация по позиции в кодирующей области (натуральное число).
-    25. **Other: Protein position** - фильтрация по позиции в белке (натуральное число).
-    26. **Other: Amino acid position** - фильтрация по позиции в аминокислоте (натуральное число).
+    31. **Other frequencies: UK10K [К] AF** - фильтрация по суммарной частоте аллеля (AF) в комбинированных
+    генотипах в различных когортах из [проекта UK10K](https://www.uk10k.org/) (положительное рациональное число),
+    где **[К]** - когорта: TwinsUK, ALSPAC.
+    32. **Other frequencies: UK10K [К] allele count** - фильтрация по количеству альтернативного аллеля в
+    комбинированных генотипах в различных когортах из [проекта UK10K](https://www.uk10k.org/) (натуральное число),
+    где **[К]** - когорта: TwinsUK, ALSPAC.
+    33. **Other: Coding sequence position** - фильтрация по позиции в кодирующей области (натуральное число).
+    34. **Other: Protein position** - фильтрация по позиции в белке (натуральное число).
+    35. **Other: Amino acid position** - фильтрация по позиции в аминокислоте (натуральное число).
 
 ### 5. Фильтры с вводом любого значения {#any-value-filters}
 
@@ -653,8 +684,8 @@ xiv. **Trio GT (Genotype)** - фильтрация по наследованию
     частью гаплотипа, в различных базах данных ([Orphanet](https://www.orpha.net/consor/cgi-bin/index.php),
     [MedGen](https://www.ncbi.nlm.nih.gov/medgen/), [MONDO](https://monarchinitiative.org/),
     [OMIM](https://www.omim.org/) и др.)
-    12. **ClinVar: Review status** - фильтрация по суммарной оценке источника данных, в котором заявлена клиническая
-    значимость фенотипа, для варианта. Возможные варианты значений и их определения можно посмотреть
+    12. **ClinVar: Review status** - фильтрация по суммарной оценке для варианта источника данных,
+    в котором заявлена клиническая значимость фенотипа. Возможные варианты значений и их определения можно посмотреть
     [тут](https://preview.ncbi.nlm.nih.gov/clinvar/docs/variation_report/#review_status).
     13. **ClinVar: Cross references** - фильтрация по ссылкам на вариант в различных базах данных
     ([ClinGen](https://reg.clinicalgenome.org/redmine/projects/registry/genboree_registry/landing),
@@ -677,7 +708,7 @@ xiv. **Trio GT (Genotype)** - фильтрация по наследованию
     23. **Other: GTEx v7 Gene** - фильтрация по гену из [GTEx](https://www.gtexportal.org/).
     24. **Other: GTEx v7 Tissue** - фильтрация по ткани из [GTEx](https://www.gtexportal.org/).
     25. **Other: Geuvadis EQTL target gene** - фильтрация по гену из анализа eQTL данных
-    [GEUVADIS](http://www.geuvadis.org/).
+    [GEUVADIS](https://www.biorxiv.org/content/10.1101/008797v1).
 
 ### 6. Фильтр по HPO {#hpo-filter}
 
@@ -920,8 +951,8 @@ xiv. **Trio GT (Genotype)** - фильтрация по наследованию
 </p>
 
 В таком случае можно ***свернуть*** условия запроса,
-нажав на <img src={require('/img/vv/hide.png').default} width="20"/>. Тогда будут показаны только
-начальные условия запроса:
+нажав на кнопку <img src={require('/img/vv/hide.png').default} width="20"/>, расположенную справа от
+кнопки *Очистки всех условий фильтрации*. Тогда будут показаны только начальные условия запроса:
 
 <p align="center">
 <img src={require('/img/vv/hidden.png').default} width="900"/>

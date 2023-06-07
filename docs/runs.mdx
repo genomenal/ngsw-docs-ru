@@ -135,7 +135,7 @@ import RecognizePair from '/docs/imported_components/_recognize_pair.mdx';
 или BAM: <img src={require('/img/rus/tumor_analysis.png').default} width="120"/>
 - Плитки прогресса анализа неопухолевого образца в формате FASTQ
 или BAM: <img src={require('/img/rus/normal_analysis.png').default} width="120"/>
-- Плитки прогресса анализа образца в формате VSF, TXT
+- Плитки прогресса анализа образца в формате VCF, TXT
 или TSV: <img src={require('/img/rus/vcf_analysis.png').default} width="50"/>
 4. **Интерпретация** - информация о количестве обнаруженных в образце
 и [добавленных в отчёт](/results/main/snvs-indels/variant-viewer#include-to-report) вариантов
@@ -143,8 +143,8 @@ import RecognizePair from '/docs/imported_components/_recognize_pair.mdx';
 (патогенных: <img src={require('/img/results/pathogenic.png').default} width="48"/>,
 вероятно патогенных: <img src={require('/img/results/likely_pathogenic.png').default} width="48"/>,
 неопределенной значимости: <img src={require('/img/results/uncertain.png').default} width="48"/>,
-доброкачественных: <img src={require('/img/results/benign.png').default} width="48"/>,
-вероятно доброкачественных: <img src={require('/img/results/likely_benign.png').default} width="48"/>).
+вероятно доброкачественных: <img src={require('/img/results/likely_benign.png').default} width="48"/>,
+доброкачественных: <img src={require('/img/results/benign.png').default} width="48"/>).
 Отображается, только если [интерпретация образца была завершена](/runs#sample-interpretation).
 Если интерпретация была не завершена, но варианты с определенным классом патогенности были добавлены в отчёт,
 вывод интерпретации будет "Интерпретация не завершена". Если интерпретация образца была завершена,
@@ -295,8 +295,8 @@ Viewer запуска, и наоборот.
 (патогенных: <img src={require('/img/results/pathogenic.png').default} width="48"/>,
 вероятно патогенных: <img src={require('/img/results/likely_pathogenic.png').default} width="48"/>,
 неопределенной значимости: <img src={require('/img/results/uncertain.png').default} width="48"/>,
-доброкачественных: <img src={require('/img/results/benign.png').default} width="48"/>,
-вероятно доброкачественных: <img src={require('/img/results/likely_benign.png').default} width="48"/>).
+вероятно доброкачественных: <img src={require('/img/results/likely_benign.png').default} width="48"/>,
+доброкачественных: <img src={require('/img/results/benign.png').default} width="48"/>).
 Если никакие варианты с определенным классом патогенности не были добавлены в отчёт,
 то вывод интерпретации будет следующим: "Патогенных вариантов не обнаружено".
 

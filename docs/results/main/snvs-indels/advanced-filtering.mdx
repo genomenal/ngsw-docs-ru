@@ -97,15 +97,23 @@ v. **Pathogenicity** (колонка/базовый фильтр "Патоген
 * Benign - Доброкачественный;
 * Undefined - Нет интерпретации.
 
-vi. **Chromosome** ("Позиция") - фильтрация по хромосоме, в которой расположен вариант: chr1-chr22, chrX,
+vi. **Label** (колонка/базовый фильтр "Метка") - фильтрация вариантов
+по [их значимости, определенной пользователем](/results/main/snvs-indels/variant-viewer#label):
+- High significance - Высокая значимость;
+- Moderate significance - Средняя значимость;
+- Low significance - Низкая значимость;
+- Sequencing error - Ошибка секвенирования;
+- Undefined - Неопределенная значимость.
+
+vii. **Chromosome** ("Позиция") - фильтрация по хромосоме, в которой расположен вариант: chr1-chr22, chrX,
 chrY, chrM, хромосомы вида chrN\_random (контиги, расположенные в хромосоме N, которые невозможно с уверенностью
 разместить на этой хромосоме, или последовательности альтернативных гаплотипов), хромосомы вида chrUn_
 (контиги, которые нельзя с уверенностью разместить на конкретной хромосоме), chrEBV.
 
-vii. **Origin** (колонка/базовый фильтр "Тип мутации") - фильтрация по типу мутации: Somatic (соматическая),
+viii. **Origin** (колонка/базовый фильтр "Тип мутации") - фильтрация по типу мутации: Somatic (соматическая),
 Germline (герминальная).
 
-viii. **Caller Filters** (колонка "Фильтры детекции", базовый фильтр "Фильтры") - фильтрация по фильтрам
+ix. **Caller Filters** (колонка "Фильтры детекции", базовый фильтр "Фильтры") - фильтрация по фильтрам
 вариантов GATK.
 
 <details>
@@ -386,11 +394,11 @@ viii. **Caller Filters** (колонка "Фильтры детекции", ба
 </table>
 </details>
 
-ix. **ClinVar: Clinical significance** (колонка/базовый фильтр "ClinVar") - фильтрация по клинической значимости
+x. **ClinVar: Clinical significance** (колонка/базовый фильтр "ClinVar") - фильтрация по клинической значимости
 вариантов (определение значений можно посмотреть
 [тут](https://www.ncbi.nlm.nih.gov/clinvar/docs/clinsig/#clinsig_options_scv)).
 
-x. **ClinVar: Allele origin** - фильтрация по происхождению аллеля варианта:
+xi. **ClinVar: Allele origin** - фильтрация по происхождению аллеля варианта:
 * Unknown - варианты неизвестного происхождения;
 * Germline - варианты герминального происхождения;
 * Somatic - варианты соматического происхождения;
@@ -402,11 +410,11 @@ x. **ClinVar: Allele origin** - фильтрация по происхожден
 * Tested inconclusive - варианты, для которых нет результатов проверки происхождения;
 * Other - варианты с другим типом происхождения.
 
-xi. **Conservation: [ОК] confidence value** - фильтрация по значению достоверности различных
+xii. **Conservation: [ОК] confidence value** - фильтрация по значению достоверности различных
 оценок консервативности: Highly significant; Significant; Informative; Other,
 где **[ОК]** - оценка консервативности: Integrated, GM12878, H1-hESC, HUVEC.
 
-xii. **Protein function effect: [АП] prediction** - фильтрация по результатам предсказания
+xiii. **Protein function effect: [АП] prediction** - фильтрация по результатам предсказания
 эффекта аминокислотной замены на функцию белка, полученным с помощью
 различных алгоритмов и программ, где **[АП]** - алгоритм
 предсказания: [PolyPhen](http://genetics.bwh.harvard.edu/pph2/),
@@ -416,10 +424,10 @@ Meta LR, [M-CAP](http://bejerano.stanford.edu/mcap/),
 [Primate AI](https://illumina.github.io/NirvanaDocumentation/3.14/data-sources/primate-ai/),
 [FAtHMM-MK](http://fathmm.biocompute.org.uk/), [FAtHMM-XF](http://fathmm.biocompute.org.uk/).
 
-xiii. **Other: APPRIS annotation** - фильтрация по изоформам сплайсинга человека
+xiv. **Other: APPRIS annotation** - фильтрация по изоформам сплайсинга человека
 (аннотация базы данных [APPRIS](http://appris.bioinfo.cnio.es)): Principal 1-5; Alternative 1-2.
 
-xiv. **Trio GT (Genotype)** - фильтрация по наследованию вариантов: *De novo* варианты,
+xv. **Trio GT (Genotype)** - фильтрация по наследованию вариантов: *De novo* варианты,
 Новые гомозиготы (гомозиготы по локусам у пробанда, которые гетерозиготны у родителей) или
 Наследованные от одного родителя. Доступен только в
 семейном [групповом анализе](/group-analysis#group-analysis-variant-viewer) в

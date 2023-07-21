@@ -165,17 +165,17 @@ Variant Viewer образца (по умолчанию открывается б
 в которых они были выявлены, (завершена или не завершена).
 Отображается только в [Variant Viewer запуска](/runs#sample-interpretation-status-filter).
 - **Тип мутации** - фильтр вариантов по типу: Somatic (соматические) или Germline (герминальные).
-Добавлен [по умолчанию](/results/main/snvs-indels/basic-filtering#basic-filtering-columns).
+Добавлен [по умолчанию](/results/main/snvs-indels/basic-filtering#origin).
 Не отображается в базовом режиме поиска в
 [Variant Viewer с герминальными мутациями](/results/main/snvs-indels/variant-viewer)
 и в [Variant Viewer группового анализа](/group-analysis#group-analysis-variant-viewer).
 - **Панель генов** - фильтр вариантов по [панели генов](/settings/gene-panels).
-Добавлен [по умолчанию](/results/main/snvs-indels/basic-filtering#basic-filtering-columns).
+Добавлен [по умолчанию](/results/main/snvs-indels/basic-filtering#gene-panel).
 - **Ген** - фильтр вариантов по транскриптам генов, в которых они расположены.
-Добавлен [по умолчанию](/results/main/snvs-indels/basic-filtering#basic-filtering-columns).
-- **Human Phenotype Ontology** (HPO) - фильтр вариантов по ассоциации с термином из словаря фенотипических
-аномалий человека <a href="https://www.ebi.ac.uk/ols/ontologies/hp">HPO</a>.
-Добавлен [по умолчанию](/results/main/snvs-indels/basic-filtering#basic-filtering-columns).
+Добавлен [по умолчанию](/results/main/snvs-indels/basic-filtering#gene).
+- **Human Phenotype Ontology** (HPO) - фильтр вариантов по генам, ассоциированным с терминами
+из словаря фенотипических аномалий человека <a href="https://www.ebi.ac.uk/ols/ontologies/hp">HPO</a>.
+Добавлен [по умолчанию](/results/main/snvs-indels/basic-filtering#hpo).
 - **Патогенность** - фильтр вариантов по [патогенности](/results/main/snvs-indels/pathogenicity),
 определенной [пользователем самостоятельно](/results/main/snvs-indels/pathogenicity#manually-determined-pathogenicity),
 [по критериям ACMG](/results/main/snvs-indels/pathogenicity#define-pathogenicity-on-acmg-tab)
@@ -480,7 +480,7 @@ Variant Viewer образца (по умолчанию открывается б
 </details>
 
 - **Минимальный уровень глубины** - шкала фильтрации вариантов по минимальному уровеню глубины
-секвенирования. Добавлена [по умолчанию](/results/main/snvs-indels/basic-filtering#basic-filtering-columns).
+секвенирования. Добавлена [по умолчанию](/results/main/snvs-indels/basic-filtering#depth-scale).
 
 <p align="center">
 <img src={require('/img/vv/seq_depth.png').default} width="350"/>

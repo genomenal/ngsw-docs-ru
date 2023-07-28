@@ -755,6 +755,11 @@ import Highlight from '@site/src/components/HighlightBlackText';
 Варианты, являющиеся частью фазовой группы с совпадающей
 аминокислотной заменой, обозначены <img src={require('/img/vv/variant_same_change.png').default} width="35"/>,
 а с несовпадающей - <img src={require('/img/vv/variant_different_change.png').default} width="35"/>.
+- Колонка "**Онкозначимость**" содержит
+кнопку <img src={require('/img/vv/onco_relevance_btn.png').default} width="30"/>, если вариант является
+[онкозначимым](/results/main/snvs-indels/onco-relevance), т.е. ассоциирован с развитием онкологических заболеваний.
+Кнопка открывает [вкладку "Клинические рекомендации"](/results/main/snvs-indels/onco-relevance#clinical-guidelines)
+страницы детальной информации о варианте.
 - Колонка "**Фильтры детекции**" содержит информацию о качестве варианта:<br></br>1.
 PASS - сайт содержит минимум один аллель, который удовлетворяет всем
 фильтрам. Ячейка раскрашена <Highlight color="#DEF1DB">зелёным</Highlight>.<br></br>2.

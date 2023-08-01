@@ -188,7 +188,7 @@ chr15:48505117 CA>AG (включает 2 варианта).
 ### Gene {#gene}
 
 <p align="center">
-<img src={require('/img/vv/gene_tab.png').default} width="800"/>
+<img src={require('/img/vv/gene_tab.png').default} width="900"/>
 </p>
 
 Вкладка содержит основную информация [о гене](/results/main/snvs-indels/snv-details-panel#gene-info)
@@ -220,8 +220,26 @@ chr15:48505117 CA>AG (включает 2 варианта).
 
 #### 2. Транскрипты {#transcripts}
 
-Таблица со всеми транскриптами гена из базы [Ensembl](https://www.ensembl.org/Homo_sapiens/Info/Index) со следующими
-колонками:
+На панели доступны транскрипты гена из двух баз данных: [Ensembl](https://www.ensembl.org/Homo_sapiens/Info/Index)
+и [RefSeq](https://www.ncbi.nlm.nih.gov/nuccore/).
+Модели транскриптов Ensembl аннотируются непосредственно на референсном геноме, а RefSeq аннотирует
+последовательности мРНК. Из-за различий в последовательностях между референсными геномами и отдельными мРНК
+некоторые из мРНК RefSeq могут не полностью сопоставляться с референсным геномом.
+
+По умолчанию показана таблица с транскриптами из Ensembl. Чтобы перейти к таблице
+с транскриптами из RefSeq, нажмите на соответствующую кнопку переключателя:
+
+<p align="center">
+<img src={require('/img/vv/refseq_transcripts.png').default} width="700"/>
+</p>
+
+:::note На заметку
+На [странице "Настройки пользователя"](/settings/profile#transcripts)
+можно выбрать, какая из моделей транскриптов генов будет показана по умолчанию.
+:::
+
+Таблица транскриптов гена из базы [Ensembl](https://www.ensembl.org/Homo_sapiens/Info/Index) имеет следующие
+колонки:
 - ***Transcript*** - идентификатор транскрипта из базы [Ensembl](https://www.ensembl.org/Homo_sapiens/Info/Index)
 (ENSTxxxxxxxxxxx). Для первого, основного транскрипта также приведен транскрипт
 из [RefSeq](https://www.ncbi.nlm.nih.gov/nuccore/) (NM_xxxxxx.x).
@@ -240,6 +258,20 @@ import Highlight from '@site/src/components/Highlight';
 Значение эффекта HIGH раскрашено <Highlight color="#E95726">красным</Highlight>,
 MODERATE - <Highlight color="#E2CC81">жёлтым</Highlight>, а LOW и
 MODIFIER - <Highlight color="#999AAB">серым</Highlight>.
+- ***HGVSp*** - аминокислотная замена в [номенклатуре HGVS](https://varnomen.hgvs.org/): префикс “p.” (protein) +
+референсная аминокислота + позиция аминокислоты в белке + новая аминокислота, получившаяся в результате замены.
+- ***HGVSc*** - нуклеотидная замена в [номенклатуре HGVS](https://varnomen.hgvs.org/): префикс “c.” (coding;
+для замены в кодирующей последовательности ДНК) или “n.” (non-coding; для замены в некодирующей последовательности
+ДНК) + геномная позиция замещенного нуклеотида + референсный аллель > альтернативный аллель.
+
+Таблица транскриптов гена из базы [RefSeq](https://www.ncbi.nlm.nih.gov/nuccore/) имеет следующие
+колонки:
+- ***RefSeq Transcript*** - идентификатор транскрипта из базы [RefSeq](https://www.ncbi.nlm.nih.gov/nuccore/)
+(NM_xxxxxx.x). Основной транскрипт гена, согласно [MANE Select](https://www.ncbi.nlm.nih.gov/refseq/MANE/#Select),
+[MANE plus clinical](https://www.ncbi.nlm.nih.gov/refseq/MANE/#:~:text=MANE%20Plus%20Clinical%3A%20The%20MANE,variants%20available%20in%20public%20resources.)
+или [Ensembl canonical](https://www.ensembl.org/info/genome/genebuild/canonical.html),
+отмечен <img src={require('/img/vv/main_transcript.png').default} width="20"/>. Транскрипт гена,
+выбранный основным для этого варианта, выделен рамкой.
 - ***HGVSp*** - аминокислотная замена в [номенклатуре HGVS](https://varnomen.hgvs.org/): префикс “p.” (protein) +
 референсная аминокислота + позиция аминокислоты в белке + новая аминокислота, получившаяся в результате замены.
 - ***HGVSc*** - нуклеотидная замена в [номенклатуре HGVS](https://varnomen.hgvs.org/): префикс “c.” (coding;

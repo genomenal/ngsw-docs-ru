@@ -118,7 +118,7 @@ import RecognizePair from '/docs/imported_components/_recognize_pair.mdx';
 2. **Статус** последней выполненной стадии анализа или стадии, выполняемой в данный
 момент: <img src={require('/img/rus/in_process_status.png').default} width="20"/> -
 стадия находится в процессе выполнения; <img src={require('/img/rus/success.png').default} width="20"/> - стадия
-завершена успешно, <img src={require('/img/rus/problems_status.png').default} width="28"/> -
+завершена успешно, <img src={require('/img/rus/problems_status.png').default} width="26"/> -
 стадия завершена успешно, однако не все метрики удовлетворяют
 критериям, <img src={require('/img/rus/failed_status.png').default} width="25"/> -
 стадия завершена с ошибкой.
@@ -347,6 +347,21 @@ Viewer запуска, и наоборот.
 в [режиме расширенного поиска вариантов](/results/main/snvs-indels/advanced-filtering),
 воспользовавшись [фильтром "Sample Status"](/results/main/snvs-indels/advanced-filtering#single-value-filters).
 Для этого дополнительный фильтр "Статус образца" добавлять в настройках необязательно.
+
+#### 5. Встречаемость в запуске {#occurrence-in-run}
+
+На [вкладке "Common" панели детальной информации о варианте](/results/main/snvs-indels/snv-details-panel#common-tab)
+в Variant Viewer запуска и в Variant Viewer образцов запуска
+находится информация о количестве образцов запуска, в которых встречается вариант.
+Например, в следующем случае вариант был выявлен в двух из трёх образцов запуска:
+
+<p align="center">
+<img src={require('/img/runs/occurrence.png').default} width="450"/>
+</p>
+
+По встречаемости в запуске варианты можно отфильтровать,
+воспользовавшись фильтром ["Occurrence in Run"](/results/main/snvs-indels/advanced-filtering#common)
+в [режиме расширенного поиска вариантов](/results/main/snvs-indels/advanced-filtering).
 
 ### Архивация, восстановление и удаление запуска {#delete-run}
 

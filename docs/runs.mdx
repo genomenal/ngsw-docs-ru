@@ -65,6 +65,11 @@ import SequencingType from '/docs/imported_components/_seq_type.mdx';
 
 Загрузите выбранные образцы одним из предложенных ниже способов. Количество образцов в запуске не ограничено.
 
+:::info На заметку
+На этом этапе необязательно загружать все нужные образцы.
+Дополнительно образцы можно будет добавить в запуск и после старта анализа, как описано [здесь](/runs#upload-more).
+:::
+
 import UploadFiles from '/docs/imported_components/_upload_files_from_different_sources.mdx';
 
 <UploadFiles />
@@ -364,6 +369,21 @@ Viewer запуска, и наоборот.
 По встречаемости в запуске варианты можно отфильтровать,
 воспользовавшись фильтром ["Occurrence in Run"](/results/main/snvs-indels/advanced-filtering#common)
 в [режиме расширенного поиска вариантов](/results/main/snvs-indels/advanced-filtering).
+
+### Загрузка дополнительных образцов {#upload-more}
+
+Чтобы добавить в запуск образцы вдобавок к образцам, загруженным ранее,
+нажмите на<br></br>кнопку <img src={require('/img/runs/upload_samples.png').default} width="160"/> на странице запуска.
+Над уже загруженными образцами появится форма загрузки новых образцов:
+
+<p align="center">
+<img src={require('/img/runs/upload_page.png').default} width="1000"/>
+</p>
+
+Загрузите образцы, как описано [выше](/runs#upload-samples), и
+нажмите на <img src={require('/img/runs/analyze_samples_btn.png').default} width="200"/>.
+
+Пока новые образцы будут обрабатываться, Variant Viewer запуска будет недоступен.
 
 ### Архивация, восстановление и удаление запуска {#delete-run}
 

@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="generator" content="Docusaurus v2.0.0-beta.4">
 <link rel="search" type="application/opensearchdescription+xml" title="Genomenal" href="/ngsw-docs-ru/opensearch.xml"><title data-react-helmet="true">Аннотация | Genomenal</title><meta data-react-helmet="true" property="og:url" content="https://genomenal.ru/ngsw-docs-ru/results/workflow-details/vcf-analysis/annotation"><meta data-react-helmet="true" name="docsearch:language" content="ru"><meta data-react-helmet="true" name="docsearch:version" content="current"><meta data-react-helmet="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-react-helmet="true" property="og:title" content="Аннотация | Genomenal"><meta data-react-helmet="true" name="description" content="После успешной загрузки, идентификации и проверки образец переходит к основной стадии анализа - аннотации."><meta data-react-helmet="true" property="og:description" content="После успешной загрузки, идентификации и проверки образец переходит к основной стадии анализа - аннотации."><link data-react-helmet="true" rel="shortcut icon" href="/ngsw-docs-ru/img/favicon.png"><link data-react-helmet="true" rel="canonical" href="https://genomenal.ru/ngsw-docs-ru/results/workflow-details/vcf-analysis/annotation"><link data-react-helmet="true" rel="alternate" href="https://genomenal.ru/ngsw-docs-ru/results/workflow-details/vcf-analysis/annotation" hreflang="ru"><link data-react-helmet="true" rel="alternate" href="https://genomenal.ru/ngsw-docs-ru/eu/results/workflow-details/vcf-analysis/annotation" hreflang="eu"><link data-react-helmet="true" rel="alternate" href="https://genomenal.ru/ngsw-docs-ru/results/workflow-details/vcf-analysis/annotation" hreflang="x-default"><link data-react-helmet="true" rel="preconnect" href="https://DZAOFCP7KJ-dsn.algolia.net" crossorigin="anonymous"><link rel="stylesheet" href="/ngsw-docs-ru/assets/css/styles.8c07b197.css">
-<link rel="preload" href="/ngsw-docs-ru/assets/js/runtime~main.689c8003.js" as="script">
-<link rel="preload" href="/ngsw-docs-ru/assets/js/main.65c43fb0.js" as="script">
+<link rel="preload" href="/ngsw-docs-ru/assets/js/runtime~main.171d8524.js" as="script">
+<link rel="preload" href="/ngsw-docs-ru/assets/js/main.e088dcca.js" as="script">
 </head>
 <body>
 <script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){var t=null;try{t=localStorage.getItem("theme")}catch(t){}return t}();t(null!==e?e:"light")}()</script><div id="__docusaurus">
@@ -25,10 +25,10 @@ c названиями хромосом.</li><li>Модификация заго
 референсной последовательности; разбивка мультиаллельных сайтов на биаллельные записи;
 вывод только первой записи для дублирующихся строк
 с помощью <a href="https://samtools.github.io/bcftools/bcftools.html#norm" target="_blank" rel="noopener noreferrer">bcftools norm</a>.</li><li>Сжатие файла в GZIP архив с помощью <a href="http://www.htslib.org/doc/bgzip.html" target="_blank" rel="noopener noreferrer">bgzip</a>.
-Получившийся файл можно скачать в разделе &quot;<em>Файлы с результатами</em>&quot; в деталях стадии &quot;<em>Унификация SNVs/Indels</em>&quot;
+Получившийся файл можно скачать в разделе &quot;<em>Файлы с результатами</em>&quot; в деталях задачи &quot;<em>Унификация SNVs/Indels</em>&quot;
 (&quot;<em>Скачать VCF_GZ</em>&quot;). Также этот файл можно открыть в IGV, нажав на ссылку &quot;<em>Открыть в IGV браузере</em>&quot;.</li><li>Индексация файла с помощью <a href="http://www.htslib.org/doc/tabix.html" target="_blank" rel="noopener noreferrer">tabix</a>.
 Получившийся индексный файл можно скачать в разделе &quot;<em>Файлы с результатами</em>&quot; в деталях
-стадии &quot;<em>Унификация SNVs/Indels</em>&quot; (&quot;<em>Скачать VCF_TBI</em>&quot;).</li></ul><p>Если в анализ образца были включены вычисление полигенных рисков и/или предсказание фенотипов, то
+задачи &quot;<em>Унификация SNVs/Indels</em>&quot; (&quot;<em>Скачать VCF_TBI</em>&quot;).</li></ul><p>Если в анализ образца были включены вычисление полигенных рисков и/или предсказание фенотипов, то
 после задачи &quot;Унификация SNVs/Indels&quot; начнется параллельное выполнение
 стадии <a href="/ngsw-docs-ru/results/workflow-details/vcf-analysis/phenotypes">&quot;Предсказание фенотипов&quot;</a>.</p><ol start="2"><li><strong>Аннотация SNVs/Indels</strong>:</li></ol><ul><li>Аннотация SNVs/Indels в файле данными из баз <a href="https://www.ncbi.nlm.nih.gov/refseq/" target="_blank" rel="noopener noreferrer">RefSeq</a>,
 <a href="https://www.internationalgenome.org/" target="_blank" rel="noopener noreferrer">1000 Genomes</a>, <a href="https://sites.google.com/site/jpopgen/dbNSFP" target="_blank" rel="noopener noreferrer">dbNSFP</a>,
@@ -45,32 +45,32 @@ c названиями хромосом.</li><li>Модификация заго
 и транскриптом больше 2000 п.о., и downstream, если варианты расположены после гена и расстояние между
 вариантом и транскриптом больше 1000 п.о.<br>
 Получившийся файл с сырыми аннотированными вариантами в формате TSV можно скачать в
-разделе &quot;<em>Файлы с результатами</em>&quot; в деталях стадии &quot;<em>Аннотация SNVs/Indels</em>&quot; (&quot;<em>Скачать Raw annotated TSV</em>&quot;).
+разделе &quot;<em>Файлы с результатами</em>&quot; в деталях задачи &quot;<em>Аннотация SNVs/Indels</em>&quot; (&quot;<em>Скачать Raw annotated TSV</em>&quot;).
 Его также можно открыть в таблицах Google.<br>
 Получившийся файл с аннотированными вариантами без дубликатов в формате TSV можно скачать в
-разделе &quot;<em>Файлы с результатами</em>&quot; в деталях стадии &quot;<em>Аннотация SNVs/Indels</em>&quot; (&quot;<em>Скачать All variants TSV</em>&quot;).
+разделе &quot;<em>Файлы с результатами</em>&quot; в деталях задачи &quot;<em>Аннотация SNVs/Indels</em>&quot; (&quot;<em>Скачать All variants TSV</em>&quot;).
 Его также можно открыть в таблицах Google.
 Тот же файл, но в формате CSV можно скачать там же (&quot;<em>Скачать All variants CSV</em>&quot;).</li><li>Конвертация результатов в формате TSV в формат VCF.</li><li>Замена или исправление заголовка файла VCF
 с помощью <a href="https://gatk.broadinstitute.org/hc/en-us/articles/360037428851-FixVcfHeader-Picard-" target="_blank" rel="noopener noreferrer">GATK FixVCFHeader</a>.</li><li>Сжатие файла VCF в GZIP архив с помощью <a href="http://www.htslib.org/doc/bgzip.html" target="_blank" rel="noopener noreferrer">bgzip</a>.
-Получившийся файл можно скачать в разделе &quot;<em>Файлы с результатами</em>&quot; в деталях стадии &quot;<em>Аннотация SNVs/Indels</em>&quot;
+Получившийся файл можно скачать в разделе &quot;<em>Файлы с результатами</em>&quot; в деталях задачи &quot;<em>Аннотация SNVs/Indels</em>&quot;
 (&quot;<em>Скачать All variants VCF_GZ</em>&quot;). Также этот файл можно открыть в IGV, нажав на ссылку &quot;<em>Открыть в IGV браузере</em>&quot;.</li><li>Индексация файла VCF с помощью <a href="http://www.htslib.org/doc/tabix.html" target="_blank" rel="noopener noreferrer">tabix</a>.
 Получившийся индексный файл можно скачать в разделе &quot;<em>Файлы с результатами</em>&quot; в деталях
-стадии &quot;<em>Аннотация SNVs/Indels</em>&quot; (&quot;<em>Скачать All variants VCF_TBI</em>&quot;).</li><li>Вычисление статистики вариантов.</li></ul><ol start="3"><li><strong>Сохранение проаннотированных вариантов для Variant Viewer</strong>: сохранение результатов
+задачи &quot;<em>Аннотация SNVs/Indels</em>&quot; (&quot;<em>Скачать All variants VCF_TBI</em>&quot;).</li><li>Вычисление статистики вариантов.</li></ul><ol start="3"><li><strong>Сохранение проаннотированных вариантов для Variant Viewer</strong>: сохранение результатов
 для показа во встроенном модуле для просмотра и анализа
 вариантов <a href="/ngsw-docs-ru/results/main/snvs-indels/variant-viewer">Variant Viewer</a>,
 добавление информации о <a href="/ngsw-docs-ru/results/main/snvs-indels/snv-details-page#occurrences">встречаемости</a> варианта в
 других образцах пользователя.</li></ol><p>После стадии &quot;Аннотация SNVs/Indels&quot; анализ может
 продолжиться <a href="/ngsw-docs-ru/results/workflow-details/vcf-analysis/report_generation">генерацией отчётов</a>.</p><p><strong>Стадия &quot;Аннотация структурных вариаций&quot;</strong> включает одну задачу <strong>&quot;Аннотация VCF со структурными вариациями&quot;</strong>:</p><ul><li>Фильтрация и аннотация структурных вариаций с помощью <a href="https://lbgi.fr/AnnotSV/" target="_blank" rel="noopener noreferrer">AnnotSV</a>.<br>
 Получившийся файл со структурными вариациями в формате TSV можно скачать в
-разделе &quot;<em>Файлы с результатами</em>&quot; в деталях стадии &quot;<em>Аннотация VCF со структурными вариациями</em>&quot;
+разделе &quot;<em>Файлы с результатами</em>&quot; в деталях задачи &quot;<em>Аннотация VCF со структурными вариациями</em>&quot;
 (&quot;<em>Скачать Filtered variants TSV</em>&quot;). Его также можно открыть в таблицах Google.
 Тот же файл, но в формате CSV можно скачать там же (&quot;<em>Скачать Filtered variants CSV</em>&quot;).</li><li>Сжатие получившегося файла VCF в GZIP архив с помощью <a href="http://www.htslib.org/doc/bgzip.html" target="_blank" rel="noopener noreferrer">bgzip</a>.
 Получившийся файл можно скачать в разделе &quot;<em>Файлы с результатами</em>&quot; в деталях
-стадии &quot;<em>Аннотация VCF со структурными вариациями</em>&quot; (&quot;<em>Скачать Filtered variants VCF_GZ</em>&quot;). Также этот файл можно
+задачи &quot;<em>Аннотация VCF со структурными вариациями</em>&quot; (&quot;<em>Скачать Filtered variants VCF_GZ</em>&quot;). Также этот файл можно
 открыть в IGV, нажав на ссылку &quot;<em>Открыть в IGV браузере</em>&quot;.</li><li>Индексация файла VCF с помощью <a href="http://www.htslib.org/doc/tabix.html" target="_blank" rel="noopener noreferrer">tabix</a>.
 Получившийся индексный файл можно скачать в разделе &quot;<em>Файлы с результатами</em>&quot; в деталях
-стадии &quot;<em>Аннотация VCF со структурными вариациями</em>&quot; (&quot;<em>Скачать Filtered variants VCF_TBI</em>&quot;).</li></ul><p>После стадии &quot;Аннотация структурных вариаций&quot; анализ образца заканчивается.</p></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Навигация по странице документации"><div class="pagination-nav__item"><a class="pagination-nav__link" href="/ngsw-docs-ru/results/workflow-details/vcf-analysis/upload-identify-verify"><div class="pagination-nav__sublabel">Предыдущая страница</div><div class="pagination-nav__label">« Загрузка, идентификация и проверка</div></a></div><div class="pagination-nav__item pagination-nav__item--next"><a class="pagination-nav__link" href="/ngsw-docs-ru/results/workflow-details/vcf-analysis/phenotypes"><div class="pagination-nav__sublabel">Следующая страница</div><div class="pagination-nav__label">Предсказание фенотипов »</div></a></div></nav></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container"><div class="footer__bottom text--center"><div class="footer__copyright">© 2019-2023 Novel Software Systems. Все права защищены.</div></div></div></footer></div>
-<script src="/ngsw-docs-ru/assets/js/runtime~main.689c8003.js"></script>
-<script src="/ngsw-docs-ru/assets/js/main.65c43fb0.js"></script>
+задачи &quot;<em>Аннотация VCF со структурными вариациями</em>&quot; (&quot;<em>Скачать Filtered variants VCF_TBI</em>&quot;).</li></ul><p>После стадии &quot;Аннотация структурных вариаций&quot; анализ образца заканчивается.</p></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Навигация по странице документации"><div class="pagination-nav__item"><a class="pagination-nav__link" href="/ngsw-docs-ru/results/workflow-details/vcf-analysis/upload-identify-verify"><div class="pagination-nav__sublabel">Предыдущая страница</div><div class="pagination-nav__label">« Загрузка, идентификация и проверка</div></a></div><div class="pagination-nav__item pagination-nav__item--next"><a class="pagination-nav__link" href="/ngsw-docs-ru/results/workflow-details/vcf-analysis/phenotypes"><div class="pagination-nav__sublabel">Следующая страница</div><div class="pagination-nav__label">Предсказание фенотипов »</div></a></div></nav></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container"><div class="footer__bottom text--center"><div class="footer__copyright">© 2019-2023 Novel Software Systems. Все права защищены.</div></div></div></footer></div>
+<script src="/ngsw-docs-ru/assets/js/runtime~main.171d8524.js"></script>
+<script src="/ngsw-docs-ru/assets/js/main.e088dcca.js"></script>
 </body>
 </html>

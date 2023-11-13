@@ -14,7 +14,7 @@ sidebar_label: Расширенный поиск вариантов
 </p>
 
 :::note На заметку
-Если вы находитесь на странице [Variant Viewer с соматическими мутациями](/results/main/snvs-indels/variant-viewer),
+Если вы находитесь на странице [SNV Viewer с соматическими мутациями](/results/main/snvs-indels/variant-viewer),
 то условие фильтрации по соматическим мутациям ("Origin является Somatic") будет добавлено по умолчанию:
 <p align="center">
 <img src={require('/img/vv/somatic_origin.png').default} width="550"/>
@@ -27,7 +27,7 @@ sidebar_label: Расширенный поиск вариантов
 :::info На заметку
 На [странице "Настройки пользователя"](/settings/profile#filtering-mode)
 можно отрегулировать, в какой режим поиска вы будете попадать, когда впервые открываете страницу
-Variant Viewer образца: [базовый](/results/main/snvs-indels/basic-filtering) или расширенный.
+SNV Viewer образца: [базовый](/results/main/snvs-indels/basic-filtering) или расширенный.
 :::
 
 ## Колонки фильтрации {#filtering-columns}
@@ -68,7 +68,7 @@ Variant Viewer образца: [базовый](/results/main/snvs-indels/basic-
 1. **Sample Status** (базовый фильтр ["Статус образца"](/runs#sample-interpretation-status-filter)) -
 фильтр вариантов по статусу интерпретации образцов запуска: Завершенная интерпретация или Незавершенная
 интерпретация. Фильтр [с выбором одного значения](/results/main/snvs-indels/advanced-filtering#single-value-filters).
-Доступен только в Variant Viewer [запусков](/runs).
+Доступен только в SNV Viewer [запусков](/runs).
 2. **Interpretation** - фильтр вариантов по интерпретации (комментарию), добавленной пользователем
 на [странице](/results/main/snvs-indels/snv-details-page#add-interpretation) или
 на [панели](/results/main/snvs-indels/snv-details-panel#variant-interpretation) детальной информации о варианте.
@@ -138,15 +138,15 @@ Variant Viewer образца: [базовый](/results/main/snvs-indels/basic-
 которые входят в компаунд-гетерозиготу, но остальные варианты из этой компаунд-гетерозиготы могут
 отфильтроваться по другим условиям.
 
-В Variant Viewer [семейного анализа](/group-analysis) и в Variant Viewer с одним образцом секвенирования
+В SNV Viewer [семейного анализа](/group-analysis) и в SNV Viewer с одним образцом секвенирования
 для фильтрации вариантов по компаунд-гетерозиготе достаточно выбрать сам фильтр в списке колонок фильтрации:
 
 <p align="center">
 <img src={require('/img/vv/compound_filter_for_one.png').default} width="700"/>
 </p>
 
-В Variant Viewer [группового анализа герминальной когорты](/group-analysis), в Variant Viewer с несколькими
-образцами секвенирования и в Variant Viewer [запуска](/runs) (если есть данные об образцах секвенирования) для
+В SNV Viewer [группового анализа герминальной когорты](/group-analysis), в SNV Viewer с несколькими
+образцами секвенирования и в SNV Viewer [запуска](/runs) (если есть данные об образцах секвенирования) для
 фильтрации вариантов по компаунд-гетерозиготе
 нужно выбрать образец, в котором будут найдены все случаи, когда хотя бы две гетерозиготы (0/1, 1/0, 0|1 и т.п.)
 расположены в одном гене:
@@ -495,7 +495,7 @@ Variant Viewer образца: [базовый](/results/main/snvs-indels/basic-
 
 28. **Occurrence in Run** - фильтр по [встречаемости варианта](/runs#occurrence-in-run) среди образцов запуска.
 Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (целое число).
-Доступен только в Variant Viewer [запусков](/runs) и образцов запуска.
+Доступен только в SNV Viewer [запусков](/runs) и образцов запуска.
 29. **RefSeq Transcript** - фильтр вариантов по идентификатору транскрипта в
 базе [RefSeq](https://www.ncbi.nlm.nih.gov/nuccore/) (например, NM_002354.3).
 Фильтр [с вводом любого значения](/results/main/snvs-indels/advanced-filtering#any-value-filters).
@@ -972,9 +972,9 @@ Meta LR, [M-CAP](http://bejerano.stanford.edu/mcap/),
 <img src={require('/img/vv/compound.png').default} width="800"/>
 </p>
 
-**Фильтрация по компаунд-гетерозиготе зависит от типа Variant Viewer:**
+**Фильтрация по компаунд-гетерозиготе зависит от типа SNV Viewer:**
 
-**Variant Viewer [семейного трио анализа](/group-analysis) (Пробанд, Отец, Мать):** у пробанда в одном гене
+**SNV Viewer [семейного трио анализа](/group-analysis) (Пробанд, Отец, Мать):** у пробанда в одном гене
 хотя бы две гетерозиготы (0/1, 1/0, 0|1 и т.п.) со следующими вариантами наследования:
 - хотя бы одна из гетерозигот наследуется от отца, а хотя бы одна - от матери:
 
@@ -996,7 +996,7 @@ Meta LR, [M-CAP](http://bejerano.stanford.edu/mcap/),
 Для выключения фильтра в конструкторе запросов нажмите
 на кнопку <img src={require('/img/vv/compound_btn_on.png').default} width="230"/>.
 
-**Variant Viewer [семейного дуо анализа](/group-analysis) (Отец и Мать):** случаи, когда в одном гене хотя бы
+**SNV Viewer [семейного дуо анализа](/group-analysis) (Отец и Мать):** случаи, когда в одном гене хотя бы
 одна гетерозигота (0/1, 1/0, 0|1 и т.п.) у матери и хотя бы одна - у отца:
 
 <p align="center">
@@ -1008,7 +1008,7 @@ Meta LR, [M-CAP](http://bejerano.stanford.edu/mcap/),
 конструкторе запросов нажмите
 на кнопку <img src={require('/img/vv/compound_btn_on.png').default} width="230"/>.
 
-**Variant Viewer [семейного дуо анализа](/group-analysis) (Пробанд, Родитель (Отец или Мать)):** у пробанда в
+**SNV Viewer [семейного дуо анализа](/group-analysis) (Пробанд, Родитель (Отец или Мать)):** у пробанда в
 одном гене хотя бы две гетерозиготы (0/1, 1/0, 0|1 и т.п.) со следующими вариантами наследования:
 - хотя бы одна наследуется, а вторая не наследуется от родителя (т.е. у родителя это гомозигота по
 референсу 0/0):
@@ -1028,14 +1028,14 @@ Meta LR, [M-CAP](http://bejerano.stanford.edu/mcap/),
 конструкторе запросов нажмите
 на кнопку <img src={require('/img/vv/compound_btn_on.png').default} width="230"/>.
 
-**Variant Viewer с одним образцом секвенирования (в частности, для одиночного образца опухолевой или здоровой ткани):** найдутся
+**SNV Viewer с одним образцом секвенирования (в частности, для одиночного образца опухолевой или здоровой ткани):** найдутся
 все случаи, когда хотя бы две гетерозиготы (0/1, 1/0, 0|1 и т.п.) расположены в одном гене.
 Для применения фильтра по компаунд-гетерозиготе нажмите
 на кнопку <img src={require('/img/vv/compound_btn.png').default} width="230"/>, а для выключения фильтра в
 конструкторе запросов нажмите
 на кнопку <img src={require('/img/vv/compound_btn_on.png').default} width="230"/>.
 
-**Variant Viewer [группового анализа герминальной когорты](/group-analysis) или Variant Viewer с несколькими образцами секвенирования (в частности, для пары образцов опухоль/контроль), или Variant Viewer [запуска](/runs) (если есть данные об образцах секвенирования):** нажав
+**SNV Viewer [группового анализа герминальной когорты](/group-analysis) или SNV Viewer с несколькими образцами секвенирования (в частности, для пары образцов опухоль/контроль), или SNV Viewer [запуска](/runs) (если есть данные об образцах секвенирования):** нажав
 на кнопку фильтра по компаунд-гетерозиготе, вы увидите выпадающий список с образцами:
 
 <p align="center">
@@ -1300,7 +1300,7 @@ Meta LR, [M-CAP](http://bejerano.stanford.edu/mcap/),
 Чтобы ***[изменить](/results/main/snvs-indels/advanced-filtering#edit-condition), [сохранить](/results/main/snvs-indels/advanced-filtering#save-query) или создать новый запрос***, перейдите
 в конструктор запросов,<br></br>нажав на <img src={require('/img/vv/query_builder_btn.png').default} width="120"/>.
 
-Чтобы вернуться к основному режиму Variant Viewer,
+Чтобы вернуться к основному режиму SNV Viewer,
 нажмите на <img src={require('/img/vv/basic_filtering_btn.png').default} width="120"/>.
 
 Иногда условий к искомым вариантам много и запрос получается очень длинным:

@@ -48,7 +48,8 @@ import Login from '/docs/imported_components/_login.mdx';
 образцов обработан с ошибкой;
 - «ОБРАЗЕЦ» - информация об образцах каждого
 пациента: <img src={require('/img/rus/in_process_sample.png').default} width="22"/> - опухолевый образец
-в процессе обработки; <img src={require('/img/rus/tumor_success.png').default} width="20"/> - успешно обработанный
+в процессе обработки или в ожидании выполнения необходимых стадий контрольного
+образца; <img src={require('/img/rus/tumor_success.png').default} width="20"/> - успешно обработанный
 опухолевый образец; <img src={require('/img/rus/tumor_problems.png').default} width="20"/> - опухолевый образец,
 обработанный с некритичными
 проблемами; <img src={require('/img/rus/tumor_failed.png').default} width="20"/> - опухолевый
@@ -149,7 +150,7 @@ import Login from '/docs/imported_components/_login.mdx';
 группового анализа: <img src={require('/img/rus/in_process_status.png').default} width="20"/> - анализ
 в процессе; <img src={require('/img/rus/success_status.png').default} width="25"/> - анализ
 завершен успешно; <img src={require('/img/rus/failed_status.png').default} width="25"/> - анализ завершен с ошибкой;
-- «ТИП» - тип группового анализа (герминальная когорта или семейный);
+- «ТИП» - тип группового анализа (герминальная когорта, семейный или популяционный);
 - «ОПИСАНИЕ» - описание группового анализа;
 - «ИЗМЕНЕН» - дата последних изменений группового анализа в формате «число месяц год».
 
@@ -210,7 +211,8 @@ import Login from '/docs/imported_components/_login.mdx';
 образцов обработан с ошибкой;
 - «ОБРАЗЕЦ» - информация об образцах каждого
 пациента: <img src={require('/img/rus/in_process_sample.png').default} width="22"/> - опухолевый образец
-в процессе обработки; <img src={require('/img/rus/tumor_success.png').default} width="20"/> - успешно обработанный
+в процессе обработки или в ожидании выполнения необходимых стадий контрольного
+образца; <img src={require('/img/rus/tumor_success.png').default} width="20"/> - успешно обработанный
 опухолевый образец; <img src={require('/img/rus/tumor_problems.png').default} width="20"/> - опухолевый образец,
 обработанный с некритичными
 проблемами; <img src={require('/img/rus/tumor_failed.png').default} width="20"/> - опухолевый
@@ -399,12 +401,12 @@ capture kit, можно скачать набор в формате BED;
 меню пользователя:
 
 <p align="center">
-<img src={require('/img/rus/user_options.png').default} width="200"/>
+<img src={require('/img/rus/user_options.png').default} width="210"/>
 </p>
 
 - "***Профиль***" - открывает страницу ["Настройки пользователя"](/settings/profile), где
 находятся ваши персональные настройки аккаунта (email, логин, пароль), настройки панели
-навигации Программы, страницы пациента и Variant Viewer.
+навигации Программы, страницы пациента, SNV Viewer и CNV Viewer.
 
 - "***Сообщить о проблеме***" - открывает окно для отправки информации о возникшей у вас проблеме
 администратору Системы:

@@ -10,11 +10,17 @@ import PatientInfo from '/docs/imported_components/_patient_def.mdx';
 <PatientInfo />
 
 Если вы хотите загрузить образцы для пациента, которого ещё нет в системе,
-нажмите на <img src={require('/img/rus/add_patient_btn.png').default} width="170"/> на странице "Все пациенты":
+нажмите на <img src={require('/img/rus/add_patient_btn.png').default} width="170"/> на странице "Все пациенты"
+или "Образцы". Вы увидите окно добавления пациента:
 
-import PatientPage from '/docs/imported_components/_patient_page.mdx';
+<p align="center">
+<img src={require('/img/rus/3-add-patient.png').default} height="400"/>
+</p>
 
-<PatientPage />
+Обязательным для заполнения является только поле <b>Код пациента</b>. Добавить детали вы сможете позже на
+персональной странице этого пациента.
+Нажмите на <img src={require('/img/rus/create_btn.png').default} width="130"/>.
+Вы увидите страницу пациента.
 
 ## Страница пациента {#patient-page}
 
@@ -145,41 +151,44 @@ mode), который [был выбран](/settings/settings/settings#general-
 2. **Тип образца** - тип, который был выбран при загрузке образца (TUMOR - опухолевый или NORMAL - неопухолевый).
 Поменять тип можно, перенеся образец в соответствующий тип в окне редактирования набора образцов (см. выше).
 3. **Выводы интерпретации образца** - информация о количестве обнаруженных в образце
-и [добавленных в отчет](/results/main/snvs-indels/variant-viewer#include-to-report) вариантов
+и [добавленных в отчёт](/results/main/snvs-indels/variant-viewer#include-to-report) вариантов
 определенного класса патогенности (патогенных: <img src={require('/img/results/pathogenic.png').default} width="48"/>,
 вероятно патогенных: <img src={require('/img/results/likely_pathogenic.png').default} width="48"/>,
 неопределенной значимости: <img src={require('/img/results/uncertain.png').default} width="48"/>,
 вероятно доброкачественных: <img src={require('/img/results/likely_benign.png').default} width="48"/>,
 доброкачественных: <img src={require('/img/results/benign.png').default} width="48"/>).
 Выводы интерпретации отображаются, только
-если [интерпретация образца была завершена](/results/main/snvs-indels/snv-details-page#sample-interpretation).
+если [интерпретация образца была завершена](/results/main/snvs-indels/snv-details-page#sample-interpretation)
+или если вариант с определенной патогенностью был добавлен в отчёт.
 Если интерпретация была не завершена, но варианты с определенным классом патогенности были добавлены в отчёт, то
 выводом интерпретации будет "*Интерпретация не завершена*". Если интерпретация образца была завершена,
 но никакие варианты с определенным классом патогенности не были добавлены в отчёт, то выводом интерпретации
 будет "*Патогенных вариантов не обнаружено*".
 4. **Статус последней выполненной стадии анализа** или статус стадии, выполняемой в данный
-момент: <img src={require('/img/rus/in_process_status.png').default} width="20"/> -
-стадия находится в процессе выполнения; <img src={require('/img/rus/success.png').default} width="20"/> - стадия
-завершена успешно, <img src={require('/img/rus/problems_status.png').default} width="28"/> -
-стадия завершена успешно, однако не все метрики удовлетворяют
-критериям, <img src={require('/img/rus/failed_status.png').default} width="25"/> -
+момент:<br></br><img src={require('/img/rus/in_process_status.png').default} width="22"/> -
+стадия находится в
+процессе выполнения;<br></br><img src={require('/img/rus/queed_status.png').default} width="14"/> - стадия
+находится в очереди на выполнение или в ожидании выполнения необходимых стадий контрольного
+образца (в случае опухолевого образца из пары
+опухоль/контроль);<br></br><img src={require('/img/rus/success.png').default} width="21"/> - стадия
+завершена успешно;<br></br><img src={require('/img/rus/problems_status.png').default} width="25"/> -
+стадия завершена успешно с
+некритичными проблемами;<br></br><img src={require('/img/rus/failed_status.png').default} width="21"/> -
 стадия завершена с ошибкой.
 5. **Плитки прогресса анализа образца**: каждая плитка - определенная стадия
 анализа. Синими плитками <img src={require('/img/rus/blue_in_progress.png').default} width="25"/> обозначены
-стадии в процессе выполнения;
+стадии в процессе выполнения, в очереди на выполнение или в ожидании выполнения необходимых стадий контрольного
+образца (в случае опухолевого образца из пары опухоль/контроль);
 зелёными <img src={require('/img/rus/green.png').default} width="25"/> - успешно завершенные
-стадии; оранжевыми <img src={require('/img/rus/orange.png').default} width="25"/> - успешно завершенные стадии,
-у которых не все метрики удовлетворяют
-критериям; красными <img src={require('/img/rus/red.png').default} width="25"/> -
+стадии; оранжевыми <img src={require('/img/rus/orange.png').default} width="25"/> - стадии, завершенные
+успешно с некритичными проблемами; красными <img src={require('/img/rus/red.png').default} width="25"/> -
 стадии, завершенные с ошибками;
 серыми <img src={require('/img/rus/grey.png').default} width="25"/> - стадии, которые не были
 выполнены (либо из-за того, что эти стадии исключены из анализа, либо из-за того, что ещё не завершены
-предудыщие шаги анализа, необходимые для выполнения стадии).
+предыдущие шаги анализа образца, необходимые для выполнения стадии).
  Количество плиток может различаться в зависимости от возможного хода анализа:
-- Плитки прогресса анализа опухолевого образца в формате FASTQ
+- Плитки прогресса анализа образца в формате FASTQ
 или BAM: <img src={require('/img/rus/tumor_analysis.png').default} width="120"/>
-- Плитки прогресса анализа неопухолевого образца в формате FASTQ
-или BAM: <img src={require('/img/rus/normal_analysis.png').default} width="120"/>
 - Плитки прогресса анализа образца в формате VCF, TXT
 или TSV: <img src={require('/img/rus/vcf_analysis.png').default} width="50"/>
 

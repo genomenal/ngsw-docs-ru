@@ -9,24 +9,164 @@ import Login from '/docs/imported_components/_login.mdx';
 
 <Login />
 
-После входа в систему вы попадете на главную страницу Genomenal “**Все пациенты**”.
-Если вы не пользовались Genomenal раньше, страница будет пустой:
+После входа в систему вы попадете на главную страницу Genomenal “**Образцы**”.
+Если вы не пользовались Genomenal раньше и у вас нет загруженных образцов, то страница будет выглядеть следующим
+образом:
+
+<p align="center">
+<img src={require('/img/rus/empty_sample_page.png').default} width="1000"/>
+</p>
+
+Впоследствии вы увидите здесь все образцы, находящиеся в этом аккаунте и принадлежащие неархивированным пациентам
+и/или запускам:
+
+<p align="center">
+<img src={require('/img/rus/samples_page.png').default} width="1000"/>
+</p>
+
+Слева на странице, на боковой панели навигации представлены все разделы Genomenal (для перехода в
+необходимый раздел нажмите левой кнопкой мыши на соответствущее название страницы):
+1. Начальная страница ["Образцы"](/overview#samples);
+2. Блок страниц ["Пациенты"](/overview#patients);
+3. Блок страниц ["Запуски"](/overview#runs);
+4. Блок страниц ["Групповой анализ"](/overview#group-analyses);
+5. Блок страниц ["Когорты"](/overview#cohorts);
+6. Блок страниц ["Настройки"](/overview#settings).
+
+:::caution На заметку
+Отображение блоков в составе панели навигации можно отрегулировать
+на [странице "Настройки пользователя"](/settings/profile#navigation-panel).
+:::
+
+## Образцы {#samples}
+
+Начальная страница "Образцы" представляет все образцы, которые загружены в пациентов
+или запуски, которые находятся не в архиве. Если для образца определен как пациент, так и запуск,
+то он будет отображаться на странице "Образцы", если хотя бы одна из этих сущностей не архивирована.
+
+<details>
+<summary>Нажмите, чтобы узнать подробнее о виде, в котором представлена информация на странице
+"Образцы"</summary>
+
+#### На странице "Образцы" информация представлена в виде таблицы со следующими колонками: {#sample-columns}
+- «ОБРАЗЕЦ» - информация о загруженных в систему образцах, которые принадлежат пациентам или
+запускам, не находящимся в архиве:
+1. Статус обработки
+образца:<br></br><img src={require('/img/rus/in_process_sample.png').default} width="18"/> - опухолевый образец
+в процессе обработки, в очереди на обработку или в ожидании выполнения необходимых стадий контрольного
+образца;<br></br><img src={require('/img/rus/tumor_success.png').default} width="18"/> - успешно обработанный
+опухолевый образец;<br></br><img src={require('/img/rus/tumor_problems.png').default} width="18"/> - опухолевый
+образец, обработанный с
+некритичными проблемами;<br></br><img src={require('/img/rus/tumor_failed.png').default} width="18"/> - опухолевый
+образец, обработанный
+с ошибкой;<br></br><img src={require('/img/rus/normal_in_process.png').default} width="18"/> - образец
+неопухолевой ткани в
+процессе обработки или в очереди
+на обработку;<br></br><img src={require('/img/rus/normal_success.png').default} width="18"/> - успешно
+обработанный образец
+неопухолевой ткани;<br></br><img src={require('/img/rus/normal_problems.png').default} width="18"/> - образец
+неопухолевой ткани, обработанный с
+некритичными проблемами;<br></br><img src={require('/img/rus/normal_failed.png').default} width="18"/> - образец
+неопухолевой ткани, обработанный с ошибкой.
+2. Имя файла образца без расширения и постфиксов (если файлы названы
+согласно <a href="https://support.illumina.com/help/BaseSpace_Sequence_Hub_OLH_009008_2/Source/Informatics/BS/NamingConvention_FASTQ-files-swBS.htm">конвенции Illumina</a>).
+В случае парного секвенирования приводится только имя первичного файла.
+Нажав на имя файла, можно открыть <a href="/results/results">страницу образца</a>.
+3. Формат файла: <i>FASTQ</i> или <i>VCF</i>. Для образцов, загруженных в формате BAM, или данных
+генотипирования, загруженных в формате TXT, TSV, будет приведен тот формат, в который были переведены
+исходные данные для дальнейшего анализа, т.е. FASTQ и BAM, соответственно.
+4. Тип секвенирования: <i>Панель</i> (секвенирование с помощью таргетной панели), <i>WES</i> (whole-exome sequencing;
+полноэкзомное секвенирование), <i>WGS</i> (whole-genome sequencing; полногеномное секвенирование), <i>Low-pass WGS</i>
+(полногеномное секвенирование с низким покрытием), <i>Unknown</i> (тип секвенирования может быть не распознан для
+некоторых образцов, загруженных в формате VCF). Определяется автоматически, может быть основан на типе секвенирования
+и реагентах Capture Kit, выбранных на этапе создания набора образцов. Отображается только после определения, т.е. после
+успешного завершения стадии "Определение набора capture kit" для FASTQ файлов и стадий "Идентификация"
+или "Аннотация SNVs/Indels" для VCF файлов.
+5. Размер образца. В случае парного секвенирования будет отображен суммарный размер файлов образца.
+- «ПАЦИЕНТ / ЗАПУСК» - код пациента (обозначен <img src={require('/img/rus/patient_icon.png').default} width="20"/>)
+и/или название запуска (обозначен <img src={require('/img/rus/run_icon.png').default} width="20"/>),
+которым принадлежит образец. Нажав на код пациента или название запуска, можно
+открыть, соответственно, <a href="/add-patient#patient-page">страницу пациента</a>
+или <a href="/runs#run-page">страницу запуска</a>.
+- «РЕЗУЛЬТАТЫ» - выводы интерпретации образца: информация о количестве обнаруженных в образце
+и <a href="/results/main/snvs-indels/variant-viewer#include-to-report">добавленных в отчёт</a> вариантов
+определенного класса патогенности (патогенных: <img src={require('/img/results/pathogenic.png').default} width="49"/>,
+вероятно патогенных: <img src={require('/img/results/likely_pathogenic.png').default} width="50"/>,
+неопределенной значимости: <img src={require('/img/results/uncertain.png').default} width="50"/>,
+вероятно доброкачественных: <img src={require('/img/results/likely_benign.png').default} width="50"/>,
+доброкачественных: <img src={require('/img/results/benign.png').default} width="50"/>).
+Результаты отображаются, если интерпретация образца была завершена (как описано ниже)
+или если вариант с определенной патогенностью был добавлен в отчёт.
+Если интерпретация была не завершена, но варианты с определенным классом патогенности были добавлены в отчёт, то
+результатом будет "<i>Интерпретация не завершена</i>". Если интерпретация образца была завершена,
+но никакие варианты с определенным классом патогенности не были добавлены в отчёт, то результатом
+будет "<i>Патогенных вариантов не обнаружено</i>".
+- «СОЗДАН» - дата начала загрузки данных образца в систему в формате д.М.гггг;
+- «ИЗМЕНЕН» - дата последних изменений в данных образца в формате д.М.гггг.
+
+При наведении курсора на строку образца появляются следующие активные элементы:
+- <img src={require('/img/rus/sample_vv.png').default} width="17"/> - кнопка для перехода
+в <a href="/results/main/snvs-indels/variant-viewer">SNV Viewer</a> образца. Для опухолевого образца
+это SNV Viewer c соматическими SNVs/Indels, в котором также можно увидеть и SNVs/Indels из SNV Viewer
+с герминальными мутациями, если поменять значение фильтра по типу мутации с Somatic на Germline или
+сбросить фильтрацию по нему. Для неопухолевого образца это SNV Viewer только с герминальными SNVs/Indels,
+выявленными в этом образце. Кнопка отображается, если для образца успешно завершилась стадия
+"Аннотация SNVs/Indels".
+- <img src={require('/img/rus/sample_cnvv_segments.png').default} width="22"/> - кнопка для перехода
+в CNV Viewer образца с сегментами, выявленными в этом образце. Кнопка отображается, если для образца
+успешно завершилась стадия "Выявление вариации числа копий".
+- <img src={require('/img/rus/sample_cnvv_bins.png').default} width="22"/> - кнопка для перехода
+в CNV Viewer образца с бинами, выявленными в этом образце. Кнопка отображается, если для образца
+успешно завершилась стадия "Выявление вариации числа копий".
+- <img src={require('/img/rus/sample_complete_interpretation.png').default} width="22"/> или <img src={require('/img/rus/sample_restore_interpretation.png').default} width="22"/> - кнопки
+для завершения и восстановления интерпретации образца, соответственно. После нажатия на кнопку завершения
+появится окно для подтверждения:
+
+<p align="center">
+<img src={require('/img/vv/interpretation_window.png').default} height="600"/>
+</p>
+
+После того, как вы нажмёте <img src={require('/img/custom-annot/ok_btn.png').default} width="130"/>, вывод
+интерпретации из этого окна отобразится в колонке «РЕЗУЛЬТАТЫ».
+
+- <img src={require('/img/rus/delete_btn.png').default} width="20"/> - кнопка для
+удаления образца из системы. После нажатия на неё появится окно для подтверждения:
+
+<p align="center">
+<img src={require('/img/rus/delete_sample.png').default} width="450"/>
+</p>
+
+После подтверждения действий нажатием на <img src={require('/img/rus/delete.png').default} width="150"/>
+образец удалится как со страницы "Образцы", так и со страницы пациента и/или запуска, которому он
+принадлежал.
+
+Вверху страницы находятся:
+- Окно поиска, позволяющее искать образцы по имени файла и по коду
+пациента или названию запуска, которому они принадлежат:
+<p align="center"><img src={require('/img/rus/search_sample.png').default} width="500"/></p>
+- Кнопка <a href="/add-patient">добавления пациента</a>
+в систему <img src={require('/img/rus/add_patient_btn_from_samples.png').default} width="180"/>.
+- Кнопка <a href="/runs">добавления запуска</a>
+в систему <img src={require('/img/rus/add_run_btn.png').default} width="170"/>.
+
+</details>
+
+## Пациенты {#patients}
+
+Блок "Пациенты" включает страницы:
+- "***Все пациенты***" - содержит всех добавленных в систему пациентов и их данные.<br></br>
+Если у вас ещё нет добавленных пациентов, то страница "Все пациенты" выглядит так:
 
 <p align="center">
 <img src={require('/img/rus/no_patients_page.png').default} width="1000"/>
 </p>
 
-Впоследствии вы увидите здесь всех пациентов, добавленных в этот аккаунт на данный момент:
+Страница с добавленными пациентами выглядит следующим образом:
 
 <p align="center">
 <img src={require('/img/version_1.02/1-all-patients-page.png').default} width="1000"/>
 </p>
 
-Слева на странице, на боковой панели навигации находятся следующие разделы Genomenal (для перехода в
-необходимый раздел необходимо нажать левой кнопкой мыши на соответствущее название страницы):
-
-1. Блок "***Пациенты***", который включает страницы:
-- "***Все пациенты***" - содержит всех добавленных в систему пациентов и их данные.
 - “***Обрабатывается***” - содержит тех пациентов, данные которых находятся в процессе обработки.
 - “***Проблемы***” - содержит тех пациентов, при обработке данных которых возникли проблемы, или пациенты с
 особенностями данных.
@@ -41,41 +181,46 @@ import Login from '/docs/imported_components/_login.mdx';
 #### На страницах блока "Пациенты" информация представлена в виде таблицы со следующими колонками: {#patients-columns}
 - «ПАЦИЕНТ» - информация о созданных пациентах (код, имя, фамилия пациента);
 - «СТАТУС» - статусы наборов образцов каждого
-пациента: <img src={require('/img/rus/in_process_status.png').default} width="20"/> - набор образцов
-обрабатывается; <img src={require('/img/rus/success_status.png').default} width="25"/> - набор образцов
-успешно обработан; <img src={require('/img/rus/problems_status.png').default} width="28"/> - набор образцов
-обработан с некритичными проблемами; <img src={require('/img/rus/failed_status.png').default} width="25"/> - набор
+пациента:<br></br><img src={require('/img/rus/in_process_status.png').default} width="22"/> - набор образцов
+обрабатывается;<br></br><img src={require('/img/rus/queed_status.png').default} width="14"/> - набор образцов
+стоит в очереди
+на обработку;<br></br><img src={require('/img/rus/success_status.png').default} width="22"/> - набор образцов
+успешно обработан;<br></br><img src={require('/img/rus/problems_status.png').default} width="24"/> - набор образцов
+обработан с некритичными проблемами;<br></br><img src={require('/img/rus/failed_status.png').default} width="20"/> - набор
 образцов обработан с ошибкой;
 - «ОБРАЗЕЦ» - информация об образцах каждого
-пациента: <img src={require('/img/rus/in_process_sample.png').default} width="22"/> - опухолевый образец
-в процессе обработки или в ожидании выполнения необходимых стадий контрольного
-образца; <img src={require('/img/rus/tumor_success.png').default} width="20"/> - успешно обработанный
-опухолевый образец; <img src={require('/img/rus/tumor_problems.png').default} width="20"/> - опухолевый образец,
-обработанный с некритичными
-проблемами; <img src={require('/img/rus/tumor_failed.png').default} width="20"/> - опухолевый
-образец, обработанный с ошибкой; <img src={require('/img/rus/normal_in_process.png').default} width="20"/> - образец
+пациента:<br></br><img src={require('/img/rus/in_process_sample.png').default} width="18"/> - опухолевый образец
+в процессе обработки или в ожидании выполнения необходимых стадий
+контрольного образца;<br></br><img src={require('/img/rus/tumor_success.png').default} width="18"/> - успешно
+обработанный
+опухолевый образец;<br></br><img src={require('/img/rus/tumor_problems.png').default} width="18"/> - опухолевый
+образец, обработанный с некритичными
+проблемами;<br></br><img src={require('/img/rus/tumor_failed.png').default} width="18"/> - опухолевый
+образец, обработанный
+с ошибкой;<br></br><img src={require('/img/rus/normal_in_process.png').default} width="18"/> - образец
 неопухолевой ткани в
-процессе обработки; <img src={require('/img/rus/normal_success.png').default} width="20"/> - успешно обработанный
-образец неопухолевой ткани; <img src={require('/img/rus/normal_problems.png').default} width="20"/> - образец
+процессе обработки;<br></br><img src={require('/img/rus/normal_success.png').default} width="18"/> - успешно
+обработанный образец
+неопухолевой ткани;<br></br><img src={require('/img/rus/normal_problems.png').default} width="18"/> - образец
 неопухолевой ткани, обработанный с некритичными
-проблемами; <img src={require('/img/rus/normal_failed.png').default} width="20"/> - образец неопухолевой ткани,
+проблемами;<br></br><img src={require('/img/rus/normal_failed.png').default} width="18"/> - образец неопухолевой ткани,
 обработанный с ошибкой;
 - «КОГОРТА» - название когорты, к которой относится пациент;
-- «СОЗДАН» - дата добавления пациента в формате «число месяц год»;
-- «ИЗМЕНЕН» - дата последних изменений в данных пациента в формате «число месяц год».
+- «СОЗДАН» - дата добавления пациента в формате д.М.гггг;
+- «ИЗМЕНЕН» - дата последних изменений в данных пациента в формате д.М.гггг.
 
 На страницах «<i>Все пациенты</i>», «<i>Обрабатывается</i>» и «<i>Проблемы</i>» при наведении курсора на строку
 пациента появляются следующие активные
-элементы: <img src={require('/img/rus/upload_in_patient.png').default} width="20"/>
-позволяет загрузить данные пациента, а <img src={require('/img/rus/delete_btn.png').default} width="18"/> -
+элементы: <img src={require('/img/rus/upload_in_patient.png').default} width="19"/> позволяет
+загрузить данные пациента, а <img src={require('/img/rus/delete_btn.png').default} width="20"/> -
 архивировать данные пациента.
 
 На странице «<i>Архив</i>» при наведении курсора на строку пациента появляются следующие активные
-элементы: <img src={require('/img/rus/restore_btn.png').default} width="22"/> позволяет восстановить данные пациента,
-а <img src={require('/img/rus/delete_btn.png').default} width="18"/> - удалить их.
+элементы: <img src={require('/img/rus/sample_restore_interpretation.png').default} width="22"/> позволяет
+восстановить данные пациента, а <img src={require('/img/rus/delete_btn.png').default} width="20"/> - удалить их.
 
 Вверху страниц блока находится окно поиска, позволяющее искать пациентов по коду или имени:
-<p align="center"><img src={require('/img/rus/search_patient.png').default} width="400"/></p>
+<p align="center"><img src={require('/img/rus/search_patient.png').default} width="450"/></p>
 
 На страницах «<i>Все пациенты</i>», «<i>Обрабатывается</i>» и «<i>Проблемы</i>» вверху находятся следующие
 кнопки: <img src={require('/img/rus/upload_samples_btn.png').default} width="150"/>, при нажатии на которую
@@ -88,9 +233,23 @@ import Login from '/docs/imported_components/_login.mdx';
 все архивированные данные пациентов.
 </details>
 
-2. Блок "***Запуски***", который включает страницы:
+## Запуски {#runs}
+
+Блок "Запуски" включает страницы:
 - "***Запуски***" - содержит все добавленные в систему запуски и их данные. Подробнее о запусках можно почитать
-[здесь](/runs).
+[здесь](/runs).<br></br>
+Если у вас ещё нет добавленных запусков, то страница "Запуски" выглядит так:
+
+<p align="center">
+<img src={require('/img/rus/no_runs_page.png').default} width="1000"/>
+</p>
+
+Страница с добавленными запусками выглядит следующим образом:
+
+<p align="center">
+<img src={require('/img/rus/runs_page.png').default} width="1000"/>
+</p>
+
 - “***Архив***” - содержит те запуски, данные которых были архивированы. Вы можете перенести сюда
 неактуальные данные или данные, которые вы хотите удалить. Запуски, находящиеся в "Архиве", не отображаются
 на странице "Запуски".
@@ -103,25 +262,27 @@ import Login from '/docs/imported_components/_login.mdx';
 
 - «ЗАПУСК» - названия созданных запусков;
 - «СТАТУС ОБРАЗЦА» - информация о количестве образцов, находящихся в определенном статусе,
-для каждого запуска: <img src={require('/img/rus/in_process_status.png').default} width="20"/> - образцы запуска
-в процессе обработки; <img src={require('/img/rus/success_status.png').default} width="25"/> - успешно
-обработанные образцы запуска; <img src={require('/img/rus/problems_status.png').default} width="28"/> - образцы
+для каждого запуска:<br></br><img src={require('/img/rus/in_process_status.png').default} width="22"/> - образцы
+запуска в
+процессе обработки;<br></br><img src={require('/img/rus/queed_status.png').default} width="14"/> - образцы запуска,
+стоящие в очереди на обработку;<br></br><img src={require('/img/rus/success_status.png').default} width="22"/> - успешно
+обработанные образцы запуска;<br></br><img src={require('/img/rus/problems_status.png').default} width="24"/> - образцы
 запуска, обработанные с некритичными
-проблемами; <img src={require('/img/rus/failed_status.png').default} width="25"/> - образцы запуска,
+проблемами;<br></br><img src={require('/img/rus/failed_status.png').default} width="20"/> - образцы запуска,
 обработанные с ошибкой;
-- «СОЗДАН» - дата добавления запуска в формате «число месяц год»;
-- «ИЗМЕНЕН» - дата последних изменений в данных запуска в формате «число месяц год».
+- «СОЗДАН» - дата добавления запуска в формате д.М.гггг;
+- «ИЗМЕНЕН» - дата последних изменений в данных запуска в формате д.М.гггг.
 
 На странице «<i>Запуски</i>» при наведении курсора на строку запуска появляется
-активный элемент <img src={require('/img/rus/delete_btn.png').default} width="18"/>,
+активный элемент <img src={require('/img/rus/delete_btn.png').default} width="20"/>,
 позволяющий архивировать данные запуска.
 
 На странице «<i>Архив</i>» при наведении курсора на строку запуска появляются следующие активные
-элементы:<br></br><img src={require('/img/rus/restore_btn.png').default} width="22"/> позволяет восстановить данные
-запуска, а <img src={require('/img/rus/delete_btn.png').default} width="18"/> - удалить их.
+элементы:<br></br><img src={require('/img/rus/sample_restore_interpretation.png').default} width="22"/> позволяет
+восстановить данные запуска, а <img src={require('/img/rus/delete_btn.png').default} width="20"/> - удалить их.
 
 Вверху страниц блока находится окно поиска, позволяющее искать запуски по названию или описанию:
-<p align="center"><img src={require('/img/rus/search_run.png').default} width="400"/></p>
+<p align="center"><img src={require('/img/rus/search_run.png').default} width="450"/></p>
 
 На странице «<i>Запуски</i>» вверху находится
 кнопка <img src={require('/img/runs/add_run.png').default} width="150"/>, при нажатии на которую открывается
@@ -132,9 +293,16 @@ import Login from '/docs/imported_components/_login.mdx';
 все архивированные данные запусков.
 </details>
 
-3. Блок "***Групповой анализ***", который включает страницы:
+## Групповой анализ {#group-analyses}
+
+Блок "Групповой анализ" включает страницы:
 - "***Все анализы***" - содержит все созданные в системе групповые анализы. Подробнее о групповом анализе можно
-почитать [здесь](/group-analysis).
+почитать [здесь](/group-analysis). Страница с добавленными групповыми анализами выглядит следующим образом:
+
+<p align="center">
+<img src={require('/img/rus/analyses_page.png').default} width="1000"/>
+</p>
+
 - “***Архив***” - содержит те групповые анализы, которые были архивированы. Вы можете перенести сюда
 неактуальные анализы или анализы, которые вы хотите удалить. Групповые анализы, находящиеся в "Архиве", не отображаются
 на странице "Все анализы".
@@ -147,20 +315,22 @@ import Login from '/docs/imported_components/_login.mdx';
 
 - «ИМЯ» - название группового анализа;
 - «СТАТУС» - информация о статусе
-группового анализа: <img src={require('/img/rus/in_process_status.png').default} width="20"/> - анализ
-в процессе; <img src={require('/img/rus/success_status.png').default} width="25"/> - анализ
-завершен успешно; <img src={require('/img/rus/failed_status.png').default} width="25"/> - анализ завершен с ошибкой;
+группового анализа:<br></br><img src={require('/img/rus/in_process_status.png').default} width="22"/> - анализ
+в процессе;<br></br><img src={require('/img/rus/queed_status.png').default} width="14"/> - анализ
+стоит в очереди;<br></br><img src={require('/img/rus/success_status.png').default} width="22"/> - анализ
+завершен успешно;<br></br><img src={require('/img/rus/failed_status.png').default} width="20"/> - анализ
+завершен с ошибкой;
 - «ТИП» - тип группового анализа (герминальная когорта, семейный или популяционный);
 - «ОПИСАНИЕ» - описание группового анализа;
-- «ИЗМЕНЕН» - дата последних изменений группового анализа в формате «число месяц год».
+- «ИЗМЕНЕН» - дата последних изменений группового анализа в формате д.М.гггг.
 
 На странице «<i>Все анализы</i>» при наведении курсора на строку группового анализа появляется
-активный элемент <img src={require('/img/rus/delete_btn.png').default} width="18"/>, позволяющий архивировать
+активный элемент <img src={require('/img/rus/delete_btn.png').default} width="20"/>, позволяющий архивировать
 групповой анализ.
 
 На странице «<i>Архив</i>» при наведении курсора на строку группового анализа появляются следующие
-активные элементы: <img src={require('/img/rus/restore_btn.png').default} width="22"/> позволяет восстановить
-групповой анализ, а <img src={require('/img/rus/delete_btn.png').default} width="18"/> - удалить его.
+активные элементы: <img src={require('/img/rus/sample_restore_interpretation.png').default} width="22"/> позволяет
+восстановить групповой анализ, а <img src={require('/img/rus/delete_btn.png').default} width="20"/> - удалить его.
 
 На странице «<i>Все анализы</i>» вверху находится
 кнопка <img src={require('/img/rus/add_group_analysis_btn.png').default} width="150"/>, при нажатии на которую
@@ -171,8 +341,10 @@ import Login from '/docs/imported_components/_login.mdx';
 все архивированные групповые анализы.
 </details>
 
-4. В блоке страниц «***Когорты***» располагаются переходы на страницы добавленных когорт и
-кнопка <img src={require('/img/rus/add_cohort.png').default} width="20"/> для добавления когорты. В когорту можно
+## Когорты {#cohorts}
+
+В блоке страниц «Когорты» располагаются переходы на страницы добавленных когорт и
+кнопка <img src={require('/img/rus/add_cohort.png').default} width="20"/> для добавления новой когорты. В когорту можно
 объединить пациентов по какому-либо общему признаку (например, по типу патологии или источнику данных).
 Подробнее о когортах можно почитать [здесь](/cohorts).
 Если добавленных когорт нет, то блок содержит окно для группировки пациентов в когорты:
@@ -204,50 +376,67 @@ import Login from '/docs/imported_components/_login.mdx';
 #### На страницах когорт информация представлена в виде таблицы со следующими колонками: {#cohort-columns}
 - «ПАЦИЕНТ» - информация о пациентах, входящих в когорту, (код, имя, фамилия пациента);
 - «СТАТУС» - статусы наборов образцов каждого
-пациента: <img src={require('/img/rus/in_process_status.png').default} width="20"/> - набор образцов
-обрабатывается; <img src={require('/img/rus/success_status.png').default} width="25"/> - набор образцов
-успешно обработан; <img src={require('/img/rus/problems_status.png').default} width="28"/> - набор образцов
-обработан с некритичными проблемами; <img src={require('/img/rus/failed_status.png').default} width="25"/> - набор
+пациента:<br></br><img src={require('/img/rus/in_process_status.png').default} width="22"/> - набор образцов
+обрабатывается;<br></br><img src={require('/img/rus/queed_status.png').default} width="14"/> - набор образцов
+стоит в очереди
+на обработку;<br></br><img src={require('/img/rus/success_status.png').default} width="22"/> - набор образцов
+успешно обработан;<br></br><img src={require('/img/rus/problems_status.png').default} width="24"/> - набор образцов
+обработан с некритичными проблемами;<br></br><img src={require('/img/rus/failed_status.png').default} width="20"/> - набор
 образцов обработан с ошибкой;
 - «ОБРАЗЕЦ» - информация об образцах каждого
-пациента: <img src={require('/img/rus/in_process_sample.png').default} width="22"/> - опухолевый образец
-в процессе обработки или в ожидании выполнения необходимых стадий контрольного
-образца; <img src={require('/img/rus/tumor_success.png').default} width="20"/> - успешно обработанный
-опухолевый образец; <img src={require('/img/rus/tumor_problems.png').default} width="20"/> - опухолевый образец,
-обработанный с некритичными
-проблемами; <img src={require('/img/rus/tumor_failed.png').default} width="20"/> - опухолевый
-образец, обработанный с ошибкой; <img src={require('/img/rus/normal_in_process.png').default} width="20"/> - образец
+пациента:<br></br><img src={require('/img/rus/in_process_sample.png').default} width="18"/> - опухолевый образец
+в процессе обработки или в ожидании выполнения необходимых стадий
+контрольного образца;<br></br><img src={require('/img/rus/tumor_success.png').default} width="18"/> - успешно
+обработанный
+опухолевый образец;<br></br><img src={require('/img/rus/tumor_problems.png').default} width="18"/> - опухолевый
+образец, обработанный с некритичными
+проблемами;<br></br><img src={require('/img/rus/tumor_failed.png').default} width="18"/> - опухолевый
+образец, обработанный
+с ошибкой;<br></br><img src={require('/img/rus/normal_in_process.png').default} width="18"/> - образец
 неопухолевой ткани в
-процессе обработки; <img src={require('/img/rus/normal_success.png').default} width="20"/> - успешно обработанный
-образец неопухолевой ткани; <img src={require('/img/rus/normal_problems.png').default} width="20"/> - образец
+процессе обработки;<br></br><img src={require('/img/rus/normal_success.png').default} width="18"/> - успешно
+обработанный образец
+неопухолевой ткани;<br></br><img src={require('/img/rus/normal_problems.png').default} width="18"/> - образец
 неопухолевой ткани, обработанный с некритичными
-проблемами; <img src={require('/img/rus/normal_failed.png').default} width="20"/> - образец неопухолевой ткани,
+проблемами;<br></br><img src={require('/img/rus/normal_failed.png').default} width="18"/> - образец неопухолевой ткани,
 обработанный с ошибкой;
 - «КОГОРТА» - название когорты, к которой относится пациент;
-- «СОЗДАН» - дата добавления пациента в формате «число месяц год»;
-- «ИЗМЕНЕН» - дата последних изменений в данных пациента в формате «число месяц год».
+- «СОЗДАН» - дата добавления пациента в формате д.М.гггг;
+- «ИЗМЕНЕН» - дата последних изменений в данных пациента в формате д.М.гггг.
 
 При наведении курсора на строку пациента появляются следующие активные
-элементы: <img src={require('/img/rus/upload_in_patient.png').default} width="20"/>
-позволяет загрузить данные пациента, а <img src={require('/img/rus/delete_btn.png').default} width="18"/> -
+элементы: <img src={require('/img/rus/upload_in_patient.png').default} width="19"/> позволяет
+загрузить данные пациента, а <img src={require('/img/rus/delete_btn.png').default} width="20"/> -
 архивировать данные пациента.
 
-Вверху страниц когорт находится окно поиска, позволяющее искать пациентов, входящих в когорту, по коду или имени:
-<p align="center"><img src={require('/img/rus/search_patient.png').default} width="400"/></p>
-
-На страницах когорт вверху находятся следующие
-кнопки: <img src={require('/img/rus/upload_samples_btn.png').default} width="150"/>, при нажатии на которую открывается
-страница множественной загрузки данных, <img src={require('/img/rus/consolidate_cohort_btn.png').default} width="150"/>,
-открывающая форму создания группового анализа образцов пациентов, входящих в когорту,
-и <img src={require('/img/rus/add_patient_btn.png').default} width="150"/>,
+Вверху страниц когорт находятся:
+1. Окно поиска, позволяющее искать пациентов, входящих в когорту, по коду или имени:
+<p align="center"><img src={require('/img/rus/search_patient.png').default} width="450"/></p>
+2. Кнопка <img src={require('/img/rus/upload_samples_btn.png').default} width="150"/>, при нажатии на которую
+открывается <a href="/uploading-samples/upload-samples-page">страница множественной загрузки данных</a>.
+3. Кнопка <img src={require('/img/rus/consolidate_cohort_btn.png').default} width="150"/>,
+открывающая форму создания группового анализа образцов пациентов, входящих в когорту.
+4. Кнопка <img src={require('/img/rus/add_patient_btn.png').default} width="150"/>,
 открывающая окно <a href="/add-patient">создания пациента</a>.
+
 </details>
 
-5. Блок "***Настройки***", который включает страницы:
-- "***Настройки***" - содержит предварительные установки настроек для анализа образцов. Подробнее о предустановках
+## Настройки {#settings}
+
+Блок "Настройки" включает страницы ["Настройки"](/overview#settings-page),
+["Шаблоны отчетов"](/overview#report-templates), ["Панели генов"](/overview#gene-panels),
+["Реагенты Capture Kit"](/overview#capture-kits) и ["Пользовательские аннотации"](/overview#custom-annotations).
+
+### Страница "Настройки" {#settings-page}
+
+Страница содержит предварительные установки настроек для анализа образцов. Подробнее о предустановках
 настроек можно почитать [здесь](/settings/settings/settings).
 
-:::info На заметку
+<p align="center">
+<img src={require('/img/custom-annot/settings_page.png').default} width="900"/>
+</p>
+
+:::note На заметку
 Количество и вид предустановок настроек зависит от первоначальных настроек, сделанных администратором Системы.
 :::
 
@@ -260,22 +449,28 @@ import Login from '/docs/imported_components/_login.mdx';
 - «ОПИСАНИЕ» - описание предустановки настроек;
 - «ПО УМОЛЧАНИЮ» - колонка, в которой галочкой <img src={require('/img/rus/default_setting.png').default} width="20"/>
 отмечена та предустановка настроек, которая выбрана по умолчанию для анализа образцов;
-- «ИЗМЕНЕН» - дата последних изменений предустановки настроек в формате «число месяц год».
+- «ИЗМЕНЕН» - дата последних изменений предустановки настроек в формате д.М.гггг.
 
 При наведении курсора на строку предустановки настроек, не выбранной по умолчанию, появляются следующие активные
 элементы: <img src={require('/img/rus/set_as_default.png').default} width="22"/> позволяет установить
-предустановку по умолчанию, а <img src={require('/img/rus/delete_btn.png').default} width="18"/> -
+предустановку по умолчанию, а <img src={require('/img/rus/delete_btn.png').default} width="20"/> -
 удалить предустановку.
 
 Вверху на странице находится кнопка <img src={require('/img/rus/add_setting.png').default} width="170"/>,
 при нажатии на которую открывается окно создания предустановки настроек.
 </details>
 
-- "***Шаблоны отчетов***" - содержит шаблоны отчетов, сформированные для представления результатов
+### Шаблоны отчетов {#report-templates}
+
+Страница содержит шаблоны отчетов, сформированные для представления результатов
 анализа образцов в виде отчетов. Подробнее о шаблонах отчетов можно
 почитать [здесь](/settings/report-templates/report-templates).
 
-:::info На заметку
+<p align="center">
+<img src={require('/img/report_templates/rt_page.png').default} width="900"/>
+</p>
+
+:::note На заметку
 Количество и вид шаблонов зависит от первоначальных настроек, сделанных администратором Системы.
 :::
 
@@ -290,10 +485,10 @@ import Login from '/docs/imported_components/_login.mdx';
 Неопухолевые;
 - «АКТИВЕН» - колонка, в которой галочкой <img src={require('/img/rus/default_setting.png').default} width="20"/>
 отмечены активные отчеты;
-- «ИЗМЕНЕН» - дата последних изменений шаблона отчета в формате «число месяц год».
+- «ИЗМЕНЕН» - дата последних изменений шаблона отчета в формате д.М.гггг.
 
 При наведении курсора на строку шаблона отчета появляется
-активный элемент <img src={require('/img/rus/delete_btn.png').default} width="18"/>, позволяющий
+активный элемент <img src={require('/img/rus/delete_btn.png').default} width="20"/>, позволяющий
 удалить шаблон.
 
 Вверху на странице находятся
@@ -303,8 +498,14 @@ import Login from '/docs/imported_components/_login.mdx';
 создания шаблона.
 </details>
 
-- "***Панели генов***" - содержит панели генов, по которым можно проводить фильтрацию выявленных вариантов.
+### Панели генов {#gene-panels}
+
+Страница содержит панели генов, по которым можно проводить фильтрацию выявленных вариантов.
 Подробнее о панелях генов можно почитать [здесь](/settings/gene-panels).
+
+<p align="center">
+<img src={require('/img/gene_panels/gene_panels_page.png').default} width="900"/>
+</p>
 
 <details>
 <summary>Нажмите, чтобы узнать подробнее о виде, в котором представлена информация на странице
@@ -315,7 +516,7 @@ import Login from '/docs/imported_components/_login.mdx';
 - «ОПИСАНИЕ» - описание панели генов.
 
 При наведении курсора на строку панели генов появляется
-активный элемент <img src={require('/img/rus/delete_btn.png').default} width="18"/>, позволяющий
+активный элемент <img src={require('/img/rus/delete_btn.png').default} width="20"/>, позволяющий
 удалить панель.
 
 Вверху на странице находятся
@@ -327,9 +528,15 @@ import Login from '/docs/imported_components/_login.mdx';
 окно импорта панели из библиотеки самых распространенных клинических панелей, загруженных администратором Системы.
 </details>
 
-- "***Реагенты Capture Kit***" - содержит встроенные и загруженные наборы Capture Kit,
+### Реагенты Capture Kit {#capture-kits}
+
+Страница содержит встроенные и загруженные наборы Capture Kit,
 которые можно указать при загрузке результатов таргетного секвенирования для более точного и быстрого анализа.
 Подробнее о реагентах capture kit можно почитать [здесь](/settings/capture-kits).
+
+<p align="center">
+<img src={require('/img/capture_kits/ck_page.png').default} width="900"/>
+</p>
 
 <details>
 <summary>Нажмите, чтобы узнать подробнее о виде, в котором представлена информация на странице
@@ -343,16 +550,22 @@ capture kit, можно скачать набор в формате BED;
 
 При наведении курсора на строку пользовательского набора capture kit появляются следующие активные
 элементы: <img src={require('/img/rus/download_kit.png').default} width="20"/> позволяет скачать
-загруженный файл capture kit в формате BED, а <img src={require('/img/rus/delete_btn.png').default} width="18"/> -
+загруженный файл capture kit в формате BED, а <img src={require('/img/rus/delete_btn.png').default} width="20"/> -
 удалить capture kit.
 
 Вверху на странице находится кнопка <img src={require('/img/rus/upload_ck_btn.png').default} width="170"/>,
 при нажатии на которую открывается окно загрузки файла с набором capture kit.
 </details>
 
-- "***Пользовательские аннотации***" - содержит загруженные пользователем аннотации,
+### Пользовательские аннотации {#custom-annotations}
+
+Страница содержит загруженные пользователем аннотации,
 по которым будут аннотироваться найденные варианты. Подробнее о пользовательских аннотациях можно почитать
 [здесь](/settings/custom-annotations).
+
+<p align="center">
+<img src={require('/img/rus/custom_annotations_page.png').default} width="900"/>
+</p>
 
 <details>
 <summary>Нажмите, чтобы узнать подробнее о виде, в котором представлена информация на странице
@@ -362,14 +575,15 @@ capture kit, можно скачать набор в формате BED;
 - «ИМЯ» - имя пользовательской аннотации (может быть задано или изменено до момента,
 когда аннотация успешно обработана, либо совпадает с имененем загруженного файла аннотации);
 - «СТАТУС» - статусы загруженных
-аннотаций: <img src={require('/img/rus/process_not_started.png').default} width="160"/> - процесс
-обработки аннотации ещё не был <a href="/settings/custom-annotations#perform-source-preparation">запущен</a>; <img src={require('/img/rus/In_progress.png').default} width="140"/> - процесс
+аннотаций:<br></br><img src={require('/img/rus/process_not_started.png').default} width="160"/> - процесс
+обработки аннотации ещё не
+был <a href="/settings/custom-annotations#perform-source-preparation">запущен</a>;<br></br><img src={require('/img/rus/In_progress.png').default} width="140"/> - процесс
 обработки аннотации запущен, но ещё не
-завершён; <img src={require('/img/rus/success_annot.png').default} width="100"/> - процесс обработки аннотации
-успешно завершён; <img src={require('/img/rus/problems_annot.png').default} width="100"/> - процесс
+завершён;<br></br><img src={require('/img/rus/success_annot.png').default} width="100"/> - процесс обработки аннотации
+успешно завершён;<br></br><img src={require('/img/rus/problems_annot.png').default} width="100"/> - процесс
 обработки аннотации успешно завершён, но во время обработки возникли некритичные проблемы (детали можно посмотреть
 на странице пользовательской
-аннотации в <a href="/settings/custom-annotations#perform-source-preparation">разделе "Статус"</a>); <img src={require('/img/rus/failed_annot.png').default} width="85"/> - процесс
+аннотации в <a href="/settings/custom-annotations#perform-source-preparation">разделе "Статус"</a>);<br></br><img src={require('/img/rus/failed_annot.png').default} width="85"/> - процесс
 обработки аннотации завершился неудачно (детали можно посмотреть на странице пользовательской
 аннотации в <a href="/settings/custom-annotations#perform-source-preparation">разделе "Статус"</a>);
 - «ТИП» - тип аннотации. Если аннотация имеет
@@ -380,20 +594,17 @@ capture kit, можно скачать набор в формате BED;
 в качестве базы частот (данные о встречаемости вариантов в популяции); если аннотация имеет
 тип <img src={require('/img/custom-annot/ruseq_button.png').default} width="140"/>, то она используется в качестве
 базы RUseq;
-- «ИЗМЕНЕН» - дата последних изменений пользовательской аннотации в формате «число месяц год».
+- «ИЗМЕНЕН» - дата последних изменений пользовательской аннотации в формате д.М.гггг.
 
 При наведении курсора на строку пользовательского аннотации появляется
-активный элемент <img src={require('/img/rus/delete_btn.png').default} width="18"/>, который позволяет
+активный элемент <img src={require('/img/rus/delete_btn.png').default} width="20"/>, который позволяет
 удалить аннотацию.
 
 Вверху на странице находится кнопка <img src={require('/img/rus/upload_custom_annot.png').default} width="170"/>,
 при нажатии на которую открывается страница добавления пользовательской аннотации.
 </details>
 
-:::caution На заметку
-Отображение блоков в составе панели навигации можно отрегулировать
-на [странице "Настройки пользователя"](/settings/profile#navigation-panel).
-:::
+## Меню пользователя {#user-menu}
 
 Внизу, на боковой панели навигации обозначен логин пользователя, под которым был осуществлен вход в Систему.
 Наведя курсор мыши на логин и нажав на

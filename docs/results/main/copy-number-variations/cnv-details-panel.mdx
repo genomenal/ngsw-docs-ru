@@ -1,0 +1,213 @@
+---
+sidebar_position: 4
+sidebar_label: Панель детальной информации о вариации
+---
+
+# Панель детальной информации о вариации
+
+Нажмите на строку вариации, чтобы увидите панель с детальной информацией о ней под таблицей. Вид панели
+отличается для общих и детальных строк по генам. Панель с детальной информацией об участке вариации целиком:
+
+<p align="center">
+<img src={require('/img/vv/details_panel_cnvv.png').default} width="950"/>
+</p>
+
+Панель с детальной информацией об участке, разбитом по генам:
+
+<p align="center">
+<img src={require('/img/vv/details_panel_split.png').default} width="950"/>
+</p>
+
+Размер панели можно менять, наведя курсор на верхнюю границу панели и потянув вниз или вверх. 
+Также панель можно скрыть и развернуть, нажав на соответствующие 
+стрелки <img src={require('/img/vv/expand.png').default} width="30"/>
+или <img src={require('/img/vv/collapse.png').default} width="30"/> .
+
+:::info На заметку
+На [странице "Настройки пользователя"](/settings/profile#variant-details-bottom-panel)
+можно отрегулировать, будет ли панель детальной информации о вариации развёрнута или скрыта
+в CNV Viewer по умолчанию.
+:::
+
+Панель разделена на вкладки ["Общее"](/results/main/copy-number-variations/cnv-details-panel#common-tab)
+и ["Пересекающиеся варианты"](/results/main/copy-number-variations/cnv-details-panel#overlapping-variants).
+
+На панели визуально выделяются только те вкладки, которые включают хотя бы одно не пустое поле аннотации
+вариации. Например, вкладка "Пересекающиеся варианты", наполненная
+данными, выглядит так: <img src={require('/img/vv/source_full.png').default} width="200"/>, а пустая - так: <img src={require('/img/vv/source_empty.png').default} width="200"/>.<br />
+При перемещении между вариациями в таблице выбранная вкладка панели сохраняется.
+
+## Общее {#common-tab}
+
+Вид вкладки "Общее" отличается для общих и детальных строк.
+Вкладка с общей информацией об участке вариации целиком выглядит так:
+
+<p align="center">
+<img src={require('/img/vv/common_tab_cnvv.png').default} width="950"/>
+</p>
+
+Вкладка с общей информацией об участке, разбитом по генам, выглядит следующим образом:
+
+<p align="center">
+<img src={require('/img/vv/common_tab_split.png').default} width="950"/>
+</p>
+
+Вкладка содержит основную информацию о вариации и может включать следующие разделы:
+- [Уточненные границы](/results/main/copy-number-variations/cnv-details-panel#clarified-boundaries);
+- [Интерпретация вариации](/results/main/copy-number-variations/cnv-details-panel#variation-interpretation);
+- [Дополнительно](/results/main/copy-number-variations/cnv-details-panel#details-additionally) (только для общих строк);
+- [Ген](/results/main/copy-number-variations/cnv-details-panel#gene-info) (только для детальных строк);
+- [Связанные фенотипы OMIM](/results/main/copy-number-variations/cnv-details-panel#omim-phenotypes) (только
+для детальных строк, если предоставлен доступ к базе данных OMIM).
+
+### Уточненные границы {#clarified-boundaries}
+
+В разделе можно уточнить стартовую и конечную позиции вариации, введя их в соответствующие поля "*Начало*" и
+"*Конец*". Вводить можно только цифры без каких-либо дополнительных знаков.
+После уточнения границ вариации появятся кнопки перехода в модуль визуализации вариации в уточненных границах
+на геноме (IGV) - <img src={require('/img/vv/igv_var.png').default} width="30"/> и в учтоненные границы вариации
+в геномном браузере <a href="https://www.deciphergenomics.org/">Decipher</a> - <img src={require('/img/vv/decipher.png').default} width="25"/>:
+
+<p align="center">
+<img src={require('/img/vv/clarified_boundaries.png').default} width="400"/>
+</p>
+
+### Интерпретация вариации / комментарий {#variation-interpretation}
+
+Здесь отображается интерпретация вариации, если она была добавлена пользователем.
+Интерпретацию можно добавить и отредактировать, нажав на текстовое поле, введя текст и кликнув
+вне текстового поля для сохранения интерпретации:
+
+<p align="center">
+<img src={require('/img/vv/interpretation_on_panel_cnvv.png').default} width="600"/>
+</p>
+
+### Дополнительно {#details-additionally}
+
+Для общих строк, представляющих участок вариации целиком, приведен критерий категории - критерий
+принятия решения, объясняющий категорию,
+предоставляемую [AnnotSV](https://lbgi.fr/AnnotSV/Documentation/README.AnnotSV_latest.pdf).
+Полные и подробные рекомендации по оценке и расшифровке критерия категории доступны в
+файле [AnnotSV_Scoring_Criteria.xlsx](https://github.com/lgmgeo/AnnotSV/blob/master/Scoring_Criteria_AnnotSV_latest.xlsx)
+(см. Таблицу 1 для дупликаций и Таблицу 2 для делеций).
+Категория - рейтинговая оценка патогенности вариации, основанная на рекомендациях ACMG и ClinGen[^1].
+Согласно рейтинговой оценке выставляется класс ACMG:
+- Вариациям с рейтинговой оценкой ≥ 0.99 выставляется класс 5 - патогенные;
+- Вариациям с рейтинговой оценкой от 0.90 до 0.98 выставляется класс 4 - вероятно патогенные;
+- Вариациям с рейтинговой оценкой от 0.89 до −0.89 выставляется класс 3 - неопределенная значимость;
+- Вариациям с рейтинговой оценкой от −0.90 до −0.98 выставляется класс 2 - вероятно доброкачественные;
+- Вариациям с рейтинговой оценкой ≤ −0.99 выставляется класс 1 - доброкачественные.
+
+### Ген {#gene-info}
+
+Для детальных строк, представляющих участки вариации, разбитые по генам, приведена
+информация о гене, расположенном на этом участке:
+- ***Полное название гена***. При наведении курсора на название гена можно увидеть, из каких баз данных
+было взято полное название:
+
+<p align="center">
+<img src={require('/img/vv/gene_source_cnvv.png').default} width="300"/>
+</p>
+
+- ***Ссылки*** на страницы с информацией о гене в различных базах данных
+([Ensembl](https://www.ensembl.org/Homo_sapiens/Info/Index), [UniProt](https://www.uniprot.org/uniprot/),
+[GTEx](https://www.gtexportal.org/home/), [OMIM](https://www.omim.org/), [NCBI](https://www.ncbi.nlm.nih.gov/gene/),
+[Orphanet](https://www.orpha.net/consor/cgi-bin/index.php)).
+
+### Связанные фенотипы OMIM {#omim-phenotypes}
+
+Доступ к данным из базы [OMIM](https://www.omim.org/) внутри Genomenal предоставляется при наличии
+у пользователя лицензии на доступ к базе. Если вам предоставлен доступ к OMIM, то для детальных строк,
+представляющих участки вариации, разбитые по генам, справа на вкладке "Общее"
+отобразится информация по фенотипам, ассоциированным с геном, расположенном на участке вариации:
+
+<p align="center">
+<img src={require('/img/vv/omim_phenotypes.png').default} width="500"/>
+</p>
+
+Информация приводится в виде таблицы со следующими колонками:
+1. ***Phenotype*** - полное название фенотипа, связанного с геном. Для некоторых фенотипов перед названием
+стоит знак вопроса (например, "<b>?</b>Bleeding disorder, platelet-type, 22") - это означает, что взаимосвязь между
+фенотипом и геном является предварительной.
+Некоторые фенотипы заключены в квадратные скобки (например, "<b>[</b>Urate oxidase deficiency<b>]</b>"), что указывает
+в основном на генетические вариации, которые приводят к явно аномальным значениям лабораторных тестов.
+Некоторые фенотипы заключены в фигурные скобки (например, "<b>{</b>Prostate cancer/brain cancer susceptibility,
+somatic<b>}</b>"), что обозначает мутации, которые способствуют предрасположенности к многофакторным заболеваниям
+или восприимчивости к инфекциям.
+2. ***Phenotype MIM number*** - идентификатор фенотипа в базе OMIM. Перейдя по ссылке, вы попадете на страницу
+фенотипа в OMIM.
+3. ***Inheritance*** - тип наследования фенотипа:<br /><b>AD</b> - autosomal dominant,
+аутосомно-доминантный;<br /><b>AR</b> - autosomal recessive, аутосомно-рецессивный;<br /><b>DD</b> - digenic dominant,
+дигенный доминантный;<br /><b>DR</b> - digenic recessive, дигенный рецессивный<br /><b>IC</b> - isolated cases,
+единичные случаи;<br /><b>Mi</b> - mitochondrial, митохондриальный;<br /><b>Mu</b> - multifactorial,
+мультифакторный;<br /><b>PADom</b> - pseudoautosomal dominant,
+псевдоаутосомно-доминантный;<br /><b>PARec</b> - pseudoautosomal
+recessive, псевдоаутосомно-рецессивный;<br /><b>SomMos</b> - somatic mosaicism, соматический
+мозаицизм;<br /><b>SMu</b> - somatic mutation, соматическая мутация;<br /><b>XL</b> - X-linked,
+X-сцепленный;<br /><b>XLD</b> - X-linked dominant, X-сцепленный доминантный;<br /><b>XLR</b> - X-linked recessive,
+X-сцепленный рецессивный;<br /><b>YL</b> - Y-linked, Y-сцепленный.
+4. ***Phenotype mapping key*** - ключ карты фенотипа в OMIM (карта отображает связи данного фенотипа с
+ассоциированными фенотипами, группами родственных фенотипов (фенотипическими рядами) и генами):<br /><b>1</b> - фенотип
+помещен на карту из-за его связи с геном, но лежащий в его основе дефект неизвестен;<br /><b>2</b> - фенотип помещен
+на карту в результате использования статистических методов, мутация не обнаружена;<br /><b>3</b> - молекулярная основа
+фенотипа известна, в гене была найдена мутация;<br /><b>4</b> - синдром смежной дупликации или делеции генов, в котором
+участвуют несколько генов.
+
+## Пересекающиеся варианты {#overlapping-variants}
+
+<p align="center">
+<img src={require('/img/vv/overlapping_variants.png').default} width="1000"/>
+</p>
+
+Вкладка содержит
+информацию [о фенотипах](/results/main/copy-number-variations/cnv-details-panel#pathogenic-phenotypes) и
+[терминах HPO](/results/main/copy-number-variations/cnv-details-panel#hpo-terms), ассоциированных с геномной
+областью патогенной делеции, дупликации или инсерции, которая
+полностью перекрывается вариацией числа копий, а также информацию
+о [патогенных](/results/main/copy-number-variations/cnv-details-panel#pathogenic-variants)
+и [доброкачественных](/results/main/copy-number-variations/cnv-details-panel#benign-variants)
+вариантах, пересекающихся с вариацией.
+
+### Патогенные фенотипы {#pathogenic-phenotypes}
+
+Фенотипы представлены в виде таблицы со следующими колонками:
+1. ***Тип*** - тип изменения числа копий: Loss - делеция, Gain - дупликация, Insertion - инсерция.
+2. ***Фенотип*** - название фенотипа геномной области патогенной делеции, дупликации или инсерции,
+полностью перекрывающейся вариацией. При наведении курсора на значение колонки
+можно увидеть полное название фенотипа.
+
+### Связанные термины HPO {#hpo-terms}
+
+Термина HPO представлены в виде таблицы со следующими колонками:
+1. ***Тип*** - тип изменения числа копий: Loss - делеция, Gain - дупликация, Insertion - инсерция.
+2. ***Термин HPO*** - термин из словаря фенотипических аномалий
+человека [Human Phenotype Ontology (HPO)](https://www.ebi.ac.uk/ols/ontologies/hp), ассоциированный
+с геномной областью патогенной делеции, дупликации или инсерции, полностью перекрывающейся вариацией.
+
+### Патогеннные варианты {#pathogenic-variants}
+
+Патогенные пересекающиеся варианты представлены в виде таблицы со следующими колонками:
+1. ***Тип*** - тип изменения числа копий: Loss - делеция, Gain - дупликация, Insertion - инсерция.
+2. ***Источник*** - источник сведений об установленных патогенных генах или геномных областях,
+полностью перекрывающихся вариацией. Возможные источники: [dbVar](https://www.ncbi.nlm.nih.gov/dbvar/),
+[ClinVar](https://preview.ncbi.nlm.nih.gov/clinvar/)
+(CLN), [ClinGen](https://reg.clinicalgenome.org/redmine/projects/registry/genboree_registry/landing)
+(TS3 для дупликаций или HI3 для делеций), название гена, ассоциированного с заболеваниями,
+из [OMIM](https://www.omim.org/) (morbid).
+
+### Доброкачественные варианты {#benign-variants}
+
+Доброкачественные пересекающиеся варианты представлены в виде таблицы со следующими колонками:
+1. ***Тип*** - тип изменения числа копий: Loss - делеция, Gain - дупликация, Insertion - инсерция,
+Inversion - инверсия.
+2. ***Источник*** - источник сведений об установленных доброкачественных геномных областях,
+полностью перекрывающихся вариацией. Возможные источники: [gnomAD](https://gnomad.broadinstitute.org/),
+[ClinVar](https://preview.ncbi.nlm.nih.gov/clinvar/) (CLN),
+[ClinGen](https://reg.clinicalgenome.org/redmine/projects/registry/genboree_registry/landing) (TS40 для дупликаций
+или HI40 для делеций),
+[DGV](http://dgv.tcag.ca/) (dgv, nsv или esv), [DDD](https://www.ddduk.org/),
+[1000 genomes](https://www.internationalgenome.org/) (1000g),
+[лаборатория Ira M. Hall](https://www.nature.com/articles/s41586-020-2371-0) (IMH),
+[Children’s Mercy Research Institute](https://www.childrensmercy.org/childrens-mercy-research-institute/) (CMRI).
+
+[^1]: [Riggs E.R., Andersen E.F., Cherry A.M. et al. Technical standards for the interpretation and reporting of constitutional copy number variants: a joint consensus recommendation of the American College of Medical Genetics and Genomics (ACMG) and the Clinical Genome Resource (ClinGen). Genet Med 22, 245-257 (2020)](https://doi.org/10.1038/s41436-019-0686-8)

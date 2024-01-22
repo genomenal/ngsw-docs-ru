@@ -188,19 +188,21 @@ X-сцепленный рецессивный;<br /><b>YL</b> - Y-linked, Y-сц
 
 Патогенные пересекающиеся варианты представлены в виде таблицы со следующими колонками:
 1. ***Тип*** - тип изменения числа копий: Loss - делеция, Gain - дупликация, Insertion - инсерция.
-2. ***Источник*** - источник сведений об установленных патогенных генах или геномных областях,
+2. ***Источник*** - источники сведений об установленных патогенных генах или геномных областях,
 полностью перекрывающихся вариацией. Возможные источники: [dbVar](https://www.ncbi.nlm.nih.gov/dbvar/),
 [ClinVar](https://preview.ncbi.nlm.nih.gov/clinvar/)
 (CLN), [ClinGen](https://reg.clinicalgenome.org/redmine/projects/registry/genboree_registry/landing)
 (TS3 для дупликаций или HI3 для делеций), название гена, ассоциированного с заболеваниями,
 из [OMIM](https://www.omim.org/) (morbid).
+3. ***Локус*** - позиции патогенных геномных областей, полностью перекрывающихся вариацией (хромосома:стартовая
+позиция-конечная позиция).
 
 ### Доброкачественные варианты {#benign-variants}
 
 Доброкачественные пересекающиеся варианты представлены в виде таблицы со следующими колонками:
 1. ***Тип*** - тип изменения числа копий: Loss - делеция, Gain - дупликация, Insertion - инсерция,
 Inversion - инверсия.
-2. ***Источник*** - источник сведений об установленных доброкачественных геномных областях,
+2. ***Источник*** - источники сведений об установленных доброкачественных геномных областях,
 полностью перекрывающихся вариацией. Возможные источники: [gnomAD](https://gnomad.broadinstitute.org/),
 [ClinVar](https://preview.ncbi.nlm.nih.gov/clinvar/) (CLN),
 [ClinGen](https://reg.clinicalgenome.org/redmine/projects/registry/genboree_registry/landing) (TS40 для дупликаций
@@ -209,5 +211,9 @@ Inversion - инверсия.
 [1000 genomes](https://www.internationalgenome.org/) (1000g),
 [лаборатория Ira M. Hall](https://www.nature.com/articles/s41586-020-2371-0) (IMH),
 [Children’s Mercy Research Institute](https://www.childrensmercy.org/childrens-mercy-research-institute/) (CMRI).
+3. ***Локус*** - позиции доброкачественных геномных областей, полностью перекрывающихся вариацией (хромосома:стартовая
+позиция-конечная позиция).
+4. ***AF MAX*** - максимальная частота аллелей известных доброкачественных геномных областей, перекрывающихся
+вариацией.
 
 [^1]: [Riggs E.R., Andersen E.F., Cherry A.M. et al. Technical standards for the interpretation and reporting of constitutional copy number variants: a joint consensus recommendation of the American College of Medical Genetics and Genomics (ACMG) and the Clinical Genome Resource (ClinGen). Genet Med 22, 245-257 (2020)](https://doi.org/10.1038/s41436-019-0686-8)

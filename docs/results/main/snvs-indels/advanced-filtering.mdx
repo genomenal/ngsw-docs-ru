@@ -85,22 +85,36 @@ SNV Viewer образца: [базовый](/results/main/snvs-indels/basic-filt
 из библиотеки самых распространенных клинических панелей - такая
 опция доступна [в фильтре "Панель генов"](/results/main/snvs-indels/basic-filtering#gene-panel) в
 режиме базового поиска. Если у вас нет добавленных генных панелей, список значений фильтра будет пустым.
-5. **Gene** (колонка ["Локус"](/results/main/snvs-indels/variant-viewer#columns-description),
+5. **Region** (базовый фильтр ["Регион"](/settings/profile#basic-mode-filters)) - фильтр вариантов по
+позиции на геноме (хромосома, стартовая и конечная позиции). Для фильтрации по региону нажмите на окно
+ввода <img src={require('/img/vv/region_filter.png').default} width="230"/> и введите позицию искомого
+геномного интервала с указанием хромосомы, стартовой и конечной позиции. Возможные варианты записи позиции интервала:
+- `chr1:161,190,824-161,193,921`
+- `chr1:161190824-161193921`
+- `chr1:161190824_161193921`
+- `1:161190824-161193921`
+
+Также можно фильтровать сразу по более, чем одному интервалу. Например,
+по `chr1:161190824-161193921, chrX:151110769-151113866`.<br></br>
+Чтобы закончить добавление условия, нажмите клавишу ввода или кликните вне области заполнения значения.<br></br>
+В результате фильтрации по региону будут найдены те варианты, чьи позиции пересекаются с введённым интервалом.
+
+6. **Gene** (колонка ["Локус"](/results/main/snvs-indels/variant-viewer#columns-description),
 базовый фильтр ["Ген"](/results/main/snvs-indels/basic-filtering#gene)) - фильтр варинтов по локализации
 в транскрипте гена. Транскрипт приведен в скобках рядом с официальным названием гена.
 Фильтр [с мультиселектом](/results/main/snvs-indels/advanced-filtering#multiselect-filters).
-6. **Impact** (колонка ["Значение эффекта"](/results/main/snvs-indels/variant-viewer#variant-impacts)) - фильтр
+7. **Impact** (колонка ["Значение эффекта"](/results/main/snvs-indels/variant-viewer#variant-impacts)) - фильтр
 по предсказанному воздействию варианта на белок: High, Moderate, Low, Modifier. Значения колонки описаны
 [здесь](/results/main/snvs-indels/variant-viewer#variant-impacts).
 Фильтр [с мультиселектом](/results/main/snvs-indels/advanced-filtering#multiselect-filters).
-7. **Genome position** - фильтр по позиции варианта в геноме: в экзоне (Exonic),
+8. **Genome position** - фильтр по позиции варианта в геноме: в экзоне (Exonic),
 в интроне (Intronic), в межгенной области (Intergenic).
 Фильтр [с мультиселектом](/results/main/snvs-indels/advanced-filtering#multiselect-filters).
-8. **Consequence** (колонка ["Эффект варианта"](/results/main/snvs-indels/variant-viewer#variant-consequences),
+9. **Consequence** (колонка ["Эффект варианта"](/results/main/snvs-indels/variant-viewer#variant-consequences),
 базовый фильтр ["Эффект"](/settings/profile#basic-mode-filters)) - фильтр по эффекту вариантов на гены.
 Значения колонки описаны [здесь](/results/main/snvs-indels/variant-viewer#variant-consequences).
 Фильтр [с мультиселектом](/results/main/snvs-indels/advanced-filtering#multiselect-filters).
-9. **Pathogenicity** (колонка ["Патогенность"](/results/main/snvs-indels/variant-viewer#columns-description),
+10. **Pathogenicity** (колонка ["Патогенность"](/results/main/snvs-indels/variant-viewer#columns-description),
 базовый фильтр ["Патогенность"](/settings/profile#basic-mode-filters)) - фильтр
 [с мультиселектом](/results/main/snvs-indels/advanced-filtering#multiselect-filters)
 по [патогенности варианта](/results/main/snvs-indels/pathogenicity),
@@ -114,7 +128,7 @@ SNV Viewer образца: [базовый](/results/main/snvs-indels/basic-filt
 - Likely benign - Вероятно доброкачественный;
 - Benign - Доброкачественный;
 - Undefined - Нет интерпретации.
-10. **Label** (колонка ["Метка"](/results/main/snvs-indels/variant-viewer#label),
+11. **Label** (колонка ["Метка"](/results/main/snvs-indels/variant-viewer#label),
 базовый фильтр ["Метка"](/settings/profile#basic-mode-filters)) - фильтр
 [с мультиселектом](/results/main/snvs-indels/advanced-filtering#multiselect-filters)
 по [значимости вариантов, определенной пользователем](/results/main/snvs-indels/variant-viewer#label):
@@ -123,14 +137,14 @@ SNV Viewer образца: [базовый](/results/main/snvs-indels/basic-filt
 - Low significance - Низкая значимость;
 - Sequencing error - Ошибка секвенирования;
 - Undefined - Неопределенная значимость.
-11. **Phasing group** (колонка ["ФГ"](/results/main/snvs-indels/variant-viewer#added-columns)) - фильтр
+12. **Phasing group** (колонка ["ФГ"](/results/main/snvs-indels/variant-viewer#added-columns)) - фильтр
 вариантов [с мультиселектом](/results/main/snvs-indels/advanced-filtering#multiselect-filters)
 по [статусу фазовой группы](/results/main/snvs-indels/variant-viewer#added-columns):
 - Phasing group - фазовая группа (объединение гомозиготных вариантов, расположенных в пределах определенного
 геномного интервала);
 - Part of group consequence equal - часть фазовой группы с совпадающей аминокислотной заменой;
 - Part of group consequence unequal - часть фазовой группы с несовпадающей аминокислотной заменой.
-12. **Compound heterozygote (Genotype)** - фильтр вариантов по тому, входят ли они в
+13. **Compound heterozygote (Genotype)** - фильтр вариантов по тому, входят ли они в
 компаунд-гетерозиготы (т.е. гетерозиготность по двум или более вариантам одного гена; подробно все случаи
 описаны [здесь](/results/main/snvs-indels/advanced-filtering#compound)).
 В отличие от [режима фильтрации по компаунд-гетерозиготе](/results/main/snvs-indels/advanced-filtering#compound),
@@ -155,63 +169,63 @@ SNV Viewer образца: [базовый](/results/main/snvs-indels/basic-filt
 <img src={require('/img/vv/sample_compound.png').default} width="700"/>
 </p>
 
-13. **Trio GT (Genotype)** - фильтр вариантов по
+14. **Trio GT (Genotype)** - фильтр вариантов по
 наследованию [с мультиселектом](/results/main/snvs-indels/advanced-filtering#multiselect-filters): *De novo* варианты,
 Новые гомозиготы (гомозиготы по локусам у пробанда, которые гетерозиготны у родителей) или
 Наследованные от одного родителя. Доступен только в
 семейном [групповом анализе](/group-analysis#group-analysis-variant-viewer) в
 случае Трио (Пробанд, Отец и Мать).
-14. **Chromosome** (колонка ["Позиция"](/results/main/snvs-indels/variant-viewer#columns-description)) - фильтр
+15. **Chromosome** (колонка ["Позиция"](/results/main/snvs-indels/variant-viewer#columns-description)) - фильтр
 вариантов по локализации в хромосомах: chr1-chr22, chrX, chrY, chrM, хромосомы вида chrN\_random (контиги,
 расположенные в хромосоме N, которые невозможно с уверенностью
 разместить на этой хромосоме, или последовательности альтернативных гаплотипов), хромосомы вида chrUn_
 (контиги, которые нельзя с уверенностью разместить на конкретной хромосоме), chrEBV.
 Фильтр [с мультиселектом](/results/main/snvs-indels/advanced-filtering#multiselect-filters).
-15. **rsId** (колонка ["Внешние ссылки"](/results/main/snvs-indels/variant-viewer#columns-description)) - фильтр
+16. **rsId** (колонка ["Внешние ссылки"](/results/main/snvs-indels/variant-viewer#columns-description)) - фильтр
 вариантов по идентификатору в базе [dbSNP](https://www.ncbi.nlm.nih.gov/snp/).
 Фильтр [с вводом идентификатора](/results/main/snvs-indels/advanced-filtering#id-filters). В качестве значения
 можно использовать как полный идентификатор в базе (например, rs1126497), так и цифры идентификатора
 отдельно (1126497).
-16. **ClinVar ID** (колонка ["Внешние ссылки"](/results/main/snvs-indels/variant-viewer#columns-description)) - фильтр
+17. **ClinVar ID** (колонка ["Внешние ссылки"](/results/main/snvs-indels/variant-viewer#columns-description)) - фильтр
 вариантов по идентификатору (Variation ID) в базе [ClinVar](https://www.ncbi.nlm.nih.gov/clinvar/) (например, 183700).
 Фильтр [с вводом идентификатора](/results/main/snvs-indels/advanced-filtering#id-filters).
-17. **Origin** (колонка ["Тип мутации"](/results/main/snvs-indels/variant-viewer#columns-description),
+18. **Origin** (колонка ["Тип мутации"](/results/main/snvs-indels/variant-viewer#columns-description),
 базовый фильтр ["Тип мутации"](/results/main/snvs-indels/basic-filtering#origin)) - фильтр вариантов по
 типу мутации: соматическая (Somatic), герминальная (Germline).
 Фильтр [с мультиселектом](/results/main/snvs-indels/advanced-filtering#multiselect-filters).
-18. **Start** (колонка ["Позиция"](/results/main/snvs-indels/variant-viewer#columns-description)) - фильтр по
+19. **Start** (колонка ["Позиция"](/results/main/snvs-indels/variant-viewer#columns-description)) - фильтр по
 начальной позиции варианта на хромосоме.
 Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (натуральное число).
-19. **End** - фильтр по конечной позиции варианта на хромосоме.
+20. **End** - фильтр по конечной позиции варианта на хромосоме.
 Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (натуральное число).
-20. **Reference allele** (колонка ["Замена"](/results/main/snvs-indels/variant-viewer#columns-description)) - фильтр
+21. **Reference allele** (колонка ["Замена"](/results/main/snvs-indels/variant-viewer#columns-description)) - фильтр
 по референсному аллелю варианта.
 Фильтр [с вводом любого значения](/results/main/snvs-indels/advanced-filtering#any-value-filters).
-21. **Alternative allele** (колонка ["Замена"](/results/main/snvs-indels/variant-viewer#columns-description)) - фильтр
+22. **Alternative allele** (колонка ["Замена"](/results/main/snvs-indels/variant-viewer#columns-description)) - фильтр
 по альтернативному аллелю варианта.
 Фильтр [с вводом любого значения](/results/main/snvs-indels/advanced-filtering#any-value-filters).
-22. **HGVSc** - фильтр вариантов по нуклеотидной замене в [номенклатуре HGVS](https://varnomen.hgvs.org/): префикс
+23. **HGVSc** - фильтр вариантов по нуклеотидной замене в [номенклатуре HGVS](https://varnomen.hgvs.org/): префикс
 “c.” (coding; для замены в кодирующей последовательности) или “n.” (non-coding; для замены
 в некодирующей последовательности) + геномная позиция замещенного нуклеотида + референсный аллель > альтернативный
 аллель. Фильтр [с вводом любого значения](/results/main/snvs-indels/advanced-filtering#any-value-filters).
-23. **HGVSp (short)** (колонка ["HGVSp"](/results/main/snvs-indels/variant-viewer#columns-description)) - фильтр
+24. **HGVSp (short)** (колонка ["HGVSp"](/results/main/snvs-indels/variant-viewer#columns-description)) - фильтр
 вариантов  по аминокислотной замене в [номенклатуре HGVS](https://varnomen.hgvs.org/) с однобуквенными обозначениями
 аминокислот (префикс “p.” (protein) + референсная аминокислота + позиция аминокислоты в белке + новая аминокислота,
 получившаяся в результате замены).
 Фильтр [с вводом любого значения](/results/main/snvs-indels/advanced-filtering#any-value-filters). Пример: p.P72R.
-24. **HGVSp (long)** (колонка ["HGVSp"](/results/main/snvs-indels/variant-viewer#columns-description)) - фильтр
+25. **HGVSp (long)** (колонка ["HGVSp"](/results/main/snvs-indels/variant-viewer#columns-description)) - фильтр
 вариантов по аминокислотной замене в [номенклатуре HGVS](https://varnomen.hgvs.org/) с трехбуквенными обозначениями
 аминокислот. Записывается с учетом транскрипта: идентификатор транскрипта из Ensembl + префикс “p.” (protein) +
 референсная аминокислота + позиция аминокислоты в белке + новая аминокислота, получившаяся в результате замены.
 Фильтр [с вводом любого значения](/results/main/snvs-indels/advanced-filtering#any-value-filters).
 Пример: ENSP00000269305.4:p.Pro72Arg.
-25. **Exon** (колонка ["Экзон"](/results/main/snvs-indels/variant-viewer#columns-description)) - фильтр по
+26. **Exon** (колонка ["Экзон"](/results/main/snvs-indels/variant-viewer#columns-description)) - фильтр по
 номеру экзона в транскрипте, который вариант затронул.
 Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (натуральное число).
-26. **Onco Relevance** (колонка ["Онкозначимость"](/results/main/snvs-indels/variant-viewer#added-columns)) - фильтр
+27. **Onco Relevance** (колонка ["Онкозначимость"](/results/main/snvs-indels/variant-viewer#added-columns)) - фильтр
 по значимости варианта для развития онкологических заболеваний: Relevant, Irrelevant.
 Фильтр [с выбором одного значения](/results/main/snvs-indels/advanced-filtering#single-value-filters).
-27. **Caller Filters** (колонка ["Фильтры детекции"](/results/main/snvs-indels/variant-viewer#added-columns),
+28. **Caller Filters** (колонка ["Фильтры детекции"](/results/main/snvs-indels/variant-viewer#added-columns),
 базовый фильтр ["Фильтры"](/settings/profile#basic-mode-filters)) - фильтр вариантов по
 качеству [с мультиселектом](/results/main/snvs-indels/advanced-filtering#multiselect-filters).
 

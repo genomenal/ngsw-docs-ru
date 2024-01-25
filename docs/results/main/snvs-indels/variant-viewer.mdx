@@ -226,7 +226,7 @@ variants; SNVs) и коротких инсерций/делеций (Indels), в
 По умолчанию таблица отсортирована по стартовой позиции варианта (колонка "Позиция").
 Таблицу можно ***сортировать*** по возрастанию или убыванию значений следующих колонок:
 - колонки [по умолчанию](/results/main/snvs-indels/variant-viewer#columns-description): "Локус", "Тип мутации",
-"Позиция", "Экзон", "Глубина (Альт/Реф)", "Эффект варианта", "gnomAD AF", "Патогенность";
+"Позиция", "Экзон", "Глубина (Альт/Реф)", "Эффект варианта", "gnomAD 3 AF", "Патогенность";
 - все колонки, [не добавленные по умолчанию](/results/main/snvs-indels/edit-table-columns#add-columns).
 
 Для сортировки таблицы по значениям колонки нажмите на её название (нажмите один раз, чтобы отсортировать
@@ -245,7 +245,7 @@ variants; SNVs) и коротких инсерций/делеций (Indels), в
 
 Основным принципом сортировки является сортировка по алфавиту для колонок с текстовыми значениями (например,
 колонка "Локус") или сортировка от минимального к максимальному и наоборот для колонок с числовыми
-значениями (например, колонка "gnomAD AF"). Однако для некоторых колонок сортировка особенная:
+значениями (например, колонка "gnomAD 3 AF"). Однако для некоторых колонок сортировка особенная:
 - Колонка "**[Эффект варианта](/results/main/snvs-indels/variant-viewer#variant-consequences)**": сортировка
 от наиболее значимого эффекта к наименее значимому: Transcript ablation, Splice acceptor, Splice donor,
 Stop gained, Frameshift, Stop lost, Start lost, Transcript amplification, Inframe insertion,
@@ -721,7 +721,7 @@ import Highlight from '@site/src/components/HighlightBlackText';
 10. **Внешние ссылки** - ссылки на вариант в базах
 данных <a href="https://www.ncbi.nlm.nih.gov/snp/">dbSNP</a>: <img src={require('/img/vv/rsId_btn.png').default} width="35"/>, <a href="https://varsome.com/">VarSome</a>: <img src={require('/img/vv/varsome.png').default} width="35"/>, <a href="https://preview.ncbi.nlm.nih.gov/clinvar/">ClinVar</a>: <img src={require('/img/vv/clinvar.png').default} width="35"/>, <a href="https://cancer.sanger.ac.uk/cosmic/">COSMIC</a>: <img src={require('/img/vv/cosmic.png').default} width="35"/> (если
 база
-была <a href="/settings/custom-annotations#define-annotation-type">загружена в виде пользовательской аннотации</a>), <a href="https://franklin.genoox.com/clinical-db/home">Franklin</a>: <img src={require('/img/vv/franklin.png').default} width="35"/>, <a href="https://genome-euro.ucsc.edu/">UCSC</a>: <img src={require('/img/vv/ucsc.png').default} width="35"/>, <a href="https://gnomad.broadinstitute.org/">gnomAD</a>: <img src={require('/img/vv/gnomad.png').default} width="35"/>,<br></br><a href="http://ruseq.ru/#/">RUSeq</a>: <img src={require('/img/vv/ruseq.png').default} width="35"/> (если
+была <a href="/settings/custom-annotations#define-annotation-type">загружена в виде пользовательской аннотации</a>), <a href="https://franklin.genoox.com/clinical-db/home">Franklin</a>: <img src={require('/img/vv/franklin.png').default} width="35"/>, <a href="https://genome-euro.ucsc.edu/">UCSC</a>: <img src={require('/img/vv/ucsc.png').default} width="35"/>, <a href="https://gnomad.broadinstitute.org/news/2020-10-gnomad-v3-1/">gnomAD 3</a>: <img src={require('/img/vv/gnomad.png').default} width="35"/>,<br></br><a href="http://ruseq.ru/#/">RUSeq</a>: <img src={require('/img/vv/ruseq.png').default} width="35"/> (если
 база была <a href="/settings/custom-annotations#define-annotation-type">загружена в виде пользовательской аннотации</a>).
 В ячейке может быть до трёх кнопок-ссылок максимум. Если вариант найден более, чем в трёх базах, то
 в ячейке появляются три точки <img src={require('/img/vv/three_points.png').default} width="15"/>,
@@ -731,7 +731,8 @@ import Highlight from '@site/src/components/HighlightBlackText';
 <img src={require('/img/vv/added_external_links.png').default} width="280"/>
 </p>
 
-11. **gnomAD AF** - частота аллеля по данным базы [gnomAD](https://gnomad.broadinstitute.org/).
+11. **gnomAD 3 AF** - частота аллеля по данным
+базы [gnomAD (версия 3)](https://gnomad.broadinstitute.org/news/2020-10-gnomad-v3-1/).
 
 Ячейки колонки раскрашены в зависимости от значения частоты:
 - <Highlight color="#DEF1DB">зелёным</Highlight>, если AF ≥ 0.015;

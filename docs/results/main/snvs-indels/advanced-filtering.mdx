@@ -39,15 +39,16 @@ SNV Viewer образца: [базовый](/results/main/snvs-indels/basic-filt
 3. [Gene](/results/main/snvs-indels/advanced-filtering#per-sample) (если у вас есть доступ к данным
 базы [OMIM](https://www.omim.org/) внутри Genomenal, который
 предоставляется при наличии у пользователя лицензии на доступ к базе)
-4. [GnomAD](/results/main/snvs-indels/advanced-filtering#gnomad)
-5. [ClinVar](/results/main/snvs-indels/advanced-filtering#clinvar)
-6. [Conservation](/results/main/snvs-indels/advanced-filtering#conservation)
-7. [ExAC](/results/main/snvs-indels/advanced-filtering#exac)
-8. [Protein function effect](/results/main/snvs-indels/advanced-filtering#protein-function-effect)
-9. [Protein function effect (additional)](/results/main/snvs-indels/advanced-filtering#protein-function-effect-additional)
-10. [Other frequencies](/results/main/snvs-indels/advanced-filtering#other-frequencies)
-11. [Other](/results/main/snvs-indels/advanced-filtering#other)
-12. [Custom annotation sources](/results/main/snvs-indels/advanced-filtering#custom-annotations) (если хотя бы
+4. [gnomAD 3](/results/main/snvs-indels/advanced-filtering#gnomad)
+5. [gnomAD 4](/results/main/snvs-indels/advanced-filtering#gnomad-4)
+6. [ClinVar](/results/main/snvs-indels/advanced-filtering#clinvar)
+7. [Conservation](/results/main/snvs-indels/advanced-filtering#conservation)
+8. [ExAC](/results/main/snvs-indels/advanced-filtering#exac)
+9. [Protein function effect](/results/main/snvs-indels/advanced-filtering#protein-function-effect)
+10. [Protein function effect (additional)](/results/main/snvs-indels/advanced-filtering#protein-function-effect-additional)
+11. [Other frequencies](/results/main/snvs-indels/advanced-filtering#other-frequencies)
+12. [Other](/results/main/snvs-indels/advanced-filtering#other)
+13. [Custom annotation sources](/results/main/snvs-indels/advanced-filtering#custom-annotations) (если хотя бы
 одна пользовательская аннотация была [добавлена](/settings/custom-annotations#add-custom-annotation) в
 систему до того, как варианты в образце были проаннотированы)
 
@@ -613,38 +614,142 @@ SNV Viewer образца: [базовый](/results/main/snvs-indels/basic-filt
 Доступен, только если у вас есть доступ к данным базы [OMIM](https://www.omim.org/) внутри Genomenal, который
 предоставляется при наличии у пользователя лицензии на доступ к базе.
 
-### GnomAD {#gnomad}
+### gnomAD 3 {#gnomad}
 
-Колонки фильтрации со следующими данными из базы [gnomAD](https://gnomad.broadinstitute.org/):
-1. **Allele frequency** (колонка ["gnomAD AF"](/results/main/snvs-indels/variant-viewer#columns-description)) - фильтр
-вариантов по суммарной частоте аллеля.
+Колонки фильтрации со следующими данными из
+базы [gnomAD (версия 3)](https://gnomad.broadinstitute.org/news/2020-10-gnomad-v3-1/):
+1. **AF** (колонка ["gnomAD 3 AF"](/results/main/snvs-indels/variant-viewer#columns-description)) - фильтр
+вариантов по суммарной частоте альтернативного аллеля.
 Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (положительное
 рациональное число).
-2. **XY samples AF** - фильтр вариантов по частоте аллеля в подпопуляции XY.
+2. **XY AF** - фильтр вариантов по частоте аллеля в подпопуляции XY.
 Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (положительное
 рациональное число).
-3. **XX samples AF** - фильтр вариантов по частоте аллеля в подпопуляции XX.
+3. **XX AF** - фильтр вариантов по частоте аллеля в подпопуляции XX.
 Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (положительное
 рациональное число).
 4. **Number of Homozygotes** - фильтр вариантов по количеству гомозигот.
 Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (натуральное число).
 5. **[Популяция] AF** - фильтр вариантов по суммарной частоте аллеля в различных популяциях,
-где **[Популяция]**: Ashkenazi Jewish, Amish, African and African American, Finnish, South Asian, Latino,
-Non-Finnish european, East Asian, Middle Eastern, Other.
+где **[Популяция]**: Ashkenazi Jewish, Amish, African and Afr. Am., Finnish, South Asian, Latino,
+Non-finnish european, East Asian, Middle Eastern, Other.
 Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (положительное
 рациональное число).
 6. **[Популяция] XY/XX samples AF** - фильтр вариантов по частотам в подпопуляциях XY или XX в различных популяциях,
 где **[Популяция]**: Ashkenazi Jewish, Amish, African and African American, Finnish, South Asian, Latino,
-Non-Finnish european, East Asian, Middle Eastern, Other.
+Non-finnish european, East Asian, Middle Eastern, Other.
 Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (положительное
 рациональное число).
 7. **[Популяция] Number of Homozygotes** - фильтр вариантов по количеству гомозигот в различных популяциях,
 где **[Популяция]**: Ashkenazi Jewish, Amish, African and African American, Finnish, South Asian, Latino,
-Non-Finnish european, East Asian, Middle Eastern, Other.
+Non-finnish european, East Asian, Middle Eastern, Other.
 Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (положительное
 рациональное число).
 8. **Coverage** - фильтр вариантов по средней глубине покрытия по основаниям: &lt;10, 10-100, ⩾100.
 Фильтр [с вводом любого значения](/results/main/snvs-indels/advanced-filtering#any-value-filters).
+
+### gnomAD 4 {#gnomad-4}
+
+Колонки фильтрации со следующими данными из базы [gnomAD (версия 4)](https://gnomad.broadinstitute.org/):
+1. **AF** - фильтр вариантов по суммарной частоте альтернативного аллеля в генотипах высокого качества
+в экзомных и геномных данных.
+Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (положительное
+рациональное число).
+2. **AC** - фильтр вариантов по количеству альтернативного аллеля в экзомных и геномных данных.
+Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (натуральное число).
+3. **AN** - фильтр вариантов по общему количеству генотипов высокого качества в экзомных и геномных данных.
+Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (натуральное число).
+4. **Number of Homozygotes** - фильтр вариантов по количеству людей, гомозиготных по альтернативному аллелю,
+в популяции в экзомных и геномных данных.
+Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (натуральное число).
+5. **XY Number of Homozygotes** - фильтр вариантов по количество людей, гомозиготных по альтернативному аллелю,
+в подпопуляции XY в экзомных и геномных данных.
+Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (натуральное число).
+6. **XX Number of Homozygotes** - фильтр вариантов по количество людей, гомозиготных по альтернативному аллелю,
+в подпопуляции XX в экзомных и геномных данных.
+Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (натуральное число).
+7. **XY AF** - фильтр вариантов по суммарной частоте альтернативного аллеля в подпопуляции XY в экзомных
+и геномных данных. Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters)
+(положительное рациональное число).
+8. **XY AC** - фильтр вариантов по количеству альтернативного аллеля в подпопуляции XY в экзомных и геномных данных.
+Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (натуральное число).
+9. **XY AN** - фильтр вариантов по общему количеству генотипов высокого качества в подпопуляции XY в экзомных и
+геномных данных.
+Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (натуральное число).
+10. **XX AF** - фильтр вариантов по суммарной частоте альтернативного аллеля в подпопуляции XX в экзомных
+и геномных данных. Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters)
+(положительное рациональное число).
+11. **XX AC** - фильтр вариантов по количеству альтернативного аллеля в подпопуляции XX в экзомных и геномных данных.
+Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (натуральное число).
+12. **XX AN** - фильтр вариантов по общему количеству генотипов высокого качества в подпопуляции XX в экзомных и
+геномных данных.
+Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (натуральное число).
+13. **Exomes AF** - фильтр вариантов по суммарной частоте альтернативного аллеля в генотипах высокого качества
+в экзомных данных.
+Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (положительное
+рациональное число).
+14. **Exomes AC** - фильтр вариантов по количеству альтернативного аллеля в экзомных данных.
+Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (натуральное число).
+15. **Exomes AN** - фильтр вариантов по общему количеству генотипов высокого качества в экзомных данных.
+Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (натуральное число).
+16. **Exomes Number of Homozygotes** - фильтр вариантов по количеству людей, гомозиготных по альтернативному аллелю,
+в популяции в экзомных данных.
+Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (натуральное число).
+17. **Exomes XY Number of Homozygotes** - фильтр вариантов по количество людей, гомозиготных по альтернативному аллелю,
+в подпопуляции XY в экзомных данных.
+Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (натуральное число).
+18. **Exomes XX Number of Homozygotes** - фильтр вариантов по количество людей, гомозиготных по альтернативному аллелю,
+в подпопуляции XX в экзомных данных.
+Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (натуральное число).
+19. **Exomes XY AF** - фильтр вариантов по суммарной частоте альтернативного аллеля в подпопуляции XY в экзомных
+данных. Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters)
+(положительное рациональное число).
+20. **Exomes XY AC** - фильтр вариантов по количеству альтернативного аллеля в подпопуляции XY в экзомных данных.
+Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (натуральное число).
+21. **Exomes XY AN** - фильтр вариантов по общему количеству генотипов высокого качества в подпопуляции XY в экзомных
+данных. Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (натуральное
+число).
+22. **Exomes XX AF** - фильтр вариантов по суммарной частоте альтернативного аллеля в подпопуляции XX в экзомных
+данных. Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters)
+(положительное рациональное число).
+23. **Exomes XX AC** - фильтр вариантов по количеству альтернативного аллеля в подпопуляции XX в экзомных данных.
+Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (натуральное число).
+24. **Exomes XX AN** - фильтр вариантов по общему количеству генотипов высокого качества в подпопуляции XX в экзомных
+данных. Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (натуральное
+число).
+25. **Genomes AF** - фильтр вариантов по суммарной частоте альтернативного аллеля в генотипах высокого качества
+в геномных данных.
+Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (положительное
+рациональное число).
+26. **Genomes AC** - фильтр вариантов по количеству альтернативного аллеля в геномных данных.
+Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (натуральное число).
+27. **Genomes AN** - фильтр вариантов по общему количеству генотипов высокого качества в геномных данных.
+Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (натуральное число).
+28. **Genomes Number of Homozygotes** - фильтр вариантов по количеству людей, гомозиготных по альтернативному аллелю,
+в популяции в геномных данных.
+Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (натуральное число).
+29. **Genomes XY Number of Homozygotes** - фильтр вариантов по количество людей, гомозиготных по альтернативному аллелю,
+в подпопуляции XY в геномных данных.
+Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (натуральное число).
+30. **Genomes XX Number of Homozygotes** - фильтр вариантов по количество людей, гомозиготных по альтернативному аллелю,
+в подпопуляции XX в геномных данных.
+Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (натуральное число).
+31. **Genomes XY AF** - фильтр вариантов по суммарной частоте альтернативного аллеля в подпопуляции XY в геномных
+данных. Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters)
+(положительное рациональное число).
+32. **Genomes XY AC** - фильтр вариантов по количеству альтернативного аллеля в подпопуляции XY в геномных данных.
+Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (натуральное число).
+33. **Genomes XY AN** - фильтр вариантов по общему количеству генотипов высокого качества в подпопуляции XY в геномных
+данных. Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (натуральное
+число).
+34. **Genomes XX AF** - фильтр вариантов по суммарной частоте альтернативного аллеля в подпопуляции XX в геномных
+данных. Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters)
+(положительное рациональное число).
+35. **Genomes XX AC** - фильтр вариантов по количеству альтернативного аллеля в подпопуляции XX в геномных данных.
+Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (натуральное число).
+36. **Genomes XX AN** - фильтр вариантов по общему количеству генотипов высокого качества в подпопуляции XX в геномных
+данных. Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (натуральное
+число).
 
 ### ClinVar {#clinvar}
 

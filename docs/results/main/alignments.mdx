@@ -16,10 +16,8 @@ sidebar_label: Выравнивания
 
 1. Файл c выравниваниями в формате **BAM (Binary Alignment Map)**. Чтобы скачать файл,
 нажмите на <img src={require('/img/rus/30-bam_file.png').default} width="45"/>.
-
 2. **Индексный файл для выравнивания в формате BAI**. Файл требуется для некоторых инструментов.
 Чтобы скачать файл, нажмите на <img src={require('/img/rus/31-bai-file.png').default} width="45"/>.
-
 3. **[Integrative Genomics Viewer (IGV)](https://software.broadinstitute.org/software/igv/)** - встроенный
 модуль визуализации прочтений на геноме. Чтобы открыть модуль, нажмите
 на <img src={require('/img/results/igv_btn.png').default} width="45"/>.
@@ -29,3 +27,18 @@ sidebar_label: Выравнивания
 <p align="center">
 <img src={require('/img/rus/32-igv-deletion.jpg').default} width="800"/>
 </p>
+
+:::info На заметку
+Если вы хотите добавить в вашу [десктопную версию IGV](https://igv.org/doc/desktop/) трек выравнивания,
+полученного в результате анализа вашего образца в Genomenal, вы можете сделать это через ссылку. Для этого
+сделайте следующее:
+1. Нажмите правой кнопкой мыши на <img src={require('/img/rus/30-bam_file.png').default} width="45"/>
+и выберите опцию "*Копировать адрес ссылки*".
+2. Загрузите трек через URL в вашу десктопную версию IGV, как это
+описано [здесь](https://igv.org/doc/desktop/#UserGuide/loading_data/).
+3. Нажмите правой кнопкой мыши на кнопку индексного файла для
+выравнивания <img src={require('/img/rus/31-bai-file.png').default} width="45"/>
+и выберите опцию "*Копировать адрес ссылки*".
+4. Добавьте URL индексного файла в соответствующее поле в IGV.
+5. Нажмите "*OK*". Готово! Трек выравнивания образца добавлен в IGV.
+:::

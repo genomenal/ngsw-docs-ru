@@ -1,0 +1,63 @@
+---
+sidebar_position: 3
+sidebar_label: Потенциальные находки
+---
+
+# Потенциальные находки
+
+Потенциальные находки - это выявленные в образце SNVs/Indels или вариации числа копий, которые удовлетворяют
+некоторым предварительно заданным критериям. Это могут быть критерии ACMG, фильтры по панелям генов с
+дополнительными условиями для редких моногенных заболеваний и т.п.
+
+В число потенциальных находок можно включить SNVs/Indels или CNVs из блоков отчёта с типом
+"*SNVs/Indels по генам списка ACMG SF*" (["Отчёт со вторичными находками ACMG"](/results/acmg-sf-report)),
+"*SNVs/Indels, подходящие под заданные условия*" или "*CNVs, подходящие под заданные условия*".
+Чтобы это сделать,
+[включите соответствующие переключатели в этих блоках](/settings/report-templates/report-templates#block-types).
+
+В отчёте потенциальные находки обозначены
+значком <img src={require('/img/results/potential_finding.png').default} width="25"/>:
+
+<p align="center">
+<img src={require('/img/results/acmg_potential_findings.png').default} width="900"/>
+</p>
+
+### Изменение статуса потенциальной находки {#change-potential-finding-status}
+
+Чтобы изменить статус потенциальной находки, нажмите на
+значок <img src={require('/img/results/potential_finding.png').default} width="25"/> в строке находки.
+Откроется следующее окно:
+
+<p align="center">
+<img src={require('/img/results/change_of_status.png').default} width="400"/>
+</p>
+
+#### Включение потенциальной находки в результаты интерпретации {#include-to-interpretation-results}
+
+Чтобы включить находку в [результаты интерпретации](/results/main/main#interpretation-results),
+выберите статус "*Включена в результаты интерпретации*", а затем определите патогенность находки.
+Если класс патогенности находки [требует подтверждения](/results/main/snvs-indels/pathogenicity#confirm-pathogenicity),
+подтвердите патогенность, нажав на соответствующую опцию "*Подтвердить патогенность*".
+Затем нажмите на кнопку <img src={require('/img/custom-annot/ok_btn.png').default} width="130"/>.
+
+Значок потенциальной находки, включённой в результаты интерпретации, поменяется на значок патогенности находки:
+- Патогенная находка: <img src={require('/img/vv/pathogenic.png').default} width="40"/>
+- Вероятно патогенная находка: <img src={require('/img/vv/probably_pathogenic.png').default} width="40"/>
+- Находка неопределенной значимости или находка с противоречивыми интерпретациями
+патогенности: <img src={require('/img/vv/uncertain_significance.png').default} width="44"/>
+- Вероятно доброкачественная находка: <img src={require('/img/vv/likely_benign.png').default} width="40"/>
+- Доброкачественная находка: <img src={require('/img/vv/benign.png').default} width="40"/>
+
+#### Исключение из списка потенциальных находок {#exclude-from-potential-findings}
+
+Чтобы исключить находку из списка потенциальных находок,
+выберите статус "*Исключена из списка потенциальных находок*" и
+нажмите <img src={require('/img/custom-annot/ok_btn.png').default} width="130"/>.
+
+Значок находки, исключённой из списка потенциальных находок, изменится
+на <img src={require('/img/results/excluded_from_pf.png').default} width="25"/>.
+
+:::note На заметку
+Если одна и та же находка обнаружилась сразу в нескольких отчётах, то при изменении её статуса
+он изменится во всех этих отчётах.
+:::

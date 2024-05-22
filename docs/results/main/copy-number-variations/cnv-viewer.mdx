@@ -255,15 +255,15 @@ CNV Viewer работает медленнее в этом режиме, так 
 в [соответствующем разделе](/results/main/copy-number-variations/cnv-details-panel).
 
 2. **Модуль визуализации вариации на геноме (IGV)**. Чтобы открыть встроенный модуль,
-нажмите на <img src={require('/img/vv/igv_var.png').default} width="30"/> в строке вариации.
-Чтобы открыть одновременно два региона по границам перестройки в IGV,
+нажмите на <img src={require('/img/vv/igv.png').default} width="30"/> в строке вариации.
+Чтобы открыть одновременно два региона по границам достаточно крупной перестройки в IGV,
 нажмите на <img src={require('/img/vv/split_to_borders.png').default} width="109"/>, а чтобы вернуться к
 визуализации всей вариации, нажмите на <img src={require('/img/vv/merge_borders.png').default} width="110"/>.
 Если вы хотите перейти на страницу позиции, открытой в IGV, в геномном
 браузере <a href="https://www.deciphergenomics.org/">Decipher</a>,
 нажмите на <img src={require('/img/vv/decipher_igv.png').default} width="75"/>.
 Из IGV, открытого из CNV Viewer, можно вернуться обратно в CNV Viewer с фильтром по позиции,
-которая была открыта в IGV, нажав на кнопку <img src={require('/img/vv/back_to_cnvv.png').default} width="135"/>.
+которая открыта в IGV, нажав на кнопку <img src={require('/img/vv/back_to_cnvv.png').default} width="135"/>.
 3. **Ссылка на позицию вариации в геномном браузере [Decipher](https://www.deciphergenomics.org/)**.
 Чтобы перейти в браузер, нажмите на <img src={require('/img/vv/decipher.png').default} width="25"/> в строке вариации.
 
@@ -281,8 +281,8 @@ CNV Viewer работает медленнее в этом режиме, так 
 4. **Log2 FC** - логарифмическое соотношение выявленного числа копий к нормальному числу копий (равно двум
 для аутосом и X-хромосомы в случае генотипа XX либо единице для половых хромосом в случае генотипа XY).
 5. **Относительная копийность** - количество копий некоторого участка на гаплоидный геном.
-6. **Тип** - тип изменения числа копий: <img src={require('/img/vv/deletion.png').default} width="50"/> -
-делеция, <img src={require('/img/vv/duplication.png').default} width="50"/> - дупликация.
+6. **Тип** - тип изменения числа копий: <img src={require('/img/vv/deletion.png').default} width="60"/> -
+делеция, <img src={require('/img/vv/duplication.png').default} width="60"/> - дупликация.
 7. **AF по когорте 180** - частота вариации в когорте, состоящей из 188 образцов. Значения частот
 есть только для бинов размером 3000 или 5000. Колонка отображается только в CNV Viewer с варициями числа копий,
 выявленными в бинах. Ячейки колонки раскрашены в зависимости от значения частоты:

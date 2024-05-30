@@ -1,0 +1,95 @@
+---
+sidebar_position: 8
+sidebar_label: Интерпретация варианта
+---
+
+# Интерпретация варианта
+
+Интерпретация варианта - это комментарий с важной информацией о варианте, добавленный пользователем.
+
+:::caution Внимание!
+Не путайте интерпретацию варианта, описанную в этой статье,
+с [интерпретацией образца](/results/sample-interpretation).
+Интерпретация образца - это интерпретация патогенности мутаций, выявленных в образце.
+:::
+
+### Где отображается интерпретация варианта? {#where}
+
+Интерпретация варианта отображается:
+- На странице [SNV Viewer](/results/main/snvs-indels/variant-viewer) при
+наведении курсора на иконку <img src={require('/img/vv/interpreted_btn.png').default} width="28"/> в строке варианта:
+
+<p align="center">
+<img src={require('/img/vv/interpretation_text.png').default} width="400"/>
+</p>
+
+- На [вкладке "Common"](/results/main/snvs-indels/snv-details-panel#variant-interpretation) панели детальной
+информации о варианте:
+
+<p align="center">
+<img src={require('/img/vv/interpret_panel.png').default} width="600"/>
+</p>
+
+- Вверху [страницы детальной информации о варианте](/results/main/snvs-indels/snv-details-page#add-interpretation):
+
+<p align="center">
+<img src={require('/img/vv/interpret_panel.png').default} width="600"/>
+</p>
+
+- Под строкой варианта в таблице отчёта, если вариант попал в блоки отчёта с
+типом ["Выбранные пользователем SNVs/Indels для добавления в отчёт"](/results/report-with-variants-added-by-user#added-to-report),
+["Закрепленные SNVs/Indels"](/results/report-with-variants-added-by-user#pinned),
+["SNVs/Indels, подходящие под заданные условия"](/results/mutations-suitable-for-the-specified-conditions#snvs),
+["SNVs/Indels по генам списка ACMG SF"](/results/acmg-sf-report),
+["Глиома: герминальные патогенные варианты"](/results/glioma-report#pathogenic-or-likely-pathogenic-for-glioma),
+["Глиома: герминальные патогенные варианты для заболеваний, отличных от глиом"](/results/glioma-report#pathogenic-or-likely-pathogenic-for-others),
+["Глиома: герминальные варианты, ассоциированные с глиомой"](/results/glioma-report#glioma-associated),
+["Онко: Онкозначимые SNVs/Indels, выбранные пользователем для добавления в отчёт"](/results/onco-genetic-testing-report#onco-relevant-variants):
+
+<p align="center">
+<img src={require('/img/vv/interpretation_on_report.png').default} width="900"/>
+</p>
+
+### Как добавить и отредактировать интерпретацию варианта? {#add-and-edit}
+
+Интерпретацию варианта можно добавить и отредактировать:
+- На [панели детальной информации о варианте](/results/main/snvs-indels/snv-details-panel#variant-interpretation)
+(вкладка "Common", раздел "Интерпретация варианта / комментарий"). Чтобы добавить или отредактировать интерпретацию
+варианта, нажмите на окно ввода, введите нужный текст и кликните вне текстового поля для сохранения интерпретации:
+
+<p align="center">
+<img src={require('/img/vv/interpretation_on_panel.png').default} width="600"/>
+</p>
+
+- На [странице детальной информации о варианте](/results/main/snvs-indels/snv-details-page#add-interpretation) (вверху
+страницы, в поле "Интерпретация варианта / комментарий"). Чтобы добавить или отредактировать интерпретацию варианта,
+выполните следующее:
+1. Нажмите на окно ввода:
+
+<p align="center">
+<img src={require('/img/vv/var_interpretation.png').default} width="900"/>
+</p>
+
+2. Введите нужные данные или процитируйте текст со страницы детальной информации одним из следующих способов:
+- Нажмите на <img src={require('/img/vv/citate_btn.png').default} width="25"/>, а затем кликните на нужный текст -
+он появится в окне ввода интерпретации (удобно использовать, если вам нужен весь текст элемента, например полное
+название гена).
+- Выделите нужный текст, а затем нажмите на <img src={require('/img/vv/citate_second_btn.png').default} width="25"/> -
+выделенный текст появится в окне ввода интерпретации (удобно использовать, если вам нужна только определенная часть
+текста элемента, например одно предложение из целого резюме статьи).
+
+При любом способе добавления или редактирования интерпретации текст везде автоматически обновляется.
+
+Рядом с добавленной интерпретацией отображается её автор - имя пользователя, который проинтерпретировал вариант.
+На странице детальной информации о варианте автор отмечен под полем ввода:
+
+<p align="center">
+<img src={require('/img/vv/interpretation_author_on_page.png').default} width="900"/>
+</p>
+
+А на панели детальной информации о варианте автор приводится в скобочках рядом с названием раздела
+"Интерпретация варианта / комментарий":
+
+<p align="center">
+<img src={require('/img/vv/interpretation_author_on_panel.png').default} width="600"/>
+</p>

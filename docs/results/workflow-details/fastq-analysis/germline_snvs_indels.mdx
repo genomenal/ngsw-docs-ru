@@ -1,0 +1,207 @@
+---
+sidebar_position: 8
+sidebar_label: Выявление и аннотация герминальных SNVs/Indels
+---
+
+# Выявление и аннотация герминальных SNVs/Indels
+
+## Выявление герминальных SNVs/Indels {#germline-variants-discovery}
+
+После успешного выполнения
+стадии ["Предварительная обработка для выявления вариантов"](/results/workflow-details/fastq-analysis/variant-discovery-preprocessing)
+для одиночного образца опухолевой ткани или образца неопухолевой ткани
+может запуститься выявление герминальных SNVs/Indels, если
+стадия [включена](/settings/settings/variant-discovery-settings#germline-snvs-discovery) в анализ.
+
+<p align="center">
+<img src={require('/img/rus/germline_snvs_indels.png').default} width="750"/>
+</p>
+
+### 1. Выявление герминальных SNVs/Indels {#1-somatic-variants-discovery}
+
+Выявление герминальных однонуклеотидных вариантов
+(single-nucleotide variants; SNVs) и коротких инсерций/делеций (indels) происходит с помощью
+инструмента [GATK HaplotypeCaller](https://gatk.broadinstitute.org/hc/en-us/articles/360037225632-HaplotypeCaller).
+
+#### I. Разделение данных на интервалы {#intervals}
+
+Для ускорения процесса и сохранения ресурсов используется операция Scatter-Gather, которая делит входные данные
+на 64 геномных интервала.
+При этом, если известен capture kit образца, то данные разделяются с помощью
+[bedtools intersect](https://bedtools.readthedocs.io/en/latest/content/tools/intersect.html), который
+выявляет области, пересекающиеся между отдельными геномными интервалами и
+интервалами набора capture kit.
+
+#### II. Поиск вариантов {#calling}
+
+В каждом из получившихся интервалов происходит поиск вариантов с
+помощью [GATK HaplotypeCaller](https://gatk.broadinstitute.org/hc/en-us/articles/360037225632-HaplotypeCaller).
+HaplotypeCaller способен одновременно распознавать однонуклеотидные варианты и инделы посредством локальной
+сборки гаплотипов *de novo* в активном регионе. Другими словами, всякий раз, когда программа встречает регион
+с признаками вариации, она отбрасывает существующую информацию о картировании и полностью пересобирает
+прочтения в этом регионе. Это повышает точность при распознавании регионов, которые
+традиционно сложно распознать, например, когда они содержат разные типы вариантов близко друг к другу.
+
+Встроенная референсная модель HaplotypeCaller создается с помощью сжатия гомозиготных референсных сайтов в
+полосы сходного качества
+генотипа в [формате GVCF (Genomic VCF)](https://gatk.broadinstitute.org/hc/en-us/articles/360035531812-GVCF-Genomic-Variant-Call-Format#:~:text=The%20term%20GVCF%20is%20sometimes,UnifiedGenotyper%20with%20%2D%2Doutput_mode%20EMIT_ALL_SITES%20).
+Ключевое различие между обычным VCF и GVCF заключается в том, что GVCF содержит записи для всех сайтов,
+независимо от того, есть ли там распознавание варианта или нет. Цель состоит в том, чтобы каждый сайт был
+представлен в файле, чтобы на последующих этапах можно было провести совместный анализ когорты. Записи в
+GVCF включают точную оценку того, насколько мы уверены в определении того, являются ли сайты гомозиготными
+по референсу или нет.
+
+По умолчанию при поиске вариантов учитываются мягко отсекаемые основания (soft clipped bases), т.е.
+основания, находящиеся на концах секвенирования последовательности и не совпадающие с референсной последовательностью.
+Это регулируется [соответствующей настройкой](/settings/settings/variant-discovery-settings#soft-clipped-bases).
+
+#### III. Объединение полученных файлов GVCF {#combine-gvcfs}
+
+С помощью [GATK CombineGVCFs](https://gatk.broadinstitute.org/hc/en-us/articles/360037053272-CombineGVCFs) проводится
+объединение GVCF файлов, полученных HaplotypeCaller, в один GVCF файл с соответствующими аннотациями.
+Получившийся файл сжимается в GZIP архив с
+помощью [bgzip](http://www.htslib.org/doc/bgzip.html).
+Его можно скачать в разделе "*Файлы с результатами*" в деталях
+задачи "*Выявление герминальных SNVs/Indels*" ("*Скачать VCF_GZ*"). Также этот файл можно открыть в IGV, нажав
+на ссылку "*Открыть в IGV браузере*".
+Кроме того, файл индексируется с помощью [tabix](http://www.htslib.org/doc/tabix.html).
+Получившийся индексный файл можно скачать в том же разделе ("*Скачать VCF_TBI*").
+
+### 2. Совместное генотипирование {#genotype-gvcfs}
+
+На следующем этапе [GATK GenotypeGVCFs](https://gatk.broadinstitute.org/hc/en-us/articles/360037057852-GenotypeGVCFs)
+выполняет совместное генотипирование образцов, в которых предварительно был проведен поиск вариантов
+с помощью HaplotypeCaller.
+Получившийся файл сжимается в GZIP архив с
+помощью [bgzip](http://www.htslib.org/doc/bgzip.html).
+Его можно скачать в разделе "*Файлы с результатами*" в деталях
+задачи "*Совместное генотипирование*" ("*Скачать VCF_GZ*"). Также этот файл можно открыть в IGV, нажав
+на ссылку "*Открыть в IGV браузере*".
+Кроме того, VCF файл индексируется с помощью [tabix](http://www.htslib.org/doc/tabix.html).
+Получившийся индексный файл можно скачать в том же разделе ("*Скачать VCF_TBI*").
+
+### 3. Фильтрация герминальных SNVs/Indels {#filter-germline-variants}
+
+#### I. Выбор SNVs/Indels {#select-variants}
+
+[GATK SelectVariants](https://gatk.broadinstitute.org/hc/en-us/articles/360037055952-SelectVariants)
+выбирает подмножество вариантов (отдельно однонуклеотидные варианты и отдельно
+инделы) из VCF файла.
+Получившиеся файлы с однонуклеотидными вариантами и с инделами сжимаются в GZIP архивы с
+помощью [bgzip](http://www.htslib.org/doc/bgzip.html).
+Их можно скачать в разделе "*Файлы с результатами*" в деталях
+задачи "*Фильтрация герминальных SNVs/Indels*" ("*Скачать Unfiltered SNPs VCF_GZ*" и
+"*Скачать Unfiltered INDELs VCF_GZ*", соответственно). Также эти файлы можно открыть
+в IGV, нажав на ссылку "*Открыть в IGV браузере*".
+Кроме того, VCF файлы индексируются с помощью [tabix](http://www.htslib.org/doc/tabix.html).
+Получившиеся индексные файлы можно скачать в том же разделе
+("*Скачать Unfiltered SNPs VCF_TBI*" и "*Скачать Unfiltered INDELs VCF_TBI*").
+
+#### II. Фильтрация SNVs/Indels {#filtering}
+
+Далее осуществляется хардфильтрация (hard filtering) вызовов вариантов (отдельно однонуклеотидных вариантов и
+инделов) с
+помощью [GATK VariantFiltration](https://gatk.broadinstitute.org/hc/en-us/articles/360037434691-VariantFiltration)
+на основе аннотаций INFO и/или FORMAT. Записи отфильтровываются путём изменения значения в поле "FILTER" на
+значение, отличное от "PASS". Отфильтрованные записи сохраняются в выходных данных. Фильтрация производится на
+основе [параметров хардфильтрации](/settings/settings/variant-discovery-settings#hard-filtration), заданных для
+образца в настройках.
+
+Получившиеся файлы с отфильтрованными однонуклеотидными вариантами и инделами сжимаются в GZIP архивы с
+помощью [bgzip](http://www.htslib.org/doc/bgzip.html). Их можно скачать в разделе "*Файлы с результатами*" в деталях
+задачи "*Фильтрация герминальных SNVs/Indels*" ("*Скачать Filtered SNPs VCF_GZ*" и "*Скачать Filtered INDELs VCF_GZ*",
+соответственно). Также эти файлы можно открыть в IGV, нажав на ссылку "*Открыть в IGV браузере*".
+Кроме того, VCF файлы индексируются с помощью [tabix](http://www.htslib.org/doc/tabix.html).
+Получившиеся индексные файлы можно скачать в том же разделе ("*Скачать Filtered SNPs VCF_TBI*" и
+"*Скачать Filtered INDELs VCF_TBI*").
+
+#### III. Объединение отфильтрованных вариантов {#merge-vcfs}
+
+С помощью [GATK MergeVcfs](https://gatk.broadinstitute.org/hc/en-us/articles/360036713331-MergeVcfs-Picard) проводится
+объединение VCF файлов с отфильтрованными однонуклеотидными вариантами и отфильтрованными инделами
+в один файл в формате VCF со всеми отфильтрованными герминальными вариантами, выявленными в образце.
+Получившийся файл сжимается в GZIP архив с
+помощью [bgzip](http://www.htslib.org/doc/bgzip.html).
+Его можно скачать в разделе "*Файлы с результатами*" в деталях
+задачи "*Фильтрация герминальных SNVs/Indels*" ("*Скачать Filtered SNPs/INDELs VCF_GZ*"). Также этот файл можно
+открыть в IGV, нажав на ссылку "*Открыть в IGV браузере*".
+Кроме того, VCF файл индексируется с помощью [tabix](http://www.htslib.org/doc/tabix.html).
+Получившийся индексный файл можно скачать в том же разделе ("*Скачать Filtered SNPs/INDELs VCF_TBI*").
+
+## Аннотация герминальных SNVs/Indels {#annotate-variants}
+
+После успешного выполнения
+стадии ["Выявление герминальных SNVs/Indels"](/results/workflow-details/fastq-analysis/germline_snvs_indels#germline-variants-discovery)
+осуществляется аннотация выявленных герминальных вариантов.
+
+### 1. Аннотация герминальных SNVs/Indels {#1-annotate-variants}
+
+- Аннотация SNVs/Indels в файлах данными из баз [RefSeq](https://www.ncbi.nlm.nih.gov/refseq/),
+[1000 Genomes](https://www.internationalgenome.org/), [dbNSFP](https://sites.google.com/site/jpopgen/dbNSFP),
+[dbSNP](https://www.ncbi.nlm.nih.gov/snp/), [gnomAD 3](https://gnomad.broadinstitute.org/news/2020-10-gnomad-v3-1/),
+[gnomAD 4](https://gnomad.broadinstitute.org/),
+[ClinVar](https://preview.ncbi.nlm.nih.gov/clinvar/), [CADD](https://cadd.gs.washington.edu/),
+[SpliceAI](https://spliceailookup.broadinstitute.org/), [ENIGMA](https://enigmaconsortium.org/).
+Восстановление информации о фазовых группах в пределах определённого геномного интервала (размер интервала
+регулируется в [параметрах](/settings/settings/variant-discovery-settings#pg-merge-distance)).
+- Определение влияния SNVs/Indels на гены, транскрипты, белковые последовательности и регуляторные
+области с помощью [Ensembl Variant Effect Predictor (VEP)](https://www.ensembl.org/info/docs/tools/vep/index.html),
+используя
+алгоритм предсказания [PolyPhen](http://genetics.bwh.harvard.edu/pph2/) (результатом предсказания
+для вариантов являются prediction и score) и [номенклатуру HGVS](https://varnomen.hgvs.org/).
+В процессе также определяются канонический транскрипт гена,
+номер аллеля из входных данных и номера затронутых вариантами экзонов и интронов. Невариантные строки
+(где ALT пустой) остаются в итоговом файле.
+Варианты определяются как upstream, если они расположены перед геном и расстояние между вариантом
+и транскриптом больше 2000 п.о., и downstream, если варианты расположены после гена и расстояние между
+вариантом и транскриптом больше 1000 п.о.<br></br>
+Получившийся файл с сырыми аннотированными вариантами в формате TSV можно скачать в
+разделе "*Файлы с результатами*" в деталях задачи "*Аннотация герминальных SNVs/Indels*"
+("*Скачать Raw annotated TSV*").
+Его также можно открыть в таблицах Google.<br></br>
+Файлы с аннотированными вариантами без дубликатов: всеми вариантами и вариантами, прошедшими фильтрацию, -
+в формате TSV можно скачать в том же разделе ("*Скачать All variants TSV*" и "*Скачать Filtered variants TSV*",
+соответственно). Их также можно открыть в таблицах Google.
+Те же файлы, но в формате CSV можно скачать там же ("*Скачать All variants CSV*" и "*Скачать Filtered variants CSV*").
+- Конвертация результатов в формате TSV в формат VCF.
+- Замена или исправление заголовков файлов VCF
+с помощью [GATK FixVCFHeader](https://gatk.broadinstitute.org/hc/en-us/articles/360037428851-FixVcfHeader-Picard-).
+- Сжатие файлов VCF в GZIP архив с помощью [bgzip](http://www.htslib.org/doc/bgzip.html).
+Получившиеся файлы можно скачать в разделе "*Файлы с результатами*" в деталях задачи
+"*Аннотация герминальных SNVs/Indels*"
+(файл со всеми вариантами: "*Скачать All variants VCF_GZ*", файл с вариантами, прошедшими фильтрацию:
+"*Скачать Filtered variants VCF_GZ*"). Также эти файлы можно открыть в IGV, нажав на ссылку "*Открыть в IGV браузере*".
+- Индексация файлов VCF с помощью [tabix](http://www.htslib.org/doc/tabix.html).
+Получившиеся индексные файлы можно скачать в том же разделе ("*Скачать All variants VCF_TBI*" и
+"*Скачать Filtered variants VCF_TBI*").
+- Вычисление статистики вариантов.
+
+### 2. Сохранение проаннотированных вариантов для SNV Viewer {#save-variants}
+
+Сохранение результатов для показа во встроенном модуле для просмотра и анализа
+вариантов [SNV Viewer](/results/main/snvs-indels/variant-viewer) и
+добавление информации о [встречаемости](/results/main/snvs-indels/snv-details-page#occurrences) варианта в
+других образцах пользователя.
+
+После стадии "Аннотация герминальных SNVs/Indels" анализ может продолжиться генерацией отчётов.
+
+:::info На заметку
+Если вы хотите добавить в вашу [десктопную версию IGV](https://igv.org/doc/desktop/) трек с герминальными SNVs/Indels,
+выявленными в результате анализа вашего образца в Genomenal, вы можете сделать это через ссылку.
+Откройте детали нужной задачи ("*Выявление герминальных SNVs/Indels*", "*Совместное генотипирование*",
+"*Фильтрация герминальных SNVs/Indels*", "*Аннотация герминальных SNVs/Indels*") и сделайте следующее:
+1. Нажмите правой кнопкой мыши на ссылку файла с вариантами (в зависимости от выбранной задачи и ваших потребностей
+ссылка может называться "*Скачать VCF_GZ*", "*Скачать Unfiltered SNPs VCF_GZ*", "*Скачать Unfiltered INDELs VCF_GZ*",
+"*Скачать Filtered SNPs VCF_GZ*", "*Скачать Filtered INDELs VCF_GZ*", "*Скачать Filtered SNPs/INDELs VCF_GZ*",
+"*Скачать Filtered SNPs/INDELs VCF_GZ*", "*Скачать All variants VCF_GZ*" или "*Скачать Filtered variants VCF_GZ*")
+и выберите опцию "*Копировать адрес ссылки*".
+2. Загрузите трек через URL в вашу десктопную версию IGV, как это
+описано [здесь](https://igv.org/doc/desktop/#UserGuide/loading_data/).
+3. Нажмите правой кнопкой мыши на ссылку для скачивания индексного файла, соответствующего файлу аннотации,
+("*Скачать VCF_TBI*", "*Скачать Unfiltered SNPs VCF_TBI*", "*Скачать Unfiltered INDELs VCF_TBI*",
+"*Скачать Filtered SNPs VCF_TBI*", "*Скачать Filtered INDELs VCF_TBI*", "*Скачать Filtered SNPs/INDELs VCF_TBI*",
+"*Скачать Filtered SNPs/INDELs VCF_TBI*", "*Скачать All variants VCF_TBI*" или "*Скачать Filtered variants VCF_TBI*")
+и выберите опцию "*Копировать адрес ссылки*".
+4. Добавьте URL индексного файла в соответствующее поле в IGV.
+5. Нажмите "*OK*". Готово! Трек с герминальными SNVs/Indels, выявленными в образце, добавлен в IGV.
+:::

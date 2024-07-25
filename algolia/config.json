@@ -21,6 +21,7 @@
   "strip_chars": " .,;:#",
   "custom_settings": {
     "separatorsToIndex": "_",
+    "filters": "NOT objectID:95afd1b32e239ad84ad8dea656acafea41440f34",
     "attributesForFaceting": [
       "language",
       "version",
@@ -31,6 +32,8 @@
       "hierarchy",
       "content",
       "anchor",
+      "url",
+      "url_without_anchor",
       "type"
     ]
   }

@@ -5,11 +5,65 @@ sidebar_label: Анализ FASTQ или BAM образцов
 
 # Анализ FASTQ или BAM образцов
 
-Получить подробную информацию о процессе обработки ваших образцов, статусе стадий, а также скачать 
-промежуточные данные можно в разделе "**Детали процесса анализа**".
-Для перехода в раздел нажмите на соответствующую вкладку на странице образца:
+Файлы в формате FASTQ или BAM могут быть загружены как
+[образцы опухолевой ткани](/uploading-samples/tumor-only/upload-for-new-patient),
+[образцы здоровой ткани](/uploading-samples/normal-sample/upload-for-new-patient) или набор,
+состоящий
+из [опухолевого образца (или образцов) и контрольного образца](/uploading-samples/tumor-normal/upload-for-new-patient).
 
-![Workflow details](/img/rus/18-workflow-details.png)
+Ход анализа набора образцов зависит от его настроек. Их можно задать либо на этапе составления набора образцов
+в виде [предустановки настроек](/settings/settings/settings), либо поменять
+на [вкладке "Параметры"](/results/parameters) после запуска анализа.
 
+Анализ образца, загруженного в формате FASTQ или BAM, может включать следующие стадии:
+1. [Загрузка, идентификация и проверка](/results/workflow-details/fastq-analysis/upload-identify-verify);
+2. [Проверка качества и очистка](/results/workflow-details/fastq-analysis/check-quality-and-cleanup);
+3. [Выравнивание](/results/workflow-details/fastq-analysis/alignment), если в
+анализ [включено выравнивание](/settings/settings/alignment-settings);
+4. [Предварительная обработка для выявления вариантов](/results/workflow-details/fastq-analysis/variant-discovery-preprocessing),
+если в анализ включена хотя бы одна из стадий последующего анализа: выявление SNVs/Indels, структурных вариаций,
+вариации числа копий или предсказание фенотипов;
+5. [Вычисление покрытия](/results/workflow-details/fastq-analysis/calculate-coverage), если в анализ включена
+хотя бы одна из стадий последующего анализа: выявление SNVs/Indels, структурных вариаций,
+вариации числа копий или предсказание фенотипов;
+6. [Выявление соматических SNVs/Indels](/results/workflow-details/fastq-analysis/somatic-snvs-indels#somatic-variants-discovery),
+если в анализ [включено выявление соматических SNVs/Indels](/settings/settings/variant-discovery-settings#somatic-snvs-discovery)
+и если образец секвенирования загружен как опухолевый;
+7. [Аннотация соматических SNVs/Indels](/results/workflow-details/fastq-analysis/somatic-snvs-indels#annotate-variants),
+если в анализ включено [включено выявление соматических SNVs/Indels](/settings/settings/variant-discovery-settings#somatic-snvs-discovery)
+и если образец секвенирования загружен как опухолевый;
+8. [Выявление герминальных SNVs/Indels](/results/workflow-details/fastq-analysis/germline-snvs-indels#germline-variants-discovery),
+если в анализ [включено выявление герминальных SNVs/Indels](/settings/settings/variant-discovery-settings#germline-snvs-discovery)
+и если образец секвенирования загружен как неопухолевый или одиночный опухолевый;
+7. [Аннотация герминальных SNVs/Indels](/results/workflow-details/fastq-analysis/germline-snvs-indels#annotate-variants),
+если в анализ [включено выявление герминальных SNVs/Indels](/settings/settings/variant-discovery-settings#germline-snvs-discovery)
+и если образец секвенирования загружен как неопухолевый или одиночный опухолевый;
+8. [Выявление структурных вариаций](/results/workflow-details/fastq-analysis/structural-variations), если в
+анализ [включено выявление структурных вариаций](/settings/settings/variant-discovery-settings#sv-discovery);
+9. [Выявление вариации числа копий](/results/workflow-details/fastq-analysis/cnv-discovery), если в
+анализ [включено выявление вариации числа копий](/settings/settings/variant-discovery-settings#cnv-discovery) и
+если для образца определены тип секвенирования и набор реагентов capture kit
+(если тип секвенирования определён как "WES" или "Панель");
+10. [Предсказание фенотипов](/results/workflow-details/fastq-analysis/phenotypes), если в анализ
+включено [предсказание фенотипов](/settings/settings/variant-discovery-settings#enable-phenotype-prediction)
+и/или [вычисление полигенных рисков](/settings/settings/variant-discovery-settings#polygenic-risk-scores-calculation);
+11. [Генерация отчётов](/results/workflow-details/fastq-analysis/report-generation), если:
+- В системе есть хотя бы один активный [шаблон отчёта](/settings/report-templates/report-templates), у
+которого есть хотя бы один [добавленный блок](/settings/report-templates/report-templates#add-block) и
+который применим к типу образца. Шаблон может быть применим к опухолевым, неопухолевым образцам и
+образцам любого типа. Кроме того, шаблон отчёта, подходящий под все перечисленные условия, должен
+быть добавлен в систему раньше, чем был обработан образец. Если вы добавили или обновили шаблон
+отчёта позже и хотите построить или обновить соответствующий отчёт для данного образца, то перезапустите
+анализ образца с задачи "*Генерация отчётов*".
+- В анализ образца включены выравнивание и одна из следующих стадий
+анализа: ["Выявление соматических SNVs/Indels"](/results/workflow-details/fastq-analysis/somatic-snvs-indels)
+для опухолевого
+образца; ["Выявление герминальных SNVs/Indels"](/results/workflow-details/fastq-analysis/germline-snvs-indels)
+для неопухолевого или одиночного опухолевого образца
+или ["Выявление вариации числа копий"](/results/workflow-details/fastq-analysis/cnv-discovery).
+Наличие остальных стадий анализа может повлиять только на построение конкретных отчётов или их наполнение.
+- Анализ образца успешно завершился (то есть все стадии анализа имеют статус "*Завершено*").
 
-Сжатый файл или файлы можно скачать наверху вкладки "Детали процесса анализа".
+<p align="center">
+<img src={require('/img/rus/fq_pipeline.png').default} width="1000"/>
+</p>

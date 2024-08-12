@@ -11,13 +11,13 @@ sidebar_label: Предварительная обработка для выяв
 обработать. Это повышает чувствительность к низкочастотным вариантам, способствует более точному
 подсчету количества копий, который зависит от количества прочтений, а также ускоряет обработку образца.
 Предварительная обработка для выявления вариантов запускается, если хотя бы одна из следующих
-стадий включена в анализ образца:
-["Выявление соматических SNVs/Indels"](/settings/settings/variant-discovery-settings#somatic-snvs-discovery)
-(для образца опухолевой ткани),
-["Выявление герминальных SNVs/Indels"](/settings/settings/variant-discovery-settings#germline-snvs-discovery),
-["Выявление структурных вариаций"](/settings/settings/variant-discovery-settings#sv-discovery),
-["Выявление вариации числа копий"](/settings/settings/variant-discovery-settings#cnv-discovery)
-или ["Предсказание фенотипов"](/settings/settings/variant-discovery-settings#phenotype-prediction).
+стадий включена в анализ образца: выявление
+[соматических SNVs/Indels](/settings/settings/variant-discovery-settings#somatic-snvs-discovery),
+[герминальных SNVs/Indels](/settings/settings/variant-discovery-settings#germline-snvs-discovery),
+[структурных вариаций](/settings/settings/variant-discovery-settings#sv-discovery),
+[вариации числа копий](/settings/settings/variant-discovery-settings#cnv-discovery),
+[предсказание фенотипов](/settings/settings/variant-discovery-settings#enable-phenotype-prediction)
+или [вычисление полигенных рисков](/settings/settings/variant-discovery-settings#polygenic-risk-scores-calculation).
 При ошибке выполнения любой из перечисленных ниже задач анализ образца останавливается.
 
 <p align="center">
@@ -38,8 +38,9 @@ sidebar_label: Предварительная обработка для выяв
 оригинальных последовательностей, а какие являются копиями (дубликатами), и помечает дубликаты.
 Дальнейший анализ ведется только по оригинальным прочтениям. Итоговый файл в формате BAM
 сортируется по координатам и для него создается индексный файл.
-Кроме того, в ходе выполнения задачи создается файл с метриками, в котором указывается количество
-дубликатов как для одиночных, так и для парных прочтений. Этот файл можно скачать в
+Кроме того, в ходе выполнения задачи создается файл
+с [метриками](https://broadinstitute.github.io/picard/picard-metric-definitions.html#DuplicationMetrics), в котором
+указывается количество дубликатов как для одиночных, так и для парных прочтений. Этот файл можно скачать в
 разделе "*Файлы с результатами*" в деталях задачи "*Пометка дубликатов*" ("*Скачать duplication metrics TXT*").
 
 2. **Рекалибровка качества нуклеотидов**.
@@ -97,8 +98,7 @@ sidebar_label: Предварительная обработка для выяв
 анализ: ["Выявление соматических SNVs/Indels"](/results/workflow-details/fastq-analysis/somatic-snvs-indels#somatic-variants-discovery)
 (для образца опухолевой ткани),
 ["Выявление герминальных SNVs/Indels"](/results/workflow-details/fastq-analysis/germline-snvs-indels#germline-variants-discovery)
-(для одиночного образца опухолевой ткани или
-образца неопухолевой
+(для одиночного образца опухолевой ткани или образца неопухолевой
 ткани), ["Выявление структурных вариаций"](/results/workflow-details/fastq-analysis/structural-variations),
 ["Выявление вариации числа копий"](/results/workflow-details/fastq-analysis/cnv-discovery)
-и/или "Предсказание фенотипов" (для образца неопухолевой ткани).
+и/или ["Предсказание фенотипов"](/results/workflow-details/fastq-analysis/phenotypes) (для образца неопухолевой ткани).

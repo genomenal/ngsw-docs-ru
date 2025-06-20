@@ -520,31 +520,15 @@ SNV Viewer образца: [базовый](/results/main/snvs-indels/basic-filt
 </table>
 </details>
 
-28. **Occurrence in Run** - фильтр по [встречаемости варианта](/runs#occurrence-in-run) среди образцов запуска.
+29. **Occurrence in Run** - фильтр по [встречаемости варианта](/runs#occurrence-in-run) среди образцов запуска.
 Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (целое число).
 Доступен только в SNV Viewer [запусков](/runs) и образцов запуска.
-29. **RefSeq Transcript** - фильтр вариантов по идентификатору транскрипта в
-базе [RefSeq](https://www.ncbi.nlm.nih.gov/nuccore/) (например, NM_002354.3).
-Фильтр [с вводом любого значения](/results/main/snvs-indels/advanced-filtering#any-value-filters).
-30. **OMIM ID** - фильтр вариантов по идентификатору гена в базе [OMIM](https://www.omim.org/) (например, 185535).
-Фильтр [с вводом идентификатора](/results/main/snvs-indels/advanced-filtering#id-filters).
-31. **NCBI ID** - фильтр вариантов по идентификатору гена в базе [NCBI Gene](https://www.ncbi.nlm.nih.gov/gene/)
-(например, 4072). Фильтр [с вводом идентификатора](/results/main/snvs-indels/advanced-filtering#id-filters).
-32. **Swiss-Prot ID** - фильтр вариантов по идентификатору гена в
-базе [UniProtKB Swiss-Prot](https://www.uniprot.org/uniprotkb/?facets=reviewed%3Atrue&query=%2A) (например, P16422).
-Фильтр [с вводом идентификатора](/results/main/snvs-indels/advanced-filtering#id-filters).
-33. **TrEMBL ID** - фильтр вариантов по идентификатору гена в
-базе [UniProtKB TrEMBL](https://www.uniprot.org/uniprotkb?query=reviewed:false) (например, B5MCA4).
-Фильтр [с вводом идентификатора](/results/main/snvs-indels/advanced-filtering#id-filters).
-34. **Ensembl ID** - фильтр вариантов по идентификатору гена в
-базе [Ensembl](https://www.ensembl.org/Homo_sapiens/Info/Index) (например, ENSG00000119888).
-Фильтр [с вводом идентификатора](/results/main/snvs-indels/advanced-filtering#id-filters).
-35. **Cosmic ID** - фильтр по идентификатору варианта в базе [COSMIC](https://cancer.sanger.ac.uk/cosmic/)
+30. **Cosmic ID** - фильтр по идентификатору варианта в базе [COSMIC](https://cancer.sanger.ac.uk/cosmic/)
 (например, COSV52665487). Фильтр [с вводом идентификатора](/results/main/snvs-indels/advanced-filtering#id-filters).
 Доступен, только если база COSMIC
 была [загружена в виде пользовательской аннотации](/settings/custom-annotations#define-annotation-type)
 до завершения аннотации вариантов образца.
-36. **RUSeq AF** - фильтр по частоте альтернативного аллеля варианта из базы [RUSeq](http://ruseq.ru/#/).
+31. **RUSeq AF** - фильтр по частоте альтернативного аллеля варианта из базы [RUSeq](http://ruseq.ru/#/).
 Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (любое число).
 Доступен, только если база RUSeq
 была [загружена в виде пользовательской аннотации](/settings/custom-annotations#define-annotation-type)
@@ -619,12 +603,49 @@ SNV Viewer образца: [базовый](/results/main/snvs-indels/basic-filt
 
 ### Gene {#gene}
 
-- Колонка "**OMIM Phenotypes**" - фильтр по значениям
+1. **RefSeq Transcript** - фильтр вариантов по идентификатору транскрипта в
+базе [RefSeq](https://www.ncbi.nlm.nih.gov/nuccore/) (например, NM_002354.3).
+Фильтр [с вводом любого значения](/results/main/snvs-indels/advanced-filtering#any-value-filters).
+2. **OMIM ID** - фильтр вариантов по идентификатору гена в базе [OMIM](https://www.omim.org/) (например, 185535).
+Фильтр [с вводом идентификатора](/results/main/snvs-indels/advanced-filtering#id-filters).
+3. **OMIM Phenotypes** - фильтр по значениям
 колонок [таблицы с фенотипами OMIM, связанными с геном](/results/main/snvs-indels/snv-details-panel#omim-phenotypes),
 в котором расположен вариант.
 Фильтр [с вводом любого значения](/results/main/snvs-indels/advanced-filtering#any-value-filters).
 Доступен, только если у вас есть доступ к данным базы [OMIM](https://www.omim.org/) внутри Genomenal, который
 предоставляется при наличии у пользователя лицензии на доступ к базе.
+4. **NCBI ID** - фильтр вариантов по идентификатору гена в базе [NCBI Gene](https://www.ncbi.nlm.nih.gov/gene/)
+(например, 4072). Фильтр [с вводом идентификатора](/results/main/snvs-indels/advanced-filtering#id-filters).
+5. **Swiss-Prot ID** - фильтр вариантов по идентификатору гена в
+базе [UniProtKB Swiss-Prot](https://www.uniprot.org/uniprotkb/?facets=reviewed%3Atrue&query=%2A) (например, P16422).
+Фильтр [с вводом идентификатора](/results/main/snvs-indels/advanced-filtering#id-filters).
+6. **TrEMBL ID** - фильтр вариантов по идентификатору гена в
+базе [UniProtKB TrEMBL](https://www.uniprot.org/uniprotkb?query=reviewed:false) (например, B5MCA4).
+Фильтр [с вводом идентификатора](/results/main/snvs-indels/advanced-filtering#id-filters).
+7. **Ensembl ID** - фильтр вариантов по идентификатору гена в
+базе [Ensembl](https://www.ensembl.org/Homo_sapiens/Info/Index) (например, ENSG00000119888).
+Фильтр [с вводом идентификатора](/results/main/snvs-indels/advanced-filtering#id-filters).
+8. **pLI** - фильтр вариантов по pLI (Probability of Loss-of-Function Intolerance) - вероятности того, что
+транскрипт чувствителен к вариантам потери функции (Lof; Loss of Function). Диапазон значений: от 0 до 1.
+Гены с pLI >= 0.9 считаются непереносимыми к вариантам потери функции.
+Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (положительное
+рациональное число).
+9. **LOEUF** - фильтр вариантов по LOEUF (Loss-of-function Observed/Expected Upper bound Fraction) - верхней
+границе 90% доверительного интервала отношения наблюдаемых к ожидаемым высоконадёжным вариантам потери функции (pLoF).
+Более низкие значения (LOEUF < 0.35) указывают на более высокую степень генетического ограничения к потерям функции.
+Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (положительное
+рациональное число).
+10. **Missense O/E ratio** - фильтр вариантов по верхней границе 90% доверительного интервала отношения наблюдаемых
+к ожидаемым миссенс-вариантам. Чем ниже значение, тем больше ген ограничен в отношении миссенс-вариантов.
+Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (положительное
+рациональное число).
+11. **Missense Z-score** - фильтр вариантов по Z-оценке для миссенс-вариантов в транскрипте. Z-оценка отражает,
+насколько число наблюдаемых миссенс-мутаций в данном гене отличается от ожидаемого количества, если бы мутации
+распределялись случайным образом по геному. Более высокие положительные значения Z-оценки (≥3.09) указывают на
+повышенную чувствительность гена к аминокислотным заменам, то есть на большую степень генетического
+ограничения к миссенс-вариантам. Более низкие или отрицательные значения Z-оценки, наоборот, указывают на то,
+что в гене встречается больше миссенс-мутаций, чем ожидалось, а значит, он терпим к таким изменениям.
+Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (рациональное число).
 
 ### gnomAD 3 {#gnomad}
 

@@ -10,9 +10,8 @@ sidebar_label: Отчёт на основе фенотипа ClinVar
 обнаруженными в образце пациента патогенными или вероятно патогенными вариантами, ассоциированными
 с данным состоянием, и ***рекомендации***, которые могут снизить риски возникновения этого состояния.
 
-Чтобы получить такой отчёт для образца,
-[создайте шаблон отчёта](/settings/report-templates/report-templates#add-template), включающий
-блок "SNVs/Indels по фенотипам ClinVar".
+Чтобы получить такой отчёт для образца, создайте шаблон отчёта, включающий
+блок ["SNVs/Indels по фенотипам ClinVar"](/settings/report-templates/report-templates#clinvar-phenotype).
 
 Отчёт разбит на три основных
 раздела: [Результат отчёта и общая рекомендация](/results/variants-by-phenotypes#report-result-and-recommendations),
@@ -45,7 +44,7 @@ sidebar_label: Отчёт на основе фенотипа ClinVar
 
 Подробный отчёт о состояниях, перечисленных в первом разделе. Для каждого состояния указано следующее:
 - **Название** - соответствует полю "Имя в отчёте"
-из [шаблона](/settings/report-templates/report-templates#block-types).
+из [шаблона](/settings/report-templates/report-templates#clinvar-phenotype).
 - **Варианты**, выявленные в образце, которые ассоциированы с данным состоянием (с указанными в шаблоне MedGen ID
 и/или именем в ClinVar). Кроме этого, **каждый вариант соответствует следующим условиям**:
 1. Патогенный или вероятно патогенный по данным ClinVar (поле "Clinical significance");
@@ -53,9 +52,9 @@ sidebar_label: Отчёт на основе фенотипа ClinVar
 3. Суммарная частота аллеля в [gnomAD 3](https://gnomad.broadinstitute.org/news/2020-10-gnomad-v3-1/) выше
 порога частоты крайне редких патогенных вариантов и ниже
 порога частоты слишком частых патогенных вариантов (пороги задаются
-в [шаблоне](/settings/report-templates/report-templates#block-types)).
+в [шаблоне](/settings/report-templates/report-templates#clinvar-phenotype)).
 - **Рекомендации**, которые могут помочь снизить риски возникновения данной патологии (добавляются
-в [шаблоне](/settings/report-templates/report-templates#block-types)).
+в [шаблоне](/settings/report-templates/report-templates#clinvar-phenotype)).
 
 <p align="center">
 <img src={require('/img/results/phenotype_info.png').default} width="900"/>
@@ -73,7 +72,7 @@ sidebar_label: Отчёт на основе фенотипа ClinVar
 рекомендуется исключать, поскольку они могли быть выявлены в результате ошибки генотипирования, проведенного
 с помощью технологии микрочипов.
 3. **Критерий 3**: варианты, которые имеют **достоверность выявления ниже установленного порога достоверности**
-(порог задается в [шаблоне](/settings/report-templates/report-templates#block-types)).<br></br>Достоверность
+(порог задается в [шаблоне](/settings/report-templates/report-templates#clinvar-phenotype)).<br></br>Достоверность
 рассчитывается как *(1 - Bin(n; m; p; 1))*,<br></br>где
 *Bin(n; m; p; 1)* - это рассчитанная на основе биномиального распределения вероятность того, что вариант
 встретится ровно *n* раз среди *m* представителей (образцов) популяции;<br></br>

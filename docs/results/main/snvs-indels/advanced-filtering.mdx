@@ -42,19 +42,18 @@ SNV Viewer образца: [базовый](/results/main/snvs-indels/basic-filt
 1. [Common](/results/main/snvs-indels/advanced-filtering#common)
 2. [Per-sample data](/results/main/snvs-indels/advanced-filtering#per-sample) (если есть данные об
 образцах секвенирования)
-3. [Gene](/results/main/snvs-indels/advanced-filtering#per-sample) (если у вас есть доступ к данным
-базы [OMIM](https://www.omim.org/) внутри Genomenal, который
-предоставляется при наличии у пользователя лицензии на доступ к базе)
-4. [gnomAD 3](/results/main/snvs-indels/advanced-filtering#gnomad)
-5. [gnomAD 4](/results/main/snvs-indels/advanced-filtering#gnomad-4)
-6. [ClinVar](/results/main/snvs-indels/advanced-filtering#clinvar)
-7. [Conservation](/results/main/snvs-indels/advanced-filtering#conservation)
-8. [ExAC](/results/main/snvs-indels/advanced-filtering#exac)
-9. [Protein function effect](/results/main/snvs-indels/advanced-filtering#protein-function-effect)
-10. [Protein function effect (additional)](/results/main/snvs-indels/advanced-filtering#protein-function-effect-additional)
-11. [Other frequencies](/results/main/snvs-indels/advanced-filtering#other-frequencies)
-12. [Other](/results/main/snvs-indels/advanced-filtering#other)
-13. [Custom annotation sources](/results/main/snvs-indels/advanced-filtering#custom-annotations) (если хотя бы
+3. [Gene](/results/main/snvs-indels/advanced-filtering#per-sample)
+4. [Affected transcripts](/results/main/snvs-indels/advanced-filtering#affected-transcripts)
+5. [gnomAD 3](/results/main/snvs-indels/advanced-filtering#gnomad)
+6. [gnomAD 4](/results/main/snvs-indels/advanced-filtering#gnomad-4)
+7. [ClinVar](/results/main/snvs-indels/advanced-filtering#clinvar)
+8. [Conservation](/results/main/snvs-indels/advanced-filtering#conservation)
+9. [ExAC](/results/main/snvs-indels/advanced-filtering#exac)
+10. [Protein function effect](/results/main/snvs-indels/advanced-filtering#protein-function-effect)
+11. [Protein function effect (additional)](/results/main/snvs-indels/advanced-filtering#protein-function-effect-additional)
+12. [Other frequencies](/results/main/snvs-indels/advanced-filtering#other-frequencies)
+13. [Other](/results/main/snvs-indels/advanced-filtering#other)
+14. [Custom annotation sources](/results/main/snvs-indels/advanced-filtering#custom-annotations) (если хотя бы
 одна пользовательская аннотация была [добавлена](/settings/custom-annotations#add-custom-annotation) в
 систему до того, как варианты в образце были проаннотированы)
 
@@ -646,6 +645,26 @@ SNV Viewer образца: [базовый](/results/main/snvs-indels/basic-filt
 ограничения к миссенс-вариантам. Более низкие или отрицательные значения Z-оценки, наоборот, указывают на то,
 что в гене встречается больше миссенс-мутаций, чем ожидалось, а значит, он терпим к таким изменениям.
 Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (рациональное число).
+
+### Affected transcripts {#affected-transcripts}
+
+Группа включает фильтр **Is MANE transcript**, позволяющий отфильтровать варианты в зависимости от того,
+затрагивают ли они основной транскрипт гена согласно [MANE Select](https://www.ncbi.nlm.nih.gov/refseq/MANE/#Select),
+[MANE plus clinical](https://www.ncbi.nlm.nih.gov/refseq/MANE/#:~:text=MANE%20Plus%20Clinical%3A%20The%20MANE,variants%20available%20in%20public%20resources.)
+или [Ensembl canonical](https://www.ensembl.org/info/genome/genebuild/canonical.html).
+
+Фильтр реализован в виде переключателя:
+- Включите переключатель, чтобы отображались только варианты, затрагивающие основной транскрипт гена:
+
+<p align="center">
+<img src={require('/img/vv/mane_transcript_on.png').default} width="350"/>
+</p>
+
+- Выключите переключатель, чтобы отображались только варианты, не затрагивающие основной транскрипт гена:
+
+<p align="center">
+<img src={require('/img/vv/mane_transcript_off.png').default} width="350"/>
+</p>
 
 ### gnomAD 3 {#gnomad}
 

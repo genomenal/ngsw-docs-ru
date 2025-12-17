@@ -22,10 +22,12 @@ sidebar_label: Анализ FASTQ или BAM образцов
 анализ [включено выравнивание](/settings/settings/alignment-settings);
 4. [Предварительная обработка для выявления вариантов](/results/workflow-details/fastq-analysis/variant-discovery-preprocessing),
 если в анализ включена хотя бы одна из стадий последующего анализа: выявление SNVs/Indels, структурных вариаций,
-вариации числа копий, предсказание фенотипов или вычисление полигенных рисков;
+вариации числа копий или хотя бы одна из задач геномных предсказаний (вычисление олигогенных рисков, вычисление
+полигенных рисков, фармакогенетика или анализ происхождения);
 5. [Вычисление покрытия](/results/workflow-details/fastq-analysis/calculate-coverage), если в анализ включена
 хотя бы одна из стадий последующего анализа: выявление SNVs/Indels, структурных вариаций,
-вариации числа копий или предсказание фенотипов или вычисление полигенных рисков;
+вариации числа копий или хотя бы одна из задач геномных предсказаний (вычисление олигогенных рисков, вычисление
+полигенных рисков, фармакогенетика или анализ происхождения);
 6. [Выявление соматических SNVs/Indels](/results/workflow-details/fastq-analysis/somatic-snvs-indels#somatic-variants-discovery),
 если в анализ [включено выявление соматических SNVs/Indels](/settings/settings/variant-discovery-settings#somatic-snvs-discovery)
 и если образец секвенирования загружен как опухолевый;
@@ -44,9 +46,11 @@ sidebar_label: Анализ FASTQ или BAM образцов
 анализ [включено выявление вариации числа копий](/settings/settings/variant-discovery-settings#cnv-discovery) и
 если для образца определены тип секвенирования и набор реагентов capture kit
 (если тип секвенирования определён как "WES" или "Панель");
-10. [Предсказание фенотипов](/results/workflow-details/fastq-analysis/phenotypes), если в анализ
-включено [предсказание фенотипов](/settings/settings/variant-discovery-settings#enable-phenotype-prediction)
-и/или [вычисление полигенных рисков](/settings/settings/variant-discovery-settings#polygenic-risk-scores-calculation);
+10. [Геномные предсказания](/results/workflow-details/fastq-analysis/phenotypes), если в анализ была
+включена хотя бы одна из следующих
+задач: [вычисление олигогенных рисков](/settings/settings/variant-discovery-settings#enable-phenotype-prediction),
+[вычисление полигенных рисков](/settings/settings/variant-discovery-settings#polygenic-risk-scores-calculation),
+расчет фармакогенетики или анализ происхождения;
 11. [Генерация отчётов](/results/workflow-details/fastq-analysis/report-generation), если:
 - В системе есть хотя бы один активный [шаблон отчёта](/settings/report-templates/report-templates), у
 которого есть хотя бы один [добавленный блок](/settings/report-templates/report-templates#add-block) и

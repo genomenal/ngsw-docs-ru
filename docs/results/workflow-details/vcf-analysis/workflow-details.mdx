@@ -20,7 +20,7 @@ sidebar_label: Анализ VCF или GT образцов
 могут повлиять только
 настройки [отбрасывания вариантов, не прошедших фильтрацию](/settings/settings/variant-discovery-settings#allow-filtered-variants),
 [объединения фазовых групп](/settings/settings/variant-discovery-settings#pg-merge-distance) и
-настройки из раздела ["Предсказание фенотипов"](/settings/settings/variant-discovery-settings#phenotype-prediction).
+настройки из раздела ["Геномные предсказания"](/settings/settings/variant-discovery-settings#phenotype-prediction).
 Обратите внимание, что поменять что-либо в ходе анализа образца, загруженного в формате VCF или GT,
 будет невозможно после старта анализа.
 
@@ -28,9 +28,11 @@ sidebar_label: Анализ VCF или GT образцов
 1. [Загрузка, идентификация и проверка](/results/workflow-details/vcf-analysis/upload-identify-verify);
 2. [Аннотация](/results/workflow-details/vcf-analysis/annotation) SNVs/Indels или VCF со
 структурными вариациями;
-3. [Предсказание фенотипов](/results/workflow-details/vcf-analysis/phenotypes), если в анализ
-было включено [предсказание фенотипов](/settings/settings/variant-discovery-settings#enable-phenotype-prediction)
-и/или [вычисление полигенных рисков](/settings/settings/variant-discovery-settings#polygenic-risk-scores-calculation);
+3. [Геномные предсказания](/results/workflow-details/vcf-analysis/phenotypes), если в анализ была
+включена хотя бы одна из следующих
+задач: [вычисление олигогенных рисков](/settings/settings/variant-discovery-settings#enable-phenotype-prediction),
+[вычисление полигенных рисков](/settings/settings/variant-discovery-settings#polygenic-risk-scores-calculation),
+расчет фармакогенетики или анализ происхождения;
 4. [Генерация отчётов](/results/workflow-details/vcf-analysis/report-generation), если:
 - Анализ образца успешно завершился (то есть все стадии, включённые в анализ, имеют статус "*Завершено*").
 - В системе есть хотя бы один активный [шаблон отчёта](/settings/report-templates/report-templates), у

@@ -26,7 +26,7 @@ module.exports = {
         footer: {
             style: 'dark',
             links: [],
-            copyright: `© 2019-2025 Novel Software Systems. Все права защищены.`,
+            copyright: `© 2019-2026 Novel Software Systems. Все права защищены.`,
         },
         prism: {
             theme: lightCodeTheme,

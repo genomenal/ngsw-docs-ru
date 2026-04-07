@@ -607,38 +607,32 @@ SNV Viewer образца: [базовый](/results/main/snvs-indels/basic-filt
 Фильтр [с вводом любого значения](/results/main/snvs-indels/advanced-filtering#any-value-filters).
 2. **OMIM ID** - фильтр вариантов по идентификатору гена в базе [OMIM](https://www.omim.org/) (например, 185535).
 Фильтр [с вводом идентификатора](/results/main/snvs-indels/advanced-filtering#id-filters).
-3. **OMIM Phenotypes** - фильтр по значениям
-колонок [таблицы с фенотипами OMIM, связанными с геном](/results/main/snvs-indels/snv-details-panel#omim-phenotypes),
-в котором расположен вариант.
-Фильтр [с вводом любого значения](/results/main/snvs-indels/advanced-filtering#any-value-filters).
-Доступен, только если у вас есть доступ к данным базы [OMIM](https://www.omim.org/) внутри Genomenal, который
-предоставляется при наличии у пользователя лицензии на доступ к базе.
-4. **NCBI ID** - фильтр вариантов по идентификатору гена в базе [NCBI Gene](https://www.ncbi.nlm.nih.gov/gene/)
+3. **NCBI ID** - фильтр вариантов по идентификатору гена в базе [NCBI Gene](https://www.ncbi.nlm.nih.gov/gene/)
 (например, 4072). Фильтр [с вводом идентификатора](/results/main/snvs-indels/advanced-filtering#id-filters).
-5. **Swiss-Prot ID** - фильтр вариантов по идентификатору гена в
+4. **Swiss-Prot ID** - фильтр вариантов по идентификатору гена в
 базе [UniProtKB Swiss-Prot](https://www.uniprot.org/uniprotkb/?facets=reviewed%3Atrue&query=%2A) (например, P16422).
 Фильтр [с вводом идентификатора](/results/main/snvs-indels/advanced-filtering#id-filters).
-6. **TrEMBL ID** - фильтр вариантов по идентификатору гена в
+5. **TrEMBL ID** - фильтр вариантов по идентификатору гена в
 базе [UniProtKB TrEMBL](https://www.uniprot.org/uniprotkb?query=reviewed:false) (например, B5MCA4).
 Фильтр [с вводом идентификатора](/results/main/snvs-indels/advanced-filtering#id-filters).
-7. **Ensembl ID** - фильтр вариантов по идентификатору гена в
+6. **Ensembl ID** - фильтр вариантов по идентификатору гена в
 базе [Ensembl](https://www.ensembl.org/Homo_sapiens/Info/Index) (например, ENSG00000119888).
 Фильтр [с вводом идентификатора](/results/main/snvs-indels/advanced-filtering#id-filters).
-8. **pLI** - фильтр вариантов по pLI (Probability of Loss-of-Function Intolerance) - вероятности того, что
+7. **pLI** - фильтр вариантов по pLI (Probability of Loss-of-Function Intolerance) - вероятности того, что
 транскрипт чувствителен к вариантам потери функции (Lof; Loss of Function). Диапазон значений: от 0 до 1.
 Гены с pLI >= 0.9 считаются непереносимыми к вариантам потери функции.
 Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (положительное
 рациональное число).
-9. **LOEUF** - фильтр вариантов по LOEUF (Loss-of-function Observed/Expected Upper bound Fraction) - верхней
+8. **LOEUF** - фильтр вариантов по LOEUF (Loss-of-function Observed/Expected Upper bound Fraction) - верхней
 границе 90% доверительного интервала отношения наблюдаемых к ожидаемым высоконадёжным вариантам потери функции (pLoF).
 Более низкие значения (LOEUF < 0.35) указывают на более высокую степень генетического ограничения к потерям функции.
 Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (положительное
 рациональное число).
-10. **Missense O/E ratio** - фильтр вариантов по верхней границе 90% доверительного интервала отношения наблюдаемых
+9. **Missense O/E ratio** - фильтр вариантов по верхней границе 90% доверительного интервала отношения наблюдаемых
 к ожидаемым миссенс-вариантам. Чем ниже значение, тем больше ген ограничен в отношении миссенс-вариантов.
 Фильтр [с вводом числового значения](/results/main/snvs-indels/advanced-filtering#numeric-filters) (положительное
 рациональное число).
-11. **Missense Z-score** - фильтр вариантов по Z-оценке для миссенс-вариантов в транскрипте. Z-оценка отражает,
+10. **Missense Z-score** - фильтр вариантов по Z-оценке для миссенс-вариантов в транскрипте. Z-оценка отражает,
 насколько число наблюдаемых миссенс-мутаций в данном гене отличается от ожидаемого количества, если бы мутации
 распределялись случайным образом по геному. Более высокие положительные значения Z-оценки (≥3.09) указывают на
 повышенную чувствительность гена к аминокислотным заменам, то есть на большую степень генетического
@@ -665,6 +659,40 @@ SNV Viewer образца: [базовый](/results/main/snvs-indels/basic-filt
 <p align="center">
 <img src={require('/img/vv/mane_transcript_off.png').default} width="350"/>
 </p>
+
+### Phenotypes {#phenotypes}
+
+1. **OMIM Phenotype** - фильтр по названиям фенотипов OMIM, связанных с геном, в котором расположен вариант.
+Фильтр [с вводом любого значения](/results/main/snvs-indels/advanced-filtering#any-value-filters).
+Доступен, только если у вас есть доступ к данным базы [OMIM](https://www.omim.org/) внутри Genomenal, который
+предоставляется при наличии у пользователя лицензии на доступ к базе.
+2. **OMIM Inheritance** - фильтр по типу наследования фенотипа по данным базы OMIM.
+Фильтр [с мультиселектом](/results/main/snvs-indels/advanced-filtering#multiselect-filters).
+Доступен, только если у вас есть доступ к данным базы [OMIM](https://www.omim.org/) внутри Genomenal, который
+предоставляется при наличии у пользователя лицензии на доступ к базе.
+
+Возможные типы наследования:
+- Аутосомно-доминантный (AD);
+- Аутосомно-рецессивный (AR);
+- Дигенно-доминантный (DD);
+- Дигенно-рецессивный (DR);
+- Унаследованный хромосомный дисбаланс (ICB);
+- Изолированные случаи (IC);
+- Митохондриальный (Mi);
+- Мультифакториальный (Mu);
+- Соматический мозаицизм (SMo);
+- Соматическая мутация (SMu);
+- X-сцепленный (XL);
+- X-сцепленный доминантный (XLD);
+- X-сцепленный рецессивный (XLR);
+- Y-сцепленный (YL);
+- Псевдоаутосомно-доминантный (PD);
+- Псевдоаутосомно-рецессивный (PR);
+- Не указан - фенотип имеет пустое значение в колонке "Inheritance" в базе OMIM.
+
+3. **GenCC Phenotypes** - фильтр по названиям заболеваний в базе [GenCC](https://thegencc.org/), связанных
+с геном, в котором расположен вариант.
+Фильтр [с вводом любого значения](/results/main/snvs-indels/advanced-filtering#any-value-filters).
 
 ### gnomAD 3 {#gnomad}
 

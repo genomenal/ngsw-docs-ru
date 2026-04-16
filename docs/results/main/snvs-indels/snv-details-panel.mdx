@@ -24,20 +24,21 @@ sidebar_label: Панель детальной информации о вари�
 
 ## Вкладки панели детальной информации {#panel-tabs}
 
-Панель разделена на 12 вкладок (или 11, если в системе нет ни
+Панель разделена на 13 вкладок (или 12, если в системе нет ни
 одной [пользовательской аннотации](/settings/custom-annotations)):
 1. [Common](/results/main/snvs-indels/snv-details-panel#common-tab)
 2. [Gene](/results/main/snvs-indels/snv-details-panel#gene)
-3. [ClinVar](/results/main/snvs-indels/snv-details-panel#clinvar-tab)
-4. [gnomAD 3](/results/main/snvs-indels/snv-details-panel#gnomad-3-tab)
-5. [gnomAD 4](/results/main/snvs-indels/snv-details-panel#gnomad-4-tab)
-6. [ExAC](/results/main/snvs-indels/snv-details-panel#exac-tab)
-7. [Other frequencies](/results/main/snvs-indels/snv-details-panel#other-frequencies-tab)
-8. [Conservation](/results/main/snvs-indels/snv-details-panel#conservation-tab)
-9. [Protein function effect](/results/main/snvs-indels/snv-details-panel#protein-function-effect-tab)
-10. [Protein function effect (additional)](/results/main/snvs-indels/snv-details-panel#protein-function-effect-tab)
-11. [Other](/results/main/snvs-indels/snv-details-panel#other-tab)
-12. [Custom annotation sources](/results/main/snvs-indels/snv-details-panel#custom-annotation-sources-tab) (если
+3. [Phenotypes](/results/main/snvs-indels/snv-details-panel#phenotypes)
+4. [ClinVar](/results/main/snvs-indels/snv-details-panel#clinvar-tab)
+5. [gnomAD 3](/results/main/snvs-indels/snv-details-panel#gnomad-3-tab)
+6. [gnomAD 4](/results/main/snvs-indels/snv-details-panel#gnomad-4-tab)
+7. [ExAC](/results/main/snvs-indels/snv-details-panel#exac-tab)
+8. [Other frequencies](/results/main/snvs-indels/snv-details-panel#other-frequencies-tab)
+9. [Conservation](/results/main/snvs-indels/snv-details-panel#conservation-tab)
+10. [Protein function effect](/results/main/snvs-indels/snv-details-panel#protein-function-effect-tab)
+11. [Protein function effect (additional)](/results/main/snvs-indels/snv-details-panel#protein-function-effect-tab)
+12. [Other](/results/main/snvs-indels/snv-details-panel#other-tab)
+13. [Custom annotation sources](/results/main/snvs-indels/snv-details-panel#custom-annotation-sources-tab) (если
 хотя бы одна пользовательская аннотация была [добавлена](/settings/custom-annotations#add-custom-annotation) в
 систему до того, как варианты в образце были проаннотированы)
 
@@ -202,10 +203,8 @@ chr15:48505117 CA>AG (включает 2 варианта).
 <img src={require('/img/vv/gene_tab.png').default} width="900"/>
 </p>
 
-Вкладка содержит основную информация [о гене](/results/main/snvs-indels/snv-details-panel#gene-info)
-и [о транскриптах](/results/main/snvs-indels/snv-details-panel#transcripts), в которых располагается вариант.
-Если вам предоставлен доступ к базе данных OMIM, здесь же может быть приведена информация
-[о фенотипах, ассоциированных с геном](/results/main/snvs-indels/snv-details-panel#omim-phenotypes).
+Вкладка содержит основную информацию о гене, включая метрики ограничений gnomAD,
+и о транскриптах, в которых располагается вариант.
 
 #### 1. Ген {#gene-info}
 
@@ -216,10 +215,6 @@ chr15:48505117 CA>AG (включает 2 варианта).
 <img src={require('/img/vv/gene_source.png').default} width="300"/>
 </p>
 
-- ***Ссылки*** на страницы с информацией о гене в различных базах данных
-([Ensembl](https://www.ensembl.org/Homo_sapiens/Info/Index), [UniProt](https://www.uniprot.org/uniprot/),
-[GTEx](https://www.gtexportal.org/home/), [OMIM](https://www.omim.org/), [NCBI](https://www.ncbi.nlm.nih.gov/gene/),
-[Orphanet](https://www.orpha.net/consor/cgi-bin/index.php)).
 - ***Поиск всех вариантов в гене***: поиск всех вариантов, выявленных в данном образце и расположенных
 в этом же гене. Для поиска нажмите на ссылку "*Все варианты в гене*" - в соседней вкладке откроется
 страница SNV Viewer с фильтрацией по данному гену.
@@ -230,27 +225,36 @@ chr15:48505117 CA>AG (включает 2 варианта).
 они могут сброситься или поменяться, а в SNV Viewer сохранится то состояние, которое получили на новой вкладке.
 :::
 
-- ***Метрики генетических ограничений (constraint metrics)*** - метрики, которые отражают степень непереносимости
-геном функционально значимых мутаций и помогают оценить вероятность их патогенности:
-   - ***pLI*** (Probability of Loss-of-Function Intolerance) — вероятность того, что транскрипт чувствителен к
-   вариантам потери функции (Lof; Loss of Function). Отражает вероятность принадлежности гена к категории
-   гаплонедостаточных (haploinsufficient), то есть таких, в которых утрата одной копии приводит к функциональным
-   последствиям. Рассчитывается на основе высоконадежных вариантов потери функции (pLoF; predicted Lof) по данным
-   gnomAD. Диапазон значений: от 0 до 1. Гены с pLI >= 0.9 считаются непереносимыми к вариантам потери функции.
-   - ***LOEUF*** (Loss-of-function Observed/Expected Upper bound Fraction) — верхняя граница 90% доверительного
-   интервала отношения наблюдаемых к ожидаемым высоконадёжным вариантам потери функции (pLoF). Более низкие значения
-   (LOEUF < 0.35) указывают на более высокую степень генетического ограничения к потерям функции.
-   - ***Missense O/E ratio*** — верхняя граница 90% доверительного интервала отношения наблюдаемых (observed) к
-   ожидаемым (expected) вариантам с заменой аминокислоты (missense variants; миссенс-варианты). Чем ниже значение,
-   тем больше ген ограничен в отношении миссенс-вариантов.
-   - ***Missense Z-score*** — Z-оценка для миссенс-вариантов (вариантов с заменой аминокислоты) в транскрипте.
-   Отражает, насколько число наблюдаемых миссенс-мутаций в данном гене отличается от ожидаемого количества, если
-   бы мутации распределялись случайным образом по геному. Более высокие положительные значения Z-оценки (≥3.09)
-   указывают на повышенную чувствительность гена к аминокислотным заменам, то есть на большую степень генетического
-   ограничения к миссенс-вариантам. Более низкие или отрицательные значения Z-оценки, наоборот, указывают на то,
-   что в гене встречается больше миссенс-мутаций, чем ожидалось, а значит, он терпим к таким изменениям.
+#### 2. Внешние ссылки {#gene-external-links}
 
-#### 2. Транскрипты {#transcripts}
+Ссылки на страницы с информацией о гене в различных базах данных:
+[Ensembl](https://www.ensembl.org/Homo_sapiens/Info/Index), [UniProt](https://www.uniprot.org/uniprot/),
+[GTEx](https://www.gtexportal.org/home/), [OMIM](https://www.omim.org/), [NCBI](https://www.ncbi.nlm.nih.gov/gene/),
+[Orphanet](https://www.orpha.net/consor/cgi-bin/index.php), [GenCC](https://thegencc.org/).
+
+#### 3. Метрики ограничений (gnomAD) {#constraint-metrics}
+
+Метрики генетических ограничений (constraint metrics) - метрики, которые отражают степень непереносимости
+геном функционально значимых мутаций и помогают оценить вероятность их патогенности:
+- ***pLI*** (Probability of Loss-of-Function Intolerance) — вероятность того, что транскрипт чувствителен к
+вариантам потери функции (Lof; Loss of Function). Отражает вероятность принадлежности гена к категории
+гаплонедостаточных (haploinsufficient), то есть таких, в которых утрата одной копии приводит к функциональным
+последствиям. Рассчитывается на основе высоконадежных вариантов потери функции (pLoF; predicted Lof) по данным
+gnomAD. Диапазон значений: от 0 до 1. Гены с pLI >= 0.9 считаются непереносимыми к вариантам потери функции.
+- ***LOEUF*** (Loss-of-function Observed/Expected Upper bound Fraction) — верхняя граница 90% доверительного
+интервала отношения наблюдаемых к ожидаемым высоконадёжным вариантам потери функции (pLoF). Более низкие значения
+(LOEUF < 0.35) указывают на более высокую степень генетического ограничения к потерям функции.
+- ***Missense O/E ratio*** — верхняя граница 90% доверительного интервала отношения наблюдаемых (observed) к
+ожидаемым (expected) вариантам с заменой аминокислоты (missense variants; миссенс-варианты). Чем ниже значение,
+тем больше ген ограничен в отношении миссенс-вариантов.
+- ***Missense Z-score*** — Z-оценка для миссенс-вариантов (вариантов с заменой аминокислоты) в транскрипте.
+Отражает, насколько число наблюдаемых миссенс-мутаций в данном гене отличается от ожидаемого количества, если
+бы мутации распределялись случайным образом по геному. Более высокие положительные значения Z-оценки (≥3.09)
+указывают на повышенную чувствительность гена к аминокислотным заменам, то есть на большую степень генетического
+ограничения к миссенс-вариантам. Более низкие или отрицательные значения Z-оценки, наоборот, указывают на то,
+что в гене встречается больше миссенс-мутаций, чем ожидалось, а значит, он терпим к таким изменениям.
+
+#### 4. Транскрипты {#transcripts}
 
 На панели доступны транскрипты гена из двух баз данных: [Ensembl](https://www.ensembl.org/Homo_sapiens/Info/Index)
 и [RefSeq](https://www.ncbi.nlm.nih.gov/nuccore/).
@@ -262,7 +266,7 @@ chr15:48505117 CA>AG (включает 2 варианта).
 с транскриптами из RefSeq, нажмите на соответствующую кнопку переключателя:
 
 <p align="center">
-<img src={require('/img/vv/refseq_transcripts.png').default} width="700"/>
+<img src={require('/img/vv/refseq_transcripts.png').default} width="800"/>
 </p>
 
 :::note На заметку
@@ -280,7 +284,7 @@ chr15:48505117 CA>AG (включает 2 варианта).
 [MANE plus clinical](https://www.ncbi.nlm.nih.gov/refseq/MANE/#:~:text=MANE%20Plus%20Clinical%3A%20The%20MANE,variants%20available%20in%20public%20resources.)
 или [Ensembl canonical](https://www.ensembl.org/info/genome/genebuild/canonical.html),
 отмечен <img src={require('/img/vv/main_transcript.png').default} width="20"/>. Транскрипт гена,
-выбранный основным для этого варианта, выделен рамкой. Значения Impact, HGVSp и HGVSc именно для этого
+выбранный основным для этого варианта, выделен рамкой. Значения Impact, HGVSc и HGVSp именно для этого
 транскрипта приведены для варианта в таблице SNV Viewer.
 
 import Highlight from '@site/src/components/Highlight';
@@ -290,11 +294,11 @@ import Highlight from '@site/src/components/Highlight';
 Значение эффекта HIGH раскрашено <Highlight color="#E95726">красным</Highlight>,
 MODERATE - <Highlight color="#E2CC81">жёлтым</Highlight>, а LOW и
 MODIFIER - <Highlight color="#999AAB">серым</Highlight>.
-- ***HGVSp*** - аминокислотная замена в [номенклатуре HGVS](https://varnomen.hgvs.org/): префикс “p.” (protein) +
-референсная аминокислота + позиция аминокислоты в белке + новая аминокислота, получившаяся в результате замены.
 - ***HGVSc*** - нуклеотидная замена в [номенклатуре HGVS](https://varnomen.hgvs.org/): префикс “c.” (coding;
 для замены в кодирующей последовательности ДНК) или “n.” (non-coding; для замены в некодирующей последовательности
 ДНК) + геномная позиция замещенного нуклеотида + референсный аллель > альтернативный аллель.
+- ***HGVSp*** - аминокислотная замена в [номенклатуре HGVS](https://varnomen.hgvs.org/): префикс “p.” (protein) +
+референсная аминокислота + позиция аминокислоты в белке + новая аминокислота, получившаяся в результате замены.
 
 Таблица транскриптов гена из базы [RefSeq](https://www.ncbi.nlm.nih.gov/nuccore/) имеет следующие
 колонки:
@@ -304,45 +308,116 @@ MODIFIER - <Highlight color="#999AAB">серым</Highlight>.
 или [Ensembl canonical](https://www.ensembl.org/info/genome/genebuild/canonical.html),
 отмечен <img src={require('/img/vv/main_transcript.png').default} width="20"/>. Транскрипт гена,
 выбранный основным для этого варианта, выделен рамкой.
-- ***HGVSp*** - аминокислотная замена в [номенклатуре HGVS](https://varnomen.hgvs.org/): префикс “p.” (protein) +
-референсная аминокислота + позиция аминокислоты в белке + новая аминокислота, получившаяся в результате замены.
 - ***HGVSc*** - нуклеотидная замена в [номенклатуре HGVS](https://varnomen.hgvs.org/): префикс “c.” (coding;
 для замены в кодирующей последовательности ДНК) или “n.” (non-coding; для замены в некодирующей последовательности
 ДНК) + геномная позиция замещенного нуклеотида + референсный аллель > альтернативный аллель.
+- ***HGVSp*** - аминокислотная замена в [номенклатуре HGVS](https://varnomen.hgvs.org/): префикс “p.” (protein) +
+референсная аминокислота + позиция аминокислоты в белке + новая аминокислота, получившаяся в результате замены.
 
-#### 3. Связанные фенотипы OMIM {#omim-phenotypes}
-
-Доступ к данным из базы [OMIM](https://www.omim.org/) внутри Genomenal предоставляется при наличии
-у пользователя лицензии на доступ к базе. Если вам предоставлен доступ к OMIM, справа на вкладке "Gene"
-отобразится информация по фенотипам, ассоциированным с геном, в котором располагается вариант:
+### Phenotypes {#phenotypes}
 
 <p align="center">
-<img src={require('/img/vv/omim_phenotypes.png').default} width="500"/>
+<img src={require('/img/vv/phenotypes_tab.png').default} width="900"/>
 </p>
 
-Информация приводится в виде таблицы со следующими колонками:
-1. ***Phenotype*** - полное название фенотипа, связанного с геном. Если перед названием фенотипа
+На вкладке приведена информация о фенотипах, ассоциированных с геном, в котором расположен вариант,
+по данным баз [GenCC](https://thegencc.org/) и [OMIM](https://www.omim.org/).
+Информация о связанных фенотипах OMIM приводится, если вам предоставлен доступ к этой базе данных.
+
+#### 1. Связанные фенотипы GenCC {#gencc-phenotypes}
+
+Раздел содержит информацию о заболеваниях, ассоциированных с геном, в котором расположен вариант,
+по данным базы [GenCC](https://thegencc.org/).
+
+<p align="center">
+<img src={require('/img/vv/gencc_phenotypes.png').default} width="700"/>
+</p>
+
+Информация представлена в виде таблицы со следующими колонками:
+1. ***Заболевание*** - полное название заболевания, связанного с геном. Для каждого заболевания
+приводится ссылка на соответствующую запись в онтологии [MONDO](https://mondo.monarchinitiative.org/)
+(на сайте консорциума [Monarch Initiative](https://monarchinitiative.org/)): <img src={require('/img/vv/link_icon.png').default} width="20"/>.
+При наведении курсора на значок ссылки отображается всплывающая подсказка с идентификатором заболевания в MONDO.
+2. ***Тип наследования*** заболевания:
+- **AD** - Аутосомно-доминантный (Autosomal dominant);
+- **AR** - Аутосомно-рецессивный (Autosomal recessive);
+- **MI** - Митохондриальный (Mitochondrial);
+- **SD** - Неполное доминирование (Semidominant);
+- **XL** - X-сцепленный (X-linked);
+- **XLR** - X-сцепленный рецессивный (X-linked recessive);
+- **YL** - Y-сцепленный (Y-linked);
+- **—** - Неизвестный (Unknown).
+3. ***Классификация*** - оценка связи гена и заболевания, основанная на силе доказательств, подтверждающих
+или опровергающих эту связь. Классификация отражает уровень клинической достоверности связи
+гена и заболевания.
+
+Значения колонки представлены в виде значков с указанием количества источников, предоставивших доказательства
+соответствующего типа связи. При наведении курсора на значок отображается всплывающая подсказка, в которой
+указывается тип связи и перечисляются все источники, предоставившие соответствующие доказательства:
+
+<p align="center">
+<img src={require('/img/vv/classification_resources.png').default} width="350"/>
+</p>
+
+Типы связи гена и заболевания в GenCC:
+- <img src={require('/img/vv/df.png').default} width="47"/> - Достоверная (Definitive);
+- <img src={require('/img/vv/st.png').default} width="47"/> - Сильная (Strong);
+- <img src={require('/img/vv/md.png').default} width="47"/> - Умеренная (Moderate);
+- <img src={require('/img/vv/sp.png').default} width="47"/> - Поддерживающая (Supportive);
+- <img src={require('/img/vv/lm.png').default} width="47"/> - Ограниченная (Limited);
+- <img src={require('/img/vv/ds.png').default} width="47"/> - Спорные доказательства (Disputed Evidence);
+- <img src={require('/img/vv/rf.png').default} width="47"/> - Опровергнутые доказательства (Refuted Evidence);
+- <img src={require('/img/vv/nk.png').default} width="47"/> - Связь с заболеванием не установлена (No Known
+Disease Relationship).
+
+Для каждого заболевания отображаются все типы связи, зарегистрированные для данного гена в GenCC.
+Значки классификации выводятся в порядке убывания силы доказательств (в соответствии с приведённым выше списком).
+
+Таблица отсортирована по классификации связи гена и заболевания: сначала по убыванию силы доказательств,
+затем - по количеству источников, предоставивших доказательства соответствующего типа связи.
+
+#### 2. Связанные фенотипы OMIM {#omim-phenotypes}
+
+Раздел содержит информацию о фенотипах, ассоциированных с геном, в котором расположен вариант,
+по данным базы [OMIM](https://www.omim.org/). Доступ к данным из базы OMIM внутри Genomenal
+предоставляется при наличии у пользователя лицензии на доступ к базе.
+
+<p align="center">
+<img src={require('/img/vv/omim_phenotypes.png').default} width="700"/>
+</p>
+
+Информация представлена в виде таблицы со следующими колонками:
+1. ***Фенотип*** - полное название фенотипа, связанного с геном.
+- Если перед названием фенотипа
 стоит знак вопроса (например, "<b>?</b>Bleeding disorder, platelet-type, 22"), это означает, что взаимосвязь между
 фенотипом и геном является предварительной.
-Если название фенотипа заключено в квадратные скобки (например, "<b>[</b>Urate oxidase deficiency<b>]</b>"), это
+- Если название фенотипа заключено в квадратные скобки (например, "<b>[</b>Urate oxidase deficiency<b>]</b>"), это
 указывает в основном на генетические вариации, которые приводят к явно аномальным значениям лабораторных тестов.
-Если название фенотипа заключено в фигурные скобки (например, "<b>{</b>Prostate cancer/brain cancer susceptibility,
+- Если название фенотипа заключено в фигурные скобки (например, "<b>{</b>Prostate cancer/brain cancer susceptibility,
 somatic<b>}</b>"), это обозначает мутации, которые способствуют предрасположенности к многофакторным заболеваниям
 или восприимчивости к инфекциям.
-2. ***Phenotype MIM number*** - идентификатор фенотипа в базе OMIM. Перейдя по ссылке, вы попадете на страницу
-фенотипа в OMIM.
-3. ***Inheritance*** - тип наследования фенотипа:<br /><b>AD</b> - autosomal dominant,
-аутосомно-доминантный;<br /><b>AR</b> - autosomal recessive, аутосомно-рецессивный;<br /><b>DD</b> - digenic dominant,
-дигенный доминантный;<br /><b>DR</b> - digenic recessive, дигенный рецессивный<br /><b>IC</b> - isolated cases,
-единичные случаи;<br /><b>Mi</b> - mitochondrial, митохондриальный;<br /><b>Mu</b> - multifactorial,
-мультифакторный;<br /><b>PADom</b> - pseudoautosomal dominant,
-псевдоаутосомно-доминантный;<br /><b>PARec</b> - pseudoautosomal
-recessive, псевдоаутосомно-рецессивный;<br /><b>SomMos</b> - somatic mosaicism, соматический
-мозаицизм;<br /><b>SMu</b> - somatic mutation, соматическая мутация;<br /><b>XL</b> - X-linked,
-X-сцепленный;<br /><b>XLD</b> - X-linked dominant, X-сцепленный доминантный;<br /><b>XLR</b> - X-linked recessive,
-X-сцепленный рецессивный;<br /><b>YL</b> - Y-linked, Y-сцепленный.
-4. ***Phenotype mapping key*** - ключ карты фенотипа в OMIM (карта отображает связи данного фенотипа с
-ассоциированными фенотипами, группами родственных фенотипов (фенотипическими рядами) и генами):<br /><b>1</b> - фенотип
+2. ***Идентификатор MIM*** - уникальный идентификатор фенотипа в базе OMIM. Ссылка ведёт на страницу
+соответствующего фенотипа в OMIM.
+3. ***Тип наследования*** фенотипа:
+- **AD** - Аутосомно-доминантный (Autosomal dominant);
+- **AR** - Аутосомно-рецессивный (Autosomal recessive);
+- **DD** - Дигенно-доминантный (Digenic dominant);
+- **DR** - Дигенно-рецессивный (Digenic recessive);
+- **ICB** - Унаследованный хромосомный дисбаланс (Inherited chromosomal imbalance);
+- **IC** - Изолированные случаи (Isolated cases);
+- **Mi** - Митохондриальный (Mitochondrial);
+- **Mu** - Мультифакториальный (Multifactorial);
+- **SMo** - Соматический мозаицизм (Somatic mosaicism);
+- **SMu** - Соматическая мутация (Somatic mutation);
+- **XL** - X-сцепленный (X-linked);
+- **XLD** - X-сцепленный доминантный (X-linked dominant);
+- **XLR** - X-сцепленный рецессивный (X-linked recessive);
+- **YL** - Y-сцепленный (Y-linked);
+- **PD** - Псевдоаутосомно-доминантный (Pseudoautosomal dominant);
+- **PR** - Псевдоаутосомно-рецессивный (Pseudoautosomal recessive);
+- **—** - Не указан (фенотип имеет пустое значение в колонке "Inheritance" в базе OMIM).
+4. ***Тип связи с геном*** - ключ карты фенотипа в OMIM, отображающей связи данного фенотипа с
+ассоциированными фенотипами, группами родственных фенотипов (фенотипическими рядами) и генами:<br /><b>1</b> - фенотип
 помещен на карту из-за его связи с геном, но лежащий в его основе дефект неизвестен;<br /><b>2</b> - фенотип помещен
 на карту в результате использования статистических методов, мутация не обнаружена;<br /><b>3</b> - молекулярная основа
 фенотипа известна, в гене была найдена мутация;<br /><b>4</b> - синдром смежной дупликации или делеции генов, в котором

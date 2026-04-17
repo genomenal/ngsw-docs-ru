@@ -1414,9 +1414,13 @@ Meta LR, [M-CAP](http://bejerano.stanford.edu/mcap/),
 
 4. Чтобы закончить добавление условия, нажмите клавишу ввода или кликните вне области заполнения значения.
 
-## Редактирование условия {#edit-condition}
+## Действия с добавленным условием в конструкторе запросов {#condition-actions-query-builder}
 
-В уже составленном условии можно поменять ***оператор*** и/или ***значение***. Для этого нужно нажать на
+В конструкторе запросов уже составленное условие можно отредактировать, выключить или удалить.
+
+### Редактирование условия {#edit-condition}
+
+В добавленном условии можно поменять ***оператор*** и/или ***значение***. Для этого нужно нажать на
 соответствующее поле:
 
 <p align="center">
@@ -1429,7 +1433,7 @@ Meta LR, [M-CAP](http://bejerano.stanford.edu/mcap/),
 <img src={require('/img/vv/change_operator.png').default} width="700"/>
 </p>
 
-## Выключение условия {#turn-off-condition}
+### Выключение условия {#turn-off-condition}
 
 Эта опция полезна, если вы не хотите потерять составленное условие, но в данный момент вам не
 нужна фильтрация по нему. Чтобы выключить условие, наведите на него курсор и
@@ -1439,7 +1443,7 @@ Meta LR, [M-CAP](http://bejerano.stanford.edu/mcap/),
 <img src={require('/img/vv/turn_off_condition.png').default} width="700"/>
 </p>
 
-## Удаление условия {#remove-condition}
+### Удаление условия {#remove-condition}
 
 Чтобы удалить условие, наведите на него курсор и
 нажмите на <img src={require('/img/vv/delete_condition.png').default} width="25"/>:
@@ -1486,52 +1490,105 @@ Meta LR, [M-CAP](http://bejerano.stanford.edu/mcap/),
 
 ## Применение запроса {#apply-query}
 
-После того, как вы заполнили все условия к искомым вариантам,
+После заполнения условий к искомым вариантам
 нажмите на <img src={require('/img/vv/apply.png').default} width="150"/>.
-Окно конструктора запросов закроется и запрос будет применен к вариантам. Сверху таблицы можно увидеть, какой
-запрос применен:
+После этого окно конструктора запросов закрывается, и в таблице SNV Viewer отображаются только те
+варианты, которые удовлетворяют условиям применённого запроса.
+
+Условия применённого запроса представлены над таблицей с вариантами:
 
 <p align="center">
 <img src={require('/img/vv/filtered_var.png').default} width="1100"/>
 </p>
 
-Условие можно выключить, нажав на <img src={require('/img/vv/turn_off_created.png').default} width="20"/>,
-или удалить, нажав на <img src={require('/img/vv/turn_off_cond_on_vv.png').default} width="20"/>:
-
-<p align="center">
-<img src={require('/img/vv/condition.png').default} width="250"/>
-</p>
-
-Для ***очистки всех условий фильтрации***
-нажмите на <img src={require('/img/vv/clear_all_filters_btn.png').default} width="45"/>.
-
-Чтобы ***[изменить](/results/main/snvs-indels/advanced-filtering#edit-condition), [сохранить](/results/main/snvs-indels/advanced-filtering#save-query) или создать новый запрос***, перейдите
-в конструктор запросов,<br></br>нажав на <img src={require('/img/vv/query_builder_btn.png').default} width="120"/>.
+Чтобы отредактировать, [сохранить](/results/main/snvs-indels/advanced-filtering#save-query) или создать новый запрос,
+перейдите в конструктор запросов, нажав на <img src={require('/img/vv/query_builder_btn.png').default} width="120"/>.
 
 Чтобы вернуться к основному режиму SNV Viewer,
 нажмите на <img src={require('/img/vv/basic_filtering_btn.png').default} width="120"/>.
 
-Иногда условий к искомым вариантам много и запрос получается очень длинным:
+## Действия с условиями применённого запроса {#query-condition-actions}
+
+Условия применённого запроса представлены над таблицей с вариантами:
+
+<p align="center">
+<img src={require('/img/vv/filtered_var.png').default} width="1100"/>
+</p>
+
+С условиями запроса можно выполнить следующие действия:
+- <b>Отредактировать значение условия</b> - см.
+подробнее <a href="/results/main/snvs-indels/advanced-filtering#edit-condition-value-inplace">ниже</a>.
+- <b>Выключить условие</b> - дезактивировать, не удаляя из запроса. Для этого
+нажмите на кнопку <img src={require('/img/vv/turn_off_created.png').default} width="20"/>. Выключенное условие
+обозначается зачеркнутым:
+
+<p align="center">
+<img src={require('/img/vv/turned_off_condition.png').default} width="250"/>
+</p>
+
+
+Чтобы включить условие обратно, нажмите на ту же кнопку.
+- <b>Удалить условие</b>, нажав на крестик <img src={require('/img/vv/turn_off_cond_on_vv.png').default} width="20"/>.
+- <b>Очистить все применённые условия фильтрации</b>,
+нажав на <img src={require('/img/vv/clear_all_filters_btn.png').default} width="45"/>.
+- <b>Свернуть условия запроса</b>. Это удобно, если запрос включает несколько условий, в результате чего
+занимает много места на странице:
 
 <p align="center">
 <img src={require('/img/vv/many_conditions.png').default} width="900"/>
 </p>
 
-В таком случае можно ***свернуть*** условия запроса,
-нажав на кнопку <img src={require('/img/vv/hide.png').default} width="20"/>, расположенную справа от
+Для сворачивания условий запроса
+нажмите на кнопку <img src={require('/img/vv/hide.png').default} width="20"/>, расположенную справа от
 кнопки *Очистки всех условий фильтрации*. Тогда будут показаны только начальные условия запроса:
 
 <p align="center">
 <img src={require('/img/vv/hidden.png').default} width="900"/>
 </p>
 
-Чтобы ***развернуть*** условия запроса обратно, нажмите на <img src={require('/img/vv/show.png').default} height="23"/>.
+Чтобы развернуть условия запроса обратно, нажмите на <img src={require('/img/vv/show.png').default} height="23"/>.
 
 :::info На заметку
 На [странице "Настройки пользователя"](/settings/profile#advanced-filtering-conditions)
 можно отрегулировать, будут ли условия запроса всегда в развёрнутом
 или свёрнутом состоянии сразу после применения запроса фильтрации.
 :::
+
+### Редактирование значения условия {#edit-condition-value-inplace}
+
+Условия, у которых есть значения (то есть те условия, операторами которых не являются "пусто" или "не пусто"),
+можно отредактировать прямо над таблицей с вариантами. Для этого нажмите на актуальное значение:
+
+<p align="center">
+<img src={require('/img/vv/edit_condition_value_inplace.png').default} width="300"/>
+</p>
+
+и внесите необходимые изменения:
+- Для <i>фильтров с мультиселектом</i>: откроется список значений с возможностью поиска среди них.
+Чтобы выбрать дополнительное значение, отметьте его галочкой. Чтобы исключить значение, снимите с него галочку.
+
+<p align="center">
+<img src={require('/img/vv/multiselect_inplace.png').default} width="400"/>
+</p>
+
+Чтобы закончить выбор значений условия, кликните в свободную область на странице.
+
+- Для <i>фильтров с выбором одного значения</i>: выберите значение из открывшегося списка, нажав на строку:
+
+<p align="center">
+<img src={require('/img/vv/select_inplace.png').default} width="480"/>
+</p>
+
+- Для <i>фильтров с вводом значения</i>: отредактируйте значение и нажмите клавишу ввода или
+кликните в свободную область на странице.
+
+<p align="center">
+<img src={require('/img/vv/input_edit.png').default} width="350"/>
+</p>
+
+Все остальные действия по редактированию условия, такие
+как [выбор другого оператора условия](/results/main/snvs-indels/advanced-filtering#edit-condition), осуществляются в
+конструре запросов.
 
 ## Сохранение запроса {#save-query}
 

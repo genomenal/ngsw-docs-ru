@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="generator" content="Docusaurus v2.0.0-beta.4">
 <link rel="search" type="application/opensearchdescription+xml" title="Genomenal" href="/ngsw-docs-ru/eu/opensearch.xml"><title data-react-helmet="true">Проверка качества и очистка | Genomenal</title><meta data-react-helmet="true" property="og:url" content="https://genomenal.ru/ngsw-docs-ru/eu/results/workflow-details/fastq-analysis/check-quality-and-cleanup"><meta data-react-helmet="true" name="docsearch:language" content="eu"><meta data-react-helmet="true" name="docsearch:version" content="current"><meta data-react-helmet="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-react-helmet="true" property="og:title" content="Проверка качества и очистка | Genomenal"><meta data-react-helmet="true" name="description" content="Контроль качества - важный шаг в анализе данных секвенирования. Он запускается после успешного выполнения"><meta data-react-helmet="true" property="og:description" content="Контроль качества - важный шаг в анализе данных секвенирования. Он запускается после успешного выполнения"><link data-react-helmet="true" rel="shortcut icon" href="/ngsw-docs-ru/eu/img/favicon.png"><link data-react-helmet="true" rel="canonical" href="https://genomenal.ru/ngsw-docs-ru/eu/results/workflow-details/fastq-analysis/check-quality-and-cleanup"><link data-react-helmet="true" rel="alternate" href="https://genomenal.ru/ngsw-docs-ru/results/workflow-details/fastq-analysis/check-quality-and-cleanup" hreflang="ru"><link data-react-helmet="true" rel="alternate" href="https://genomenal.ru/ngsw-docs-ru/eu/results/workflow-details/fastq-analysis/check-quality-and-cleanup" hreflang="eu"><link data-react-helmet="true" rel="alternate" href="https://genomenal.ru/ngsw-docs-ru/results/workflow-details/fastq-analysis/check-quality-and-cleanup" hreflang="x-default"><link data-react-helmet="true" rel="preconnect" href="https://7QED0LN5K8-dsn.algolia.net" crossorigin="anonymous"><link rel="stylesheet" href="/ngsw-docs-ru/eu/assets/css/styles.8c07b197.css">
-<link rel="preload" href="/ngsw-docs-ru/eu/assets/js/runtime~main.47f43f50.js" as="script">
+<link rel="preload" href="/ngsw-docs-ru/eu/assets/js/runtime~main.53944cfd.js" as="script">
 <link rel="preload" href="/ngsw-docs-ru/eu/assets/js/main.50f06afb.js" as="script">
 </head>
 <body>
@@ -43,7 +43,18 @@ sequences) и использованный порог метрики, при к�
 В ходе фильтрации плитки, из которых поступили прочтения, превышающие максимально допустимое
 отклонение качества прочтений, исключаются из анализа с помощью
 <a href="https://github.com/abiswas-odu/Disco/blob/master/bbmap/docs/guides/FilterByTileGuide.txt" target="_blank" rel="noopener noreferrer">BBMap FilterByTile</a>.
-После фильтрации по Tile-плитке снова проводится проверка качества.</p><p>2.2. <strong>Обрезка по качеству</strong>:</p><ul><li>Удаление адаптеров, если файл образца содержит более 1% прочтений, контаминированных
+После фильтрации по Tile-плитке снова проводится проверка качества.</p><div class="admonition admonition-info alert alert--info"><div class="admonition-heading"><h5><span class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>Ограничения фильтрации по Tile-плитке</h5></div><div class="admonition-content"><p>Фильтрация по Tile-плитке выполняется только для FASTQ-файлов с заголовками в формате Illumina.
+Если заголовок FASTQ не соответствует формату Illumina, то фильтрация по Tile-плитке не применяется.</p><p>Формат заголовка Illumina:<br>
+<code>@&lt;instrument&gt;:&lt;run ID&gt;:&lt;flowcell ID&gt;:&lt;lane&gt;:&lt;tile&gt;:&lt;x-pos&gt;:&lt;y-pos&gt; &lt;read&gt;:&lt;is filtered&gt;:&lt;control number&gt;:&lt;sample number&gt;</code></p><p>*instrument - уникальное название инструмента;<br>
+run ID - идентификатор прогона;<br>
+flowcell ID - идентификатор проточной ячейки;<br>
+lane - дорожка ячейки;<br>
+tile - номер плитки в пределах дорожки;<br>
+x-pos, y-pos - координаты кластера в пределах плитки;<br>
+read - прочтение (1 или 2);<br>
+is filtered - фильтрованное/не фильтрованное прочтение (Y или N);<br>
+control number - количество битов управления (0, если ни один из битов не включен);<br>
+sample number - баркод (последовательность индекса).</p></div></div><p>2.2. <strong>Обрезка по качеству</strong>:</p><ul><li>Удаление адаптеров, если файл образца содержит более 1% прочтений, контаминированных
 адаптернымии последовательностями.</li><li>Фильтрация коротких прочтений, если файл образца содержит более 25% коротких прочтений (прочтения,
 длина которых меньше минимальной длины (20 п.н.)).</li><li>Обрезка по качеству, если качество идентификации трёх конечных нуклеотидов в прочтении
 ниже порога качества (20).</li></ul><p>Производится с помощью <a href="https://cutadapt.readthedocs.io/en/stable/" target="_blank" rel="noopener noreferrer">Cutadapt</a>.
@@ -73,7 +84,7 @@ sequences) и использованный порог метрики, при к�
 или &quot;<em>Фильтрация по качеству</em>&quot;), которая была выполнена последней (&quot;<em>Скачать FASTQ_GZ</em>&quot;).</p><p>Если в анализ образца <a href="/ngsw-docs-ru/eu/settings/settings/alignment-settings">включено выравнивание</a>, то после успешного
 выполнения стадии &quot;Проверка качества и очистка&quot;
 начнётся <a href="/ngsw-docs-ru/eu/results/workflow-details/fastq-analysis/alignment">стадия &quot;Выравнивание&quot;</a>.</p><div class="footnotes"><hr><ol><li id="fn-1"><a href="https://doi.org/10.12688/f1000research.21142.2" target="_blank" rel="noopener noreferrer">de Sena Brandine G. and Smith A.D. Falco: high-speed FastQC emulation for quality control of sequencing data. F1000Research 2021, 8:1874 (2021)</a><a href="#fnref-1" class="footnote-backref">↩</a></li></ol></div></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages navigation"><div class="pagination-nav__item"><a class="pagination-nav__link" href="/ngsw-docs-ru/eu/results/workflow-details/fastq-analysis/upload-identify-verify"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">« Загрузка, идентификация и проверка</div></a></div><div class="pagination-nav__item pagination-nav__item--next"><a class="pagination-nav__link" href="/ngsw-docs-ru/eu/results/workflow-details/fastq-analysis/alignment"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Выравнивание »</div></a></div></nav></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container"><div class="footer__bottom text--center"><div class="footer__copyright">© 2019-2026 Novel Software Systems. Все права защищены.</div></div></div></footer></div>
-<script src="/ngsw-docs-ru/eu/assets/js/runtime~main.47f43f50.js"></script>
+<script src="/ngsw-docs-ru/eu/assets/js/runtime~main.53944cfd.js"></script>
 <script src="/ngsw-docs-ru/eu/assets/js/main.50f06afb.js"></script>
 </body>
 </html>

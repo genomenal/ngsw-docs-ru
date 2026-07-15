@@ -5,9 +5,20 @@ sidebar_label: Настройки пользователя
 
 # Настройки пользователя
 
-На странице "Настройки пользователя" находятся ваши персональные настройки:
-настройки аккаунта (email, логин, пароль), настройки панели навигации Программы,
-страницы пациента, SNV Viewer и CNV Viewer.
+Страница "Настройки пользователя" может включать следующие вкладки:
+- [Настройки аккаунта](/settings/profile#account-settings) - персональные параметры: настройки email, логина,
+пароля, а также настройки панели навигации Программы, страницы пациента, SNV Viewer и CNV Viewer.
+- [Платежи](/settings/profile#payments) - информация о выполненных и предстоящих платежах за использование
+Genomenal. Вкладка доступна, если для
+пользователя [включен биллинг](/overview/administration#user-page) (регулируется администратором).
+- [Статистика использования](/settings/profile#usage-details) - информация об использовании продуктов Genomenal
+и рассчитанной стоимости за выбранный период. Вкладка доступна, если для
+пользователя [включен биллинг](/overview/administration#user-page) (регулируется администратором).
+- [Тарифы](/settings/profile#pricing) - информация об актуальных ценах на продукты Genomenal.
+Вкладка доступна, если для
+пользователя [включен биллинг](/overview/administration#user-page) (регулируется администратором).
+- [Статистика/Экспорт](/settings/profile#statistics-export) - выгрузка статистики по
+интерпретированным SNVs/Indels.
 
 Чтобы открыть страницу "Настройки пользователя", наведите курсор мыши на ваш логин внизу боковой
 панели навигации и нажмите на появивишиеся
@@ -275,7 +286,7 @@ SNV Viewer образца (по умолчанию открывается баз
    к неправильной оценке количества доказательств, наблюдаемых для одного аллеля по сравнению с другим.
    FisherStrand определяет, существует ли смещение цепи между прямой и обратной цепями для референсного или
    альтернативного аллеля (то есть встречается ли альтернативный аллель чаще или реже на прямой или обратной цепи,
-   чем референсный аллель). FisherStrand хуже учитывает большие объемы данных
+   чем референсный аллель). FisherStrand хуже учитывает большие объёмы данных
    в ситуациях с высоким покрытием по сравнению с StrandOddsRatio. Кроме того, FisherStrand имеет тенденцию
    "штрафовать" варианты, которые встречаются на концах экзонов. Варианты на концах экзонов, как правило,
    покрываются прочтениями только в одном направлении цепи, и FisherStrand дает таким вариантам плохую оценку, тогда
@@ -559,3 +570,465 @@ SNV Viewer или CNV Viewer, вы можете вернуться к настр
 нажав на кнопку <img src={require('/img/rus/default.png').default} width="150"/>.
 Обратите внимание, что действие приведет к сбросу сразу всех изменений, которые вы совершили
 на странице (кроме изменений email, логина и пароля).
+
+## Платежи {#payments}
+
+Вкладка "Платежи" доступна, если в вашем аккаунте [включён биллинг](/overview/administration#user-page).
+На странице отображается информация о выполненных и предстоящих платежах за использование Genomenal.
+
+<p align="center">
+<img src={require('/img/rus/personal_payments.png').default} width="900"/>
+</p>
+
+В верхней части вкладки отображается сумма к оплате в рублях, рассчитанная на начало месяца. Эта сумма
+автоматически обновляется по мере внесения информации о полученных платежах.
+
+Полученные платежи представлены в виде таблицы со следующими колонками:
+- **Сумма платежа** - сумма выполненного платежа в рублях;
+- **Дата платежа** - дата выполнения платежа;
+- **Комментарии** - дополнительная информация к платежу.
+
+## Статистика использования {#usage-details}
+
+Вкладка "Статистика использования" доступна, если в вашем
+аккаунте [включён биллинг](/overview/administration#user-page).
+На странице можно найти информацию об использовании продуктов Genomenal и рассчитанной стоимости за выбранный период.
+
+<p align="center">
+<img src={require('/img/rus/personal_usage_details.png').default} width="900"/>
+</p>
+
+В верхней части вкладки можно задать временной период для отображения статистики.
+По умолчанию выбран интервал с первого числа текущего месяца по текущую дату.
+
+Статистика использования в выбранный период представлена в виде таблицы со следующими колонками:
+1. **Продукт** - название оказанной услуги. При раскрытии строки отображается
+список образцов или групповых анализов, для которых была выполнена данная услуга.
+
+<p align="center">
+<img src={require('/img/rus/personal_product_rows.png').default} width="900"/>
+</p>
+
+Форматы отображения:
+- Образцы пациента: `код пациента / имя образца`
+- Образцы в запуске: `название запуска / имя образца`
+- Образцы пациента в запуске: `название запуска / код пациента / имя образца`
+- Групповые анализы: `имя группового анализа (Образцы: количество образцов, включенных в анализ)`
+
+Названия являются ссылками на соответствующие страницы.<br></br>
+Если образец был удалён после обработки, ссылка не отображается, а после имени добавляется пометка *(удалён)*.
+
+2. **Потребление** - отражает объём использованных ресурсов или количество оказанных услуг в выбранный период.
+- Для услуг с типом <b>"Обработка"</b>, <b>"Аннотация"</b> и <b>"Групповой анализ"</b> приводится количество
+выполненных операций (в штуках).
+- Для услуги <b>"Поддержка анализа"</b> приводится суммарный объём файлов образцов, для которых оказывается
+поддержка анализа. Выражается в единицах GB*день (1 GB данных, хранящийся 1 день).
+- Для услуги <b>"Поддержка SNV Viewer"</b> приводится суммарное количество генетических вариантов (SNVs/Indels),
+выраженное в единицах 100K SNV*день (100 000 вариантов, хранящихся 1 день). Отображаемое значение округляется.
+
+Фактическое потребление рассчитывается как: `(использовано) - (добавлено)`. Добавленный объём данных
+исключается из расчёта, поскольку поддержка предоставляется бесплатно в течение 30 дней после обработки образца.
+
+В раскрытом списке детализация потребления доступна только для услуг с типом
+"Обработка", "Аннотация" и "Групповой анализ".
+
+3. **Стоимость** - стоимость услуги за выбранный период (в рублях).
+
+Общая формула: `Стоимость = фактическое потребление × тариф / 30 дней.`
+
+Тарифы доступны на вкладке "Тарифы".
+
+- Стоимость услуг с типом "Обработка", "Аннотация" и "Групповой анализ"
+зависит от количества обработанных образцов или проведенных групповых анализов в указанный период.
+- Стоимость услуги "Поддержка анализа" зависит от размера хранимых файлов образцов.
+- Стоимость услуги "Поддержка SNV Viewer" зависит от количества хранимых SNVs/Indels.
+
+В раскрытом списке детализация стоимости доступна только для услуг с типом
+"Обработка", "Аннотация" и "Групповой анализ".
+
+Внизу таблицы отображается строка "Итого за период" - суммарная стоимость всех услуг в выбранный период.
+
+:::info На заметку
+Для снижения стоимости поддержки анализа и поддержки SNV Viewer можно
+использовать [сжатие образца](/results/workflow-details/workflow-details#compress-sample):
+удалить FASTQ файлы и удалить данные SNV Viewer, соответственно.
+:::
+
+4. **Подробности** - содержит детальную информацию по услугам.
+
+**Подробности в раскрытом списке услуг с типом "Обработка", "Аннотация" и "Групповой анализ":**
+- <b>Обработан</b> - дата и время обработки образца или группового анализа.
+
+**Подробности услуги "Поддержка анализа":**
+- <b>GB*день на начало периода</b> - объём хранения данных, учитываемый на начало периода. Всегда равен 0,
+поскольку расчёт ведётся отдельно для каждого периода без переноса накопленного потребления.
+- <b>GB*день добавлено за период</b> - объём данных, добавленный в течение выбранного периода
+и исключаемый из расчёта итогового потребления. Пересчитывается на полный 30-дневный период,
+поскольку поддержка анализа предоставляется бесплатно в течение 30 дней после обработки образца.
+Рассчитывается по формуле: <code>(объём данных в GB) × (30 дней)</code>.
+- <b>GB*день использовано за период</b> - фактическое потребление за выбранный период.
+Рассчитывается по формуле: <code>(объём данных в GB) × (фактическое время хранения в днях)</code>.
+- <b>GB*день на конец периода</b> - объём хранения данных, учитываемый на конец периода. Всегда равен 0,
+поскольку расчёт ведётся отдельно для каждого периода без переноса накопленного потребления.
+
+**Подробности в раскрытом списке услуги "Поддержка анализа":**
+- <b>Размер файлов образца</b> - размер файла одиночного образца или суммарный размер первичного
+и парного файлов образца в случае парного секвенирования.
+- <b>Период</b> - выбранный временной интервал для отображения статистики.
+Настраивается в верхней части вкладки "Статистика использования". Расчёт ведётся по полным суткам выбранного
+диапазона с учётом часового пояса системы.
+- <b>GB*день добавлено за период</b> - см. определение выше.
+- <b>GB*день использовано за период</b> - см. определение выше.
+
+**Подробности услуги "Поддержка SNV Viewer":**
+- <b>100K SNV*день на начало периода</b> - количество SNVs/Indels, учитываемое на начало периода.
+Всегда равно 0, поскольку расчёт ведётся отдельно для каждого периода без переноса накопленного потребления.
+- <b>100K SNV*день добавлено за период</b> - количество SNVs/Indels, добавленное в течение выбранного периода
+и исключаемое из расчёта итогового потребления. Пересчитывается на полный 30-дневный период,
+поскольку поддержка SNV Viewer предоставляется бесплатно в течение 30 дней после обработки образца.
+Рассчитывается по формуле: <code>(объём данных в 100K SNV) × (30 дней)</code>.
+- <b>100K SNV*день использовано за период</b> - фактическое потребление за выбранный период.
+Рассчитывается по формуле: <code>(объём данных в 100K SNV) × (фактическое время хранения в днях)</code>.
+- <b>100K SNV*день на конец периода</b> - количество SNVs/Indels, учитываемое на конец периода.
+Всегда равно 0, поскольку расчёт ведётся отдельно для каждого периода без переноса накопленного потребления.
+
+**Подробности в раскрытом списке услуги "Поддержка SNV Viewer":**
+- <b>Количество SNVs образца</b> - суммарное число вариантов в модуле SNV Viewer образца. Если для
+образца выявлены как соматические, так и герминальные варианты, то их число суммируется.
+- <b>Период</b> - выбранный временной интервал для отображения статистики.
+Настраивается в верхней части вкладки "Статистика использования". Расчёт ведётся по полным суткам выбранного
+диапазона с учётом часового пояса системы.
+- <b>100K SNV*день добавлено за период</b> - см. определение выше.
+- <b>100K SNV*день использовано за период</b> - см. определение выше.
+
+**В строке "Итого за период" внизу таблицы отображаются:**
+- <b>Задолженность на начало периода</b> - сумма, не оплаченная на начало выбранного периода (в рублях).
+- <b>Платежи за период</b> - сумма платежей, внесенных в выбранный период (в рублях).
+- <b>Стоимость за период</b> - суммарная стоимость всех услуг в выбранный период (в рублях).
+- <b>Задолженность на конец периода</b> - сумма к оплате в рублях, рассчитанная для выбранного периода.
+Рассчитывается по формуле: <code>(Задолженность на начало периода) + (Стоимость за период) - (Платежи за период)</code>.
+
+## Тарифы {#pricing}
+
+Вкладка "Тарифы" доступна, если в вашем
+аккаунте [включён биллинг](/overview/administration#user-page).
+На странице представлена информация об актуальных ценах на продукты Genomenal.
+
+Тарифы отображаются в виде таблицы со следующими колонками:
+1. **Продукт** - название услуги в Genomenal:
+- Обработка FASTQ/BAM панели генов;
+- Обработка полноэкзомного FASTQ/BAM;
+- Обработка полногеномного FASTQ/BAM;
+- Обработка полногеномного FASTQ/BAM с низким покрытием (low-pass WGS);
+- Аннотация VCF панели генов;
+- Аннотация полноэкзомного VCF;
+- Аннотация полногеномного VCF;
+- Аннотация VCF структурных вариаций;
+- Поддержка анализа (1GB за 30 дней; первые 30 дней после обработки образца - бесплатно);
+- Групповой анализ панелей генов FASTQ/BAM (цена за образец; зависит от количества образцов в анализе);
+- Групповой анализ полноэкзомных образцов FASTQ/BAM (цена за образец; зависит от количества образцов в анализе);
+- Групповой анализ полногеномных образцов FASTQ/BAM (цена за образец; зависит от количества образцов в анализе);
+- Поддержка SNV Viewer (100 000 вариантов за 30 дней; первые 30 дней после обработки образца - бесплатно).
+2. **Цена** - стоимость продукта в Genomenal (в рублях). Персональная
+цена отмечается значком <img src={require('/img/rus/personal_price.png').default} width="20"/>.
+3. **Действует с** - дата начала действия установленной цены.
+
+## Статистика/Экспорт {#statistics-export}
+
+На странице доступны статистика по интерпретированным SNVs/Indels и экспорт этих данных.
+
+<p align="center">
+<img src={require('/img/rus/statistics_export_page.png').default} width="900"/>
+</p>
+
+Статистика включает данные как по существующим, так и по удаленным пациентам, запускам и групповым анализам,
+в которых были найдены SNVs/Indels.
+
+Учитываются только SNVs/Indels, для которых выполняется хотя бы одно из следующих условий:
+- определена [патогенность](/results/main/snvs-indels/pathogenicity);
+- добавлена [интерпретация](/results/main/snvs-indels/variant-interpretation);
+- вариант [закреплен](/results/main/snvs-indels/variant-viewer#pin-variant) в SNV Viewer.
+
+В таблице отображается следующая статистика по интерпретированным SNVs/Indels:
+- **Пациентов** - количество пациентов, образцы которых содержат интерпретированные
+SNVs/Indels.
+- **Образцов** - количество образцов, содержащих интерпретированные SNVs/Indels.
+- **Запусков** - количество запусков, содержащих образцы с интерпретированными SNVs/Indels.
+- **Групповых анализов** - количество групповых анализов, содержащих интерпретированные SNVs/Indels.
+- **Записей** - общее количество интерпретированных SNVs/Indels.
+
+Чтобы экспортировать интерпретированные SNVs/Indels в формате CSV,
+нажмите <img src={require('/img/rus/export_to_csv_btn.png').default} width="150"/>.<br></br>
+
+**Таблица с интерпретированными SNVs/Indels содержит следующие колонки:**
+- `type` - тип записи:
+   - `Sample SNV` - запись о варианте, найденном в образце;
+   - `Group Analysis SNV` - запись о варианте, найденном в групповом анализе;
+   - `Group Analysis Sample` - запись об образце, входящем в групповой анализ, в котором найден вариант.
+
+- **Поля с информацией о пациенте**, которому принадлежит образец, в котором найден вариант. В основном соответствуют
+полям раздела "Информация о пациенте":
+   - `patients.patientId` - код;
+   - `patients.firstName` - имя;
+   - `patients.lastName` - фамилия;
+   - `patients.middleName` - отчество;
+   - `patients.sex` - пол;
+   - `patients.diagnosis` - поставленный диагноз;
+   - `patients.description` - комментарии;
+   - `patients.dateOfDiagnosis` - дата постановки диагноза;
+   - `patients.dateOfBirth` - дата рождения;
+   - `patients.archived` - находятся ли данные пациента в Архиве: да (`true`) или нет (`false`);
+   - `patients.inProgress` - находятся ли данные пациента в процессе обработки: да (`true`) или нет (`false`);
+   - `patients.problems` - выявлены ли при обработке данных пациента проблемы или
+   особенности качества: да (`true`) или нет (`false`);
+   - `patients.readOnly` - запрещено ли редактирование данных пациента: да (`true`) или нет (`false`);
+   - `patients.deleted` - удалены ли данные пациента: да (`true`) или нет (`false`).
+
+- **Поля с информацией о запуске**, содержащем образец, в котором найден вариант:
+   - `runs.name` - название запуска;
+   - `runs.description` - описание;
+   - `runs.sampleType` - тип образцов в запуске;
+   - `runs.archived` - находится ли запуск в Архиве: да (`true`) или нет (`false`);
+   - `runs.deleted` - удален ли запуск пользователем: да (`true`) или нет (`false`);
+   - `runs.deletionFinalized` - завершен ли процесс удаления запуска: да (`true`) или нет (`false`);
+   - `runs.virtual` - является ли образец запуска демо-образцом: да (`true`) или нет (`false`).
+
+- **Поля с информацией об образце**, в котором найден вариант. В основном соответствуют полям
+в разделе "Информация об образце":
+   - `sample_sets.name` - имя файла образца. Заполняется только в том случае, если образец добавлен в запуск,
+   но не принадлежит ни одному пациенту.
+   - `sample_sets.status` - статус обработки образца:
+      - `SUCCESS` - образец успешно обработан;
+      - `IN_PROGRESS` - образец находится в процессе обработки;
+      - `FAILED` - образец обработан с ошибкой.
+   - `sample_sets.problems` - возникли ли при обработке образца некритичные проблемы: да (`true`) или нет (`false`);
+   - `source_files.name` - имя файла;
+   - `source_files.description` - комментарии;
+   - `source_files.sourceType` - тип источника образца:
+       - `FILE` - файл;
+       - `SRA` - код образца в NCBI SRA;
+       - `URL` - ссылка на файл на сервере FTP или HTTP, а также в Яндекс.Диск или Google Диске.
+   - `source_files.source` - источник образца. В зависимости от значения поля `source_files.sourceType` содержит
+   имя файла, код образца в NCBI SRA или ссылку на файл;
+   - `source_files.alias` - алиас;
+   - `source_files.sampleType` - тип образца: неопухолевый (`NORMAL`) или опухолевый (`TUMOR`);
+   - `source_files.format` - формат файла: `FASTQ_GZ` или `VCF`;
+   - `source_files.formatFeature` - особенности формата;
+   - `source_files.readsType` - тип прочтений: `DNA`, `RNA`, `UNKNOWN`;
+   - `source_files.sequencer` - секвенатор: `ILLUMINA`, `ION_TORRENT`, `BGI`, `UNKNOWN`;
+   - `source_files.sequencingType` - тип секвенирования: `PANEL`, `WES`, `WGS`, `LOW_PASS_WGS`, `UNKNOWN`;
+   - `source_files.fileSize` - размер образца в байтах (B);
+   - `source_files.sampleLocation` - локализация образца (орган);
+   - `source_files.sampleCollectionDate` - дата сборки образцов;
+   - `source_files.methodology` - методика;
+   - `source_files.diseaseHpoId` - идентификатор онкологического заболевания из базы HPO;
+   - `source_files.oncoStage` - стадия онкологического заболевания;
+   - `source_files.oncoSubStage` - подгруппа стадии;
+   - `source_files.oncoStageDetails` - уточнение стадии;
+   - `source_files.therapyLine` - линия терапии;
+   - `source_files.pipelineOutdated` - обновлялся ли пайплайн образца, входящего в групповой анализ,
+   после создания группового анализа: да (`true`) или нет (`false`);
+   - `source_files.deleted` - удален ли образец: да (`true`) или нет (`false`);
+   - `source_files.snvsGermlineCalled` - выполнялась ли задача выявления герминальных SNVs/Indels
+   для образца: да (`true`) или нет (`false`);
+   - `source_files.snvsSomaticCalled` - выполнялась ли задача выявления соматических SNVs/Indels
+   для образца: да (`true`) или нет (`false`);
+   - `source_files.snvsDeleted` - удалены ли данные SNV Viewer (сжатие образца): да (`true`) или нет (`false`);
+   - `source_files.cnvsDeleted` - удалены ли данные CNV Viewer (сжатие образца): да (`true`) или нет (`false`);
+   - `source_files.needNotifyProcessed` - было ли включено оповещение о завершении обработки образца:
+   да (`true`) или нет (`false`).
+
+- **Поля из Биоинформатического отчёта** с информацией об образце, в котором найден вариант:
+   - `source_files.readsCount` - количество прочтений в файле после его проверки, но до очистки;
+   - `source_files.finalReadsCount` - количество прочтений в файле, подсчитанных во время проверки качества
+   после очистки;
+   - `source_files.readsLengthMin` - минимальная длина прочтения;
+   - `source_files.readsLengthMax` - максимальная длина прочтения;
+   - `source_files.readsLengthMedian` - медиана длины;
+   - `source_files.cleanupStatus` - статус задачи проверки качества и очистки файла: завершена (`FINISHED`).
+
+- **Поля с информацией о групповом анализе**, в котором найден вариант. В основном соответствуют полям
+в разделе "Информация о групповом анализе":
+   - `group_analysis.name` - имя;
+   - `group_analysis.description` - комментарии;
+   - `group_analysis.type` - тип анализа: герминальная когорта (`GERMLINE_COHORT`), семейный (`GERMLINE_FAMILY`),
+   популяционный (`GERMLINE_POPULATION`);
+   - `group_analysis.archived` - находится ли групповой анализ в Архиве: да (`true`) или нет (`false`);
+   - `group_analysis.outdated` - устарели ли результаты группового анализа: да (`true`) или нет (`false`);
+   - `group_analysis.deleted` - удален ли групповой анализ: да (`true`) или нет (`false`);
+   - `group_analysis.sequencingType` - тип секвенирования образца из группового анализа, в котором был найден
+   вариант: `PANEL`, `WES`, `WGS`, `LOW_PASS_WGS`, `UNKNOWN`.
+
+- **Поля с информацией об интерпретированном генетическом варианте:**
+   - `snv_user_data.originType`	- тип мутации: герминальная (`GERMLINE`), соматическая (`SOMATIC`);
+   - `snv_user_data.pinned` - закреплен ли вариант в SNV Viewer: да (`true`) или нет (`false`);
+   - `snv_user_data.pathogenicity` - патогенность варианта:
+       - `PATHOGENIC` - патогенный;
+       - `LIKELY_PATHOGENIC` - вероятно патогенный;
+       - `UNCERTAIN_SIGNIFICANCE_CONFLICT` - противоречивые интерпретации патогенности;
+       - `UNCERTAIN_SIGNIFICANCE` - неопределенная значимость;
+       - `LIKELY_BENIGN` - вероятно доброкачественный;
+       - `BENIGN` - доброкачественный;
+       - `UNDEFINED` - нет интерпретации.
+   - `snv_user_data.pathogenicityOrigin` - способ получения классификации варианта по патогенности:
+   ACMG классификация (`ACMG`), самостоятельное определение пользователем (`USER_DEFINED`);
+   - `snv_user_data.pathogenicityApproved` - подтвержден ли класс патогенности варианта: да (`true`) или нет (`false`);
+   - `snv_user_data.interpretation` - интерпретация варианта, добавленная пользователем;
+   - `snv_user_data.interpretationApproved` - подтверждена ли интерпретация варианта: да (`true`) или нет (`false`);
+   - `snv_user_data.includeToReport` - включён ли вариант в отчёт: да (`true`) или нет (`false`);
+   - `snv_user_data.mutationClass` - класс мутации - определяется пользователем
+   в [отчёте для онкозначимого варианта](/results/onco-genetic-testing-report#onco-relevant-variants);
+   - `snv_user_data.deleted` - удалены ли данные о варианте: да (`true`) или нет (`false`);
+   - `snv_user_data.label` - метка варианта:
+       - `HIGH_SIGNIFICANCE` - высокая значимость;
+       - `MODERATE_SIGNIFICANCE` - средняя значимость;
+       - `LOW_SIGNIFICANCE` - низкая значимость;
+       - `SEQUENCING_ERROR` - ошибка секвенирования;
+       - `UNDEFINED` - неопределенная значимость.
+   - `snv_user_data.includeInterpretationResultStatus` - статус потенциальной находки:
+       - `INCLUDED_TO_INTERPRETATION_RESULT` - включена в результаты интерпретации;
+       - `EXCLUDED_FROM_POTENTIAL_FINDINGS` - исключена из списка потенциальных находок;
+       - `UNDEFINED` - нет интерпретации.
+   - `snv_user_data.interpretationAuthorId` - идентификатор пользователя, добавившего интерпретацию варианта;
+   - `partitionId` - идентификатор партиции таблицы в ClickHouse;
+   - **Информация об образцах**:
+      - `sources.sample_name` - имена образцов, для которых проводился анализ;
+      - `sources.genotype` - генотипы;
+      - `sources.depth` - значения глубины секвенирования;
+      - `sources.refReads` - количество раз, когда в последовательности считывался референсный аллель;
+      - `sources.altReads` - количество раз, когда в последовательности считывался альтернативный аллель;
+      - `sources.allelicFrequency` - частоты альтернативного аллеля.
+
+- **Поля с результатами аннотации варианта:**
+   - `genes` - название гена, в котором располагается вариант;
+   - `originType` - тип мутации: герминальная (`GERMLINE`), соматическая (`SOMATIC`);
+   - `chrId` - номер хромосомы;
+   - `startDisplay` и `start` - начальная позиция;
+   - `endDisplay` и `end` - конечная позиция;
+   - `refDisplay` и `ref` - референсный аллель;
+   - `altDisplay` и `alt` - альтернативный аллель;
+   - `impact` - значение эффекта;
+   - `genomePosition` - позиция варианта в геноме;
+   - `consequences` - эффект варианта;
+   - `canonicalRefSeqTranscriptId` - идентификатор каноничного транскрипта в базе RefSeq;
+   - `rsId` - идентификатор варианта в базе dbSNP;
+   - `minExon` - номер первого экзона, затронутого вариантом;
+   - `maxExon` - номер последнего экзона, затронутого вариантом (для варианта, затрагивающего один экзон,
+   совпадает со значением `minExon`);
+   - `vcfFilters` - фильтры детекции;
+   - `hgvsc` - нуклеотидная замена в номенклатуре HGVS;
+   - `hgvsp` - аминокислотная замена в номенклатуре HGVS с трехбуквенными обозначениями аминокислот;
+   - `shortHgvsp` - аминокислотная замена в номенклатуре HGVS с однобуквенными обозначениями аминокислот;
+   - `oncoRelevance` - является ли вариант окнозначимым: да (`true`) или нет (`false`);
+   - `lineOffset` - служебное поле, используемое системой для внутренней обработки данных;
+   - `cosmicId` - идентификатор варианта в базе данных COSMIC;
+   - `ruSeqAf` - частота варианта в базе данных RUSeq;
+   - `codingSequenceEffect_aminoAcids` - референсная аминокислота/новая аминокислота, получившаяся в результате замены;
+   - `codingSequenceEffect_cdsPosition` - геномная позиция референсного аллеля варианта;
+   - `codingSequenceEffect_codons` - аминокислотная замена, записанная в виде кодонов;
+   - `codingSequenceEffect_proteinPosition` - позиция референсной аминокислоты в белке;
+   - `dbnsfpData_aminoAcidPos` - позиция референсной аминокислоты в белке;
+   - `dbnsfpData_appris` - аннотация изоформ сплайсинга человека;
+   - `dbnsfpData_geuvadisEqtlTargetGene` - идентификаторы таргетных генов из Ensembl, выявленных путем анализа
+   локусов количественных признаков экспрессии в проекте GEUVADIS;
+   - `phasingGroupData` - информация о фазовой группе: о вариантах, входящих в фазовую группу, либо
+   о фазовых группах, в которые входит вариант;
+   - `phasingGroupStatus` - статус фазовой группы:
+       - `PHASING_GROUP` - фазовая группа;
+       - `PART_OF_GROUP_CONSEQUENCE_EQUAL` - часть фазовой группы с совпадающей аминокислотной заменой;
+       - `PART_OF_GROUP_CONSEQUENCE_UNEQUAL` - часть фазовой группы с несовпадающей аминокислотной заменой.
+   - `enigma_clinicalSignificance` - клиническая значимость варианта по данным консорциума ENIGMA;
+   - `enigma_clinicalSignificanceComment` - комментарий о клинической значимости варианта по данным консорциума ENIGMA;
+   - `customAnnotations` - значения колонок из пользовательских аннотаций, которыми был проаннотирован вариант;
+   - `transcripts` - информация о транскриптах гена из базы данных Ensembl;
+   - **Результаты предсказания эффекта аминокислотной замены на функцию белка**
+   (`polyphenData_score`, `polyphenData_prediction`, `dbnsfpData_reliabilityIndex`, `dbnsfpData_deogenRankscore`,
+   `dbnsfpDann_score`, `dbnsfpDann_rankscore`, `dbnsfpEigen_rawCoding`, `dbnsfpEigen_rawCodingRankscore`,
+   `dbnsfpEigen_pcRawCoding`, `dbnsfpEigen_pcRawCodingRankscore`, `dbnsfpEigen_pcPhredCoding`,
+   `dbnsfpFathmm_score`, `dbnsfpFathmm_convertedRankscore`, `dbnsfpFathmm_prediction`, `dbnsfpFathmm_mklCodingScore`,
+   `dbnsfpFathmm_mklCodingRankscore`, `dbnsfpFathmm_mklCodingGroupOfFeatures`,
+   `dbnsfpFathmm_mklCodingPrediction`, `dbnsfpFathmm_xfCodingScore`, `dbnsfpFathmm_xfCodingRankscore`,
+   `dbnsfpFathmm_xfCodingPrediction`, `dbnsfpLrt_score`, `dbnsfpLrt_convertedRankscore`, `dbnsfpLrt_prediction`,
+   `dbnsfpLrt_omega`, `dbnsfpMcap_score`, `dbnsfpMcap_rankscore`, `dbnsfpMcap_prediction`, `dbnsfpMeta_svmScore`,
+   `dbnsfpMeta_svmRankscore`, `dbnsfpMeta_svmPrediction`, `dbnsfpMeta_lrScore`, `dbnsfpMeta_lrRankscore`,
+   `dbnsfpMeta_lrPrediction`, `dbnsfpMeta_score`, `dbnsfpMeta_rankscore`, `dbnsfpMpc_score`, `dbnsfpMpc_rankscore`,
+   `dbnsfpMutPred_score`, `dbnsfpMutPred_rankscore`, `dbnsfpMutPred_protId`, `dbnsfpMutPred_aaChange`,
+   `dbnsfpMutPred_top5Features`, `dbnsfpMvp_score`, `dbnsfpMvp_rankscore`, `dbnsfpPrimateAi_score`,
+   `dbnsfpPrimateAi_rankscore`, `dbnsfpPrimateAi_prediction`, `dbnsfpBayesDel_addAfPrediction`,
+   `dbnsfpBayesDel_addAfScore`, `dbnsfpBayesDel_addAfRankscore`, `dbnsfpBayesDel_noAfPrediction`,
+   `dbnsfpBayesDel_noAfScore`, `dbnsfpBayesDel_noAfRankscore`, `dbnsfpProvean_score`,
+   `dbnsfpProvean_convertedRankscore`, `dbnsfpProvean_prediction`, `dbnsfpSift_score`, `dbnsfpSift_convertedRankscore`,
+   `dbnsfpSift_score4g`, `dbnsfpSift_convertedRankscore4g`, `dbnsfpSift_prediction4g`, `snvCaddData_raw`,
+   `snvCaddData_phred`, `snvSpliceAiData_deltaScore`, `snvSpliceAiData_deltaPosition`,
+   `snvSpliceAiData_deltaScoreAcceptorGain`, `snvSpliceAiData_deltaScoreAcceptorLoss`,
+   `snvSpliceAiData_deltaScoreDonorGain`, `snvSpliceAiData_deltaScoreDonorLoss`,
+   `snvSpliceAiData_deltaPositionAcceptorGain`, `snvSpliceAiData_deltaPositionAcceptorLoss`,
+   `snvSpliceAiData_deltaPositionDonorGain`, `snvSpliceAiData_deltaPositionDonorLoss`, `dbnsfpMutationAssessor_score`,
+   `dbnsfpMutationAssessor_pred`, `maxEntScan_alt`, `maxEntScan_ref`, `maxEntScan_diff`);
+   - **Аллельные частоты варианта из проекта 1000 Genomes** (`thousandGenomesAfTotal`,
+   `thousandGenomesData_eastAsianAf`,
+   `thousandGenomesData_europeanAf`, `thousandGenomesData_africanAf`, `thousandGenomesData_americanAf`,
+   `thousandGenomesData_southAsianAf`);
+   - **Фенотипическая значимость гаплотипа и варианта из базы данных ClinVar** (`clinvarId`,
+   `clinvarData_alleleId`, `clinvarData_clinicalSignificance`, `clinvarData_clinicalSources`,
+   `clinvarData_diseaseDatabasesIds`, `clinvarData_diseaseDatabasesIdsIncl`, `clinvarData_haplotypeId`,
+   `clinvarData_origin`, `clinvarData_phenotypes`, `clinvarData_phenotypesIncl`, `clinvarData_reviewStatus`);
+   - **Аллельные частоты варианта из базы данных gnomAD 3** (`gnomadId`, `gnomadAfTotal`,
+   `gnomadData_ac`, `gnomadData_an`, `gnomadData_maleAf`, `gnomadData_femaleAf`, `gnomadData_ashkenaziJewishAf`,
+   `gnomadData_ashkenaziJewishMaleAf`, `gnomadData_ashkenaziJewishFemaleAf`, `gnomadData_amishAf`,
+   `gnomadData_amishMaleAf`, `gnomadData_amishFemaleAf`, `gnomadData_africanAf`, `gnomadData_africanMaleAf`,
+   `gnomadData_africanFemaleAf`, `gnomadData_finnishAf`, `gnomadData_finnishMaleAf`, `gnomadData_finnishFemaleAf`,
+   `gnomadData_southAsianAf`, `gnomadData_southAsianMaleAf`, `gnomadData_southAsianFemaleAf`,
+   `gnomadData_latinoAf`, `gnomadData_latinoMaleAf`, `gnomadData_latinoFemaleAf`, `gnomadData_nonFinnishEuropeanAf`
+   `gnomadData_nonFinnishEuropeanMaleAf`, `gnomadData_nonFinnishEuropeanFemaleAf`, `gnomadData_eastAsianAf`,
+   `gnomadData_eastAsianMaleAf`, `gnomadData_eastAsianFemaleAf`, `gnomadData_middleEasternAf`
+   `gnomadData_middleEasternMaleAf`, `gnomadData_middleEasternFemaleAf`, `gnomadData_otherAf`,
+   `gnomadData_otherMaleAf`, `gnomadData_otherFemaleAf`, `gnomadData_nhomalt`, `gnomadData_africanNhomalt`,
+   `gnomadData_amishNhomalt`, `gnomadData_latinoNhomalt`, `gnomadData_ashkenaziJewishNhomalt`,
+   `gnomadData_eastAsianNhomalt`, `gnomadData_finnishNhomalt`, `gnomadData_nonFinnishNhomalt`,
+   `gnomadData_middleEasternNhomalt`, `gnomadData_southAsianNhomalt`, `gnomadData_otherNhomalt`,
+   `gnomadData_coverage`);
+   - **Аллельные частоты варианта из базы данных gnomAD 4** (`gnomad4Data_acGenomes`,
+   `gnomad4Data_acXxGenomes`, `gnomad4Data_acXyGenomes`, `gnomad4Data_acJoint`, `gnomad4Data_acJointXx`,
+   `gnomad4Data_acJointXy`, `gnomad4Data_afGenomes`, `gnomad4Data_afXxGenomes`, `gnomad4Data_afXyGenomes`,
+   `gnomad4Data_afJoint`, `gnomad4Data_afJointXx`, `gnomad4Data_afJointXy`, `gnomad4Data_anGenomes`,
+   `gnomad4Data_anXxGenomes`, `gnomad4Data_anXyGenomes`, `gnomad4Data_anJoint`, `gnomad4Data_anJointXx`,
+   `gnomad4Data_anJointXy`, `gnomad4Data_nhomaltGenomes`, `gnomad4Data_nhomaltXxGenomes`,
+   `gnomad4Data_nhomaltXyGenomes`, `gnomad4Data_nhomaltJoint`, `gnomad4Data_nhomaltJointXx`,
+   `gnomad4Data_nhomaltJointXy`, `gnomad4Data_acExomes`, `gnomad4Data_acXxExomes`, `gnomad4Data_acXyExomes`,
+   `gnomad4Data_afExomes`, `gnomad4Data_afXxExomes`, `gnomad4Data_afXyExomes`, `gnomad4Data_anExomes`,
+   `gnomad4Data_anXxExomes`, `gnomad4Data_anXyExomes`, `gnomad4Data_nhomaltExomes`, `gnomad4Data_nhomaltXxExomes`,
+   `gnomad4Data_nhomaltXyExomes`);
+   - **Консервативность варианта** (`dbnsfpData_ancestralAllele`, `dbnsfpData_altaiNeandertal`,
+   `dbnsfpData_denisova`, `dbnsfpData_vindijiaNeandertal`, `dbnsfpBstatistic_bValue`, `dbnsfpBstatistic_rankscore`,
+   `dbnsfpFitCons_integratedScore`, `dbnsfpFitCons_integratedRankscore`, `dbnsfpFitCons_integratedConfidenceValue`,
+   `dbnsfpFitCons_gm12878Score`, `dbnsfpFitCons_gm12878Rankscore`, `dbnsfpFitCons_gm12878ConfidenceValue`,
+   `dbnsfpFitCons_h1HescScore`, `dbnsfpFitCons_h1HescRankscore`, `dbnsfpFitCons_h1HescConfidenceValue`,
+   `dbnsfpFitCons_huvecScore`, `dbnsfpFitCons_huvecRankscore`, `dbnsfpFitCons_huvecConfidenceValue`,
+   `dbnsfpGerp_neutralRate`, `dbnsfpGerp_rsScore`, `dbnsfpGerp_rsRankscore`, `dbnsfpPhastCons_vertebrate100way`,
+   `dbnsfpPhastCons_vertebrate100wayRankscore`, `dbnsfpPhastCons_mammalian30way`,
+   `dbnsfpPhastCons_mammalian30wayRankscore`, `dbnsfpPhastCons_primate17way`, `dbnsfpPhastCons_primate17wayRankscore`,
+   `dbnsfpPhylop_vertebrate100way`, `dbnsfpPhylop_vertebrate100wayRankscore`, `dbnsfpPhylop_mammalian30way`,
+   `dbnsfpPhylop_mammalian30wayRankscore`, `dbnsfpPhylop_primate17way`, `dbnsfpPhylop_primate17wayRankscore`,
+   `dbnsfpSiphy_pA29way`, `dbnsfpSiphy_pC29way`, `dbnsfpSiphy_pG29way`, `dbnsfpSiphy_pT29way`,
+   `dbnsfpSiphy_logOdds29way`, `dbnsfpSiphy_logOdds29wayRankscore`);
+   - **Аллельные частоты варианта из базы данных ExAC** (`dbnsfpExac_ac`, `dbnsfpExac_af`,
+   `dbnsfpExac_adjustedAc`, `dbnsfpExac_adjustedAf`, `dbnsfpExac_africanAc`, `dbnsfpExac_africanAf`,
+   `dbnsfpExac_americanAc`, `dbnsfpExac_americanAf`, `dbnsfpExac_eastAsianAc`, `dbnsfpExac_eastAsianAf`,
+   `dbnsfpExac_finnishAc`, `dbnsfpExac_finnishAf`, `dbnsfpExac_nonFinnishEuropeanAc`,
+   `dbnsfpExac_nonFinnishEuropeanAf`, `dbnsfpExac_southAsianAc`, `dbnsfpExac_southAsianAf`,
+   `dbnsfpExac_nonTcgaAc`, `dbnsfpExac_nonTcgaAf`, `dbnsfpExac_nonTcgaAdjustedAc`, `dbnsfpExac_nonTcgaAdjustedAf`,
+   `dbnsfpExac_nonTcgaAfricanAc`, `dbnsfpExac_nonTcgaAfricanAf`, `dbnsfpExac_nonTcgaAmericanAc`,
+   `dbnsfpExac_nonTcgaAmericanAf`, `dbnsfpExac_nonTcgaEastAsianAc`, `dbnsfpExac_nonTcgaEastAsianAf`,
+   `dbnsfpExac_nonTcgaFinnishAc`, `dbnsfpExac_nonTcgaFinnishAf`, `dbnsfpExac_nonTcgaNonFinnishEuropeanAc`,
+   `dbnsfpExac_nonTcgaNonFinnishEuropeanAf`, `dbnsfpExac_nonTcgaSouthAsianAc`, `dbnsfpExac_nonTcgaSouthAsianAf`,
+   `dbnsfpExac_nonPsychAc`, `dbnsfpExac_nonPsychAf`, `dbnsfpExac_nonPsychAdjustedAc`,
+   `dbnsfpExac_nonPsychAdjustedAf`, `dbnsfpExac_nonPsychAfricanAc`, `dbnsfpExac_nonPsychAfricanAf`,
+   `dbnsfpExac_nonPsychAmericanAc`, `dbnsfpExac_nonPsychAmericanAf`, `dbnsfpExac_nonPsychEastAsianAc`,
+   `dbnsfpExac_nonPsychEastAsianAf`, `dbnsfpExac_nonPsychFinnishAc`, `dbnsfpExac_nonPsychFinnishAf`,
+   `dbnsfpExac_nonPsychNonFinnishEuropeanAc`, `dbnsfpExac_nonPsychNonFinnishEuropeanAf`,
+   `dbnsfpExac_nonPsychSouthAsianAc`, `dbnsfpExac_nonPsychSouthAsianAf`);
+   - **Аллельные частоты варианта из проекта NHLBI GO ESP** (`dbnsfpNhlbi_africanAmericanAc`,
+   `dbnsfpNhlbi_africanAmericanAf`, `dbnsfpNhlbi_europeanAmericanAc`, `dbnsfpNhlbi_europeanAmericanAf`);
+   - **Аллельные частоты варианта из проекта UK10K** (`dbnsfpUk10_twinsukAc`, `dbnsfpUk10_twinsukAf`,
+   `dbnsfpUk10_alspacAc`, `dbnsfpUk10_alspacAf`, `dbnsfpUk10_combinedAc`, `dbnsfpUk10_combinedAf`).

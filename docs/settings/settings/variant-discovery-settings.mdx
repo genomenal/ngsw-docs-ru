@@ -398,20 +398,6 @@ F1R2 - это тип парных прочтений, в котором перв
 тумблер имеет синий цвет и смещён вправо: <img src={require('/img/rus/toggle_on.png').default} width="35"/>, а
 выключенный имеет серый цвет и смещён влево: <img src={require('/img/rus/toggle_off.png').default} width="35"/>.
 
-### Фильтрация герминальных SNVs/Indels с помощью CNN {#enable-cnn-scoring}
-
-Помимо хард-фильтрации для герминальных вариантов применяется фильтрация на основе оценок предварительно
-обученной сверточной нейронной сети (convolutional neural network; CNN) 2D, реализованной
-в ***[GATK CNNScoreVariants](https://gatk.broadinstitute.org/hc/en-us/articles/360037226672-CNNScoreVariants)***.
-Фильтрация с помощью CNN занимает много времени и не вносит большой вклад в фильтрацию по сравнению с
-хард-фильтрацией. Подробнее о вкладке фильтрации с помощью CNN можно узнать [здесь](/benchmarking#filtration-impact).
-
-Для включения фильтрации герминальных SNVs/Indels с помощью CNN модели включите соответствующий тумблер:
-
-<p align="center">
-<img src={require('/img/rus/turn_on_cnn.png').default} width="400"/>
-</p>
-
 ## Выявление структурных вариаций {#sv-discovery}
 
 Структурные вариации (structural variation; SV) - длинные делеции, тандемные дупликации, инверсии и транслокации.
